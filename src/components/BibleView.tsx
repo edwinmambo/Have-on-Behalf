@@ -105,7 +105,23 @@ export const BibleView: React.FC<BibleViewProps> = ({
   // Reactive state for favorites to force immediate re-render on toggle
   const [favoritesRefreshKey, setFavoritesRefreshKey] = useState(0);
 
+  // Chapter chunk filter for large books (e.g. Psalms 150, Isaiah 66)
+  const [chapterChunkFilter, setChapterChunkFilter] = useState<'all' | number>('all');
+
   const currentChapterKey = `${selectedBook} ${selectedChapter}`;
+
+  // Auto-scroll active chapter button into view when selected
+  useEffect(() => {
+    const el = document.getElementById(`chapter-btn-${selectedChapter}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [selectedChapter, selectedBook]);
+
+  // Reset chapter chunk filter when book changes
+  useEffect(() => {
+    setChapterChunkFilter('all');
+  }, [selectedBook]);
 
   // Preserve autoselection when navigating via passage search (e.g. John 1: 1-14)
   useEffect(() => {
@@ -618,9 +634,49 @@ export const BibleView: React.FC<BibleViewProps> = ({
               {primaryVersion === 'SUV' ? 'Sura' : primaryVersion === 'GIK' ? 'Icunjĩ' : 'Chapters'})
             </span>
             <span className="text-[10px] font-mono text-amber-600 dark:text-amber-400 font-semibold">
-              Ch. {selectedChapter} active
+              {primaryVersion === 'SUV'
+                ? `Sura ${selectedChapter} inasomwa`
+                : primaryVersion === 'GIK'
+                ? `Gĩcunjĩ ${selectedChapter}`
+                : `Ch. ${selectedChapter} active`}
             </span>
           </div>
+
+          {/* Quick chapter range chunks for large books (e.g. Psalms 150, Isaiah 66, Genesis 50) */}
+          {selectedBookMeta.chaptersCount > 30 && (
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar pb-1.5 mb-1.5 text-[10px]">
+              <button
+                onClick={() => setChapterChunkFilter('all')}
+                className={`px-2 py-0.5 rounded-md font-mono transition whitespace-nowrap ${
+                  chapterChunkFilter === 'all'
+                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    : 'bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                All ({selectedBookMeta.chaptersCount})
+              </button>
+              {Array.from(
+                { length: Math.ceil(selectedBookMeta.chaptersCount / 25) },
+                (_, idx) => {
+                  const start = idx * 25 + 1;
+                  const end = Math.min((idx + 1) * 25, selectedBookMeta.chaptersCount);
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setChapterChunkFilter(idx)}
+                      className={`px-2 py-0.5 rounded-md font-mono transition whitespace-nowrap ${
+                        chapterChunkFilter === idx
+                          ? 'bg-amber-500 text-slate-950 font-bold'
+                          : 'bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      }`}
+                    >
+                      {start}-{end}
+                    </button>
+                  );
+                }
+              )}
+            </div>
+          )}
 
           {/* Dynamic responsive container that accommodates all chapters */}
           <div
@@ -630,25 +686,32 @@ export const BibleView: React.FC<BibleViewProps> = ({
                 : selectedBookMeta.chaptersCount <= 28
                 ? 'max-h-44'
                 : selectedBookMeta.chaptersCount <= 50
-                ? 'max-h-60 sm:max-h-64'
-                : 'max-h-72 sm:max-h-80'
+                ? 'max-h-56 sm:max-h-64'
+                : 'max-h-72 sm:max-h-80 md:max-h-88'
             }`}
           >
-            {Array.from({ length: selectedBookMeta.chaptersCount }, (_, i) => i + 1).map((ch) => (
-              <button
-                key={ch}
-                id={`chapter-btn-${ch}`}
-                onClick={() => setSelectedChapter(ch)}
-                className={`h-7.5 rounded-lg font-mono text-xs font-semibold transition flex items-center justify-center ${
-                  selectedChapter === ch
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-xs ring-2 ring-amber-400/40'
-                    : 'bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70'
-                }`}
-                title={`${getLocalizedBookName(selectedBook, primaryVersion)} ${ch}`}
-              >
-                {ch}
-              </button>
-            ))}
+            {Array.from({ length: selectedBookMeta.chaptersCount }, (_, i) => i + 1)
+              .filter((ch) => {
+                if (chapterChunkFilter === 'all') return true;
+                const start = chapterChunkFilter * 25 + 1;
+                const end = Math.min((chapterChunkFilter + 1) * 25, selectedBookMeta.chaptersCount);
+                return ch >= start && ch <= end;
+              })
+              .map((ch) => (
+                <button
+                  key={ch}
+                  id={`chapter-btn-${ch}`}
+                  onClick={() => setSelectedChapter(ch)}
+                  className={`h-7.5 rounded-lg font-mono text-xs font-semibold transition flex items-center justify-center ${
+                    selectedChapter === ch
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-xs ring-2 ring-amber-400/40'
+                      : 'bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70'
+                  }`}
+                  title={`${getLocalizedBookName(selectedBook, primaryVersion)} ${ch}`}
+                >
+                  {ch}
+                </button>
+              ))}
           </div>
         </div>
       </aside>
@@ -749,42 +812,52 @@ export const BibleView: React.FC<BibleViewProps> = ({
               </button>
 
               {/* Versions Selector: Available versions have priority; unavailable are greyed out */}
-              <div className="flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-xl text-xs font-semibold">
-                {sortedVersions.map((v) => {
-                  const isAvail = v.isAvailable !== false;
-                  const isSelected = primaryVersion === v.id;
-                  return (
+              <div className="flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-xl text-xs font-semibold gap-0.5">
+                {/* Available Translations First */}
+                {sortedVersions
+                  .filter((v) => v.isAvailable !== false)
+                  .map((v) => {
+                    const isSelected = primaryVersion === v.id;
+                    return (
+                      <button
+                        key={v.id}
+                        onClick={() => setPrimaryVersion(v.id as BibleVersionId)}
+                        className={`px-2.5 py-1 rounded-lg transition relative flex items-center gap-1 ${
+                          isSelected
+                            ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
+                            : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-300/40 dark:hover:bg-slate-700/50'
+                        }`}
+                        title={`${v.name} (${v.language}) - Available Offline`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span>{v.id}</span>
+                      </button>
+                    );
+                  })}
+
+                {/* Subtle divider between available and unavailable versions */}
+                <div className="w-px h-3.5 bg-slate-300 dark:bg-slate-700 mx-0.5" />
+
+                {/* Unavailable Versions (Greyed Out / Custom Import Required) */}
+                {sortedVersions
+                  .filter((v) => v.isAvailable === false)
+                  .map((v) => (
                     <button
                       key={v.id}
                       onClick={() => {
-                        if (!isAvail) {
-                          showToast({
-                            title: `${v.name} (${v.id}) Offline`,
-                            description:
-                              'This translation is currently not downloaded offline. Available versions: KJV, SUV, GIK',
-                            type: 'info',
-                          });
-                          return;
-                        }
-                        setPrimaryVersion(v.id as BibleVersionId);
+                        showToast({
+                          title: `${v.name} (${v.id}) Offline`,
+                          description:
+                            'This translation is not in the offline bundle. Available versions: KJV, SUV (Swahili), GIK (Gĩkũyũ)',
+                          type: 'info',
+                        });
                       }}
-                      className={`px-2 py-1 rounded-lg transition relative ${
-                        !isAvail
-                          ? 'opacity-40 text-slate-400 dark:text-slate-500 cursor-not-allowed line-through hover:opacity-60'
-                          : isSelected
-                          ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
-                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                      }`}
-                      title={
-                        isAvail
-                          ? `${v.name} (${v.language})`
-                          : `${v.name} (${v.id}) - Unavailable offline`
-                      }
+                      className="px-1.5 py-1 rounded-lg text-[11px] font-medium opacity-40 text-slate-400 dark:text-slate-500 cursor-not-allowed hover:opacity-60 transition"
+                      title={`${v.name} (${v.id}) - Unavailable offline`}
                     >
                       {v.id}
                     </button>
-                  );
-                })}
+                  ))}
               </div>
 
               {/* Parallel Comparison Toggle */}
@@ -861,40 +934,51 @@ export const BibleView: React.FC<BibleViewProps> = ({
         {/* Secondary Version Selector when Parallel is active */}
         {secondaryVersion && (
           <div className="px-6 py-2 bg-indigo-50/50 dark:bg-indigo-950/20 border-b border-indigo-100 dark:border-indigo-900/30 flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-semibold text-indigo-900 dark:text-indigo-300">
-                Parallel Column:
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="font-semibold text-indigo-900 dark:text-indigo-300 mr-1">
+                Parallel:
               </span>
-              {sortedVersions.map((v) => {
-                const isAvail = v.isAvailable !== false;
-                return (
+              {/* Available parallel versions */}
+              {sortedVersions
+                .filter((v) => v.isAvailable !== false)
+                .map((v) => (
+                  <button
+                    key={v.id}
+                    onClick={() => setSecondaryVersion(v.id as BibleVersionId)}
+                    className={`px-2 py-0.5 rounded-md font-medium transition flex items-center gap-1 text-[11px] ${
+                      secondaryVersion === v.id
+                        ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-indigo-100/60 dark:hover:bg-indigo-900/40'
+                    }`}
+                    title={`${v.name} (${v.language}) - Available`}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span>{v.id}</span>
+                  </button>
+                ))}
+
+              <div className="w-px h-3.5 bg-indigo-200 dark:bg-indigo-800 mx-0.5" />
+
+              {/* Unavailable parallel versions */}
+              {sortedVersions
+                .filter((v) => v.isAvailable === false)
+                .map((v) => (
                   <button
                     key={v.id}
                     onClick={() => {
-                      if (!isAvail) {
-                        showToast({
-                          title: `${v.name} (${v.id}) Offline`,
-                          description:
-                            'This translation is currently unavailable offline. Available versions: KJV, SUV, GIK',
-                          type: 'info',
-                        });
-                        return;
-                      }
-                      setSecondaryVersion(v.id as BibleVersionId);
+                      showToast({
+                        title: `${v.name} (${v.id}) Offline`,
+                        description:
+                          'This translation is not available offline. Available versions: KJV, SUV (Swahili), GIK (Gĩkũyũ)',
+                        type: 'info',
+                      });
                     }}
-                    className={`px-2 py-0.5 rounded-md font-medium transition ${
-                      !isAvail
-                        ? 'opacity-40 text-slate-400 dark:text-slate-500 cursor-not-allowed line-through'
-                        : secondaryVersion === v.id
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'text-slate-600 dark:text-slate-400 hover:bg-indigo-100/50 dark:hover:bg-indigo-900/30'
-                    }`}
-                    title={isAvail ? v.name : `${v.name} (Unavailable offline)`}
+                    className="px-1.5 py-0.5 rounded text-[10px] font-medium opacity-40 text-slate-400 dark:text-slate-500 cursor-not-allowed hover:opacity-60"
+                    title={`${v.name} (${v.id}) - Unavailable offline`}
                   >
                     {v.id}
                   </button>
-                );
-              })}
+                ))}
             </div>
             <button
               onClick={() => setSecondaryVersion(null)}

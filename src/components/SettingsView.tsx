@@ -18,8 +18,9 @@ import {
   Sparkles,
   Download,
   BookOpen,
+  Palette,
 } from 'lucide-react';
-import { AppThemeMode, UserSettings, UserProfile, saveUserProfile, updateSettings } from '../lib/storage';
+import { AppThemeMode, UserSettings, UserProfile, saveUserProfile, updateSettings, AccentTheme, getFavorites, getWorshipPlans } from '../lib/storage';
 import { BeamFont, BeamTheme } from '../types';
 import { useHymnCatalog } from '../lib/hymnLibrary';
 
@@ -54,6 +55,51 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleExportCompleteBundle = async () => {
+    try {
+      setSyncStatus('Packaging complete worship bundle...');
+      const [sdahRes, nzkRes, ncaRes] = await Promise.all([
+        fetch('/data/sdah.json').then((r) => r.json()).catch(() => []),
+        fetch('/data/nzk.json').then((r) => r.json()).catch(() => []),
+        fetch('/data/nca.json').then((r) => r.json()).catch(() => []),
+      ]);
+
+      const bundle = {
+        app: 'Have On Behalf',
+        version: '2.0.0',
+        exportedAt: new Date().toISOString(),
+        datasets: {
+          sdahCount: sdahRes.length,
+          nzkCount: nzkRes.length,
+          ncaCount: ncaRes.length,
+          sdah: sdahRes,
+          nzk: nzkRes,
+          nca: ncaRes,
+        },
+        userData: {
+          favorites: getFavorites(),
+          worshipPlans: getWorshipPlans(),
+          settings,
+        },
+      };
+
+      const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `have-on-behalf-clean-datasets-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setSyncStatus('Successfully exported full clean dataset bundle!');
+      setTimeout(() => setSyncStatus(null), 4000);
+    } catch (err) {
+      setSyncStatus('Export failed. Please try downloading individual collections.');
+      setTimeout(() => setSyncStatus(null), 4000);
+    }
   };
 
   const handleSignIn = (e: React.FormEvent) => {
@@ -283,6 +329,79 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               <p className="text-[11px] text-slate-500">Follows OS device settings</p>
             </div>
           </button>
+        </div>
+
+        {/* Accent Color Palette Selector */}
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex items-center gap-2 mb-3">
+            <Palette className="w-4 h-4 text-blue-500" />
+            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+              Sanctuary Accent Palette
+            </h3>
+            <span className="text-[11px] text-slate-400">
+              (Choose your preferred liturgical atmosphere)
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            {[
+              {
+                id: 'sapphire' as AccentTheme,
+                name: 'Sanctuary Sapphire',
+                colorClass: 'bg-blue-600',
+                borderActive: 'border-blue-500 ring-2 ring-blue-400/50 bg-blue-50/50 dark:bg-blue-950/30',
+                desc: 'Reverent & deep',
+              },
+              {
+                id: 'emerald' as AccentTheme,
+                name: 'Sacred Emerald',
+                colorClass: 'bg-emerald-600',
+                borderActive: 'border-emerald-500 ring-2 ring-emerald-400/50 bg-emerald-50/50 dark:bg-emerald-950/30',
+                desc: 'Living waters',
+              },
+              {
+                id: 'gold' as AccentTheme,
+                name: 'Cathedral Bronze',
+                colorClass: 'bg-amber-700',
+                borderActive: 'border-amber-600 ring-2 ring-amber-400/50 bg-amber-50/50 dark:bg-amber-950/30',
+                desc: 'Muted warm gold',
+              },
+              {
+                id: 'amethyst' as AccentTheme,
+                name: 'Royal Amethyst',
+                colorClass: 'bg-purple-600',
+                borderActive: 'border-purple-500 ring-2 ring-purple-400/50 bg-purple-50/50 dark:bg-purple-950/30',
+                desc: 'Evening vespers',
+              },
+              {
+                id: 'crimson' as AccentTheme,
+                name: 'Words of Christ',
+                colorClass: 'bg-rose-600',
+                borderActive: 'border-rose-500 ring-2 ring-rose-400/50 bg-rose-50/50 dark:bg-rose-950/30',
+                desc: 'Sacred scarlet',
+              },
+            ].map((pal) => (
+              <button
+                key={pal.id}
+                onClick={() => onUpdateSettings({ accentTheme: pal.id })}
+                className={`p-3 rounded-xl border text-left transition flex flex-col gap-1.5 ${
+                  (settings.accentTheme || 'sapphire') === pal.id
+                    ? pal.borderActive
+                    : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className={`w-3.5 h-3.5 rounded-full ${pal.colorClass} shadow-xs`} />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white leading-none">
+                    {pal.name}
+                  </span>
+                </div>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400">
+                  {pal.desc}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -525,7 +644,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-5">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
               <HardDrive className="w-5 h-5" />
             </div>
             <div>
@@ -537,9 +656,19 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               </p>
             </div>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
-            {totalHymnsLoaded} Hymns Ready
-          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleExportCompleteBundle}
+              className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-98 text-white text-xs font-bold shadow-xs flex items-center gap-1.5 transition"
+              title="Export complete clean dataset bundle (SDAH, NZK, NCA & User Data) in a single JSON file"
+            >
+              <Download className="w-4 h-4" />
+              <span>Export Clean Bundle (.JSON)</span>
+            </button>
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+              {totalHymnsLoaded} Hymns Ready
+            </span>
+          </div>
         </div>
 
         {/* Dataset Breakdown Grid */}

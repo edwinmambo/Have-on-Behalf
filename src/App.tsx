@@ -43,11 +43,69 @@ import {
   UserSettings,
   UserProfile,
   AppThemeMode,
+  AccentTheme,
 } from './lib/storage';
 import { buildBibleBeamSlides, buildEgwBeamSlides } from './lib/beamSlidesHelper';
 
+const getAccentClasses = (accent: AccentTheme = 'sapphire') => {
+  switch (accent) {
+    case 'emerald':
+      return {
+        activeTab: 'text-emerald-600 dark:text-emerald-400',
+        activeBadge: 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300',
+        buttonPrimary: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+        accentText: 'text-emerald-600 dark:text-emerald-400',
+        accentIcon: 'text-emerald-500',
+        sliderAccent: 'accent-emerald-600',
+        dot: 'bg-emerald-500',
+      };
+    case 'gold':
+      return {
+        activeTab: 'text-amber-700 dark:text-amber-300',
+        activeBadge: 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300',
+        buttonPrimary: 'bg-amber-700 hover:bg-amber-800 text-white',
+        accentText: 'text-amber-700 dark:text-amber-300',
+        accentIcon: 'text-amber-600',
+        sliderAccent: 'accent-amber-600',
+        dot: 'bg-amber-500',
+      };
+    case 'amethyst':
+      return {
+        activeTab: 'text-purple-600 dark:text-purple-400',
+        activeBadge: 'bg-purple-50 dark:bg-purple-950/40 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300',
+        buttonPrimary: 'bg-purple-600 hover:bg-purple-700 text-white',
+        accentText: 'text-purple-600 dark:text-purple-400',
+        accentIcon: 'text-purple-500',
+        sliderAccent: 'accent-purple-600',
+        dot: 'bg-purple-500',
+      };
+    case 'crimson':
+      return {
+        activeTab: 'text-rose-600 dark:text-rose-400',
+        activeBadge: 'bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-700 text-rose-700 dark:text-rose-300',
+        buttonPrimary: 'bg-rose-600 hover:bg-rose-700 text-white',
+        accentText: 'text-rose-600 dark:text-rose-400',
+        accentIcon: 'text-rose-500',
+        sliderAccent: 'accent-rose-600',
+        dot: 'bg-rose-500',
+      };
+    case 'sapphire':
+    default:
+      return {
+        activeTab: 'text-blue-600 dark:text-blue-400',
+        activeBadge: 'bg-blue-50 dark:bg-blue-950/40 border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300',
+        buttonPrimary: 'bg-blue-600 hover:bg-blue-700 text-white',
+        accentText: 'text-blue-600 dark:text-blue-400',
+        accentIcon: 'text-blue-500',
+        sliderAccent: 'accent-blue-600',
+        dot: 'bg-blue-500',
+      };
+  }
+};
+
 export default function App() {
   const [settings, setSettings] = useState<UserSettings>(() => getSettings());
+  const accentClasses = getAccentClasses(settings.accentTheme || 'sapphire');
   const [userProfile, setUserProfile] = useState<UserProfile>(() => getUserProfile());
   const [worshipPlans, setWorshipPlans] = useState<WorshipPlanSession[]>(() => getWorshipPlans());
   const [activeTab, setActiveTab] = useState<MainTab>('hymnals');
@@ -310,10 +368,10 @@ export default function App() {
                   step="1"
                   value={settings.readerFontSizePx || 18}
                   onChange={(e) => handleUpdateSettings({ readerFontSizePx: Number(e.target.value) })}
-                  className="w-18 sm:w-24 accent-amber-500 cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none"
+                  className={`w-18 sm:w-24 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
                   title="Adjust reader font size"
                 />
-                <span className="text-[11px] font-mono font-bold text-amber-600 dark:text-amber-400 min-w-[2.2rem]">
+                <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2.2rem]`}>
                   {settings.readerFontSizePx || 18}px
                 </span>
               </div>
@@ -333,10 +391,10 @@ export default function App() {
                   step="0.05"
                   value={settings.readerLineHeight || 1.75}
                   onChange={(e) => handleUpdateSettings({ readerLineHeight: Number(e.target.value) })}
-                  className="w-18 sm:w-24 accent-amber-500 cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none"
+                  className={`w-18 sm:w-24 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
                   title="Adjust reader line spacing"
                 />
-                <span className="text-[11px] font-mono font-bold text-amber-600 dark:text-amber-400 min-w-[2.2rem]">
+                <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2.2rem]`}>
                   {(settings.readerLineHeight || 1.75).toFixed(2)}x
                 </span>
               </div>
@@ -347,7 +405,7 @@ export default function App() {
               <button
                 id="reading-mode-toggle"
                 onClick={() => setIsReadingMode(false)}
-                className="px-3 py-1 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold shadow-xs flex items-center gap-1.5 transition active:scale-98"
+                className={`px-3 py-1 rounded-xl ${accentClasses.buttonPrimary} text-xs font-semibold shadow-xs flex items-center gap-1.5 transition active:scale-98`}
                 title="Exit Reading Mode (Esc)"
               >
                 <Minimize2 className="w-3.5 h-3.5" />
@@ -360,9 +418,11 @@ export default function App() {
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full">
             {/* 1. BRAND IDENTITY: Brand Name & Logo Always Visible */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center shadow-md shadow-amber-500/20 shrink-0">
-                <BookOpen className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-              </div>
+              <img
+                src="/icon.svg"
+                alt="Have On Behalf Logo"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl shadow-md shrink-0 object-cover"
+              />
               <div className="flex flex-col min-w-0">
                 <h1 className="text-xs xs:text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white whitespace-nowrap leading-tight">
                   Have On Behalf
@@ -382,7 +442,7 @@ export default function App() {
                   onClick={() => setActiveTab('hymnals')}
                   className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all whitespace-nowrap ${
                     activeTab === 'hymnals'
-                      ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
+                      ? `bg-white dark:bg-slate-900 ${accentClasses.activeTab} shadow-xs font-bold`
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                   title="Hymnals (SDAH, NZK, NCA)"
@@ -396,7 +456,7 @@ export default function App() {
                   onClick={() => setActiveTab('bibles')}
                   className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all whitespace-nowrap ${
                     activeTab === 'bibles'
-                      ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
+                      ? `bg-white dark:bg-slate-900 ${accentClasses.activeTab} shadow-xs font-bold`
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                   title="Holy Bibles (Multi-Version)"
@@ -410,7 +470,7 @@ export default function App() {
                   onClick={() => setActiveTab('egw')}
                   className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all whitespace-nowrap ${
                     activeTab === 'egw'
-                      ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
+                      ? `bg-white dark:bg-slate-900 ${accentClasses.activeTab} shadow-xs font-bold`
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                   title="Ellen G. White Writings"
@@ -428,14 +488,14 @@ export default function App() {
                   onClick={() => setIsSecondaryMenuOpen((prev) => !prev)}
                   className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                     isSecondaryTabActive
-                      ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 font-bold shadow-xs'
+                      ? `${accentClasses.activeBadge} font-bold shadow-xs`
                       : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
                   }`}
                   title="More menus: Saved, Plan Mode, Settings"
                   aria-expanded={isSecondaryMenuOpen}
                   aria-haspopup="true"
                 >
-                  <MoreHorizontal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500" />
+                  <MoreHorizontal className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${accentClasses.accentIcon}`} />
                   <span className="hidden md:inline">
                     {activeTab === 'saved'
                       ? 'Saved'
@@ -470,15 +530,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left ${
                             activeTab === 'hymnals'
-                              ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2">
-                            <Music className="w-3.5 h-3.5 text-amber-500" />
+                            <Music className={`w-3.5 h-3.5 ${accentClasses.accentIcon}`} />
                             <span>Hymnals</span>
                           </div>
-                          {activeTab === 'hymnals' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'hymnals' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
                         <button
                           onClick={() => {
@@ -487,15 +547,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left ${
                             activeTab === 'bibles'
-                              ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2">
-                            <BookOpen className="w-3.5 h-3.5 text-amber-500" />
+                            <BookOpen className={`w-3.5 h-3.5 ${accentClasses.accentIcon}`} />
                             <span>Bibles</span>
                           </div>
-                          {activeTab === 'bibles' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'bibles' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
                         <button
                           onClick={() => {
@@ -504,15 +564,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left ${
                             activeTab === 'egw'
-                              ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2">
-                            <Scroll className="w-3.5 h-3.5 text-amber-500" />
+                            <Scroll className={`w-3.5 h-3.5 ${accentClasses.accentIcon}`} />
                             <span>E.G. White</span>
                           </div>
-                          {activeTab === 'egw' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'egw' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
                       </div>
 
@@ -528,15 +588,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-2 text-left rounded-xl transition-colors ${
                             activeTab === 'saved'
-                              ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <Bookmark className="w-4 h-4 text-amber-500" />
+                            <Bookmark className={`w-4 h-4 ${accentClasses.accentIcon}`} />
                             <span>Saved Bookmarks</span>
                           </div>
-                          {activeTab === 'saved' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'saved' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
 
                         <button
@@ -547,15 +607,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-2 text-left rounded-xl transition-colors ${
                             activeTab === 'history'
-                              ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <History className="w-4 h-4 text-amber-500" />
+                            <History className={`w-4 h-4 ${accentClasses.accentIcon}`} />
                             <span>Reading History</span>
                           </div>
-                          {activeTab === 'history' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'history' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
 
                         <button
@@ -566,15 +626,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-2 text-left rounded-xl transition-colors ${
                             activeTab === 'plan'
-                              ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <Calendar className="w-4 h-4 text-amber-500" />
+                            <Calendar className={`w-4 h-4 ${accentClasses.accentIcon}`} />
                             <span>Worship Plan Mode</span>
                           </div>
-                          {activeTab === 'plan' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'plan' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
 
                         <button
@@ -585,15 +645,15 @@ export default function App() {
                           }}
                           className={`w-full flex items-center justify-between px-2.5 py-2 text-left rounded-xl transition-colors ${
                             activeTab === 'settings'
-                              ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold'
+                              ? `${accentClasses.activeBadge} font-bold`
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <Settings className="w-4 h-4 text-amber-500" />
+                            <Settings className={`w-4 h-4 ${accentClasses.accentIcon}`} />
                             <span>Settings & Sync</span>
                           </div>
-                          {activeTab === 'settings' && <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
+                          {activeTab === 'settings' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
                       </div>
                     </div>
@@ -611,7 +671,7 @@ export default function App() {
                 className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold transition shadow-xs flex items-center gap-1.5"
                 title="Expand content area for distraction-free Reading Mode"
               >
-                <Maximize2 className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                <Maximize2 className={`w-3.5 h-3.5 ${accentClasses.accentText}`} />
                 <span className="hidden md:inline">Reading Mode</span>
               </button>
 
@@ -622,7 +682,7 @@ export default function App() {
                 className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs transition shadow-xs flex items-center gap-1.5"
                 title="Quick Search Hymnals, Bible texts, EGW (Cmd+K)"
               >
-                <Search className="w-3.5 h-3.5 text-amber-500" />
+                <Search className={`w-3.5 h-3.5 ${accentClasses.accentIcon}`} />
                 <span className="hidden xl:inline">Quick Search</span>
                 <kbd className="hidden lg:inline-block text-[10px] font-mono px-1 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
                   ⌘K

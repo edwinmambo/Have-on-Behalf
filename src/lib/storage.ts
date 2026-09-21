@@ -18,8 +18,11 @@ export interface UserProfile {
   syncedAt?: number;
 }
 
+export type AccentTheme = 'sapphire' | 'emerald' | 'gold' | 'amethyst' | 'crimson';
+
 export interface UserSettings {
   appTheme: AppThemeMode;
+  accentTheme?: AccentTheme;
   redLetterEnabled: boolean;
   selectedBibleVersion: string;
   selectedHymnal: string;
@@ -38,6 +41,7 @@ export interface UserSettings {
 
 const DEFAULT_SETTINGS: UserSettings = {
   appTheme: 'dark',
+  accentTheme: 'sapphire',
   redLetterEnabled: true,
   selectedBibleVersion: 'KJV',
   selectedHymnal: 'SDAH',
