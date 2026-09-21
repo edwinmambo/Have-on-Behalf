@@ -1,0 +1,6 @@
+{
+  "name": "Have On Behalf",
+  "description": "An offline-first worship, study and sanctuary projection PWA featuring SDAH, Nyimbo Za Kristo, Nyĩmbo Cia Agendi hymnals with pitch transpose, full Bibles with Red Letter words of Christ, EGW writings, session pre-planning, and AdventistHymns-style beam projection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
