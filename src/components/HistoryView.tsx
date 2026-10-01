@@ -14,17 +14,20 @@ import {
 } from 'lucide-react';
 import { getHistory, removeHistoryItem, clearHistory, HistoryItem, HistoryType } from '../lib/historyStorage';
 import { showToast } from '../lib/toast';
+import { HymnFrequencyChart } from './HymnFrequencyChart';
 
 interface HistoryViewProps {
   onNavigateHymn: (hymnId: string, collection: string) => void;
   onNavigateBible: (bookId: string, chapter: number, version: string) => void;
   onNavigateEgw: (bookCode: string, chapterNumber?: number) => void;
+  isDarkMode?: boolean;
 }
 
 export const HistoryView: React.FC<HistoryViewProps> = ({
   onNavigateHymn,
   onNavigateBible,
   onNavigateEgw,
+  isDarkMode = false,
 }) => {
   const [historyItems, setHistoryItems] = useState<HistoryItem[]>(() => getHistory());
   const [selectedType, setSelectedType] = useState<'all' | HistoryType>('all');
@@ -106,6 +109,11 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
     };
   }, [historyItems]);
 
+  // 5 most recently viewed hymns specifically for quick jump
+  const recentHymns = useMemo(() => {
+    return historyItems.filter((i) => i.type === 'hymn').slice(0, 5);
+  }, [historyItems]);
+
   return (
     <div className="flex flex-col h-full space-y-6">
       {/* Top Header */}
@@ -136,6 +144,78 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
           </button>
         )}
       </header>
+
+      {/* Recharts Hymn Singing & Viewing Frequency Visualization */}
+      {(selectedType === 'all' || selectedType === 'hymn') && (
+        <HymnFrequencyChart
+          onNavigateHymn={onNavigateHymn}
+          isDarkMode={isDarkMode}
+        />
+      )}
+
+      {/* Dedicated Section for 5 Most Recently Viewed Hymns */}
+      {recentHymns.length > 0 && (
+        <section
+          id="recently-viewed-hymns-section"
+          className="bg-amber-500/5 dark:bg-amber-950/20 p-4 sm:p-5 rounded-2xl border border-amber-200/80 dark:border-amber-800/60 shadow-xs"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                <Music className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span>Recently Viewed Hymns</span>
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300">
+                    5 Most Recent
+                  </span>
+                </h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Jump back to your recently studied songs
+                </p>
+              </div>
+            </div>
+            <span className="text-[11px] text-amber-700/80 dark:text-amber-400/80 font-medium">
+              {recentHymns.length} hymn{recentHymns.length > 1 ? 's' : ''} in recents
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {recentHymns.map((item) => (
+              <button
+                key={`recent-hymn-card-${item.id}`}
+                onClick={() => handleItemClick(item)}
+                className="group relative p-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500 hover:shadow-md transition text-left cursor-pointer flex flex-col justify-between"
+                title={`Jump to ${item.reference} - ${item.title}`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1.5">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-900 dark:bg-amber-950/80 dark:text-amber-300">
+                      {item.reference}
+                    </span>
+                    <span className="text-[10px] text-slate-400 font-mono">
+                      {formatTimeAgo(item.timestamp)}
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition line-clamp-1">
+                    {item.title}
+                  </h4>
+                  {item.subtitle && (
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                      {item.subtitle}
+                    </p>
+                  )}
+                </div>
+                <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-amber-600 dark:text-amber-400 font-semibold">
+                  <span>Jump to Song</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
@@ -300,7 +380,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
 
                   <button
                     onClick={(e) => handleRemove(e, item.id)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition opacity-0 group-hover:opacity-100"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition opacity-100 sm:opacity-0 group-hover:opacity-100"
                     title="Remove from history"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

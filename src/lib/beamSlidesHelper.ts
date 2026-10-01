@@ -8,10 +8,100 @@ import { stripChordsFromText } from './chordTransposer';
  * 2. Stanza slides with top-left "Hymn # · Title", top-right "Verse 1a" / "Refrain".
  * 3. Cleans any bracketed chord notation from lyrics.
  */
+/**
+ * Helper to compute display counter, badge, and progress for slides according to sanctuary standards:
+ * - Start page (Intro) and End page (Amen) are automatic and NOT counted in the slide number.
+ * - Stanzas determine the slide count (e.g., 3 stanzas = 3 slides).
+ * - Refrains are NOT counted in the total slide number, but their progress is tracked after each stanza.
+ */
+export function getSlideCounterInfo(
+  slide: BeamSlide,
+  currentIndex: number,
+  totalSlides: number
+): {
+  counterText: string;
+  badgeText: string;
+  isCounted: boolean;
+  progressPercent: number;
+} {
+  const stepProgress = totalSlides > 1 ? Math.min(100, Math.round((currentIndex / (totalSlides - 1)) * 100)) : 100;
+
+  if (!slide) {
+    return {
+      counterText: `${currentIndex + 1} / ${totalSlides}`,
+      badgeText: `Slide ${currentIndex + 1}`,
+      isCounted: true,
+      progressPercent: stepProgress,
+    };
+  }
+
+  // 1. Automatic Start Page (Intro) - not counted in slide numbers
+  if (slide.isIntro) {
+    return {
+      counterText: 'Start',
+      badgeText: 'Start Page',
+      isCounted: false,
+      progressPercent: 0,
+    };
+  }
+
+  // 2. Automatic End Page (Amen / Outro) - not counted in slide numbers
+  if (slide.isOutro) {
+    return {
+      counterText: 'End',
+      badgeText: 'End Page (Amen)',
+      isCounted: false,
+      progressPercent: 100,
+    };
+  }
+
+  // 3. Refrain Slide (Not counted in total slides number, but progress includes it after every stanza)
+  if (slide.isRefrain) {
+    const totalStanzas = slide.totalStanzas || 1;
+    const assocStanza = slide.associatedStanzaNumber || 1;
+    return {
+      counterText: 'Refrain',
+      badgeText: `Refrain · after Stanza ${assocStanza} of ${totalStanzas}`,
+      isCounted: false,
+      progressPercent: stepProgress,
+    };
+  }
+
+  // 4. Stanza / Verse Slide - strictly counts stanzas (e.g. 3 stanzas = 3 slides)
+  if (slide.stanzaNumber && slide.totalStanzas) {
+    return {
+      counterText: `Slide ${slide.stanzaNumber} of ${slide.totalStanzas}`,
+      badgeText: `Stanza ${slide.stanzaNumber} of ${slide.totalStanzas}`,
+      isCounted: true,
+      progressPercent: stepProgress,
+    };
+  }
+
+  // 5. Fallback for Bible or non-hymnal items
+  const isCounted = true;
+  return {
+    counterText: `${currentIndex + 1} of ${totalSlides}`,
+    badgeText: slide.verseTag || slide.label || `Slide ${currentIndex + 1}`,
+    isCounted,
+    progressPercent: stepProgress,
+  };
+}
+
+/**
+ * Splits hymn stanzas into clean, autofitted slides for sanctuary beam displays.
+ * Follows AdventistHymns.com beaming ergonomics:
+ * 1. Automatic Start page showing Title, Hymn #, Collection, Key, Writer, Tune, Scripture Ref.
+ * 2. Stanza slides with top-left "Hymn # · Title", top-right "Verse 1", etc.
+ * 3. Interleaved refrains (italicised) following each stanza.
+ * 4. Automatic End page ("Amen" concluding slide).
+ * 5. Slide counting: Intro, Outro, and Refrains are NOT counted in the total slide number.
+ *    If a hymn has 3 stanzas, total slide count is 3.
+ */
 export function buildHymnBeamSlides(
   hymn: Hymn,
   options: {
     includeIntro?: boolean;
+    includeOutro?: boolean;
     splitLongStanzas?: boolean;
     stanzasToInclude?: number[];
     hymnIndexInSession?: number;
@@ -20,7 +110,8 @@ export function buildHymnBeamSlides(
 ): BeamSlide[] {
   const {
     includeIntro = true,
-    splitLongStanzas = true,
+    includeOutro = true,
+    splitLongStanzas = false,
     stanzasToInclude,
     hymnIndexInSession,
     totalHymnsInSession,
@@ -30,7 +121,7 @@ export function buildHymnBeamSlides(
   const refrainStanza = hymn.stanzas.find((s) => s.type === 'refrain' || s.type === 'chorus');
   const sourceLabel = `${hymn.collection === 'SDAH' ? 'Hymn' : hymn.collection} ${hymn.number} · ${hymn.title}`;
 
-  // 1. Title / Intro Slide
+  // 1. Automatic Title / Intro Slide
   if (includeIntro) {
     slides.push({
       label: 'Intro',
@@ -64,7 +155,8 @@ export function buildHymnBeamSlides(
     return true;
   });
 
-  const totalVerses = filteredStanzas.filter((s) => s.type === 'verse').length;
+  const verseStanzas = filteredStanzas.filter((s) => s.type === 'verse');
+  const totalStanzas = verseStanzas.length > 0 ? verseStanzas.length : 1;
   let verseCounter = 0;
 
   const cleanLine = (l: string) => {
@@ -81,9 +173,9 @@ export function buildHymnBeamSlides(
       const rawLines = stanza.lines.map(cleanLine).filter((l) => l.length > 0);
       if (rawLines.length === 0) return;
 
-      // Autofit: if stanza has 5+ lines or total words > 32, split into a and b
+      // Autofit: if splitLongStanzas is requested and stanza has 8+ lines
       const wordCount = rawLines.join(' ').split(/\s+/).length;
-      if (splitLongStanzas && (rawLines.length >= 5 || wordCount > 32)) {
+      if (splitLongStanzas && (rawLines.length >= 8 || wordCount > 48)) {
         const mid = Math.ceil(rawLines.length / 2);
         const firstHalf = rawLines.slice(0, mid);
         const secondHalf = rawLines.slice(mid);
@@ -96,6 +188,8 @@ export function buildHymnBeamSlides(
             sourceBadge: sourceLabel,
             lines: firstHalf,
             isRefrain: false,
+            stanzaNumber: stanza.number,
+            totalStanzas,
             hymnId: hymn.id,
             hymnIndexInSession,
             totalHymnsInSession,
@@ -107,6 +201,8 @@ export function buildHymnBeamSlides(
             sourceBadge: sourceLabel,
             lines: secondHalf,
             isRefrain: false,
+            stanzaNumber: stanza.number,
+            totalStanzas,
             hymnId: hymn.id,
             hymnIndexInSession,
             totalHymnsInSession,
@@ -119,6 +215,8 @@ export function buildHymnBeamSlides(
             sourceBadge: sourceLabel,
             lines: rawLines,
             isRefrain: false,
+            stanzaNumber: stanza.number,
+            totalStanzas,
             hymnId: hymn.id,
             hymnIndexInSession,
             totalHymnsInSession,
@@ -132,69 +230,31 @@ export function buildHymnBeamSlides(
           sourceBadge: sourceLabel,
           lines: rawLines,
           isRefrain: false,
+          stanzaNumber: stanza.number,
+          totalStanzas,
           hymnId: hymn.id,
           hymnIndexInSession,
           totalHymnsInSession,
         });
       }
 
-      // Interleave Refrain after verse (if refrain exists and this verse should be followed by refrain)
-      if (refrainStanza && verseCounter <= totalVerses) {
+      // Interleave Refrain after verse (if refrain exists)
+      if (refrainStanza && verseCounter <= totalStanzas) {
         const cleanRefrainLines = refrainStanza.lines.map(cleanLine).filter((l) => l.length > 0);
         if (cleanRefrainLines.length > 0) {
-          if (splitLongStanzas && cleanRefrainLines.length >= 6) {
-            const mid = Math.ceil(cleanRefrainLines.length / 2);
-            const r1 = cleanRefrainLines.slice(0, mid);
-            const r2 = cleanRefrainLines.slice(mid);
-            if (r1.length > 0 && r2.length > 0) {
-              slides.push({
-                label: 'Refrain (1/2)',
-                verseTag: 'Refrain a',
-                title: hymn.title,
-                sourceBadge: sourceLabel,
-                lines: r1,
-                isRefrain: true,
-                hymnId: hymn.id,
-                hymnIndexInSession,
-                totalHymnsInSession,
-              });
-              slides.push({
-                label: 'Refrain (2/2)',
-                verseTag: 'Refrain b',
-                title: hymn.title,
-                sourceBadge: sourceLabel,
-                lines: r2,
-                isRefrain: true,
-                hymnId: hymn.id,
-                hymnIndexInSession,
-                totalHymnsInSession,
-              });
-            } else {
-              slides.push({
-                label: 'Refrain',
-                verseTag: 'Refrain',
-                title: hymn.title,
-                sourceBadge: sourceLabel,
-                lines: cleanRefrainLines,
-                isRefrain: true,
-                hymnId: hymn.id,
-                hymnIndexInSession,
-                totalHymnsInSession,
-              });
-            }
-          } else {
-            slides.push({
-              label: 'Refrain',
-              verseTag: 'Refrain',
-              title: hymn.title,
-              sourceBadge: sourceLabel,
-              lines: cleanRefrainLines,
-              isRefrain: true,
-              hymnId: hymn.id,
-              hymnIndexInSession,
-              totalHymnsInSession,
-            });
-          }
+          slides.push({
+            label: 'Refrain',
+            verseTag: 'Refrain',
+            title: hymn.title,
+            sourceBadge: sourceLabel,
+            lines: cleanRefrainLines,
+            isRefrain: true,
+            associatedStanzaNumber: stanza.number,
+            totalStanzas,
+            hymnId: hymn.id,
+            hymnIndexInSession,
+            totalHymnsInSession,
+          });
         }
       }
     } else if (stanza.type === 'refrain' && !refrainStanza) {
@@ -207,6 +267,8 @@ export function buildHymnBeamSlides(
           sourceBadge: sourceLabel,
           lines: cleanLines,
           isRefrain: true,
+          associatedStanzaNumber: verseCounter || 1,
+          totalStanzas,
           hymnId: hymn.id,
           hymnIndexInSession,
           totalHymnsInSession,
@@ -215,9 +277,24 @@ export function buildHymnBeamSlides(
     }
   });
 
+  // Automatic End Page (Amen / Outro)
+  if (includeOutro) {
+    slides.push({
+      label: 'Amen',
+      verseTag: 'Amen',
+      title: hymn.title,
+      sourceBadge: sourceLabel,
+      lines: ['Amen'],
+      isOutro: true,
+      hymnId: hymn.id,
+      hymnIndexInSession,
+      totalHymnsInSession,
+    });
+  }
+
   // Stamp slide index counts for progress tracking, filtering out any empty slides
   const filteredSlides = slides.filter(
-    (s) => s.isIntro || (s.lines && s.lines.some((l) => l.trim().length > 0))
+    (s) => s.isIntro || s.isOutro || (s.lines && s.lines.some((l) => l.trim().length > 0))
   );
 
   const totalSlides = filteredSlides.length;

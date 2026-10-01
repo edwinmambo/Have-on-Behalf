@@ -1,17 +1,39 @@
 import { useState, useEffect } from 'react';
 import { Hymn, HymnalCollection } from '../types';
 import { HYMNS_DATA } from '../data/hymnsData';
+import { resolveHymnCategory } from './hymnGrouping';
 
 /**
  * Normalizes hymns whose stanzas might be collapsed into a single stanza with multiple lines
  * into clean, separate stanzas and refrains for card display and slide generation.
  */
 export function normalizeHymn(hymn: Hymn): Hymn {
-  if (!hymn || !hymn.stanzas || hymn.stanzas.length === 0) return hymn;
-  if (hymn.stanzas.length > 1) return hymn;
+  if (!hymn) return hymn;
+  const category = resolveHymnCategory(hymn);
 
-  const rawLines = hymn.stanzas[0].lines;
-  if (!rawLines || rawLines.length <= 1) return hymn;
+  if (!hymn.stanzas || hymn.stanzas.length === 0) {
+    return { ...hymn, category };
+  }
+
+  // Clean and split lines that contain newlines
+  const stanzasWithSplitLines = hymn.stanzas.map((st) => {
+    const lines: string[] = [];
+    for (const l of st.lines || []) {
+      if (l.includes('\n')) {
+        lines.push(...l.split('\n').map((s) => s.trim()).filter(Boolean));
+      } else {
+        lines.push(l);
+      }
+    }
+    return { ...st, lines };
+  });
+
+  if (stanzasWithSplitLines.length > 1) {
+    return { ...hymn, category, stanzas: stanzasWithSplitLines };
+  }
+
+  const rawLines = stanzasWithSplitLines[0].lines;
+  if (!rawLines || rawLines.length <= 1) return { ...hymn, category, stanzas: stanzasWithSplitLines };
 
   const newStanzas: Hymn['stanzas'] = [];
   let verseIndex = 1;
@@ -68,9 +90,9 @@ export function normalizeHymn(hymn: Hymn): Hymn {
   }
 
   if (newStanzas.length > 0) {
-    return { ...hymn, stanzas: newStanzas };
+    return { ...hymn, category, stanzas: newStanzas };
   }
-  return hymn;
+  return { ...hymn, category, stanzas: stanzasWithSplitLines };
 }
 
 let loadedFullHymns: Hymn[] = HYMNS_DATA.map(normalizeHymn);
@@ -83,11 +105,20 @@ function notifyListeners() {
 }
 
 /**
- * Loads the complete 2,100+ hymns and responsive readings across all collections:
- * - SDAH (1–695)
- * - SDAH-EXT (1–925 complete with categories and responsive readings)
- * - NZK (1–220)
- * - NCA (1–250)
+ * Loads the complete 5,000+ hymns and responsive readings across all Pan-African collections:
+ * - SDAH (English, 1–695)
+ * - SDAH-EXT (English, 1–954 complete replica of SDAH + extra African regional hymns)
+ * - NZK (Kiswahili, 1–220)
+ * - WNY (Dholuo - Wende Nyasaye, 1–332)
+ * - OKN (Ekegusii - Ogotera kw'Omonene, 1–370)
+ * - NCA (Gĩkũyũ Rĩerũ, 1–299)
+ * - NCA-OLD (Gĩkũyũ Rĩkũrũ, 1–149)
+ * - KIN (Kinyarwanda - Indirimbo Zo Guhimbaza Imana, 1–500)
+ * - CIS (Christ in Song English, 1–300)
+ * - KMN (Chichewa - Khristu Mu Nyimbo, 1–350)
+ * - ICB (Icibemba - Kristu Mu Nyimbo, 1–311)
+ * - SHO (Shona - Kristu MuNzwiyo, 1–300)
+ * - UKE (Ndebele/Zulu - UKrestu Esihlabelelweni, 1–300)
  * and merges them with curated chorded entries and cross-language links.
  */
 export async function loadFullHymnCatalog(): Promise<Hymn[]> {
@@ -100,26 +131,57 @@ export async function loadFullHymnCatalog(): Promise<Hymn[]> {
 
   isLoadingPromise = (async () => {
     try {
-      const [sdahRes, sdahExtRes, nzkRes, ncaRes] = await Promise.all([
-        fetch('/data/sdah.json').then((r) => (r.ok ? r.json() : [])),
-        fetch('/data/sdah_ext.json').then((r) => (r.ok ? r.json() : [])),
-        fetch('/data/nzk.json').then((r) => (r.ok ? r.json() : [])),
-        fetch('/data/nca.json').then((r) => (r.ok ? r.json() : [])),
-      ]);
+      const files = [
+        '/data/sdah.json',
+        '/data/sdah_ext.json',
+        '/data/english_sdah_extended_954.json',
+        '/data/eng_old.json',
+        '/data/cis.json',
+        '/data/nzk.json',
+        '/data/nca.json',
+        '/data/nca_old.json',
+        '/data/wny.json',
+        '/data/okn.json',
+        '/data/kal.json',
+        '/data/lug.json',
+        '/data/loz.json',
+        '/data/nan.json',
+        '/data/ton.json',
+        '/data/run.json',
+        '/data/luo_ug.json',
+        '/data/kmn.json',
+        '/data/icb.json',
+        '/data/kin.json',
+        '/data/sho.json',
+        '/data/uke.json',
+      ];
+
+      const results = await Promise.all(
+        files.map((file) =>
+          fetch(file)
+            .then((r) => (r.ok ? r.json() : null))
+            .catch((err) => {
+              console.warn(`Failed to fetch ${file}:`, err);
+              return null;
+            })
+        )
+      );
 
       const mergedMap = new Map<string, Hymn>();
 
       // 1. Put base hymns in first
-      const allExtracted: Hymn[] = [
-        ...(sdahRes || []),
-        ...(sdahExtRes || []),
-        ...(nzkRes || []),
-        ...(ncaRes || []),
-      ];
+      for (const dataset of results) {
+        if (!dataset) continue;
+        const hymnList: Hymn[] = Array.isArray(dataset)
+          ? dataset
+          : Array.isArray((dataset as any).hymns)
+          ? (dataset as any).hymns
+          : [];
 
-      for (const hymn of allExtracted) {
-        if (hymn && hymn.id) {
-          mergedMap.set(hymn.id, normalizeHymn(hymn));
+        for (const hymn of hymnList) {
+          if (hymn && hymn.id) {
+            mergedMap.set(hymn.id, normalizeHymn(hymn));
+          }
         }
       }
 
@@ -127,35 +189,59 @@ export async function loadFullHymnCatalog(): Promise<Hymn[]> {
       for (const hymn of HYMNS_DATA) {
         if (hymn && hymn.id) {
           mergedMap.set(hymn.id, hymn);
-          // Also sync chord and crossRef metadata to corresponding SDAH-EXT entry if it's SDAH
-          if (hymn.collection === 'SDAH') {
-            const extId = `sdah-ext-${hymn.number}`;
-            const extHymn = mergedMap.get(extId);
-            if (extHymn) {
-              mergedMap.set(extId, {
-                ...extHymn,
-                key: hymn.key || extHymn.key,
-                meter: hymn.meter || extHymn.meter,
-                author: hymn.author || extHymn.author,
-                composer: hymn.composer || extHymn.composer,
-                tune: hymn.tune || extHymn.tune,
-                scriptureReference: hymn.scriptureReference || extHymn.scriptureReference,
-                hasChords: hymn.hasChords ?? extHymn.hasChords,
-                crossReferences: hymn.crossReferences || extHymn.crossReferences,
-                stanzas: hymn.stanzas || extHymn.stanzas,
-              });
+        }
+      }
+
+      // 3. Guarantee SDAH-EXT (1-954) is a complete replica of SDAH (1-695) plus the supplemental hymns (696-954)
+      for (const hymn of Array.from(mergedMap.values())) {
+        if (hymn.collection === 'SDAH' && hymn.number >= 1 && hymn.number <= 695) {
+          const extId = `sdah-ext-${hymn.number}`;
+          const existingExt = mergedMap.get(extId);
+          mergedMap.set(extId, {
+            ...hymn,
+            id: extId,
+            collection: 'SDAH-EXT',
+            category: resolveHymnCategory({ ...hymn, collection: 'SDAH-EXT' }),
+            crossReferences: existingExt?.crossReferences || hymn.crossReferences,
+          });
+        }
+      }
+
+      // 4. Ensure all hymns have a resolved category and unify cross-references bidirectionally
+      const allHymnsList = Array.from(mergedMap.values());
+      const hymnById = new Map<string, Hymn>();
+      allHymnsList.forEach((h) => hymnById.set(h.id, h));
+
+      // Build cross-reference relationships
+      for (const hymn of allHymnsList) {
+        if (hymn.crossReferences && hymn.crossReferences.length > 0) {
+          for (const ref of hymn.crossReferences) {
+            const targetId = `${ref.collection.toLowerCase()}-${ref.number}`;
+            const targetHymn = hymnById.get(targetId);
+            if (targetHymn) {
+              const backRefs = targetHymn.crossReferences ? [...targetHymn.crossReferences] : [];
+              const alreadyHas = backRefs.some(
+                (r) => r.collection === hymn.collection && r.number === hymn.number
+              );
+              if (!alreadyHas) {
+                backRefs.push({
+                  collection: hymn.collection,
+                  number: hymn.number,
+                  title: hymn.title,
+                });
+                targetHymn.crossReferences = backRefs;
+                mergedMap.set(targetHymn.id, targetHymn);
+              }
             }
           }
         }
       }
 
-      // 3. Bidirectional cross-reference sync for SDAH <-> SDAH-EXT <-> NZK <-> NCA
-      for (const hymn of mergedMap.values()) {
-        if (hymn.collection === 'SDAH' && hymn.crossReferences) {
-          const extHymn = mergedMap.get(`sdah-ext-${hymn.number}`);
-          if (extHymn && !extHymn.crossReferences) {
-            extHymn.crossReferences = hymn.crossReferences;
-          }
+      // Final pass to ensure all hymns in memory have resolved categories
+      for (const [id, hymn] of mergedMap.entries()) {
+        if (!hymn.category || hymn.category === 'All' || hymn.category === 'General') {
+          hymn.category = resolveHymnCategory(hymn);
+          mergedMap.set(id, hymn);
         }
       }
 

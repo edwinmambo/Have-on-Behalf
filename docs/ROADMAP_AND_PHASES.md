@@ -50,19 +50,19 @@ This document outlines the strategic roadmap for transforming **Have On Behalf**
 
 ---
 
-### Phase 2: Mobile-First Hymnal Architecture (Flutter Companion)
-Because screen real estate on mobile is limited, the mobile app avoids cramped multi-column desktop tables:
+### Phase 2: Mobile-First Hymnal Architecture (Flutter Companion — Implemented)
+The Flutter mobile companion app is bootstrapped and fully functional in `/mobile/`:
 1. **Dedicated Tab Stack with Fluent Back-Navigation**:
-   - Tapping a hymn in the list transitions cleanly to a full-screen **Dedicated Hymn Tab / View**.
-   - Includes a high-contrast, thumb-friendly top **Quick Back Button** (`← Hymns`) to return to the catalog instantly without losing scroll position.
+   - Tapping a hymn transitions cleanly to a full-screen **Dedicated Hymn Detail Screen** (no modal bottom sheets).
+   - High-contrast, thumb-friendly top **Quick Back Button** (`← Hymns`) returning instantly without losing catalog scroll position.
 2. **Inline Cross-Language Stanzas (No Cramped Columns)**:
-   - Rather than impossible side-by-side columns on a 390px mobile screen, users can:
-     - Toggle between languages at the top (`EN (SDAH)` | `SW (NZK)` | `KIK (NCA)`).
-     - Or tap **"Show Parallel Stanza"** to display the Swahili or Kikuyu translation *directly underneath each English stanza* in a distinct callout card.
+   - Toggle languages at the top (`EN (SDAH)` | `SW (NZK)` | `KIK (NCA)`).
+   - **Inline Interlinear Parallel View**: Displays the Swahili or Gĩkũyũ translation *directly underneath each stanza* in a distinct liturgical callout card.
 3. **Pulpit & Pew Ergonomics**:
-   - Bottom navigation bar: `Hymnals` | `Scriptures` | `Worship Plan` | `Favorites` | `Settings`.
-   - Audio starting-pitch player with transposition sliders.
-   - Offline-first local storage (Isar / Hive / SQLite) with zero reliance on mobile connectivity in sanctuary basements.
+   - Audio starting-pitch pipe synthesizer with semitone transposition.
+   - Offline-first local storage for personal study notes and favorite hymns.
+   - 5 Liturgical themes in both Light and Dark mode.
+   - Bundled canonical datasets in `mobile/assets/data/`.
 
 ---
 

@@ -58,6 +58,8 @@ export function resolveChapterVerses(
       `${canonical} ${chapter}`,
       `${getLocalizedBookName(canonical, 'SUV')} ${chapter}`,
       `${getLocalizedBookName(canonical, 'GIK')} ${chapter}`,
+      `${getLocalizedBookName(canonical, 'LUO')} ${chapter}`,
+      `${getLocalizedBookName(canonical, 'LUG')} ${chapter}`,
     ])
   );
 
@@ -197,15 +199,29 @@ export async function fetchRealBibleChapter(
     }
   };
 
-  // 1. Swahili Union Version (SUV) via bolls.life
-  if (version === 'SUV') {
+  // 1. Check direct bolls.life support for major translations:
+  // KJV, NKJV, ESV, NLT, MSG, SUV, WEB, ASV
+  const bollsSupportedVersions: Record<string, string> = {
+    SUV: 'SUV',
+    NKJV: 'NKJV',
+    ESV: 'ESV',
+    NLT: 'NLT',
+    MSG: 'MSG',
+    WEB: 'WEB',
+    ASV: 'ASV',
+    KJV: 'KJV',
+  };
+
+  const bollsVersionCode = bollsSupportedVersions[version];
+  if (bollsVersionCode) {
     try {
-      const res = await fetch(`https://bolls.life/get-chapter/SUV/${bookNumber}/${chapter}/`);
+      const res = await fetch(`https://bolls.life/get-chapter/${bollsVersionCode}/${bookNumber}/${chapter}/`);
       if (res.ok) {
         const rawList = await res.json();
         if (Array.isArray(rawList) && rawList.length > 0) {
+          const displayBook = version === 'SUV' ? (swahiliName || book) : book;
           const verses: BibleVerse[] = rawList.map((item: any) => ({
-            book: swahiliName || book,
+            book: displayBook,
             chapter,
             verse: Number(item.verse),
             text: String(item.text || '')
@@ -220,11 +236,59 @@ export async function fetchRealBibleChapter(
         }
       }
     } catch (err) {
-      console.warn(`Could not fetch online SUV for ${book} ${chapter}:`, err);
+      console.warn(`bolls.life fetch failed for ${version} ${book} ${chapter}:`, err);
     }
   }
 
-  // 2. English (KJV, NKJV, ESV fallback) via bible-api.com
+  // 2. World English Bible (WEB) via bible-api.com
+  if (version === 'WEB') {
+    try {
+      const query = encodeURIComponent(`${canonical} ${chapter}`);
+      const res = await fetch(`https://bible-api.com/${query}?translation=web`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.verses && Array.isArray(data.verses) && data.verses.length > 0) {
+          const verses: BibleVerse[] = data.verses.map((v: any) => ({
+            book,
+            chapter,
+            verse: Number(v.verse),
+            text: String(v.text || '').replace(/\s+/g, ' ').trim(),
+            isRedLetter: false,
+          }));
+          cacheVerses(verses);
+          return verses;
+        }
+      }
+    } catch (err) {
+      console.warn(`Could not fetch online WEB for ${book} ${chapter}:`, err);
+    }
+  }
+
+  // 3. Bible in Basic English (BBE) via bible-api.com
+  if (version === 'BBE') {
+    try {
+      const query = encodeURIComponent(`${canonical} ${chapter}`);
+      const res = await fetch(`https://bible-api.com/${query}?translation=bbe`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.verses && Array.isArray(data.verses) && data.verses.length > 0) {
+          const verses: BibleVerse[] = data.verses.map((v: any) => ({
+            book,
+            chapter,
+            verse: Number(v.verse),
+            text: String(v.text || '').replace(/\s+/g, ' ').trim(),
+            isRedLetter: false,
+          }));
+          cacheVerses(verses);
+          return verses;
+        }
+      }
+    } catch (err) {
+      console.warn(`Could not fetch online BBE for ${book} ${chapter}:`, err);
+    }
+  }
+
+  // 4. Fallback to bible-api.com KJV
   try {
     const query = encodeURIComponent(`${canonical} ${chapter}`);
     const res = await fetch(`https://bible-api.com/${query}?translation=kjv`);
@@ -244,7 +308,7 @@ export async function fetchRealBibleChapter(
       }
     }
   } catch (err) {
-    console.warn(`bible-api.com fetch failed for ${book} ${chapter}, trying bolls.life:`, err);
+    console.warn(`bible-api.com fetch failed for ${book} ${chapter}:`, err);
   }
 
   // 3. Fallback to bolls.life for KJV

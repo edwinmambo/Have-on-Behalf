@@ -17,6 +17,8 @@ import {
   Minimize2,
   MoreHorizontal,
   History,
+  Play,
+  Pause,
 } from 'lucide-react';
 import { Hymn, BibleVerse, EgwParagraph, BeamSlide, MainTab, WorshipPlanSession } from './types';
 import { HymnalView } from './components/HymnalView';
@@ -27,11 +29,25 @@ import { HistoryView } from './components/HistoryView';
 import { PlanView } from './components/PlanView';
 import { SettingsView } from './components/SettingsView';
 import { BeamModal } from './components/BeamModal';
+import { BeamProjectorScreen } from './components/BeamProjectorScreen';
+import { BeamControllerDock } from './components/BeamControllerDock';
 import { ScriptureModal } from './components/ScriptureModal';
 import { UniversalSearchModal } from './components/UniversalSearchModal';
 import { PWAInstallButton } from './components/PWAInstallButton';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ToastContainer } from './components/ToastContainer';
+import {
+  ActiveBeamState,
+  getStoredBeamState,
+  clearStoredBeamState,
+  broadcastBeamState,
+  listenToBeamUpdates,
+  openBeamSecondScreen,
+  listenToSyncRequests,
+  getBeamProjectorUrl,
+} from './lib/beamSync';
+import { showToast } from './lib/toast';
+import { addHistoryItem } from './lib/historyStorage';
 import {
   getSettings,
   updateSettings,
@@ -104,12 +120,53 @@ const getAccentClasses = (accent: AccentTheme = 'sapphire') => {
 };
 
 export default function App() {
+  const [projectorHash, setProjectorHash] = useState(() =>
+    typeof window !== 'undefined' ? window.location.hash : ''
+  );
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setProjectorHash(typeof window !== 'undefined' ? window.location.hash : '');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const isProjectorMode =
+    typeof window !== 'undefined' &&
+    (window.location.search.includes('beam=projector') ||
+      window.location.hash === '#beam-projector' ||
+      projectorHash === '#beam-projector');
+
+  if (isProjectorMode) {
+    return <BeamProjectorScreen />;
+  }
+
   const [settings, setSettings] = useState<UserSettings>(() => getSettings());
   const accentClasses = getAccentClasses(settings.accentTheme || 'sapphire');
   const [userProfile, setUserProfile] = useState<UserProfile>(() => getUserProfile());
   const [worshipPlans, setWorshipPlans] = useState<WorshipPlanSession[]>(() => getWorshipPlans());
   const [activeTab, setActiveTab] = useState<MainTab>('hymnals');
   const [isReadingMode, setIsReadingMode] = useState<boolean>(false);
+
+  // Background Beam projection state (synced with second screen)
+  const [activeBeam, setActiveBeam] = useState<ActiveBeamState | null>(() => getStoredBeamState());
+
+  useEffect(() => {
+    const unsubscribe = listenToBeamUpdates((state) => {
+      setActiveBeam(state);
+    });
+    const unsubSyncReq = listenToSyncRequests(() => {
+      const current = getStoredBeamState();
+      if (current && current.isOpen) {
+        broadcastBeamState(current);
+      }
+    });
+    return () => {
+      unsubscribe();
+      unsubSyncReq();
+    };
+  }, []);
 
   // States for deep navigation from History or Search
   const [initialHymnState, setInitialHymnState] = useState<{ id: string; collection?: any } | null>(null);
@@ -174,7 +231,77 @@ export default function App() {
     }
   }, [settings.appTheme]);
 
-  // Global keyboard shortcuts (Cmd+K for search, Esc to exit reading mode)
+  // Play / Auto-scroll feature for Reading Mode (Bible, EGW, Hymn passages)
+  const [isAutoScrolling, setIsAutoScrolling] = useState<boolean>(false);
+  const [autoScrollSpeed, setAutoScrollSpeed] = useState<number>(1.0);
+
+  const toggleAutoScroll = () => {
+    setIsAutoScrolling((prev) => !prev);
+  };
+
+  // Stop auto-scroll when exiting reading mode or switching tabs
+  useEffect(() => {
+    if (!isReadingMode) {
+      setIsAutoScrolling(false);
+    }
+  }, [isReadingMode, activeTab]);
+
+  useEffect(() => {
+    if (!isReadingMode || !isAutoScrolling) return;
+
+    let animId: number;
+    let lastTime = performance.now();
+    let accumulated = 0;
+
+    const tick = (now: number) => {
+      const delta = (now - lastTime) / 1000;
+      lastTime = now;
+
+      // Base speed: 30 pixels per second for 1x
+      const pxPerSec = 30 * autoScrollSpeed;
+      accumulated += pxPerSec * delta;
+
+      const intPx = Math.floor(accumulated);
+      if (intPx >= 1) {
+        accumulated -= intPx;
+
+        const bibleEl = document.getElementById('bible-reading-scroll-container');
+        const egwEl = document.getElementById('egw-reading-scroll-container');
+        const hymnalEl = document.getElementById('hymnal-reading-scroll-container');
+
+        let target: HTMLElement | null = null;
+        if (activeTab === 'bibles' && bibleEl) target = bibleEl;
+        else if (activeTab === 'egw' && egwEl) target = egwEl;
+        else if (activeTab === 'hymnals' && hymnalEl) target = hymnalEl;
+        else if (bibleEl && bibleEl.scrollHeight > bibleEl.clientHeight) target = bibleEl;
+        else if (egwEl && egwEl.scrollHeight > egwEl.clientHeight) target = egwEl;
+        else if (hymnalEl && hymnalEl.scrollHeight > hymnalEl.clientHeight) target = hymnalEl;
+
+        if (target) {
+          target.scrollTop += intPx;
+          if (target.scrollTop + target.clientHeight >= target.scrollHeight - 3) {
+            setIsAutoScrolling(false);
+            showToast({ title: 'Reached end of passage', type: 'info' });
+            return;
+          }
+        } else {
+          window.scrollBy(0, intPx);
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5) {
+            setIsAutoScrolling(false);
+            showToast({ title: 'Reached end of passage', type: 'info' });
+            return;
+          }
+        }
+      }
+
+      animId = requestAnimationFrame(tick);
+    };
+
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
+  }, [isReadingMode, isAutoScrolling, autoScrollSpeed, activeTab]);
+
+  // Global keyboard shortcuts (Cmd+K for search, Esc to exit reading mode, Space to toggle auto-scroll)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -182,11 +309,65 @@ export default function App() {
         setIsSearchOpen((prev) => !prev);
       } else if (e.key === 'Escape' && isReadingMode) {
         setIsReadingMode(false);
+        setIsAutoScrolling(false);
+      } else if (e.key === ' ' && isReadingMode) {
+        const target = e.target as HTMLElement | null;
+        const isInput =
+          target &&
+          (target.tagName === 'INPUT' ||
+            target.tagName === 'TEXTAREA' ||
+            target.tagName === 'SELECT' ||
+            target.isContentEditable);
+        if (!isInput) {
+          e.preventDefault();
+          setIsAutoScrolling((prev) => !prev);
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isReadingMode]);
+
+  // Apply Zoom Level to document root (browser-style zoom)
+  useEffect(() => {
+    const zoomLevel = settings.appZoom || 100;
+    (document.documentElement.style as any).zoom = `${zoomLevel}%`;
+    document.documentElement.style.setProperty('--app-zoom-level', `${zoomLevel}%`);
+  }, [settings.appZoom]);
+
+  // Global Zoom keyboard shortcuts: Ctrl/Cmd + Plus, Ctrl/Cmd + Minus, Ctrl/Cmd + 0
+  useEffect(() => {
+    const handleZoomKeyDown = (e: KeyboardEvent) => {
+      // Don't intercept if user is in an active text input or textarea
+      const target = e.target as HTMLElement | null;
+      const isInput =
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable);
+
+      if ((e.ctrlKey || e.metaKey) && (e.key === '=' || e.key === '+' || e.key === 'Add')) {
+        e.preventDefault();
+        const currentZoom = settings.appZoom || 100;
+        const newZoom = Math.min(175, currentZoom + 5);
+        handleUpdateSettings({ appZoom: newZoom });
+        showToast({ title: `Zoom: ${newZoom}%`, type: 'info', duration: 1200 });
+      } else if ((e.ctrlKey || e.metaKey) && (e.key === '-' || e.key === '_' || e.key === 'Subtract')) {
+        e.preventDefault();
+        const currentZoom = settings.appZoom || 100;
+        const newZoom = Math.max(75, currentZoom - 5);
+        handleUpdateSettings({ appZoom: newZoom });
+        showToast({ title: `Zoom: ${newZoom}%`, type: 'info', duration: 1200 });
+      } else if ((e.ctrlKey || e.metaKey) && (e.key === '0' || e.key === 'Digit0')) {
+        e.preventDefault();
+        handleUpdateSettings({ appZoom: 100 });
+        showToast({ title: 'Zoom Reset: 100%', type: 'info', duration: 1200 });
+      }
+    };
+
+    window.addEventListener('keydown', handleZoomKeyDown);
+    return () => window.removeEventListener('keydown', handleZoomKeyDown);
+  }, [settings.appZoom]);
 
   const handleUpdateSettings = (partial: Partial<UserSettings>) => {
     const updated = updateSettings(partial);
@@ -217,51 +398,108 @@ export default function App() {
     setWorshipPlans(getWorshipPlans());
   };
 
+  // Helper to activate second screen beam
+  const activateBeamSession = (
+    title: string,
+    subtitle: string,
+    sourceBadge: string,
+    slides: BeamSlide[],
+    sessionTitle?: string
+  ) => {
+    const s = getSettings();
+    const beamState: ActiveBeamState = {
+      isOpen: true,
+      title,
+      subtitle,
+      sourceBadge,
+      slides,
+      currentIndex: 0,
+      theme: s.beamTheme || 'ah-sanctuary',
+      font: s.beamFont || 'lora',
+      fontScale: 1.0,
+      isBlackout: false,
+      isTextCleared: false,
+      sessionTitle,
+      updatedAt: Date.now(),
+    };
+    setActiveBeam(beamState);
+    broadcastBeamState(beamState);
+    openBeamSecondScreen();
+    showToast({
+      title: 'Projecting to Cast Screen',
+      description: `Projecting "${title}". Your current screen remains active to search for any extra items.`,
+      type: 'info',
+    });
+  };
+
   // Launch Beam for single hymn
   const handleBeamHymn = (hymn: Hymn, slides: BeamSlide[]) => {
+    const title = `${hymn.collection} #${hymn.number} · ${hymn.title}`;
+    const subtitle = `${hymn.author || 'Sacred Hymn'}${hymn.key ? ` • Key of ${hymn.key}` : ''}`;
+    const sourceBadge = `${hymn.collection} #${hymn.number}`;
     setBeamData({
-      isOpen: true,
-      title: hymn.title,
-      subtitle: `${hymn.author || 'Sacred Song'} • ${hymn.key ? `Key of ${hymn.key}` : ''}`,
-      sourceBadge: `${hymn.collection} #${hymn.number}`,
+      isOpen: false,
+      title,
+      subtitle,
+      sourceBadge,
       slides,
       initialIndex: 0,
       isSessionBeam: false,
     });
+    addHistoryItem({
+      type: 'hymn',
+      title: hymn.title,
+      subtitle: `${hymn.author || 'Sacred Hymn'}${hymn.key ? ` • Key of ${hymn.key}` : ''}`,
+      reference: `${hymn.collection} #${hymn.number}`,
+      snippet: hymn.stanzas?.[0]?.lines?.[0] || undefined,
+      actionType: 'beam',
+      metadata: {
+        hymnId: hymn.id,
+        collection: hymn.collection,
+        hymnNumber: hymn.number,
+      },
+    });
+    activateBeamSession(title, subtitle, sourceBadge, slides);
   };
 
   // Launch Beam for pre-planned session (back-to-back lyrics)
   const handleBeamSession = (session: WorshipPlanSession, allSlides: BeamSlide[]) => {
+    const title = session.title;
+    const subtitle = `${session.items.length} Hymns • Vespers & Song Service`;
+    const sourceBadge = 'Session Program';
     setBeamData({
-      isOpen: true,
-      title: session.title,
-      subtitle: `${session.items.length} Hymns • Vespers & Song Service`,
-      sourceBadge: 'Session Program',
+      isOpen: false,
+      title,
+      subtitle,
+      sourceBadge,
       slides: allSlides,
       initialIndex: 0,
       isSessionBeam: true,
       sessionTitle: session.title,
     });
+    activateBeamSession(title, subtitle, sourceBadge, allSlides, session.title);
   };
 
   // Launch Beam for Bible verse
   const handleBeamVerse = (reference: string, text: string, version: string) => {
+    const slides: BeamSlide[] = [
+      {
+        label: 'Scripture',
+        title: reference,
+        sourceBadge: version,
+        lines: [text],
+      },
+    ];
     setBeamData({
-      isOpen: true,
+      isOpen: false,
       title: reference,
       subtitle: `Holy Bible (${version})`,
       sourceBadge: version,
-      slides: [
-        {
-          label: 'Scripture',
-          title: reference,
-          sourceBadge: version,
-          lines: [text],
-        },
-      ],
+      slides,
       initialIndex: 0,
       isSessionBeam: false,
     });
+    activateBeamSession(reference, `Holy Bible (${version})`, version, slides);
   };
 
   // Launch Beam for multiple selected Bible verses
@@ -271,52 +509,56 @@ export default function App() {
     const minV = verses[0].verse;
     const maxV = verses[verses.length - 1].verse;
     const rangeRef = `${verses[0].book} ${verses[0].chapter}:${minV === maxV ? minV : `${minV}-${maxV}`}`;
-
+    const subtitle = `Holy Bible (${version}) • ${verses.length} verses`;
     setBeamData({
-      isOpen: true,
+      isOpen: false,
       title: rangeRef,
-      subtitle: `Holy Bible (${version}) • ${verses.length} verses`,
+      subtitle,
       sourceBadge: version,
       slides,
       initialIndex: 0,
       isSessionBeam: false,
     });
+    activateBeamSession(rangeRef, subtitle, version, slides);
   };
 
   // Launch Beam for single EGW paragraph
   const handleBeamEgwParagraph = (p: EgwParagraph) => {
+    const slides: BeamSlide[] = [
+      {
+        label: p.reference,
+        title: p.chapterTitle,
+        sourceBadge: p.reference,
+        lines: [p.text],
+      },
+    ];
     setBeamData({
-      isOpen: true,
+      isOpen: false,
       title: p.chapterTitle,
       subtitle: `Ellen G. White • Page ${p.page}`,
       sourceBadge: p.reference,
-      slides: [
-        {
-          label: p.reference,
-          title: p.chapterTitle,
-          sourceBadge: p.reference,
-          lines: [p.text],
-        },
-      ],
+      slides,
       initialIndex: 0,
       isSessionBeam: false,
     });
+    activateBeamSession(p.chapterTitle, `Ellen G. White • Page ${p.page}`, p.reference, slides);
   };
 
   // Launch Beam for multiple selected EGW paragraphs
   const handleBeamMultipleParagraphs = (paragraphs: EgwParagraph[], bookTitle: string) => {
     if (paragraphs.length === 0) return;
     const slides = buildEgwBeamSlides(paragraphs, bookTitle);
-
+    const subtitle = `Ellen G. White • ${paragraphs.length} paragraphs`;
     setBeamData({
-      isOpen: true,
+      isOpen: false,
       title: bookTitle,
-      subtitle: `Ellen G. White • ${paragraphs.length} paragraphs`,
+      subtitle,
       sourceBadge: paragraphs[0].reference,
       slides,
       initialIndex: 0,
       isSessionBeam: false,
     });
+    activateBeamSession(bookTitle, subtitle, paragraphs[0].reference, slides);
   };
 
   const tabLabels: Record<MainTab, string> = {
@@ -343,7 +585,7 @@ export default function App() {
       >
         {isReadingMode ? (
           /* Reading Mode Header with Typography Sliders */
-          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 animate-fade-in">
+          <div className={`${settings.fullWidthLayout !== false ? 'w-full max-w-none px-1 sm:px-2' : 'max-w-7xl mx-auto'} flex flex-wrap items-center justify-between gap-3 animate-fade-in`}>
             {/* Left Status & Title */}
             <div className="flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
@@ -353,50 +595,95 @@ export default function App() {
               <span className="text-[11px] text-slate-400 hidden xl:inline">(Press Esc to exit)</span>
             </div>
 
-            {/* Middle: Font Size & Line Spacing adjustment sliders */}
-            <div className="flex items-center gap-3 sm:gap-6 bg-slate-100/90 dark:bg-slate-800/90 px-3 sm:px-4 py-1.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs shadow-xs">
-              {/* Font Size Slider */}
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                  Size:
-                </span>
-                <input
-                  id="reading-font-size-slider"
-                  type="range"
-                  min="14"
-                  max="32"
-                  step="1"
-                  value={settings.readerFontSizePx || 18}
-                  onChange={(e) => handleUpdateSettings({ readerFontSizePx: Number(e.target.value) })}
-                  className={`w-18 sm:w-24 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
-                  title="Adjust reader font size"
-                />
-                <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2.2rem]`}>
-                  {settings.readerFontSizePx || 18}px
-                </span>
+            {/* Middle: Typography Sliders & Play/Auto-scroll Controls */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4">
+              {/* Font Size & Line Spacing */}
+              <div className="flex items-center gap-2.5 sm:gap-4 bg-slate-100/90 dark:bg-slate-800/90 px-3 py-1.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs shadow-xs">
+                {/* Font Size Slider */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                    Size:
+                  </span>
+                  <input
+                    id="reading-font-size-slider"
+                    type="range"
+                    min="14"
+                    max="32"
+                    step="1"
+                    value={settings.readerFontSizePx || 18}
+                    onChange={(e) => handleUpdateSettings({ readerFontSizePx: Number(e.target.value) })}
+                    className={`w-16 sm:w-20 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
+                    title="Adjust reader font size"
+                  />
+                  <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2rem]`}>
+                    {settings.readerFontSizePx || 18}px
+                  </span>
+                </div>
+
+                <div className="w-[1px] h-3.5 bg-slate-300 dark:bg-slate-700" />
+
+                {/* Line Spacing Slider */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                    Spacing:
+                  </span>
+                  <input
+                    id="reading-line-spacing-slider"
+                    type="range"
+                    min="1.3"
+                    max="2.4"
+                    step="0.05"
+                    value={settings.readerLineHeight || 1.75}
+                    onChange={(e) => handleUpdateSettings({ readerLineHeight: Number(e.target.value) })}
+                    className={`w-16 sm:w-20 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
+                    title="Adjust reader line spacing"
+                  />
+                  <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2rem]`}>
+                    {(settings.readerLineHeight || 1.75).toFixed(2)}x
+                  </span>
+                </div>
               </div>
 
-              <div className="w-[1px] h-3.5 bg-slate-300 dark:bg-slate-700" />
+              {/* Play / Auto-scroll and Speed Controls */}
+              <div className="flex items-center gap-2 bg-slate-100/90 dark:bg-slate-800/90 px-3 py-1.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs shadow-xs">
+                <button
+                  id="reading-autoscroll-toggle"
+                  onClick={toggleAutoScroll}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 transition active:scale-98 cursor-pointer ${
+                    isAutoScrolling
+                      ? 'bg-amber-500 text-white shadow-xs animate-pulse'
+                      : 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  }`}
+                  title={isAutoScrolling ? 'Pause Auto-Scroll (Space)' : 'Play Auto-Scroll (Space)'}
+                >
+                  {isAutoScrolling ? (
+                    <Pause className="w-3.5 h-3.5 fill-current" />
+                  ) : (
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                  )}
+                  <span>{isAutoScrolling ? 'Pause' : 'Play Auto-scroll'}</span>
+                </button>
 
-              {/* Line Spacing Slider */}
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                  Spacing:
-                </span>
-                <input
-                  id="reading-line-spacing-slider"
-                  type="range"
-                  min="1.3"
-                  max="2.4"
-                  step="0.05"
-                  value={settings.readerLineHeight || 1.75}
-                  onChange={(e) => handleUpdateSettings({ readerLineHeight: Number(e.target.value) })}
-                  className={`w-18 sm:w-24 ${accentClasses.sliderAccent} cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none`}
-                  title="Adjust reader line spacing"
-                />
-                <span className={`text-[11px] font-mono font-bold ${accentClasses.accentText} min-w-[2.2rem]`}>
-                  {(settings.readerLineHeight || 1.75).toFixed(2)}x
-                </span>
+                {/* Speed Controls */}
+                <div className="flex items-center gap-1 pl-1.5 border-l border-slate-300 dark:border-slate-700">
+                  <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    Speed:
+                  </span>
+                  {[0.5, 1, 1.5, 2].map((spd) => (
+                    <button
+                      key={spd}
+                      onClick={() => setAutoScrollSpeed(spd)}
+                      className={`px-2 py-0.5 rounded-lg text-[11px] font-mono font-bold transition cursor-pointer ${
+                        autoScrollSpeed === spd
+                          ? 'bg-amber-500 text-white shadow-2xs'
+                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                      }`}
+                      title={`Scroll Speed ${spd}x`}
+                    >
+                      {spd}x
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -415,7 +702,7 @@ export default function App() {
           </div>
         ) : (
           /* Flexible Flexbox Header: Brand & Primary Actions Always Visible */
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 w-full">
+          <div className={`${settings.fullWidthLayout !== false ? 'w-full max-w-none px-1 sm:px-2' : 'max-w-7xl mx-auto'} flex items-center justify-between gap-2 sm:gap-4 w-full`}>
             {/* 1. BRAND IDENTITY: Brand Name & Logo Always Visible */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <img
@@ -655,6 +942,23 @@ export default function App() {
                           </div>
                           {activeTab === 'settings' && <span className={`w-1.5 h-1.5 rounded-full ${accentClasses.dot}`} />}
                         </button>
+
+                        <a
+                          id="nav-tab-projector"
+                          href={getBeamProjectorUrl()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            setIsSecondaryMenuOpen(false);
+                          }}
+                          className="w-full flex items-center justify-between px-2.5 py-2 text-left rounded-xl transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <Cast className={`w-4 h-4 text-amber-500`} />
+                            <span>Cast Screen (New Window)</span>
+                          </div>
+                          <span className="text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">Live</span>
+                        </a>
                       </div>
                     </div>
                   </>
@@ -708,8 +1012,10 @@ export default function App() {
 
       {/* Main Tabbed Content Area */}
       <main
-        className={`flex-1 max-w-7xl w-full mx-auto transition-all duration-300 ${
-          isReadingMode ? 'p-2 sm:p-4' : 'p-4 sm:p-6'
+        className={`flex-1 w-full mx-auto transition-all duration-300 ${
+          settings.fullWidthLayout !== false ? 'max-w-none' : 'max-w-7xl'
+        } ${
+          isReadingMode ? 'p-2 sm:p-4' : 'p-3 sm:p-5 lg:p-6'
         }`}
       >
         {activeTab === 'hymnals' && (
@@ -786,6 +1092,7 @@ export default function App() {
               setInitialEgwState({ bookCode, chapterNumber });
               setActiveTab('egw');
             }}
+            isDarkMode={isDarkMode}
           />
         )}
 
@@ -847,7 +1154,27 @@ export default function App() {
         />
       )}
 
-      {/* AdventistHymns-Inspired Beam Modal Projector */}
+      {/* Persistent Second-Screen Beam Controller Dock */}
+      {activeBeam && activeBeam.isOpen && (
+        <BeamControllerDock
+          beamState={activeBeam}
+          onUpdateBeamState={(updated) => {
+            setActiveBeam(updated);
+            broadcastBeamState(updated);
+          }}
+          onClose={() => {
+            const closed: ActiveBeamState = {
+              ...activeBeam,
+              isOpen: false,
+              updatedAt: Date.now(),
+            };
+            setActiveBeam(closed);
+            broadcastBeamState(closed);
+          }}
+        />
+      )}
+
+      {/* AdventistHymns-Inspired Beam Modal Projector (for in-tab presentation) */}
       <BeamModal
         isOpen={beamData.isOpen}
         onClose={() => setBeamData((prev) => ({ ...prev, isOpen: false }))}
@@ -861,6 +1188,46 @@ export default function App() {
         initialFont={settings.beamFont}
         initialTheme={settings.beamTheme}
       />
+
+      {/* Floating Auto-Scroll Mini Dock in Reading Mode */}
+      {isReadingMode && (
+        <div className="fixed bottom-5 right-5 z-40 animate-fade-in flex items-center gap-2 bg-slate-900/95 dark:bg-black/95 text-white px-3 py-1.5 rounded-2xl shadow-2xl border border-white/15 backdrop-blur-md text-xs select-none">
+          <button
+            onClick={toggleAutoScroll}
+            className={`px-2.5 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+              isAutoScrolling ? 'bg-amber-500 text-white animate-pulse' : 'bg-white/15 text-white hover:bg-white/25'
+            }`}
+            title={isAutoScrolling ? 'Pause Auto-Scroll (Space)' : 'Play Auto-Scroll (Space)'}
+          >
+            {isAutoScrolling ? (
+              <Pause className="w-3.5 h-3.5 fill-current" />
+            ) : (
+              <Play className="w-3.5 h-3.5 fill-current" />
+            )}
+            <span>{isAutoScrolling ? 'Scrolling' : 'Play Scroll'}</span>
+          </button>
+
+          <span className="text-white/20">|</span>
+
+          {/* Speed Stepper */}
+          <div className="flex items-center gap-1">
+            {[0.5, 1, 1.5, 2].map((spd) => (
+              <button
+                key={spd}
+                onClick={() => setAutoScrollSpeed(spd)}
+                className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold transition cursor-pointer ${
+                  autoScrollSpeed === spd
+                    ? 'bg-amber-500 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                }`}
+                title={`Speed ${spd}x`}
+              >
+                {spd}x
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Offline Status Badge */}
       <OfflineIndicator />

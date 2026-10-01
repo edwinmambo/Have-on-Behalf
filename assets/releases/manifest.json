@@ -1,0 +1,42 @@
+{
+  "appName": "Have On Behalf Companion",
+  "packageName": "org.haveonbehalf.companion",
+  "version": "1.0.0-beta.1",
+  "buildNumber": 1,
+  "flutterVersion": "3.24.3",
+  "dartVersion": "3.5.3",
+  "releaseStage": "Early Stage Tester Release",
+  "targetPlatforms": [
+    "Android (API 21+)",
+    "Web (PWA & Desktop)"
+  ],
+  "supportedArchitectures": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86_64"
+  ],
+  "hymnalCollections": [
+    "SDAH (English)",
+    "NZK (Swahili)",
+    "NCA (Gĩkũyũ New)",
+    "NCA_OLD (Gĩkũyũ Old)",
+    "WNY (Dholuo)",
+    "OKN (Maasai)",
+    "KIN (Ekegusii)",
+    "CIS (Meru)",
+    "KMN (Kikamba)",
+    "ICB (Kiembu)",
+    "SHO (Shona)",
+    "UKE (Teso)",
+    "SDAH_EXT (Adventist Anthems)"
+  ],
+  "keyFeatures": [
+    "100% Offline Database for All Collections",
+    "Instant Multi-Language Cross-Reference Navigation",
+    "Audio Pitch Pipe Synthesizer with Transposition",
+    "Liturgical Key Signature Calculator",
+    "Service & Liturgy Worship Planner with Export",
+    "Liturgical Theming (Sanctuary Gold, Burgundy, Deep Blue, OLED Dark)"
+  ],
+  "githubActionsArtifactPath": "mobile/build/app/outputs/flutter-apk/app-release.apk"
+}

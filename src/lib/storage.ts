@@ -1,4 +1,4 @@
-import { FavoriteItem, FavoriteType, WorshipPlanSession, BeamFont, BeamTheme, RecentBeamItem } from '../types';
+import { FavoriteItem, FavoriteType, WorshipPlanSession, BeamFont, BeamTheme, RecentBeamItem, HymnFeedbackItem } from '../types';
 
 const FAVORITES_KEY = 'haveonbehalf_favorites_v1';
 const SETTINGS_KEY = 'haveonbehalf_settings_v1';
@@ -6,6 +6,8 @@ const PLANS_KEY = 'haveonbehalf_worship_plans_v1';
 const USER_KEY = 'haveonbehalf_user_profile_v1';
 const HYMN_NOTES_KEY = 'haveonbehalf_hymn_notes_v1';
 const RECENT_BEAMS_KEY = 'haveonbehalf_recent_beams_v1';
+const PINNED_HYMNS_KEY = 'haveonbehalf_pinned_hymns_v1';
+const HYMN_FEEDBACK_KEY = 'haveonbehalf_hymn_feedback_v1';
 
 export type AppThemeMode = 'system' | 'light' | 'dark';
 
@@ -23,6 +25,8 @@ export type AccentTheme = 'sapphire' | 'emerald' | 'gold' | 'amethyst' | 'crimso
 export interface UserSettings {
   appTheme: AppThemeMode;
   accentTheme?: AccentTheme;
+  appZoom?: number; // 75 to 200 (percentage, defaults to 100)
+  fullWidthLayout?: boolean; // true = edge-to-edge layout on laptops & standalone window
   redLetterEnabled: boolean;
   selectedBibleVersion: string;
   selectedHymnal: string;
@@ -42,6 +46,8 @@ export interface UserSettings {
 const DEFAULT_SETTINGS: UserSettings = {
   appTheme: 'dark',
   accentTheme: 'sapphire',
+  appZoom: 100,
+  fullWidthLayout: true,
   redLetterEnabled: true,
   selectedBibleVersion: 'KJV',
   selectedHymnal: 'SDAH',
@@ -110,7 +116,14 @@ export function isItemFavorited(type: FavoriteType, reference: string): boolean 
 export function getSettings(): UserSettings {
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
-    return raw ? { ...DEFAULT_SETTINGS, ...JSON.parse(raw) } : DEFAULT_SETTINGS;
+    if (!raw) return DEFAULT_SETTINGS;
+    const parsed = JSON.parse(raw);
+    return {
+      ...DEFAULT_SETTINGS,
+      ...parsed,
+      appZoom: typeof parsed.appZoom === 'number' && parsed.appZoom >= 50 && parsed.appZoom <= 250 ? parsed.appZoom : DEFAULT_SETTINGS.appZoom,
+      fullWidthLayout: typeof parsed.fullWidthLayout === 'boolean' ? parsed.fullWidthLayout : DEFAULT_SETTINGS.fullWidthLayout,
+    };
   } catch (e) {
     return DEFAULT_SETTINGS;
   }
@@ -313,6 +326,82 @@ export function clearRecentBeams(): void {
   try {
     localStorage.removeItem(RECENT_BEAMS_KEY);
   } catch (e) {}
+}
+
+// ----------------------------------------------------
+// Pinned Favourite Hymns (Displayed First in Catalog)
+// ----------------------------------------------------
+export function getPinnedHymnIds(): string[] {
+  try {
+    const raw = localStorage.getItem(PINNED_HYMNS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+export function isHymnPinned(hymnId: string): boolean {
+  return getPinnedHymnIds().includes(hymnId);
+}
+
+export function togglePinHymn(hymnId: string): boolean {
+  try {
+    const current = getPinnedHymnIds();
+    const isPinned = current.includes(hymnId);
+    let updated: string[];
+    if (isPinned) {
+      updated = current.filter((id) => id !== hymnId);
+    } else {
+      updated = [hymnId, ...current];
+    }
+    localStorage.setItem(PINNED_HYMNS_KEY, JSON.stringify(updated));
+    window.dispatchEvent(new CustomEvent('haveonbehalf_pinned_changed', { detail: { hymnId, isPinned: !isPinned } }));
+    return !isPinned;
+  } catch (e) {
+    console.error('Failed to toggle pinned hymn', e);
+    return false;
+  }
+}
+
+// ----------------------------------------------------
+// Hymn Testing Feedback
+// ----------------------------------------------------
+export function getAllHymnFeedback(): HymnFeedbackItem[] {
+  try {
+    const raw = localStorage.getItem(HYMN_FEEDBACK_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+export function getFeedbackForHymn(hymnId: string): HymnFeedbackItem[] {
+  return getAllHymnFeedback().filter((item) => item.hymnId === hymnId);
+}
+
+export function saveHymnFeedback(item: Omit<HymnFeedbackItem, 'id' | 'createdAt'>): HymnFeedbackItem {
+  const all = getAllHymnFeedback();
+  const newItem: HymnFeedbackItem = {
+    ...item,
+    id: `feedback_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+    createdAt: Date.now(),
+  };
+  all.unshift(newItem);
+  try {
+    localStorage.setItem(HYMN_FEEDBACK_KEY, JSON.stringify(all));
+  } catch (e) {
+    console.error('Failed to save hymn feedback', e);
+  }
+  return newItem;
+}
+
+export function deleteHymnFeedback(id: string): void {
+  const all = getAllHymnFeedback().filter((item) => item.id !== id);
+  try {
+    localStorage.setItem(HYMN_FEEDBACK_KEY, JSON.stringify(all));
+  } catch (e) {
+    console.error('Failed to delete hymn feedback', e);
+  }
 }
 
 

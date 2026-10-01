@@ -7,6 +7,10 @@ export interface LocalizedBookEntry {
   abbrSw: string;
   gik: string;
   abbrGik: string;
+  luo?: string;
+  abbrLuo?: string;
+  lug?: string;
+  abbrLug?: string;
 }
 
 export const LOCALIZED_BIBLE_BOOKS: Record<string, LocalizedBookEntry> = {
@@ -104,6 +108,8 @@ export function getLocalizedBookName(englishBookName: string, versionId: BibleVe
   if (!entry) return englishBookName;
   if (versionId === 'SUV') return entry.sw;
   if (versionId === 'GIK') return entry.gik;
+  if (versionId === 'LUO') return entry.luo || entry.sw || entry.en;
+  if (versionId === 'LUG') return entry.lug || entry.sw || entry.en;
   return entry.en;
 }
 
@@ -115,6 +121,8 @@ export function getLocalizedBookAbbr(englishBookName: string, versionId: BibleVe
   if (!entry) return englishBookName.slice(0, 3);
   if (versionId === 'SUV') return entry.abbrSw;
   if (versionId === 'GIK') return entry.abbrGik;
+  if (versionId === 'LUO') return entry.abbrLuo || entry.abbrSw || entry.abbrEn;
+  if (versionId === 'LUG') return entry.abbrLug || entry.abbrSw || entry.abbrEn;
   return entry.abbrEn;
 }
 
@@ -150,6 +158,34 @@ export function getLocalizedCategory(category: string, versionId: BibleVersionId
       default: return category;
     }
   }
+  if (versionId === 'LUO') {
+    switch (category) {
+      case 'Law': return 'Chike';
+      case 'History': return 'Sigendini';
+      case 'Poetry': return 'Wende';
+      case 'Major Prophets': return 'Jonabi Madongo';
+      case 'Minor Prophets': return 'Jonabi Matindo';
+      case 'Gospels': return 'Injili';
+      case 'Acts': return 'Tich';
+      case 'Epistles': return 'Baruape';
+      case 'Prophecy': return 'Fweny gi Mokor';
+      default: return category;
+    }
+  }
+  if (versionId === 'LUG') {
+    switch (category) {
+      case 'Law': return 'Amateeka';
+      case 'History': return 'Ebyafaayo';
+      case 'Poetry': return 'Zabbuli n\'Engero';
+      case 'Major Prophets': return 'Bannabbi Abakulu';
+      case 'Minor Prophets': return 'Bannabbi Abato';
+      case 'Gospels': return 'Enjiri';
+      case 'Acts': return 'Ebikolwa';
+      case 'Epistles': return 'Ebaluwa';
+      case 'Prophecy': return 'Obunnabbi';
+      default: return category;
+    }
+  }
   return category;
 }
 
@@ -166,6 +202,16 @@ export function getLocalizedTestament(testament: 'ALL' | 'OT' | 'NT', versionId:
     if (testament === 'ALL') return 'Ibuku Ciothe';
     if (testament === 'OT') return 'Kĩrĩkanĩro Gĩkũrũ';
     return 'Kĩrĩkanĩro Kĩerũ';
+  }
+  if (versionId === 'LUO') {
+    if (testament === 'ALL') return 'Buge Duto';
+    if (testament === 'OT') return 'Muma Machon';
+    return 'Muma Manyien';
+  }
+  if (versionId === 'LUG') {
+    if (testament === 'ALL') return 'Ebitabo Byonna';
+    if (testament === 'OT') return 'Endagaano Enkadde';
+    return 'Endagaano Empya';
   }
   if (testament === 'ALL') return 'All Books';
   if (testament === 'OT') return 'Old Test.';
@@ -193,18 +239,20 @@ export function matchBookSearch(
   const localized = getLocalizedBookName(englishBookName, versionId);
   const localizedAbbr = getLocalizedBookAbbr(englishBookName, versionId);
 
-  return (
+  return Boolean(
     norm(localized).includes(normQ) ||
     norm(localizedAbbr).includes(normQ) ||
     norm(entry.en).includes(normQ) ||
     norm(entry.abbrEn).includes(normQ) ||
     norm(entry.sw).includes(normQ) ||
-    norm(entry.gik).includes(normQ)
+    norm(entry.gik).includes(normQ) ||
+    (entry.luo && norm(entry.luo).includes(normQ)) ||
+    (entry.lug && norm(entry.lug).includes(normQ))
   );
 }
 
 /**
- * Maps any localized name (Swahili, Kikuyu, English) or abbreviation back to canonical English book name
+ * Maps any localized name (Swahili, Kikuyu, Luo, Luganda, English) or abbreviation back to canonical English book name
  */
 export function getCanonicalEnglishBook(name: string): string {
   if (!name) return 'Genesis';
@@ -218,7 +266,11 @@ export function getCanonicalEnglishBook(name: string): string {
       entry.sw.toLowerCase() === trimmed ||
       entry.abbrSw.toLowerCase() === trimmed ||
       entry.gik.toLowerCase() === trimmed ||
-      entry.abbrGik.toLowerCase() === trimmed
+      entry.abbrGik.toLowerCase() === trimmed ||
+      (entry.luo && entry.luo.toLowerCase() === trimmed) ||
+      (entry.abbrLuo && entry.abbrLuo.toLowerCase() === trimmed) ||
+      (entry.lug && entry.lug.toLowerCase() === trimmed) ||
+      (entry.abbrLug && entry.abbrLug.toLowerCase() === trimmed)
     ) {
       return englishName;
     }

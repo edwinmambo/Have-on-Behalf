@@ -5,11 +5,11 @@ import {
   Bookmark,
   Check,
   Music,
-  Globe,
   Volume2,
   ExternalLink,
   ChevronRight,
-  Hash,
+  ChevronLeft,
+  ChevronDown,
   SlidersHorizontal,
   FileText,
   Save,
@@ -18,12 +18,16 @@ import {
   Eye,
   EyeOff,
   Repeat,
-  Columns,
   Grid,
   Tag,
   BookOpen,
   ArrowRight,
+  ArrowLeft,
   X,
+  Globe,
+  Pin,
+  MessageSquarePlus,
+  Share2,
 } from 'lucide-react';
 import { Hymn, HymnStanza, HymnalCollection, BeamSlide } from '../types';
 import { HYMNAL_METAS } from '../data/hymnsData';
@@ -35,9 +39,13 @@ import {
   getFavorites,
   getHymnNote,
   saveHymnNote,
+  getPinnedHymnIds,
+  isHymnPinned,
+  togglePinHymn,
 } from '../lib/storage';
+import { HymnFeedbackModal } from './HymnFeedbackModal';
 import { showToast } from '../lib/toast';
-import { playPianoPitchTone, transposeKeyName } from '../lib/audioPiano';
+import { playPianoPitchTone, transposeKeyName, getKeySignatureInfo } from '../lib/audioPiano';
 import { buildHymnBeamSlides } from '../lib/beamSlidesHelper';
 import { parseLyricChordSegments, stripChordsFromText } from '../lib/chordTransposer';
 import { addHistoryItem } from '../lib/historyStorage';
@@ -49,6 +57,34 @@ interface HymnalViewProps {
   initialHymnId?: string;
   initialCollection?: HymnalCollection;
 }
+
+interface HymnalCollectionInfo {
+  id: HymnalCollection;
+  short: string;
+  language: string;
+  name: string;
+  dropdownLabel: string;
+}
+
+const ALL_COLLECTIONS: HymnalCollectionInfo[] = [
+  { id: 'SDAH', short: 'SDAH', language: 'English', name: 'SDA Hymnal 1985', dropdownLabel: 'English – SDA Hymnal 1985 (1–695)' },
+  { id: 'SDAH-EXT', short: 'EXT', language: 'English', name: 'SDAH Extended (Replica + Extra Hymns)', dropdownLabel: 'English – SDAH Extended (1–954)' },
+  { id: 'ENG_OLD', short: '1941/CIS', language: 'English', name: 'English Old Edition', dropdownLabel: 'English – Old Edition (1941 & Christ in Song)' },
+  { id: 'NZK', short: 'NZK', language: 'Kiswahili', name: 'Nyimbo Za Kristo', dropdownLabel: 'Kiswahili – Nyimbo Za Kristo (1–220)' },
+  { id: 'NCA', short: 'NCA', language: 'Gĩkũyũ', name: 'Nyĩmbo Cia Agendi (Rĩerũ)', dropdownLabel: 'Gĩkũyũ – Nyĩmbo Cia Agendi [New 1–299]' },
+  { id: 'NCA-OLD', short: 'Rĩkũrũ', language: 'Gĩkũyũ', name: 'Nyĩmbo Cia Agendi (Rĩkũrũ)', dropdownLabel: 'Gĩkũyũ – Nyĩmbo Cia Agendi [Old 1–149]' },
+  { id: 'WNY', short: 'WNY', language: 'Dholuo', name: 'Wende Nyasaye', dropdownLabel: 'Dholuo – Wende Nyasaye (1–332)' },
+  { id: 'OKN', short: 'OKN', language: 'Ekegusii', name: "Ogotera kw'Omonene", dropdownLabel: "Ekegusii – Ogotera kw'Omonene (1–370)" },
+  { id: 'KAL', short: 'KAL', language: 'Kalenjin', name: 'Tienwogik che Kilosune Jehobah', dropdownLabel: 'Kalenjin – Tienwogik che Kilosune (1–315)' },
+  { id: 'LUG', short: 'LUG', language: 'Luganda', name: 'Enyimba za Kristo', dropdownLabel: 'Luganda – Enyimba za Kristo (1–275)' },
+  { id: 'LOZ', short: 'LOZ', language: 'Silozi', name: 'Kelesite mwa Lipina', dropdownLabel: 'Silozi – Kelesite mwa Lipina (1–300)' },
+  { id: 'NAN', short: 'NAN', language: 'Kinande', name: 'Esyo Nyimbo sya Kristo', dropdownLabel: 'Kinande – Esyo Nyimbo sya Kristo (1–280)' },
+  { id: 'TON', short: 'TON', language: 'Chitonga', name: 'Kristu mu Nyimbo', dropdownLabel: 'Chitonga – Kristu mu Nyimbo (1–320)' },
+  { id: 'RUN', short: 'RUN', language: 'Runyankore', name: "Ebyeshongoro by'Okuhimbisa Ruhanga", dropdownLabel: "Runyankore-Rukiga – Ebyeshongoro (1–300)" },
+  { id: 'LUO_UG', short: 'LUO-UG', language: 'Luo Uganda', name: 'Buk Wer', dropdownLabel: 'Luo Uganda – Buk Wer (1–280)' },
+  { id: 'KMN', short: 'KMN', language: 'Chichewa', name: 'Khristu Mu Nyimbo', dropdownLabel: 'Chichewa – Khristu Mu Nyimbo (1–350)' },
+  { id: 'ICB', short: 'ICB', language: 'Icibemba', name: 'Kristu Mu Nyimbo', dropdownLabel: 'Icibemba – Kristu Mu Nyimbo (1–311)' },
+];
 
 export const HymnalView: React.FC<HymnalViewProps> = ({
   onBeamHymn,
@@ -65,20 +101,42 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
   const [showChords, setShowChords] = useState<boolean>(false);
   const [repeatRefrain, setRepeatRefrain] = useState<boolean>(false);
 
-  // Category and Quick Jump state
+  // Category and Translations state
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [quickJumpNumber, setQuickJumpNumber] = useState<string>('');
-  const [showKeypad, setShowKeypad] = useState<boolean>(false);
+  const [isTranslationsOpen, setIsTranslationsOpen] = useState<boolean>(false);
+  const [showCrossSearchModal, setShowCrossSearchModal] = useState<boolean>(false);
 
-  // Split View (Side-by-Side Bilingual Reading)
-  const [isSplitViewOpen, setIsSplitViewOpen] = useState<boolean>(false);
-  const [splitCollection, setSplitCollection] = useState<HymnalCollection>('NZK');
-  const [splitHymnId, setSplitHymnId] = useState<string>('');
+  // Scroll ref for stanzas container
+  const stanzasContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Personal hymn notes
   const [hymnNote, setHymnNote] = useState<string>('');
   const [isNoteSaved, setIsNoteSaved] = useState<boolean>(false);
   const [isNotesDrawerOpen, setIsNotesDrawerOpen] = useState<boolean>(false);
+
+  // Pinned Hymns & Tester Feedback State
+  const [pinnedHymnIds, setPinnedHymnIds] = useState<string[]>(() => getPinnedHymnIds());
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handlePinnedChange = () => {
+      setPinnedHymnIds(getPinnedHymnIds());
+    };
+    window.addEventListener('haveonbehalf_pinned_changed', handlePinnedChange);
+    return () => window.removeEventListener('haveonbehalf_pinned_changed', handlePinnedChange);
+  }, []);
+
+  const handleTogglePin = (id: string) => {
+    const isNowPinned = togglePinHymn(id);
+    setPinnedHymnIds(getPinnedHymnIds());
+    showToast({
+      title: isNowPinned ? 'Pinned to Top of Hymnal' : 'Unpinned Hymn',
+      description: isNowPinned
+        ? 'This favourite hymn is pinned and will show first in the directory.'
+        : 'Hymn returned to standard numerical ordering.',
+      type: isNowPinned ? 'success' : 'info',
+    });
+  };
 
   // Sync initial props if changed from outside (e.g. navigation from History)
   useEffect(() => {
@@ -101,10 +159,10 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
     setIsNoteSaved(false);
   };
 
-  // Dynamic full hymnal catalog (SDAH, SDAH-EXT, NZK, and NCA)
+  // Dynamic full hymnal catalog
   const { hymns: allAvailableHymns, isLoaded: isCatalogLoaded, totalCount: totalHymnsCount } = useHymnCatalog();
 
-  // Filter hymns for the active collection
+  // Filter hymns for the active collection directly from the catalog
   const collectionHymns = useMemo(() => {
     return allAvailableHymns.filter((h) => h.collection === activeCollection);
   }, [allAvailableHymns, activeCollection]);
@@ -118,23 +176,45 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
     return Array.from(cats).sort();
   }, [collectionHymns]);
 
-  // Filtered hymns based on search and category
+  // Filtered hymns based on search, category, with pinned favourite hymns displayed FIRST
   const filteredHymns = useMemo(() => {
     let list = collectionHymns;
     if (selectedCategory !== 'All') {
       list = list.filter((h) => h.category === selectedCategory);
     }
-    if (!searchQuery.trim()) return list;
-    const q = searchQuery.toLowerCase().trim();
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter((h) => {
+        if (h.number.toString().includes(q)) return true;
+        if (h.title.toLowerCase().includes(q)) return true;
+        if (h.category?.toLowerCase().includes(q)) return true;
+        if (h.tune?.toLowerCase().includes(q) || h.author?.toLowerCase().includes(q)) return true;
+        return h.stanzas.some((s) => s.lines.some((l) => l.toLowerCase().includes(q)));
+      });
+    }
 
-    return list.filter((h) => {
-      if (h.number.toString().includes(q)) return true;
+    const pinnedSet = new Set(pinnedHymnIds);
+    return [...list].sort((a, b) => {
+      const aPinned = pinnedSet.has(a.id);
+      const bPinned = pinnedSet.has(b.id);
+      if (aPinned && !bPinned) return -1;
+      if (!aPinned && bPinned) return 1;
+      return a.number - b.number;
+    });
+  }, [collectionHymns, selectedCategory, searchQuery, pinnedHymnIds]);
+
+  // Cross-collection matches when searching
+  const crossCollectionMatches = useMemo(() => {
+    if (!searchQuery.trim() || searchQuery.trim().length < 2) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return allAvailableHymns.filter((h) => {
+      if (h.collection === activeCollection) return false;
+      if (h.number.toString() === q) return true;
       if (h.title.toLowerCase().includes(q)) return true;
-      if (h.category?.toLowerCase().includes(q)) return true;
       if (h.tune?.toLowerCase().includes(q) || h.author?.toLowerCase().includes(q)) return true;
       return h.stanzas.some((s) => s.lines.some((l) => l.toLowerCase().includes(q)));
     });
-  }, [collectionHymns, selectedCategory, searchQuery]);
+  }, [allAvailableHymns, activeCollection, searchQuery]);
 
   // Currently selected hymn (null if user has not yet opened a hymn)
   const currentHymn = useMemo(() => {
@@ -164,63 +244,82 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
     }
   }, [currentHymn?.id]);
 
-  // Split View companion hymn
-  const splitHymn = useMemo(() => {
-    if (!isSplitViewOpen || !currentHymn) return null;
-    if (splitHymnId) {
-      const match = allAvailableHymns.find((h) => h.id === splitHymnId);
-      if (match) return match;
-    }
-    // Try to find cross-reference in the selected split collection
-    const cr = currentHymn?.crossReferences?.find((c) => c.collection === splitCollection);
-    if (cr) {
-      const match = allAvailableHymns.find(
-        (h) => h.collection === splitCollection && h.number === cr.number
-      );
-      if (match) return match;
-    }
-    // Match by number
-    const byNum = allAvailableHymns.find(
-      (h) => h.collection === splitCollection && h.number === currentHymn?.number
-    );
-    if (byNum) return byNum;
+  // Index of current hymn in active collection for Next / Previous navigation
+  const currentIndex = useMemo(() => {
+    if (!currentHymn) return -1;
+    return collectionHymns.findIndex((h) => h.id === currentHymn.id);
+  }, [collectionHymns, currentHymn]);
 
-    return allAvailableHymns.find((h) => h.collection === splitCollection) || null;
-  }, [allAvailableHymns, isSplitViewOpen, splitHymnId, splitCollection, currentHymn]);
+  const prevHymn = currentIndex > 0 ? collectionHymns[currentIndex - 1] : null;
+  const nextHymn =
+    currentIndex >= 0 && currentIndex < collectionHymns.length - 1
+      ? collectionHymns[currentIndex + 1]
+      : null;
 
-  // Quick Jump execution
-  const handleQuickJump = (numStr?: string) => {
-    const raw = numStr !== undefined ? numStr : quickJumpNumber;
-    const target = parseInt(raw, 10);
-    if (!isNaN(target)) {
-      const match = collectionHymns.find((h) => h.number === target);
-      if (match) {
-        handleSelectHymn(match.id);
-        setQuickJumpNumber('');
-        setShowKeypad(false);
-      } else {
-        showToast({
-          title: 'Hymn Not Found',
-          description: `No hymn #${target} found in ${activeCollection}.`,
-          type: 'info',
-        });
+  // Keyboard navigation for Previous / Next hymn (Left/Right Arrow)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't trigger if user is typing in an input, textarea, or select
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLSelectElement
+      ) {
+        return;
       }
+
+      if (e.key === 'ArrowLeft' && prevHymn) {
+        e.preventDefault();
+        handleSelectHymn(prevHymn.id);
+      } else if (e.key === 'ArrowRight' && nextHymn) {
+        e.preventDefault();
+        handleSelectHymn(nextHymn.id);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [prevHymn, nextHymn]);
+
+  // Scroll stanzas container to top when changing hymns
+  useEffect(() => {
+    if (stanzasContainerRef.current) {
+      stanzasContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }, [currentHymn?.id]);
+
+  // Touch swipe support for smooth mobile/tablet Before / Next navigation
+  const touchStartX = React.useRef<number | null>(null);
+  const touchStartY = React.useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   };
 
-  const handleKeypadPress = (key: string) => {
-    if (key === 'Go') {
-      handleQuickJump();
-    } else if (key === 'C') {
-      setQuickJumpNumber('');
-    } else if (key === 'Bksp') {
-      setQuickJumpNumber((prev) => prev.slice(0, -1));
-    } else {
-      if (quickJumpNumber.length < 4) {
-        setQuickJumpNumber((prev) => prev + key);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      if (deltaX < 0 && nextHymn) {
+        handleSelectHymn(nextHymn.id);
+      } else if (deltaX > 0 && prevHymn) {
+        handleSelectHymn(prevHymn.id);
       }
     }
+    touchStartX.current = null;
+    touchStartY.current = null;
   };
+
+  // Total count of parallel hymns / translations
+  const totalParallelCount = useMemo(() => {
+    if (!currentHymn) return 0;
+    let count = currentHymn.crossReferences?.length || 0;
+    if (currentHymn.oldBookNumber) count++;
+    if (currentHymn.newBookNumber) count++;
+    return count;
+  }, [currentHymn]);
 
   // Check if current hymn has chords available
   const hasChordsAvailable = useMemo(() => {
@@ -243,10 +342,14 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
     }
   }, [currentHymn?.id]);
 
-  // Calculate transposed key name
+  // Calculate transposed key name & active key signature
   const effectiveKey = useMemo(() => {
     if (!currentHymn) return '';
     return transposeKeyName(currentHymn.key, transposeSemiTones);
+  }, [currentHymn?.key, transposeSemiTones]);
+
+  const keySigInfo = useMemo(() => {
+    return getKeySignatureInfo(currentHymn?.key, transposeSemiTones);
   }, [currentHymn?.key, transposeSemiTones]);
 
   // Reactive key for immediate favorite toggle feedback
@@ -328,8 +431,52 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
     onBeamHymn(currentHymn, slides);
   };
 
+  // Share hymn title and collection details via Web Share API or Clipboard
+  const handleShareHymn = async () => {
+    if (!currentHymn) return;
+    const shareTitle = `${currentHymn.collection} #${currentHymn.number} · ${currentHymn.title}`;
+    const authorLine = currentHymn.author ? `Words by: ${currentHymn.author}` : '';
+    const tuneLine = currentHymn.tune ? `Tune: ${currentHymn.tune}` : '';
+    const keyLine = currentHymn.key ? `Key of ${currentHymn.key}` : '';
+    const firstLine = currentHymn.stanzas?.[0]?.lines?.[0]
+      ? `"${stripChordsFromText(currentHymn.stanzas[0].lines[0])}"`
+      : '';
+    const details = [authorLine, tuneLine, keyLine, firstLine].filter(Boolean).join(' • ');
+    const shareText = `${shareTitle}${details ? `\n${details}` : ''}\nShared from Have On Behalf Hymnal`;
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl,
+        });
+        showToast({ title: 'Hymn shared successfully', type: 'success' });
+        return;
+      } catch (err: any) {
+        if (err.name === 'AbortError') return; // User closed native share sheet
+      }
+    }
+
+    // Fallback: Copy to clipboard
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(`${shareTitle}\n${details}\n${shareUrl}`);
+        showToast({
+          title: 'Hymn Details Copied to Clipboard',
+          description: `${shareTitle} is ready to paste and share.`,
+          type: 'success',
+        });
+      }
+    } catch {
+      showToast({ title: 'Unable to share hymn', type: 'info' });
+    }
+  };
+
   // Render lines with support for chords and antiphonal Responsive Readings (Leader / Congregation)
   const renderStanzaLines = (stanza: HymnStanza, isRightPane = false) => {
+    const isRefrain = stanza.type === 'refrain' || stanza.type === 'chorus';
     return stanza.lines.map((line, lineIdx) => {
       const cleanText = stripChordsFromText(line)
         .replace(/^(?:refrain|chorus|korasi|korus)\s*:\s*/i, '')
@@ -363,7 +510,7 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
       // Standard hymn text without chords
       if (!showChords || !hasChordsAvailable || isRightPane) {
         return (
-          <p key={lineIdx} className="my-1.5 leading-relaxed">
+          <p key={lineIdx} className={`my-1.5 leading-relaxed ${isRefrain ? 'italic font-medium' : ''}`}>
             {cleanText}
           </p>
         );
@@ -375,7 +522,7 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
 
       if (!lineHasChords) {
         return (
-          <p key={lineIdx} className="my-1.5 leading-relaxed">
+          <p key={lineIdx} className={`my-1.5 leading-relaxed ${isRefrain ? 'italic font-medium' : ''}`}>
             {cleanText}
           </p>
         );
@@ -391,7 +538,7 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               <span className="font-mono font-bold text-xs text-amber-600 dark:text-amber-400 select-all leading-none mb-1 min-h-[14px]">
                 {seg.chord || '\u00A0'}
               </span>
-              <span className="font-serif text-base sm:text-lg leading-normal whitespace-pre-wrap">
+              <span className={`font-serif text-base sm:text-lg leading-normal whitespace-pre-wrap ${isRefrain ? 'italic font-medium' : ''}`}>
                 {seg.lyric || '\u00A0'}
               </span>
             </span>
@@ -404,107 +551,99 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-8.5rem)] min-h-[600px]">
       {/* Left Column: Hymnal Navigator & Quick Search List */}
-      <aside className="lg:col-span-4 xl:col-span-3 flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
-        {/* Collection Selector Tabs */}
-        <div className="p-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
-          <div className="grid grid-cols-4 gap-1 bg-slate-200/70 dark:bg-slate-800 p-1 rounded-xl text-xs font-semibold">
-            {(['SDAH', 'SDAH-EXT', 'NZK', 'NCA'] as HymnalCollection[]).map((col) => (
-              <button
-                key={col}
-                onClick={() => {
-                  setActiveCollection(col);
+      <aside
+        className={`lg:col-span-4 xl:col-span-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden ${
+          currentHymn ? 'hidden lg:flex flex-col' : 'flex flex-col'
+        }`}
+      >
+        {/* Persistent Filter Bar: Dropdown + Scrollable Hymnal Bar + Search */}
+        <div className="p-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 space-y-2.5">
+          {/* Language-First Dropdown Selector */}
+          <div className="relative">
+            <div className="flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 shadow-2xs focus-within:ring-2 focus-within:ring-amber-500">
+              <Globe className="w-4 h-4 text-amber-500 shrink-0" />
+              <select
+                value={activeCollection}
+                onChange={(e) => {
+                  setActiveCollection(e.target.value as HymnalCollection);
                   setSelectedCategory('All');
                 }}
-                className={`py-1.5 px-1 rounded-lg transition-all text-center text-[11px] sm:text-xs truncate ${
-                  activeCollection === col
-                    ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs font-bold'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-                title={HYMNAL_METAS[col]?.name || col}
+                className="w-full text-xs font-semibold bg-transparent text-slate-900 dark:text-white focus:outline-none cursor-pointer"
+                title="Select Hymnal Collection by Language"
               >
-                {col === 'SDAH-EXT' ? 'EXT' : col}
-              </button>
-            ))}
+                {ALL_COLLECTIONS.map((c) => {
+                  const meta = HYMNAL_METAS[c.id];
+                  return (
+                    <option key={c.id} value={c.id}>
+                      {c.dropdownLabel} ({meta?.count || 0})
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </div>
 
-          <div className="mt-2 text-center">
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              {HYMNAL_METAS[activeCollection]?.name || activeCollection} ({collectionHymns.length} hymns)
+          {/* Horizontally Scrollable Hymnal Bar */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none select-none">
+            {ALL_COLLECTIONS.map((col) => {
+              const meta = HYMNAL_METAS[col.id];
+              const count = meta?.count || 0;
+              const isSelected = activeCollection === col.id;
+              return (
+                <button
+                  key={col.id}
+                  onClick={() => {
+                    setActiveCollection(col.id);
+                    setSelectedCategory('All');
+                  }}
+                  className={`shrink-0 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all whitespace-nowrap flex items-center gap-1 ${
+                    isSelected
+                      ? 'bg-amber-500 text-slate-950 shadow-xs font-bold scale-[1.02]'
+                      : 'bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300/80 dark:hover:bg-slate-700'
+                  }`}
+                  title={`${col.dropdownLabel} • ${count} hymns`}
+                >
+                  <span>{col.language.split(' ')[0]}</span>
+                  <span
+                    className={`text-[9px] px-1 rounded-sm font-mono ${
+                      isSelected
+                        ? 'bg-black/15 text-slate-950 font-bold'
+                        : 'bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400'
+                    }`}
+                  >
+                    {col.short}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Collection Info Banner */}
+          <div className="flex items-center justify-between text-[11px] px-1">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="font-semibold text-amber-700 dark:text-amber-400 truncate">
+                {HYMNAL_METAS[activeCollection]?.name || activeCollection}
+              </span>
+            </div>
+            <span className="shrink-0 text-slate-500 dark:text-slate-400 text-[10px] font-mono bg-slate-200/60 dark:bg-slate-800 px-1.5 py-0.5 rounded">
+              {collectionHymns.length} hymns
             </span>
           </div>
-        </div>
 
-        {/* Quick Jump by Hymn Number */}
-        <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/30 flex items-center gap-1.5">
-          <div className="relative flex-1">
-            <Hash className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2" />
-            <input
-              type="number"
-              value={quickJumpNumber}
-              onChange={(e) => setQuickJumpNumber(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') handleQuickJump();
-              }}
-              placeholder="Jump to #..."
-              className="w-full pl-8 pr-2 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-amber-500"
-            />
-          </div>
-          <button
-            onClick={() => handleQuickJump()}
-            className="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-xs transition"
-            title="Go to hymn number"
-          >
-            Go
-          </button>
-          <button
-            onClick={() => setShowKeypad((p) => !p)}
-            className={`p-1.5 rounded-lg border text-xs transition ${
-              showKeypad
-                ? 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-950/60 dark:text-amber-300'
-                : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-            }`}
-            title="Toggle On-Screen Numeric Keypad"
-          >
-            <Grid className="w-3.5 h-3.5" />
-          </button>
-        </div>
-
-        {/* Numeric Keypad Panel */}
-        {showKeypad && (
-          <div className="p-2 bg-slate-100 dark:bg-slate-800/90 border-b border-slate-200 dark:border-slate-700 grid grid-cols-3 gap-1.5 text-center animate-fade-in">
-            {['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', 'Go'].map((key) => (
-              <button
-                key={key}
-                onClick={() => handleKeypadPress(key)}
-                className={`py-2 rounded-lg font-mono font-bold text-xs transition shadow-xs ${
-                  key === 'Go'
-                    ? 'bg-amber-500 text-white hover:bg-amber-600'
-                    : key === 'C'
-                    ? 'bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-300 hover:bg-red-200'
-                    : 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-600'
-                }`}
-              >
-                {key}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Quick Search Bar */}
-        <div className="p-3 border-b border-slate-200 dark:border-slate-800">
-          <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+          {/* Persistent Search Bar */}
+          <div className="relative pt-0.5">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Number, title, or lyric snippet..."
-              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900 dark:text-white placeholder-slate-400"
+              placeholder="Search by hymn #, title keywords, or lyrics..."
+              className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900 dark:text-white placeholder-slate-400 shadow-2xs"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs"
+                className="absolute right-2.5 top-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700"
               >
                 ×
               </button>
@@ -512,15 +651,37 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
           </div>
         </div>
 
-        {/* Categories Bar */}
+        {/* Categories / Hymn Groups Bar */}
         {availableCategories.length > 0 && (
-          <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-1.5 overflow-x-auto text-[11px] scrollbar-thin">
-            <Tag className="w-3 h-3 text-slate-400 shrink-0" />
+          <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-1.5 overflow-x-auto text-[11px] scrollbar-thin bg-slate-50/50 dark:bg-slate-900/50">
+            <div className="flex items-center gap-1 shrink-0">
+              <Tag className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <select
+                id="hymn-group-select"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="text-[11px] font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-1 focus:ring-amber-500 shrink-0 cursor-pointer shadow-2xs max-w-[150px] truncate"
+                title="Filter by Hymn Group / Topic"
+              >
+                <option value="All">All Groups ({collectionHymns.length})</option>
+                {availableCategories.map((cat) => {
+                  const count = collectionHymns.filter((h) => h.category === cat).length;
+                  return (
+                    <option key={`opt-${cat}`} value={cat}>
+                      {cat} ({count})
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <div className="h-4 w-px bg-slate-200 dark:border-slate-700 shrink-0 mx-0.5" />
+
             <button
               onClick={() => setSelectedCategory('All')}
               className={`px-2 py-0.5 rounded-md whitespace-nowrap font-medium transition ${
                 selectedCategory === 'All'
-                  ? 'bg-amber-500 text-white'
+                  ? 'bg-amber-500 text-white font-semibold'
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
               }`}
             >
@@ -534,7 +695,7 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-2 py-0.5 rounded-md whitespace-nowrap font-medium transition ${
                     selectedCategory === cat
-                      ? 'bg-amber-500 text-white'
+                      ? 'bg-amber-500 text-white font-semibold'
                       : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
                   }`}
                 >
@@ -545,70 +706,126 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
           </div>
         )}
 
-        {/* Hymns List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/60">
-          {filteredHymns.length === 0 ? (
-            <div className="p-8 text-center text-slate-400 text-xs">
-              No hymns found matching “{searchQuery}”.
-            </div>
-          ) : (
-            filteredHymns.map((hymn) => {
-              const isSelected = hymn.id === currentHymn?.id;
-              const hasNote = Boolean(getHymnNote(hymn.id));
-              return (
-                <button
-                  key={hymn.id}
-                  onClick={() => handleSelectHymn(hymn.id)}
-                  className={`w-full p-3 text-left transition-colors flex items-start gap-3 ${
-                    isSelected
-                      ? 'bg-amber-50/80 dark:bg-amber-950/30 border-l-4 border-amber-500'
-                      : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
-                  }`}
-                >
-                  <span
-                    className={`w-9 h-7 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
-                      isSelected
-                        ? 'bg-amber-500 text-slate-950 shadow-xs'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                    }`}
-                  >
-                    {hymn.number}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-1">
-                      <h4
-                        className={`text-xs font-semibold truncate ${
+        {/* Scrollable Hymns List */}
+        <div className="flex-1 relative overflow-hidden flex flex-col">
+          <div className="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/60">
+            {filteredHymns.length === 0 && crossCollectionMatches.length === 0 ? (
+              <div className="p-8 text-center text-slate-400 text-xs">
+                No hymns found matching “{searchQuery}”.
+              </div>
+            ) : (
+              <>
+                {filteredHymns.map((hymn) => {
+                  const isSelected = hymn.id === currentHymn?.id;
+                  const hasNote = Boolean(getHymnNote(hymn.id));
+                  const isPinned = pinnedHymnIds.includes(hymn.id);
+                  return (
+                    <div
+                      key={hymn.id}
+                      id={`hymn-row-${hymn.id}`}
+                      onClick={() => handleSelectHymn(hymn.id)}
+                      className={`group w-full p-2.5 sm:p-3 text-left transition-colors flex items-start gap-2.5 sm:gap-3 cursor-pointer ${
+                        isSelected
+                          ? 'bg-amber-50/80 dark:bg-amber-950/30 border-l-4 border-amber-500'
+                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                      }`}
+                    >
+                      <span
+                        className={`w-9 h-7 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
                           isSelected
-                            ? 'text-amber-900 dark:text-amber-300'
-                            : 'text-slate-800 dark:text-slate-200'
+                            ? 'bg-amber-500 text-slate-950 shadow-xs'
+                            : isPinned
+                            ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
                         }`}
                       >
-                        {hymn.title}
-                      </h4>
-                      {hasNote && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" title="Personal note saved" />
-                      )}
+                        {hymn.number}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <h4
+                              className={`text-xs font-semibold truncate ${
+                                isSelected
+                                  ? 'text-amber-900 dark:text-amber-300'
+                                  : 'text-slate-800 dark:text-slate-200'
+                              }`}
+                            >
+                              {hymn.title}
+                            </h4>
+                            {isPinned && (
+                              <span className="inline-flex items-center gap-0.5 text-[8.5px] font-mono px-1 py-0.2 rounded bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold shrink-0">
+                                <Pin className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
+                                <span>PINNED</span>
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-1 shrink-0">
+                            {hasNote && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" title="Personal note saved" />
+                            )}
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleTogglePin(hymn.id);
+                              }}
+                              className={`p-1 rounded-md transition ${
+                                isPinned
+                                  ? 'text-amber-500 hover:text-amber-600 bg-amber-500/10'
+                                  : 'opacity-0 group-hover:opacity-100 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-400 hover:text-amber-500'
+                              }`}
+                              title={isPinned ? 'Unpin favourite hymn' : 'Pin favourite to top of list'}
+                            >
+                              <Pin className={`w-3.5 h-3.5 ${isPinned ? 'fill-amber-500 text-amber-500' : ''}`} />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          {hymn.category && (
+                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400 font-medium truncate max-w-[110px]">
+                              {hymn.category}
+                            </span>
+                          )}
+                          <p className="text-[11px] text-slate-400 truncate">
+                            {hymn.stanzas[0]?.lines[0] ? stripChordsFromText(hymn.stanzas[0].lines[0]) : hymn.tune || 'Worship Hymn'}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      {hymn.category && (
-                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400 font-medium truncate max-w-[110px]">
-                          {hymn.category}
-                        </span>
-                      )}
-                      <p className="text-[11px] text-slate-400 truncate">
-                        {hymn.stanzas[0]?.lines[0] ? stripChordsFromText(hymn.stanzas[0].lines[0]) : hymn.tune || 'Worship Hymn'}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              );
-            })
+                  );
+                })}
+              </>
+            )}
+          </div>
+
+          {/* Compact Cross-Hymnal Button (Takes minimal space! Click opens modal) */}
+          {crossCollectionMatches.length > 0 && (
+            <div className="p-2 border-t border-slate-200 dark:border-slate-800 bg-amber-500/5">
+              <button
+                onClick={() => setShowCrossSearchModal(true)}
+                className="w-full py-1.5 px-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs font-semibold flex items-center justify-between transition cursor-pointer"
+                title="View hymns matching your search in other languages"
+              >
+                <span className="flex items-center gap-1.5 truncate">
+                  <Globe className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                  <span className="truncate">Matches in other languages</span>
+                </span>
+                <span className="px-1.5 py-0.5 rounded-md bg-amber-500 text-slate-950 font-mono text-[10px] font-bold shrink-0">
+                  {crossCollectionMatches.length}
+                </span>
+              </button>
+            </div>
           )}
         </div>
       </aside>
 
       {/* Right Column: Hymn Reader & Beam Toolbar */}
-      <main className="lg:col-span-8 xl:col-span-9 flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
+      <main
+        className={`lg:col-span-8 xl:col-span-9 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden ${
+          currentHymn ? 'flex flex-col' : 'hidden lg:flex flex-col'
+        }`}
+      >
         {!currentHymn ? (
           <div className="flex-1 flex flex-col items-center justify-center p-8 sm:p-12 text-center bg-white dark:bg-slate-900 min-h-[500px]">
             <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800/60 flex items-center justify-center text-slate-300 dark:text-slate-600 mb-4 border border-slate-200/50 dark:border-slate-700/50">
@@ -617,67 +834,94 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
             <h3 className="text-base font-semibold text-slate-700 dark:text-slate-200 mb-1.5 font-serif">
               Select a Hymn
             </h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 max-w-sm mb-5 leading-relaxed">
-              Choose a hymn from the directory on the left, or use the quick jump keypad to enter a hymn number directly.
+            <p className="text-xs text-slate-400 dark:text-slate-500 max-w-sm mb-3 leading-relaxed">
+              Choose a hymn from the directory on the left, or search by hymn title, number, or lyric keywords above.
             </p>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setShowKeypad(true)}
-                className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition flex items-center gap-1.5 shadow-2xs"
-              >
-                <Hash className="w-3.5 h-3.5 text-amber-500" />
-                <span>Jump to Hymn #</span>
-              </button>
-            </div>
           </div>
         ) : (
           <>
             {/* Hymn Header Toolbar */}
-            <header className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="w-12 h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-mono font-extrabold text-sm border border-amber-500/30">
-              #{currentHymn.number}
-            </span>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                  {currentHymn.title}
-                </h2>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">
-                  {currentHymn.collection}
+            <header className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                {/* Mobile Back Button: Back to Catalog */}
+                <button
+                  onClick={() => setSelectedHymnId(null)}
+                  className="lg:hidden px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition shrink-0 border border-slate-200 dark:border-slate-700"
+                  title="Back to Hymns Directory"
+                >
+                  <ArrowLeft className="w-4 h-4 text-amber-500" />
+                  <span>Hymns</span>
+                </button>
+
+                <span className="w-11 h-9 sm:w-12 sm:h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-mono font-extrabold text-sm border border-amber-500/30 shrink-0">
+                  #{currentHymn.number}
                 </span>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                {currentHymn.key && (
-                  <span>
-                    Key: <strong className="text-amber-600 dark:text-amber-400">{effectiveKey}</strong>
-                  </span>
-                )}
-                {currentHymn.tune && <span>Tune: <strong>{currentHymn.tune}</strong></span>}
-                {currentHymn.author && (
-                  <span className="hidden sm:inline">Author: {currentHymn.author}</span>
-                )}
-              </div>
-            </div>
-          </div>
 
-          {/* Action & Transpose Buttons */}
-          <div className="flex items-center gap-2 flex-wrap">
-            {/* Side-by-Side Split View Toggle */}
-            <button
-              id="hymn-split-view-btn"
-              onClick={() => setIsSplitViewOpen((prev) => !prev)}
-              className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition flex items-center gap-1.5 ${
-                isSplitViewOpen
-                  ? 'bg-amber-500 text-white border-amber-600 shadow-xs'
-                  : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-              }`}
-              title="Side-by-side bilingual comparison and reading"
-            >
-              <Columns className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Split View</span>
-            </button>
+                {/* Header Before / Next Hymn Navigation */}
+                <div className="flex items-center gap-1 shrink-0">
+                  <button
+                    disabled={!prevHymn}
+                    onClick={() => prevHymn && handleSelectHymn(prevHymn.id)}
+                    className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition flex items-center gap-1 cursor-pointer shadow-2xs font-semibold text-xs"
+                    title={prevHymn ? `Before: #${prevHymn.number} ${prevHymn.title} (← Key)` : 'Beginning of collection'}
+                  >
+                    <ChevronLeft className="w-4 h-4 text-amber-500" />
+                    <span>Before</span>
+                  </button>
+                  <button
+                    disabled={!nextHymn}
+                    onClick={() => nextHymn && handleSelectHymn(nextHymn.id)}
+                    className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition flex items-center gap-1 cursor-pointer shadow-2xs font-semibold text-xs"
+                    title={nextHymn ? `Next: #${nextHymn.number} ${nextHymn.title} (→ Key)` : 'End of collection'}
+                  >
+                    <span>Next</span>
+                    <ChevronRight className="w-4 h-4 text-amber-500" />
+                  </button>
+                </div>
 
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      {currentHymn.title}
+                    </h2>
+                    <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">
+                      {currentHymn.collection}
+                    </span>
+                    {currentHymn.category && (
+                      <button
+                        onClick={() => setSelectedCategory(currentHymn.category!)}
+                        className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 transition cursor-pointer font-semibold shadow-2xs"
+                        title={`Filter all hymns in group: ${currentHymn.category}`}
+                      >
+                        <Tag className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                        <span>{currentHymn.category}</span>
+                      </button>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex-wrap">
+                    {currentHymn.key && (
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span>
+                          Key: <strong className="text-amber-600 dark:text-amber-400">{effectiveKey}</strong>
+                        </span>
+                        <span
+                          className="px-2 py-0.5 rounded-full bg-amber-500/10 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-[11px] font-mono font-semibold"
+                          title={`Key Signature: ${keySigInfo.accidentalsSummary}`}
+                        >
+                          Key Sig: <strong>{keySigInfo.symbol}</strong> ({keySigInfo.accidentalsSummary})
+                        </span>
+                      </div>
+                    )}
+                    {currentHymn.tune && <span>Tune: <strong>{currentHymn.tune}</strong></span>}
+                    {currentHymn.author && (
+                      <span className="hidden sm:inline">Author: {currentHymn.author}</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action & Transpose Buttons */}
+              <div className="flex items-center gap-2 flex-wrap">
             {/* INTERACTIVE PITCH-TRANSPOSE CONTROL */}
             <div className="flex items-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-0.5 text-xs shadow-xs">
               <span className="px-2 text-[11px] font-semibold text-slate-400 uppercase tracking-wider hidden sm:inline">
@@ -691,13 +935,21 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               >
                 -
               </button>
-              <div className="px-2 text-center min-w-[56px]">
-                <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
-                  {effectiveKey.split(' ')[0]}
-                </span>
+              <div className="px-2 text-center min-w-[70px]">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
+                    {effectiveKey.split(' ')[0]}
+                  </span>
+                  <span
+                    className="text-[10px] px-1 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 font-mono font-bold"
+                    title={`Key Signature: ${keySigInfo.accidentalsSummary}`}
+                  >
+                    {keySigInfo.symbol}
+                  </span>
+                </div>
                 {transposeSemiTones !== 0 ? (
-                  <span className="text-[10px] ml-1 font-mono text-slate-400">
-                    ({transposeSemiTones > 0 ? `+${transposeSemiTones}` : transposeSemiTones})
+                  <span className="text-[10px] font-mono text-slate-400">
+                    ({transposeSemiTones > 0 ? `+${transposeSemiTones}` : transposeSemiTones} st)
                   </span>
                 ) : null}
               </div>
@@ -711,11 +963,13 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               </button>
               {transposeSemiTones !== 0 && (
                 <button
+                  id="reset-transpose-btn"
                   onClick={() => setTransposeSemiTones(0)}
-                  className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 ml-0.5"
-                  title="Reset to original key"
+                  className="flex items-center gap-1 px-1.5 py-1 text-[11px] font-semibold text-amber-800 dark:text-amber-200 bg-amber-500/20 hover:bg-amber-500/30 rounded-md transition ml-1 cursor-pointer"
+                  title={`Reset to original key (${currentHymn?.key || 'Original'})`}
                 >
-                  <RotateCcw className="w-3 h-3" />
+                  <RotateCcw className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                  <span className="text-[10px] font-bold">Reset</span>
                 </button>
               )}
             </div>
@@ -763,6 +1017,21 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               </button>
             )}
 
+            {/* ONE Button for Translations & Parallel Hymns (Zero page clutter) */}
+            {totalParallelCount > 0 && (
+              <button
+                onClick={() => setIsTranslationsOpen(true)}
+                className="px-3 py-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 text-xs font-semibold flex items-center gap-1.5 transition shadow-2xs cursor-pointer"
+                title="View Parallel Translations in other languages and hymnals"
+              >
+                <Globe className="w-3.5 h-3.5 text-amber-500" />
+                <span>Translations</span>
+                <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-mono text-[10px] font-bold">
+                  {totalParallelCount}
+                </span>
+              </button>
+            )}
+
             {/* Acoustic Piano Pitch Button */}
             <button
               id="hymn-pitch-tone-btn"
@@ -795,6 +1064,22 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               )}
             </button>
 
+            {/* Pin Favourite to Top */}
+            <button
+              onClick={() => handleTogglePin(currentHymn.id)}
+              className={`p-2 rounded-xl border text-xs font-medium transition flex items-center gap-1.5 ${
+                pinnedHymnIds.includes(currentHymn.id)
+                  ? 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800 font-bold'
+                  : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+              title={pinnedHymnIds.includes(currentHymn.id) ? 'Unpin favourite from top of list' : 'Pin favourite hymn to top of list'}
+            >
+              <Pin className={`w-4 h-4 ${pinnedHymnIds.includes(currentHymn.id) ? 'fill-amber-600 text-amber-600' : ''}`} />
+              <span className="hidden xl:inline font-semibold">
+                {pinnedHymnIds.includes(currentHymn.id) ? 'Pinned' : 'Pin'}
+              </span>
+            </button>
+
             {/* Favorite / Bookmark */}
             <button
               onClick={handleToggleFavorite}
@@ -812,6 +1097,28 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
               )}
             </button>
 
+            {/* Provide Feedback Button */}
+            <button
+              id="hymn-feedback-btn"
+              onClick={() => setIsFeedbackModalOpen(true)}
+              className="p-2 sm:px-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-amber-500/10 hover:border-amber-500/30 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+              title="Provide Feedback on this hymn (report issues or suggest improvements)"
+            >
+              <MessageSquarePlus className="w-4 h-4 text-amber-500" />
+              <span className="hidden sm:inline">Feedback</span>
+            </button>
+
+            {/* Share Hymn Button */}
+            <button
+              id="hymn-share-btn"
+              onClick={handleShareHymn}
+              className="p-2 sm:px-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-amber-500/10 hover:border-amber-500/30 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+              title="Share hymn details via Web Share or copy to clipboard"
+            >
+              <Share2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span className="hidden sm:inline">Share</span>
+            </button>
+
             {/* CAST / BEAM BUTTON */}
             <button
               id="beam-hymn-button"
@@ -824,50 +1131,6 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
             </button>
           </div>
         </header>
-
-        {/* Cross-Reference Links Banner */}
-        {currentHymn.crossReferences && currentHymn.crossReferences.length > 0 && (
-          <div className="px-6 py-2 bg-amber-50/60 dark:bg-amber-950/20 border-b border-amber-200/40 dark:border-amber-900/30 flex items-center gap-2 text-xs text-amber-900 dark:text-amber-300 flex-wrap">
-            <Globe className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-            <span className="font-semibold">Cross-Language Translations:</span>
-            {currentHymn.crossReferences.map((cr, idx) => {
-              const langLabel =
-                cr.collection === 'NZK'
-                  ? 'Swahili'
-                  : cr.collection === 'NCA'
-                  ? 'Gĩkũyũ'
-                  : 'English';
-              return (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    if (isSplitViewOpen) {
-                      setSplitCollection(cr.collection);
-                      const found = allAvailableHymns.find(
-                        (h) => h.collection === cr.collection && h.number === cr.number
-                      );
-                      if (found) setSplitHymnId(found.id);
-                    } else {
-                      setActiveCollection(cr.collection);
-                      const found = allAvailableHymns.find(
-                        (h) => h.collection === cr.collection && h.number === cr.number
-                      );
-                      if (found) handleSelectHymn(found.id);
-                    }
-                  }}
-                  className="px-2 py-0.5 rounded-md bg-amber-100/80 dark:bg-amber-900/40 hover:bg-amber-200 dark:hover:bg-amber-900/70 text-amber-900 dark:text-amber-200 font-medium transition flex items-center gap-1.5 border border-amber-300/60 dark:border-amber-800/60 shadow-xs"
-                >
-                  <span className="text-[10px] uppercase font-bold text-amber-700 dark:text-amber-400">
-                    {langLabel}
-                  </span>
-                  <span>
-                    {cr.collection} #{cr.number} · {cr.title}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
 
         {/* Scripture Reference Link */}
         {currentHymn.scriptureReference && (
@@ -918,170 +1181,376 @@ export const HymnalView: React.FC<HymnalViewProps> = ({
           </div>
         )}
 
-        {/* STANZAS DISPLAY AREA (Single or Side-by-Side Split View) */}
-        {isSplitViewOpen ? (
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
-            {/* Split View Toolbar / Header */}
-            <div className="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-                <Columns className="w-4 h-4 text-amber-500" />
-                <span>Side-by-Side Bilingual Comparison</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-500 dark:text-slate-400">Right Column:</span>
-                <div className="flex rounded-lg bg-slate-200 dark:bg-slate-700 p-0.5 text-xs font-semibold">
-                  {(['NZK', 'NCA', 'SDAH'] as HymnalCollection[]).map((col) => (
-                    <button
-                      key={col}
-                      onClick={() => {
-                        setSplitCollection(col);
-                        setSplitHymnId('');
-                      }}
-                      className={`px-2 py-1 rounded-md transition ${
-                        splitCollection === col
-                          ? 'bg-white dark:bg-slate-900 text-amber-600 dark:text-amber-400 shadow-xs'
-                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-                      }`}
-                    >
-                      {col}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+        {/* STANZAS DISPLAY AREA WITH BEFORE / NEXT NAVIGATION */}
+        <div
+          id="hymnal-reading-scroll-container"
+          ref={stanzasContainerRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="flex-1 p-6 sm:p-8 overflow-y-auto space-y-6"
+        >
+          <div className="w-full max-w-4xl xl:max-w-5xl mx-auto space-y-6">
+            {currentHymn.stanzas.map((stanza, idx) => {
+              const isRefrain = stanza.type === 'refrain' || stanza.type === 'chorus';
+              const nextStanza = currentHymn.stanzas[idx + 1];
+              const shouldRenderRepeatRefrain =
+                repeatRefrain &&
+                refrainStanza &&
+                !isRefrain &&
+                (!nextStanza || (nextStanza.type !== 'refrain' && nextStanza.type !== 'chorus'));
 
-            {/* Split Stanzas Grid */}
-            <div className="space-y-4">
-              {Array.from({
-                length: Math.max(
-                  currentHymn.stanzas.length,
-                  splitHymn?.stanzas.length || 0
-                ),
-              }).map((_, idx) => {
-                const leftStanza = currentHymn.stanzas[idx];
-                const rightStanza = splitHymn?.stanzas?.[idx];
-
-                return (
-                  <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Left Language Stanza */}
-                    <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-slate-800/20 border border-slate-100 dark:border-slate-800">
-                      {leftStanza ? (
-                        <>
-                          <div className="mb-1.5 flex items-center justify-between">
-                            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                              {leftStanza.type === 'refrain' || leftStanza.type === 'chorus'
-                                ? 'Refrain'
-                                : `Stanza ${leftStanza.number}`}
-                            </span>
-                            <span className="text-[10px] text-slate-400 font-mono">
-                              {currentHymn.collection} #{currentHymn.number}
-                            </span>
-                          </div>
-                          <div className="font-serif text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-200">
-                            {renderStanzaLines(leftStanza, false)}
-                          </div>
-                        </>
-                      ) : (
-                        <div className="py-6 text-center text-xs text-slate-400 italic">
-                          No matching stanza in {currentHymn.collection}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Right Language Stanza */}
-                    <div className="p-4 rounded-xl bg-amber-50/30 dark:bg-amber-950/10 border border-amber-200/40 dark:border-amber-900/30">
-                      {rightStanza ? (
-                        <>
-                          <div className="mb-1.5 flex items-center justify-between">
-                            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                              {rightStanza.type === 'refrain' || rightStanza.type === 'chorus'
-                                ? 'Refrain'
-                                : `Stanza ${rightStanza.number}`}
-                            </span>
-                            <span className="text-[10px] text-amber-700 dark:text-amber-400 font-mono font-bold">
-                              {splitHymn?.collection} #{splitHymn?.number} · {splitHymn?.title}
-                            </span>
-                          </div>
-                          <div className="font-serif text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-200">
-                            {renderStanzaLines(rightStanza, true)}
-                          </div>
-                        </>
-                      ) : (
-                        <div className="py-6 text-center text-xs text-slate-400 italic">
-                          {splitHymn
-                            ? `No stanza ${idx + 1} in ${splitHymn.collection} #${splitHymn.number}`
-                            : `No translation selected in ${splitCollection}`}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <div className="flex-1 p-6 sm:p-8 overflow-y-auto space-y-6">
-            <div className="max-w-3xl mx-auto space-y-6">
-              {currentHymn.stanzas.map((stanza, idx) => {
-                const isRefrain = stanza.type === 'refrain' || stanza.type === 'chorus';
-                const nextStanza = currentHymn.stanzas[idx + 1];
-                const shouldRenderRepeatRefrain =
-                  repeatRefrain &&
-                  refrainStanza &&
-                  !isRefrain &&
-                  (!nextStanza || (nextStanza.type !== 'refrain' && nextStanza.type !== 'chorus'));
-
-                return (
-                  <React.Fragment key={idx}>
-                    <div
-                      className={`p-5 rounded-2xl transition-all ${
-                        isRefrain
-                          ? 'bg-amber-50/70 dark:bg-amber-950/20 border-l-4 border-amber-500 dark:border-amber-400 my-4 pl-6'
-                          : 'bg-slate-50/50 dark:bg-slate-800/20 border border-slate-100 dark:border-slate-800'
-                      }`}
-                    >
-                      <div className="mb-2">
-                        <span
-                          className={`text-xs font-bold uppercase tracking-wider ${
-                            isRefrain
-                              ? 'text-amber-600 dark:text-amber-400'
-                              : 'text-slate-400 dark:text-slate-500'
-                          }`}
-                        >
-                          {isRefrain ? 'Refrain' : `Stanza ${stanza.number}`}
-                        </span>
-                      </div>
-
-                      <div
-                        className={`font-serif text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-200 ${
-                          isRefrain ? 'font-medium italic text-amber-950 dark:text-amber-100' : ''
+              return (
+                <React.Fragment key={idx}>
+                  <div
+                    className={`p-5 rounded-2xl transition-all ${
+                      isRefrain
+                        ? 'bg-amber-50/70 dark:bg-amber-950/20 border-l-4 border-amber-500 dark:border-amber-400 my-4 pl-6'
+                        : 'bg-slate-50/50 dark:bg-slate-800/20 border border-slate-100 dark:border-slate-800'
+                    }`}
+                  >
+                    <div className="mb-2">
+                      <span
+                        className={`text-xs font-bold uppercase tracking-wider ${
+                          isRefrain
+                            ? 'text-amber-600 dark:text-amber-400'
+                            : 'text-slate-400 dark:text-slate-500'
                         }`}
                       >
-                        {renderStanzaLines(stanza, false)}
-                      </div>
+                        {isRefrain ? 'Refrain' : `Stanza ${stanza.number}`}
+                      </span>
                     </div>
 
-                    {shouldRenderRepeatRefrain && (
-                      <div className="p-5 rounded-2xl transition-all bg-amber-50/50 dark:bg-amber-950/15 border-l-4 border-amber-400 dark:border-amber-500 my-4 pl-6">
-                        <div className="mb-2 flex items-center gap-1.5">
-                          <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                            Refrain (Repeated)
+                    <div
+                      className={`font-serif text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-200 ${
+                        isRefrain ? 'font-medium italic text-amber-950 dark:text-amber-100' : ''
+                      }`}
+                    >
+                      {renderStanzaLines(stanza, false)}
+                    </div>
+                  </div>
+
+                  {shouldRenderRepeatRefrain && (
+                    <div className="p-5 rounded-2xl transition-all bg-amber-50/50 dark:bg-amber-950/15 border-l-4 border-amber-400 dark:border-amber-500 my-4 pl-6">
+                      <div className="mb-2 flex items-center gap-1.5">
+                        <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                          Refrain (Repeated)
+                        </span>
+                      </div>
+                      <div className="font-serif text-base sm:text-lg leading-relaxed font-medium italic text-amber-950 dark:text-amber-100">
+                        {renderStanzaLines(refrainStanza, false)}
+                      </div>
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
+
+            {/* Provide Feedback Card for the Current Hymn */}
+            <div className="mt-8 mb-4 p-4 sm:p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200/80 dark:border-amber-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                  <MessageSquarePlus className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                    Report an Issue or Suggest an Improvement
+                  </h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Spotted a typo, missing stanza, wrong tune name, or audio pitch error for #{currentHymn.number}? Let us know!
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  id="hymn-footer-share-btn"
+                  onClick={handleShareHymn}
+                  className="px-3.5 py-2 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 hover:bg-amber-100/50 dark:hover:bg-amber-950/50 text-slate-800 dark:text-slate-200 font-semibold text-xs transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-98"
+                  title="Share this hymn"
+                >
+                  <Share2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <span>Share Hymn</span>
+                </button>
+                <button
+                  id="hymn-footer-provide-feedback-btn"
+                  onClick={() => setIsFeedbackModalOpen(true)}
+                  className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs transition shadow-xs flex items-center gap-1.5 cursor-pointer active:scale-98"
+                  title="Provide Feedback on this hymn"
+                >
+                  <MessageSquarePlus className="w-4 h-4" />
+                  <span>Provide Feedback</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom Navigation Card: Before and Next Hymn */}
+            <div className="pt-8 pb-12 mt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              {prevHymn ? (
+                <button
+                  onClick={() => handleSelectHymn(prevHymn.id)}
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 border border-slate-200 dark:border-slate-700 transition cursor-pointer text-left shadow-2xs group flex-1 max-w-sm"
+                  title={`Go to Previous Hymn: #${prevHymn.number} ${prevHymn.title}`}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-700 group-hover:bg-black/15 flex items-center justify-center shrink-0">
+                    <ChevronLeft className="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover:text-inherit" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-mono uppercase tracking-wider block opacity-75">
+                      Before · #{prevHymn.number}
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold truncate block">
+                      {prevHymn.title}
+                    </span>
+                  </div>
+                </button>
+              ) : (
+                <div className="flex-1 hidden sm:block" />
+              )}
+
+              <div className="text-center px-2 py-1 text-[11px] font-mono text-slate-400 dark:text-slate-500 shrink-0 self-center">
+                #{currentHymn.number} ({currentIndex + 1} of {collectionHymns.length})
+              </div>
+
+              {nextHymn ? (
+                <button
+                  onClick={() => handleSelectHymn(nextHymn.id)}
+                  className="flex items-center justify-end gap-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 border border-slate-200 dark:border-slate-700 transition cursor-pointer text-right shadow-2xs group flex-1 max-w-sm"
+                  title={`Go to Next Hymn: #${nextHymn.number} ${nextHymn.title}`}
+                >
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-mono uppercase tracking-wider block opacity-75">
+                      Next · #{nextHymn.number}
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold truncate block">
+                      {nextHymn.title}
+                    </span>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-700 group-hover:bg-black/15 flex items-center justify-center shrink-0">
+                    <ChevronRight className="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover:text-inherit" />
+                  </div>
+                </button>
+              ) : (
+                <div className="flex-1 hidden sm:block" />
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ONE DIALOG MODAL FOR PARALLEL HYMNS & TRANSLATIONS (Zero page clutter) */}
+        {isTranslationsOpen && currentHymn && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in"
+            onClick={() => setIsTranslationsOpen(false)}
+          >
+            <div
+              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[85vh] animate-scale-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                      Parallel Hymns & Translations
+                    </h3>
+                    <p className="text-xs text-slate-400 truncate max-w-xs sm:max-w-sm">
+                      Translations for “{currentHymn.title}” ({currentHymn.collection} #{currentHymn.number})
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsTranslationsOpen(false)}
+                  className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white transition cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="p-4 sm:p-5 overflow-y-auto space-y-2 divide-y divide-slate-100 dark:divide-slate-800/60">
+                {currentHymn.oldBookNumber && (
+                  <button
+                    onClick={() => {
+                      setActiveCollection('NCA-OLD');
+                      setSelectedCategory('All');
+                      handleSelectHymn(`nca-old-${currentHymn.oldBookNumber}`);
+                      setIsTranslationsOpen(false);
+                    }}
+                    className="w-full text-left p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-950/40 text-xs flex items-center justify-between group transition cursor-pointer"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono bg-amber-500/15 px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 dark:text-amber-400">
+                          NCA-OLD #{currentHymn.oldBookNumber}
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white text-xs">
+                          Gĩkũyũ (Ibuku Rĩkũrũ)
+                        </span>
+                      </div>
+                      <p className="text-slate-500 dark:text-slate-400 mt-1">
+                        Hymn #{currentHymn.oldBookNumber}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition" />
+                  </button>
+                )}
+
+                {currentHymn.newBookNumber && (
+                  <button
+                    onClick={() => {
+                      setActiveCollection('NCA');
+                      setSelectedCategory('All');
+                      handleSelectHymn(`nca-${currentHymn.newBookNumber}`);
+                      setIsTranslationsOpen(false);
+                    }}
+                    className="w-full text-left p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-950/40 text-xs flex items-center justify-between group transition cursor-pointer"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono bg-amber-500/15 px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 dark:text-amber-400">
+                          NCA #{currentHymn.newBookNumber}
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white text-xs">
+                          Gĩkũyũ (Ibuku Rĩerũ)
+                        </span>
+                      </div>
+                      <p className="text-slate-500 dark:text-slate-400 mt-1">
+                        Hymn #{currentHymn.newBookNumber}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition" />
+                  </button>
+                )}
+
+                {currentHymn.crossReferences?.map((cr, idx) => {
+                  const meta = HYMNAL_METAS[cr.collection];
+                  const targetHymn = allAvailableHymns.find(
+                    (h) => h.collection === cr.collection && h.number === cr.number
+                  );
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setActiveCollection(cr.collection);
+                        setSelectedCategory('All');
+                        if (targetHymn) {
+                          handleSelectHymn(targetHymn.id);
+                        } else {
+                          handleSelectHymn(`${cr.collection.toLowerCase()}-${cr.number}`);
+                        }
+                        setIsTranslationsOpen(false);
+                      }}
+                      className="w-full text-left p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-950/40 text-xs flex items-center justify-between group transition cursor-pointer pt-2.5"
+                    >
+                      <div className="min-w-0 pr-3">
+                        <div className="flex items-center gap-2 font-semibold">
+                          <span className="font-mono bg-amber-500/15 px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 dark:text-amber-400 shrink-0">
+                            {cr.collection} #{cr.number}
+                          </span>
+                          <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                            {meta?.language || cr.collection}
+                          </span>
+                          <span className="text-[10px] text-slate-400 truncate hidden sm:inline">
+                            ({meta?.name || cr.collection})
                           </span>
                         </div>
-                        <div className="font-serif text-base sm:text-lg leading-relaxed font-medium italic text-amber-950 dark:text-amber-100">
-                          {renderStanzaLines(refrainStanza, false)}
-                        </div>
+                        <p className="text-slate-700 dark:text-slate-300 font-medium truncate mt-1">
+                          {cr.title}
+                        </p>
                       </div>
-                    )}
-                  </React.Fragment>
-                );
-              })}
+                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition shrink-0" />
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400">
+                Click any translation above to open it directly
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CROSS HYMNAL SEARCH MODAL */}
+        {showCrossSearchModal && crossCollectionMatches.length > 0 && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fade-in"
+            onClick={() => setShowCrossSearchModal(false)}
+          >
+            <div
+              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[80vh] animate-scale-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                      Matches in other Hymnals
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Found {crossCollectionMatches.length} hymns matching “{searchQuery}”
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowCrossSearchModal(false)}
+                  className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white transition cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="p-4 sm:p-5 overflow-y-auto space-y-2 divide-y divide-slate-100 dark:divide-slate-800/60">
+                {crossCollectionMatches.map((hymn) => {
+                  const meta = HYMNAL_METAS[hymn.collection];
+                  return (
+                    <button
+                      key={`cross_modal_${hymn.id}`}
+                      onClick={() => {
+                        setActiveCollection(hymn.collection);
+                        setSelectedCategory('All');
+                        handleSelectHymn(hymn.id);
+                        setShowCrossSearchModal(false);
+                      }}
+                      className="w-full text-left p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-950/40 text-xs flex items-center justify-between group transition cursor-pointer"
+                    >
+                      <div className="min-w-0 pr-3">
+                        <div className="flex items-center gap-2 font-semibold">
+                          <span className="font-mono bg-amber-500/15 px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 dark:text-amber-400 shrink-0">
+                            {hymn.collection} #{hymn.number}
+                          </span>
+                          <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                            {meta?.language || hymn.collection}
+                          </span>
+                        </div>
+                        <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate mt-1">
+                          {hymn.title}
+                        </h4>
+                        <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                          {hymn.stanzas[0]?.lines[0] ? stripChordsFromText(hymn.stanzas[0].lines[0]) : hymn.tune || ''}
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition shrink-0" />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
           </>
         )}
       </main>
+
+      {/* Tester Feedback Modal */}
+      <HymnFeedbackModal
+        isOpen={isFeedbackModalOpen}
+        onClose={() => setIsFeedbackModalOpen(false)}
+        hymn={currentHymn}
+      />
     </div>
   );
 };

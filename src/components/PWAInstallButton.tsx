@@ -6,13 +6,9 @@ export const PWAInstallButton: React.FC = () => {
   const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
   const [showIOSGuide, setShowIOSGuide] = useState(false);
 
-  // If already running as an installed PWA, hide or show small status
+  // If already running as an installed PWA, do not show button or offline badge
   if (isInstalled) {
-    return (
-      <span className="hidden sm:inline-flex items-center gap-1 text-xs text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-1 rounded-md border border-emerald-200 dark:border-emerald-800">
-        <Check className="w-3 h-3" /> Offline Ready
-      </span>
-    );
+    return null;
   }
 
   // Chromium / Android / Windows flow

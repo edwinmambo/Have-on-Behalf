@@ -17,11 +17,22 @@ import {
   ChevronRight,
   BookOpen,
   Info,
+  Download,
+  FileText,
+  Copy,
+  Share2,
+  Printer,
 } from 'lucide-react';
 import { WorshipPlanSession, WorshipPlanItem, Hymn, BeamSlide } from '../types';
 import { useHymnCatalog } from '../lib/hymnLibrary';
 import { playPianoPitchTone, transposeKeyName } from '../lib/audioPiano';
 import { buildHymnBeamSlides } from '../lib/beamSlidesHelper';
+import {
+  downloadSessionAsPdf,
+  downloadSessionAsTextFile,
+  formatSessionAsText,
+} from '../lib/worshipPlanExporter';
+import { showToast } from '../lib/toast';
 
 interface PlanViewProps {
   plans: WorshipPlanSession[];
@@ -39,7 +50,7 @@ export const PlanView: React.FC<PlanViewProps> = ({
   splitStanzasOnBeam,
 }) => {
   const { hymns: allHymns } = useHymnCatalog();
-  const [selectedPlanId, setSelectedPlanId] = useState<string>(plans[0]?.id || '');
+  const [selectedPlanId, setSelectedPlanId] = useState<string>('');
   const [isEditingMetadata, setIsEditingMetadata] = useState(false);
   const [isAddingHymn, setIsAddingHymn] = useState(false);
   const [hymnSearch, setHymnSearch] = useState('');
@@ -51,7 +62,66 @@ export const PlanView: React.FC<PlanViewProps> = ({
   const [newLeader, setNewLeader] = useState('');
   const [newDate, setNewDate] = useState(new Date().toISOString().slice(0, 10));
 
-  const currentPlan = plans.find((p) => p.id === selectedPlanId) || plans[0];
+  // Export modal state
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+
+  const currentPlan = plans.find((p) => p.id === selectedPlanId);
+
+  const handleExportPdf = () => {
+    if (!currentPlan) return;
+    try {
+      downloadSessionAsPdf(currentPlan, allHymns);
+      showToast({
+        title: 'Worship Plan Exported',
+        description: `Downloaded "${currentPlan.title}" as PDF.`,
+        type: 'success',
+      });
+    } catch (err) {
+      console.error('Failed to export PDF:', err);
+      showToast({
+        title: 'Export Error',
+        description: 'Failed to generate PDF document.',
+        type: 'info',
+      });
+    }
+  };
+
+  const handleExportTxt = () => {
+    if (!currentPlan) return;
+    try {
+      downloadSessionAsTextFile(currentPlan, allHymns);
+      showToast({
+        title: 'Text Order Exported',
+        description: `Downloaded "${currentPlan.title}" as .txt file.`,
+        type: 'success',
+      });
+    } catch (err) {
+      console.error('Failed to export TXT:', err);
+      showToast({
+        title: 'Export Error',
+        description: 'Failed to generate text file.',
+        type: 'info',
+      });
+    }
+  };
+
+  const handleCopyWorshipOrder = async () => {
+    if (!currentPlan) return;
+    try {
+      const text = formatSessionAsText(currentPlan, allHymns);
+      await navigator.clipboard.writeText(text);
+      setCopiedToClipboard(true);
+      setTimeout(() => setCopiedToClipboard(false), 2500);
+      showToast({
+        title: 'Copied to Clipboard',
+        description: 'Worship service order copied for WhatsApp or Bulletin distribution.',
+        type: 'copied',
+      });
+    } catch (err) {
+      console.error('Failed to copy text:', err);
+    }
+  };
 
   const handleCreateNewSession = (e: React.FormEvent) => {
     e.preventDefault();
@@ -191,7 +261,7 @@ export const PlanView: React.FC<PlanViewProps> = ({
     : allHymns.slice(0, 8);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 pb-16">
+    <div className="w-full max-w-7xl mx-auto space-y-6 pb-16">
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
@@ -209,6 +279,18 @@ export const PlanView: React.FC<PlanViewProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
+          {currentPlan && (
+            <button
+              id="export-worship-plan-top-btn"
+              onClick={() => setIsExportModalOpen(true)}
+              className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700 shadow-2xs"
+              title="Export worship session as structured PDF or text file"
+            >
+              <Download className="w-4 h-4 text-amber-500" />
+              <span>Export</span>
+            </button>
+          )}
+
           <button
             onClick={() => setIsCreatingNew(true)}
             className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1.5"
@@ -304,6 +386,16 @@ export const PlanView: React.FC<PlanViewProps> = ({
                 </div>
 
                 <div className="flex items-center gap-2">
+                  <button
+                    id="export-worship-plan-header-btn"
+                    onClick={() => setIsExportModalOpen(true)}
+                    className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs"
+                    title="Export worship session as PDF or text file"
+                  >
+                    <Download className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Export</span>
+                  </button>
+
                   <button
                     onClick={() => setIsAddingHymn(true)}
                     className="px-3 py-1.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 border border-amber-500/20 text-xs font-bold transition flex items-center gap-1.5"
@@ -445,8 +537,23 @@ export const PlanView: React.FC<PlanViewProps> = ({
               )}
             </>
           ) : (
-            <div className="text-center py-12 text-slate-400">
-              Select or create a worship plan to get started.
+            <div className="text-center py-16 px-4">
+              <div className="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto mb-4">
+                <Music className="w-7 h-7" />
+              </div>
+              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">
+                No Active Worship Session
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1.5 mb-6 leading-relaxed">
+                Select a saved worship plan from the list on the left to review and beam it, or create a brand new session for your song service.
+              </p>
+              <button
+                onClick={() => setIsCreatingNew(true)}
+                className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-xs transition inline-flex items-center gap-2 active:scale-95"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Create New Session</span>
+              </button>
             </div>
           )}
         </main>
@@ -584,6 +691,152 @@ export const PlanView: React.FC<PlanViewProps> = ({
               </button>
             </div>
           </form>
+        </div>
+      )}
+      {/* MODAL: EXPORT WORSHIP SESSION */}
+      {isExportModalOpen && currentPlan && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
+          <div className="w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-5 max-h-[90vh] flex flex-col">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center border border-amber-500/30">
+                  <Download className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                    Export Worship Session
+                  </h3>
+                  <p className="text-xs text-slate-400">
+                    {currentPlan.title} • {currentPlan.items.length} hymns scheduled
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsExportModalOpen(false)}
+                className="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold flex items-center justify-center transition"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Quick Session Summary Banner */}
+            <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                <span>Date: <strong className="text-slate-900 dark:text-white">{currentPlan.date}</strong></span>
+                <span>•</span>
+                <span>Leader: <strong className="text-slate-900 dark:text-white">{currentPlan.leaderName || 'Song Leader'}</strong></span>
+              </div>
+              <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 font-semibold text-[11px]">
+                {currentPlan.items.length} Hymns & Cues
+              </span>
+            </div>
+
+            {/* Export Format Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {/* PDF Export Card */}
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 flex flex-col justify-between hover:border-amber-400 dark:hover:border-amber-600 transition group">
+                <div className="space-y-1.5 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="p-2 rounded-lg bg-red-500/10 text-red-600 dark:text-red-400">
+                      <FileText className="w-4 h-4" />
+                    </span>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                      Structured PDF Document
+                    </h4>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Printable, multi-page bulletin layout with hymns, musical keys, key signatures, tune names, and chorister notes.
+                  </p>
+                </div>
+                <button
+                  id="download-pdf-btn"
+                  onClick={handleExportPdf}
+                  className="w-full py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-2 active:scale-98 cursor-pointer"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download .PDF File</span>
+                </button>
+              </div>
+
+              {/* Plain Text Export Card */}
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 flex flex-col justify-between hover:border-amber-400 dark:hover:border-amber-600 transition group">
+                <div className="space-y-1.5 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="p-2 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                      <FileText className="w-4 h-4" />
+                    </span>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                      Simple Text File (.txt)
+                    </h4>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Clean, universal plain text for church bulletins, emailing worship leaders, or copying to church slide software.
+                  </p>
+                </div>
+                <button
+                  id="download-txt-btn"
+                  onClick={handleExportTxt}
+                  className="w-full py-2 px-3 rounded-xl bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-2 active:scale-98 cursor-pointer"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download .TXT File</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Fast Clipboard Copy */}
+            <div className="flex items-center justify-between p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
+              <div className="flex items-center gap-2">
+                <Share2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <span className="text-xs font-medium text-amber-950 dark:text-amber-200">
+                  Quick Share for WhatsApp & Messaging
+                </span>
+              </div>
+              <button
+                id="copy-worship-order-btn"
+                onClick={handleCopyWorshipOrder}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  copiedToClipboard
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs'
+                }`}
+              >
+                {copiedToClipboard ? (
+                  <>
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Worship Order</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Document Preview Box */}
+            <div className="flex-1 overflow-hidden flex flex-col space-y-1.5 min-h-[140px]">
+              <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+                <span>Structured Document Preview:</span>
+                <span>UTF-8 Plain Text</span>
+              </div>
+              <div className="flex-1 overflow-y-auto p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre select-all">
+                {formatSessionAsText(currentPlan, allHymns)}
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end pt-2 border-t border-slate-100 dark:border-slate-800">
+              <button
+                onClick={() => setIsExportModalOpen(false)}
+                className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

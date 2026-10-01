@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { BeamSlide, BeamTheme, BeamFont, RecentBeamItem } from '../types';
 import { getSettings, getRecentBeams, addRecentBeam, clearRecentBeams } from '../lib/storage';
+import { getSlideCounterInfo } from '../lib/beamSlidesHelper';
 
 interface BeamModalProps {
   isOpen: boolean;
@@ -298,10 +299,8 @@ export const BeamModal: React.FC<BeamModalProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, nextSlide, prevSlide, onClose, activeSlides, showShortcutsModal]);
 
-  // Primary slide progress percentage (clean bar at bottom)
-  const slideProgressPercent = activeSlides.length > 0
-    ? Math.min(100, Math.max(0, ((currentIndex + 1) / activeSlides.length) * 100))
-    : 0;
+  const currentSlideInfo = getSlideCounterInfo(currentSlide, currentIndex, activeSlides.length);
+  const slideProgressPercent = currentSlideInfo.progressPercent;
 
   // Secondary progress percentage alone for Session Beam (subtle, thinner, without wordings)
   const sessionItemProgressPercent = useMemo(() => {
@@ -338,8 +337,14 @@ export const BeamModal: React.FC<BeamModalProps> = ({
 
   // Format the top left title (e.g. "Hymn 159 · The Old Rugged Cross")
   const displayTopLeft = currentSlide.sourceBadge || activeBadge;
-  // Format the top right verse tag (e.g. "Verse 2a")
-  const displayTopRight = currentSlide.verseTag || currentSlide.label;
+  // Format the top right verse tag (e.g. "Verse 1", "Refrain", "Intro", "Amen")
+  const displayTopRight = currentSlide.isRefrain
+    ? 'Refrain'
+    : currentSlide.isOutro
+    ? 'Amen'
+    : currentSlide.isIntro
+    ? 'Intro'
+    : currentSlide.verseTag || currentSlideInfo.badgeText;
 
   return (
     <div
@@ -359,9 +364,11 @@ export const BeamModal: React.FC<BeamModalProps> = ({
           <span>{displayTopLeft}</span>
         </div>
 
-        {/* Top Right: e.g. "Verse 2a" or "Refrain" or "Intro" */}
+        {/* Top Right: e.g. "Verse 1", "Refrain", "Intro", "Amen" */}
         <div className="flex items-center gap-4">
-          <span className="font-semibold text-xs sm:text-sm">{displayTopRight}</span>
+          <span className={`font-semibold text-xs sm:text-sm ${currentSlide.isRefrain ? 'italic font-serif text-amber-300' : ''}`}>
+            {displayTopRight}
+          </span>
 
           {/* Discreet Exit Button on hover or touch */}
           <button
@@ -393,9 +400,36 @@ export const BeamModal: React.FC<BeamModalProps> = ({
         }}
       >
         <div className="max-w-5xl mx-auto w-full">
-          {/* SPECIAL INTRO SLIDE (Only on initial hymn load) */}
-          {currentSlide.isIntro && currentSlide.introDetails ? (
-            <div className="space-y-6">
+          {/* SPECIAL OUTRO / AMEN SLIDE (Automatic End Page - Not counted in slide number) */}
+          {currentSlide.isOutro ? (
+            <div className="space-y-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2">
+                <span
+                  className={`px-4 py-1 rounded-full text-xs font-mono font-bold tracking-widest uppercase border ${
+                    isLight
+                      ? 'bg-amber-100/70 text-amber-900 border-amber-300'
+                      : 'bg-white/10 text-amber-300 border-white/15'
+                  }`}
+                >
+                  {currentSlide.sourceBadge || 'Hymn Concluded'}
+                </span>
+              </div>
+              <h1
+                className={`text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight font-serif italic ${
+                  isLight ? 'text-slate-900 beam-lyric-shadow-light' : 'text-white beam-lyric-shadow'
+                }`}
+                style={{
+                  fontSize: `clamp(3rem, ${5 * fontScale}vw + 1.5rem, 6.5rem)`,
+                }}
+              >
+                Amen
+              </h1>
+              <p className={`text-base sm:text-lg font-serif ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
+                {currentSlide.title}
+              </p>
+            </div>
+          ) : currentSlide.isIntro ? (
+            <div className="space-y-6 animate-fade-in">
               <div className="inline-flex items-center gap-3">
                 <span
                   className={`px-4 py-1 rounded-full text-xs font-mono font-bold tracking-widest uppercase border ${
@@ -404,9 +438,9 @@ export const BeamModal: React.FC<BeamModalProps> = ({
                       : 'bg-white/10 text-amber-300 border-white/15'
                   }`}
                 >
-                  {currentSlide.introDetails.collection} #{currentSlide.introDetails.hymnNumber}
+                  {currentSlide.introDetails?.collection || currentSlide.sourceBadge || 'Hymn'} {currentSlide.introDetails?.hymnNumber ? `#${currentSlide.introDetails.hymnNumber}` : ''}
                 </span>
-                {currentSlide.introDetails.key && (
+                {currentSlide.introDetails?.key && (
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium border ${
                       isLight
@@ -428,7 +462,7 @@ export const BeamModal: React.FC<BeamModalProps> = ({
                   lineHeight: 1.18,
                 }}
               >
-                {currentSlide.introDetails.title}
+                {currentSlide.introDetails?.title || currentSlide.title || activeTitle}
               </h1>
 
               <div
@@ -438,17 +472,17 @@ export const BeamModal: React.FC<BeamModalProps> = ({
                     : 'border-white/10 text-slate-300/80'
                 }`}
               >
-                {currentSlide.introDetails.author && (
+                {(currentSlide.introDetails?.author || activeSubtitle) && (
                   <span>
-                    Writer: <strong className="font-semibold">{currentSlide.introDetails.author}</strong>
+                    Writer: <strong className="font-semibold">{currentSlide.introDetails?.author || activeSubtitle}</strong>
                   </span>
                 )}
-                {currentSlide.introDetails.tune && (
+                {currentSlide.introDetails?.tune && (
                   <span>
                     Tune: <strong className="font-semibold">{currentSlide.introDetails.tune}</strong>
                   </span>
                 )}
-                {currentSlide.introDetails.scriptureReference && (
+                {currentSlide.introDetails?.scriptureReference && (
                   <span>
                     Scripture: <strong className="font-semibold">{currentSlide.introDetails.scriptureReference}</strong>
                   </span>
@@ -456,11 +490,11 @@ export const BeamModal: React.FC<BeamModalProps> = ({
               </div>
             </div>
           ) : (
-            /* STANDARD LYRIC DISPLAY: Exactly styled as image.png */
+            /* STANDARD LYRIC DISPLAY: High-legibility sanctuary lyrics */
             <div className="space-y-3">
               <div
                 className={`font-semibold tracking-tight transition-all duration-200 ${fontClass} ${
-                  currentSlide.isRefrain || currentSlide.label.toLowerCase().includes('refrain') || currentSlide.label.toLowerCase().includes('chorus')
+                  currentSlide.isRefrain || (currentSlide.label && (currentSlide.label.toLowerCase().includes('refrain') || currentSlide.label.toLowerCase().includes('chorus')))
                     ? 'italic font-serif'
                     : ''
                 } ${
@@ -471,11 +505,17 @@ export const BeamModal: React.FC<BeamModalProps> = ({
                   lineHeight: 1.36,
                 }}
               >
-                {currentSlide.lines.map((line, idx) => (
-                  <div key={idx} className="my-2.5 sm:my-3">
-                    {line}
+                {currentSlide.lines && currentSlide.lines.length > 0 ? (
+                  currentSlide.lines.map((line, idx) => (
+                    <div key={idx} className="my-2.5 sm:my-3">
+                      {line}
+                    </div>
+                  ))
+                ) : (
+                  <div className="my-2.5 sm:my-3">
+                    {currentSlide.title || currentSlide.label || activeTitle}
                   </div>
-                ))}
+                )}
               </div>
             </div>
           )}
@@ -620,39 +660,39 @@ export const BeamModal: React.FC<BeamModalProps> = ({
           </div>
         )}
 
-        {/* PROGRESS BARS AT BOTTOM (Numbers and percentages hidden; subtle and thin) */}
+        {/* PROGRESS BARS AT BOTTOM (Numbers and percentages hidden; very subtle hairline) */}
         <div
           className={`w-full transition-opacity duration-300 ${
             isBlackout ? 'opacity-0' : 'opacity-100'
           }`}
         >
-          {/* Secondary progress bar alone for Session Beam (thinner, subtle, no wordings) */}
+          {/* Secondary progress bar alone for Session Beam (very subtle, hairline 1px) */}
           {isSessionBeam && (
             <div
-              className={`w-full h-[1px] sm:h-[1.5px] ${
-                isLight ? 'bg-slate-300/40' : 'bg-white/10'
+              className={`w-full h-[1px] ${
+                isLight ? 'bg-slate-300/20' : 'bg-white/[0.03]'
               } overflow-hidden`}
               title="Overall Session Progress"
             >
               <div
-                className={`h-full transition-all duration-300 ${
-                  isLight ? 'bg-amber-600/50' : 'bg-amber-400/40'
+                className={`h-full transition-all duration-500 ease-out ${
+                  isLight ? 'bg-amber-600/25' : 'bg-amber-400/20'
                 }`}
                 style={{ width: `${sessionItemProgressPercent}%` }}
               />
             </div>
           )}
 
-          {/* Primary progress bar at the bottom (slide 4 of 9 and xx% hidden) */}
+          {/* Primary progress bar at the bottom (very subtle, hairline 1.5px) */}
           <div
-            className={`w-full h-[1.5px] sm:h-[2px] ${
-              isLight ? 'bg-slate-300/60' : 'bg-white/15'
+            className={`w-full h-[1.5px] ${
+              isLight ? 'bg-slate-300/20' : 'bg-white/[0.04]'
             } overflow-hidden`}
             title="Slide Progress"
           >
             <div
-              className={`h-full transition-all duration-300 ${
-                isLight ? 'bg-amber-600' : 'bg-amber-400'
+              className={`h-full transition-all duration-500 ease-out ${
+                isLight ? 'bg-amber-600/30' : 'bg-amber-400/30'
               }`}
               style={{ width: `${slideProgressPercent}%` }}
             />

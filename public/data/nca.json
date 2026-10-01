@@ -39,9 +39,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 1,
+        "title": "No Wee Wi Mutheru"
+      },
+      {
         "collection": "NZK",
         "number": 1,
         "title": "U Mtakatifu"
+      },
+      {
+        "collection": "WNY",
+        "number": 1,
+        "title": "Nyasachwa Man Malo"
+      },
+      {
+        "collection": "OKN",
+        "number": 1,
+        "title": "'Mochenu Omochenu"
       },
       {
         "collection": "SDAH",
@@ -49,7 +64,10 @@
         "title": "Holy, Holy, Holy"
       }
     ],
-    "scriptureReference": "Kũguũrĩrio 4:8-11"
+    "scriptureReference": "Kũguũrĩrio 4:8-11",
+    "category": "Worship & Adoration",
+    "tune": "Nicaea",
+    "oldBookNumber": 1
   },
   {
     "id": "nca-2",
@@ -95,16 +113,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 2,
+        "title": "Twakugatha Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 2,
         "title": "Twamsifu Mungu"
       },
       {
+        "collection": "WNY",
+        "number": 2,
+        "title": "Wapaki, Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 2,
+        "title": "Tobake Nyasae"
+      },
+      {
         "collection": "SDAH",
         "number": 334,
-        "title": "Come, Thou Fount of Every Blessing"
+        "title": "Come, Thou Fount Of Every Blessing"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Revive Us Again",
+    "oldBookNumber": 2
   },
   {
     "id": "nca-3",
@@ -150,11 +186,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 3,
+        "title": "Ngai Niagoocwo Nĩ Ciumbe Ciake"
+      },
+      {
         "collection": "NZK",
         "number": 3,
         "title": "Mungu Atukuzwe"
+      },
+      {
+        "collection": "WNY",
+        "number": 3,
+        "title": "Duong` Obed Ni Wuonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 3,
+        "title": "Motogie Tat'Okorir' Amanene"
+      },
+      {
+        "collection": "SDAH",
+        "number": 341,
+        "title": "To God Be The Glory"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "To God Be the Glory",
+    "oldBookNumber": 3
   },
   {
     "id": "nca-4",
@@ -202,11 +261,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 4,
+        "title": "Kumiai Riitwa Ria Jesu"
+      },
+      {
         "collection": "NZK",
-        "number": 113,
-        "title": "Damu Imebubujika"
+        "number": 4,
+        "title": "Jina la Yesu, Salamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 4,
+        "title": "Nying Yesu Mondo Yudi Pak"
+      },
+      {
+        "collection": "OKN",
+        "number": 4,
+        "title": "Togi' Okobua Kwa Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 229,
+        "title": "All Hail the Power of Jesus’ Name"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Coronation",
+    "oldBookNumber": 4
   },
   {
     "id": "nca-5",
@@ -255,7 +337,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "tune": "Lyons",
+    "oldBookNumber": 5,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 5,
+        "title": "Nitumuhooe Jesu Munene"
+      },
+      {
+        "collection": "NZK",
+        "number": 5,
+        "title": "Na Tumwabudu Huyo Mfalme"
+      },
+      {
+        "collection": "WNY",
+        "number": 5,
+        "title": "To Pakuru Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 5,
+        "title": "'Ba Igoro Mosasim' Omogambi"
+      },
+      {
+        "collection": "SDAH",
+        "number": 83,
+        "title": "O Worship the King"
+      }
+    ]
   },
   {
     "id": "nca-6",
@@ -291,11 +403,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 6,
+        "title": "Ruciini Gukiire Wega"
+      },
+      {
         "collection": "NZK",
         "number": 6,
         "title": "Kumekucha kwa Uzuri"
+      },
+      {
+        "collection": "WNY",
+        "number": 6,
+        "title": "Wuonwa, Wabironi"
+      },
+      {
+        "collection": "OKN",
+        "number": 6,
+        "title": "Tata Twagochera"
+      },
+      {
+        "collection": "SDAH",
+        "number": 39,
+        "title": "Lord, in the Morning"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "tune": "Warwick",
+    "oldBookNumber": 6
   },
   {
     "id": "nca-7",
@@ -347,11 +482,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 7,
+        "title": "Ngai Atuire Atuteithagia"
+      },
+      {
         "collection": "NZK",
         "number": 7,
         "title": "Mungu Msaada Wetu"
+      },
+      {
+        "collection": "WNY",
+        "number": 7,
+        "title": "Nyasaye Indi Nikonyowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 7,
+        "title": "Nyasaye 'Motoria Oito"
+      },
+      {
+        "collection": "SDAH",
+        "number": 103,
+        "title": "O God, Our Help"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "St. Anne",
+    "oldBookNumber": 7
   },
   {
     "id": "nca-8",
@@ -399,11 +557,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 8,
+        "title": "Njigua Ngikaya"
+      },
+      {
         "collection": "NZK",
         "number": 8,
         "title": "Unisikie Ninapolia"
+      },
+      {
+        "collection": "WNY",
+        "number": 8,
+        "title": "Winji Yuakna"
+      },
+      {
+        "collection": "OKN",
+        "number": 8,
+        "title": "'Gw' Ekerero Nyoroki' Amabera"
+      },
+      {
+        "collection": "SDAH",
+        "number": 338,
+        "title": "Redeemed"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "tune": "Hyfrydol",
+    "oldBookNumber": 8
   },
   {
     "id": "nca-9",
@@ -448,7 +629,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "tune": "Short Meter",
+    "oldBookNumber": 9,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 9,
+        "title": "Muthamaki Muumbi"
+      },
+      {
+        "collection": "NZK",
+        "number": 9,
+        "title": "Mwumbaji Mfalme"
+      },
+      {
+        "collection": "WNY",
+        "number": 9,
+        "title": "Jachwechna Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 9,
+        "title": "Omotongi One"
+      },
+      {
+        "collection": "SDAH",
+        "number": 15,
+        "title": "My Maker and My King"
+      }
+    ]
   },
   {
     "id": "nca-10",
@@ -490,11 +701,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 10,
+        "title": "Kristo Muiguaniri Tha"
+      },
+      {
         "collection": "NZK",
         "number": 10,
         "title": "Kristo wa Neema Yote"
+      },
+      {
+        "collection": "WNY",
+        "number": 10,
+        "title": "Kristo In Wuon Ng`wono Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 10,
+        "title": "Nchw' Ensoko"
+      },
+      {
+        "collection": "SDAH",
+        "number": 334,
+        "title": "Come, Thou Fount Of Every Blessing"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Nettleton",
+    "oldBookNumber": 10
   },
   {
     "id": "nca-11",
@@ -538,11 +772,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 11,
+        "title": "Jesu Uugite Eri Kana Atatu"
+      },
+      {
         "collection": "NZK",
         "number": 13,
         "title": "Umetuahidi"
+      },
+      {
+        "collection": "WNY",
+        "number": 13,
+        "title": "Paki Nyasaye Mogwedhowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 13,
+        "title": "Baka Tat' Ogesesenia"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "oldBookNumber": 11
   },
   {
     "id": "nca-12",
@@ -583,11 +834,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 12,
+        "title": "Migambo Yothe Nĩ iinire"
+      },
+      {
         "collection": "NZK",
         "number": 11,
         "title": "Sauti Zote Ziimbe"
+      },
+      {
+        "collection": "WNY",
+        "number": 11,
+        "title": "Yesu, Isesingo"
+      },
+      {
+        "collection": "OKN",
+        "number": 11,
+        "title": "Yes 'Omonyaira"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 12
   },
   {
     "id": "nca-13",
@@ -606,7 +874,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Benedictions & Doxologies",
+    "tune": "Old 100th",
+    "oldBookNumber": 13,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 13,
+        "title": "Gathai Ngai Andu Aya"
+      },
+      {
+        "collection": "NZK",
+        "number": 12,
+        "title": "Msifu Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 12,
+        "title": "Ji Duto Mondo Wer Wendni"
+      },
+      {
+        "collection": "OKN",
+        "number": 12,
+        "title": "'Mariogi Onsi Tig 'Atare"
+      },
+      {
+        "collection": "SDAH",
+        "number": 694,
+        "title": "Praise God, From Whom All Blessings"
+      }
+    ]
   },
   {
     "id": "nca-14",
@@ -645,11 +943,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 14,
+        "title": "Reke Njerage Nawe Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 14,
         "title": "Nitembee Nawe"
+      },
+      {
+        "collection": "WNY",
+        "number": 14,
+        "title": "Nyasacha Mond` Awuoth Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 14,
+        "title": "Nyasae Nintare N' Aye"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "oldBookNumber": 14
   },
   {
     "id": "nca-15",
@@ -695,11 +1010,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 15,
+        "title": "Njariria Mwathani Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 15,
         "title": "Nena Rohoni Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 15,
+        "title": "Wuo Gi Chunya, Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 15,
+        "title": "Kwana N'enkoro Yane"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "oldBookNumber": 15
   },
   {
     "id": "nca-16",
@@ -745,11 +1077,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 16,
+        "title": "Jesu Nimbatairio Niwe"
+      },
+      {
         "collection": "NZK",
         "number": 16,
         "title": "Bwana Ninakuhitaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 16,
+        "title": "Ruoth Maler, Adwari Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 16,
+        "title": "Ninkoganeti' Omonene!"
+      },
+      {
+        "collection": "SDAH",
+        "number": 483,
+        "title": "I Need Thee Every Hour"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Need",
+    "oldBookNumber": 16
   },
   {
     "id": "nca-17",
@@ -801,11 +1156,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 17,
+        "title": "Ti Nii No Kristo"
+      },
+      {
         "collection": "NZK",
         "number": 17,
         "title": "Si Mimi, Kristo"
+      },
+      {
+        "collection": "WNY",
+        "number": 17,
+        "title": "Kristo, Ok An"
+      },
+      {
+        "collection": "OKN",
+        "number": 17,
+        "title": "N'Yeso Tai Nche"
+      },
+      {
+        "collection": "SDAH",
+        "number": 570,
+        "title": "Not I, But Christ"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Not I, but Christ",
+    "oldBookNumber": 17
   },
   {
     "id": "nca-18",
@@ -847,11 +1225,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 18,
+        "title": "Tutongorie O Ta Muriithi"
+      },
+      {
         "collection": "NZK",
         "number": 18,
         "title": "Mwokozi Kama Mchunga"
+      },
+      {
+        "collection": "WNY",
+        "number": 18,
+        "title": "Yesu, Mond` Itawa Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 18,
+        "title": "Omotoria Torae Ntwe"
+      },
+      {
+        "collection": "SDAH",
+        "number": 545,
+        "title": "Savior, Like a Shepherd"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Bradbury",
+    "oldBookNumber": 18
   },
   {
     "id": "nca-19",
@@ -897,11 +1298,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 19,
+        "title": "Mutharaba-ini wa Mwathani"
+      },
+      {
         "collection": "NZK",
         "number": 19,
         "title": "Msalabani pa Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 19,
+        "title": "Ka ma Yesu Chon Notho E Yath"
+      },
+      {
+        "collection": "OKN",
+        "number": 19,
+        "title": "Mosalab' Omotori' Agakwa"
+      },
+      {
+        "collection": "SDAH",
+        "number": 309,
+        "title": "I Surrender All"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Down at the Cross",
+    "oldBookNumber": 19
   },
   {
     "id": "nca-20",
@@ -939,11 +1363,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 20,
+        "title": "Ngai Witu Ni Ta Ruaro"
+      },
+      {
         "collection": "NZK",
         "number": 20,
         "title": "Mungu Wetu Yeye Mwamba"
+      },
+      {
+        "collection": "WNY",
+        "number": 20,
+        "title": "Nyasachwa En E Lwandawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 20,
+        "title": "Nyasae Oito Negetare"
+      },
+      {
+        "collection": "SDAH",
+        "number": 506,
+        "title": "A Mighty Fortress"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Ein Feste Burg",
+    "oldBookNumber": 20
   },
   {
     "id": "nca-21",
@@ -992,7 +1439,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Father, We Come",
+    "oldBookNumber": 21,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 21,
+        "title": "Ukaani Tukumie Jesu"
+      },
+      {
+        "collection": "NZK",
+        "number": 21,
+        "title": "Baba Twakujia"
+      },
+      {
+        "collection": "WNY",
+        "number": 21,
+        "title": "Adwaro Ket Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 21,
+        "title": "Ngwekane Buna Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 484,
+        "title": "I Need Thee, Precious Jesus"
+      }
+    ]
   },
   {
     "id": "nca-22",
@@ -1038,11 +1515,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 22,
+        "title": "Ndukandige Muhonokia"
+      },
+      {
         "collection": "NZK",
         "number": 22,
         "title": "Usinipite"
+      },
+      {
+        "collection": "WNY",
+        "number": 22,
+        "title": "Kik Ibarna, Yaye Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 22,
+        "title": "Tong'etani' Omotori' One"
+      },
+      {
+        "collection": "SDAH",
+        "number": 569,
+        "title": "Pass Me Not, O Gentle Savior"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Pass Me Not",
+    "oldBookNumber": 22
   },
   {
     "id": "nca-23",
@@ -1091,7 +1591,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "tune": "Gordon",
+    "oldBookNumber": 23,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 23,
+        "title": "Ningwendete Jesu"
+      },
+      {
+        "collection": "NZK",
+        "number": 29,
+        "title": "Yesu Nakupenda"
+      },
+      {
+        "collection": "WNY",
+        "number": 29,
+        "title": "Yesu Jakwath Moheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 29,
+        "title": "Yes' Omwanchi Omorisi 'One"
+      },
+      {
+        "collection": "SDAH",
+        "number": 321,
+        "title": "My Jesus, I love Thee"
+      }
+    ]
   },
   {
     "id": "nca-24",
@@ -1134,7 +1664,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Jesus My Savior",
+    "oldBookNumber": 24,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 24,
+        "title": "Jesu Mukuuri Wakwa"
+      },
+      {
+        "collection": "NZK",
+        "number": 31,
+        "title": "Niimbe Pendo Lake"
+      },
+      {
+        "collection": "WNY",
+        "number": 31,
+        "title": "Duto Paki, Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 31,
+        "title": "'Binto Biakobak' Aye"
+      },
+      {
+        "collection": "SDAH",
+        "number": 152,
+        "title": "Tell Me the Story of Jesus"
+      }
+    ]
   },
   {
     "id": "nca-25",
@@ -1186,11 +1746,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 25,
+        "title": "Jesu Gikeno Kia Ngoro"
+      },
+      {
         "collection": "NZK",
         "number": 23,
         "title": "Yesu Furaha ya Moyo"
+      },
+      {
+        "collection": "WNY",
+        "number": 23,
+        "title": "Aheri, Aheri"
+      },
+      {
+        "collection": "OKN",
+        "number": 23,
+        "title": "Ngwanchete"
+      },
+      {
+        "collection": "SDAH",
+        "number": 242,
+        "title": "Jesus, Thou Joy of Loving Hearts"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "St. Agnes",
+    "oldBookNumber": 25
   },
   {
     "id": "nca-26",
@@ -1242,11 +1825,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 26,
+        "title": "Niekiruo Thuumbi"
+      },
+      {
         "collection": "NZK",
         "number": 25,
         "title": "Taji Mvikeni"
+      },
+      {
+        "collection": "WNY",
+        "number": 25,
+        "title": "In E Ngimana Mochwere"
+      },
+      {
+        "collection": "OKN",
+        "number": 25,
+        "title": "Naye Obogima Bwane"
+      },
+      {
+        "collection": "SDAH",
+        "number": 223,
+        "title": "Crown Him With Many Crowns"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Diademata",
+    "oldBookNumber": 26
   },
   {
     "id": "nca-27",
@@ -1323,7 +1929,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 27,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 27,
+        "title": "Ni Ka Na Ku Gakeenge?"
+      }
+    ]
   },
   {
     "id": "nca-28",
@@ -1377,11 +1992,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 28,
+        "title": "Ninagainaga Uhoro Mwega"
+      },
+      {
         "collection": "NZK",
         "number": 11,
         "title": "Sauti Zote Ziimbe"
+      },
+      {
+        "collection": "WNY",
+        "number": 11,
+        "title": "Yesu, Isesingo"
+      },
+      {
+        "collection": "OKN",
+        "number": 11,
+        "title": "Yes 'Omonyaira"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 28
   },
   {
     "id": "nca-29",
@@ -1420,7 +2052,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 29,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 29,
+        "title": "Ukaani Andu Aria"
+      }
+    ]
   },
   {
     "id": "nca-30",
@@ -1472,11 +2113,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 30,
+        "title": "Riitwa Ria Jesu Ni Riega"
+      },
+      {
         "collection": "NZK",
         "number": 24,
         "title": "Jina Lake Yesu Tamu Tukilisikia"
+      },
+      {
+        "collection": "WNY",
+        "number": 24,
+        "title": "Jawarna To Ni Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 24,
+        "title": "O Yes' Omobori' One"
+      },
+      {
+        "collection": "SDAH",
+        "number": 232,
+        "title": "At the Name of Jesus"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "St. Peter",
+    "oldBookNumber": 30
   },
   {
     "id": "nca-31",
@@ -1522,11 +2186,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 31,
+        "title": "Jesu Muukuri Ruaro Rurumu"
+      },
+      {
         "collection": "NZK",
         "number": 40,
         "title": "Njoo, Roho Mtukufu"
+      },
+      {
+        "collection": "WNY",
+        "number": 40,
+        "title": "Alleluia! Ruoth Nochier"
+      },
+      {
+        "collection": "OKN",
+        "number": 40,
+        "title": "'Karar' As 'Embera"
+      },
+      {
+        "collection": "SDAH",
+        "number": 507,
+        "title": "Moment by Moment"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "A Shelter in the Time of Storm",
+    "oldBookNumber": 31
   },
   {
     "id": "nca-32",
@@ -1569,7 +2256,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Give Me the Bible",
+    "oldBookNumber": 32,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 32,
+        "title": "Mbuku Ya Ngai"
+      },
+      {
+        "collection": "NZK",
+        "number": 52,
+        "title": "Nipe Biblia"
+      },
+      {
+        "collection": "WNY",
+        "number": 52,
+        "title": "Jawar Yesu Itelna"
+      },
+      {
+        "collection": "OKN",
+        "number": 52,
+        "title": "Ar 'As' Egetunwa"
+      },
+      {
+        "collection": "SDAH",
+        "number": 272,
+        "title": "Give Me the Bible"
+      }
+    ]
   },
   {
     "id": "nca-33",
@@ -1608,11 +2325,34 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NZK",
+        "collection": "NCA-OLD",
         "number": 33,
-        "title": "Karibu Sana"
+        "title": "Turaatime Tugithii"
+      },
+      {
+        "collection": "NZK",
+        "number": 26,
+        "title": "Tutokapo Tubariki"
+      },
+      {
+        "collection": "WNY",
+        "number": 26,
+        "title": "Ji Duto Te Mondo Giwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 26,
+        "title": "Chimeme Chionsi Chitere"
+      },
+      {
+        "collection": "SDAH",
+        "number": 67,
+        "title": "O Lord, Now Let Your Servant"
       }
-    ]
+    ],
+    "category": "Benedictions & Doxologies",
+    "tune": "Sicilian Mariners",
+    "oldBookNumber": 33
   },
   {
     "id": "nca-34",
@@ -1664,11 +2404,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 34,
+        "title": "O Ringi Jesu Nitwarikumia"
+      },
+      {
         "collection": "NZK",
         "number": 27,
         "title": "Tena Mwokozi Twalitukuza"
+      },
+      {
+        "collection": "WNY",
+        "number": 27,
+        "title": "To En Ng`a Man E Kund Dhok"
+      },
+      {
+        "collection": "OKN",
+        "number": 27,
+        "title": "Ning'ore?"
+      },
+      {
+        "collection": "SDAH",
+        "number": 249,
+        "title": "Praise Him! Praise Him!"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Joyful Song",
+    "oldBookNumber": 34
   },
   {
     "id": "nca-35",
@@ -1714,11 +2477,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 35,
+        "title": "Oya Riitwa Riu Ria Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 28,
         "title": "Jina Lake Yesu Tamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 28,
+        "title": "Nying Mamit E Piny Gi Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 28,
+        "title": "'Rieta Ria Yeso Rigiya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 474,
+        "title": "Take The Name Of Jesus With You"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Precious Name",
+    "oldBookNumber": 35
   },
   {
     "id": "nca-36",
@@ -1770,11 +2556,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 36,
+        "title": "Jesu Ningwendetee"
+      },
+      {
         "collection": "NZK",
         "number": 29,
         "title": "Yesu Nakupenda"
+      },
+      {
+        "collection": "WNY",
+        "number": 29,
+        "title": "Yesu Jakwath Moheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 29,
+        "title": "Yes' Omwanchi Omorisi 'One"
+      },
+      {
+        "collection": "SDAH",
+        "number": 321,
+        "title": "My Jesus, I love Thee"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Gordon",
+    "oldBookNumber": 36
   },
   {
     "id": "nca-37",
@@ -1826,11 +2635,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 37,
+        "title": "Jesu Niunyendeete"
+      },
+      {
         "collection": "NZK",
         "number": 30,
         "title": "Yesu Unipendaye"
+      },
+      {
+        "collection": "WNY",
+        "number": 30,
+        "title": "Apako Hera Nyasaye Wuora"
+      },
+      {
+        "collection": "OKN",
+        "number": 30,
+        "title": "Nter' Obwanchani Bwa Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 190,
+        "title": "Jesus Loves Me"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Jesus Loves Me",
+    "oldBookNumber": 37
   },
   {
     "id": "nca-38",
@@ -1892,11 +2724,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 38,
+        "title": "Nguinira Wendo Wake"
+      },
+      {
         "collection": "NZK",
         "number": 31,
         "title": "Niimbe Pendo Lake"
+      },
+      {
+        "collection": "WNY",
+        "number": 31,
+        "title": "Duto Paki, Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 31,
+        "title": "'Binto Biakobak' Aye"
+      },
+      {
+        "collection": "SDAH",
+        "number": 340,
+        "title": "Jesus Saves"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Jesus Saves",
+    "oldBookNumber": 38
   },
   {
     "id": "nca-39",
@@ -1935,11 +2790,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 39,
+        "title": "Ndi Ruimbo Nyendeete Kuina"
+      },
+      {
         "collection": "NZK",
         "number": 32,
         "title": "Ninao Wimbo Mzuri"
+      },
+      {
+        "collection": "WNY",
+        "number": 32,
+        "title": "Koro Ka Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 32,
+        "title": "Mbe N'Obosera Bwa Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 462,
+        "title": "Blessed Assurance, Jesus Is Mine"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Kirkpatrick",
+    "oldBookNumber": 39
   },
   {
     "id": "nca-40",
@@ -1984,7 +2862,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Hudson",
+    "oldBookNumber": 40,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 40,
+        "title": "Niakuire Muti-ini"
+      },
+      {
+        "collection": "NZK",
+        "number": 141,
+        "title": "Chini ya Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 141,
+        "title": "Yesu Oluongoi Mondo Ibi"
+      },
+      {
+        "collection": "OKN",
+        "number": 141,
+        "title": "Yes' As' Obworor' Okorangeirie"
+      },
+      {
+        "collection": "SDAH",
+        "number": 163,
+        "title": "At the Cross"
+      }
+    ]
   },
   {
     "id": "nca-41",
@@ -2044,11 +2952,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 41,
+        "title": "O Ruciini Nituonaga"
+      },
+      {
         "collection": "NZK",
         "number": 90,
         "title": "Mapya Ni Mapenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 90,
+        "title": "Winjuru Sigandwa Miwuoro"
+      },
+      {
+        "collection": "OKN",
+        "number": 90,
+        "title": "igw' Omogano Bw'ogokumia"
+      },
+      {
+        "collection": "SDAH",
+        "number": 39,
+        "title": "Lord, in the Morning"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "tune": "Melcombe",
+    "oldBookNumber": 41
   },
   {
     "id": "nca-42",
@@ -2105,7 +3036,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 42,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 42,
+        "title": "Uhoro Wa Muoyo"
+      }
+    ]
   },
   {
     "id": "nca-43",
@@ -2149,11 +3089,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 43,
+        "title": "Njira Uhoro Wa Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 34,
         "title": "Nipe Habari za Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 34,
+        "title": "Nyasaye Wachungo Ka Wawer"
+      },
+      {
+        "collection": "OKN",
+        "number": 34,
+        "title": "Motoria Twabak'Erieta Riao"
+      },
+      {
+        "collection": "SDAH",
+        "number": 152,
+        "title": "Tell Me the Story of Jesus"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Story of Jesus",
+    "oldBookNumber": 43
   },
   {
     "id": "nca-44",
@@ -2199,11 +3162,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 44,
+        "title": "Nindakuuriruo Ni Mwathani"
+      },
+      {
         "collection": "NZK",
         "number": 35,
         "title": "Nimekombolewa na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 35,
+        "title": "Paruru Nying Yesu Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 35,
+        "title": "Ira Erieta Ria Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 337,
+        "title": "Redeemed"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Redeemed",
+    "oldBookNumber": 44
   },
   {
     "id": "nca-45",
@@ -2250,11 +3236,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 45,
+        "title": "Ni Muthenya Wa Munyaka"
+      },
+      {
         "collection": "NZK",
         "number": 36,
         "title": "Ni Siku Kuu"
+      },
+      {
+        "collection": "WNY",
+        "number": 36,
+        "title": "Ruoth Yesu, Nithona"
+      },
+      {
+        "collection": "OKN",
+        "number": 36,
+        "title": "Yeso Nagwanchire Aye Noyone"
+      },
+      {
+        "collection": "SDAH",
+        "number": 382,
+        "title": "O Day Of Rest And Gladness"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Mendebras",
+    "oldBookNumber": 45
   },
   {
     "id": "nca-46",
@@ -2289,7 +3298,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 46,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 46,
+        "title": "Ngoro Yakwa No Ihote"
+      }
+    ]
   },
   {
     "id": "nca-47",
@@ -2337,7 +3355,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Benedictions & Doxologies",
+    "oldBookNumber": 47,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 47,
+        "title": "Riu Turaathime Jesu"
+      }
+    ]
   },
   {
     "id": "nca-48",
@@ -2378,7 +3405,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 48,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 48,
+        "title": "Jehova Wa Kuu Betheli"
+      }
+    ]
   },
   {
     "id": "nca-49",
@@ -2426,11 +3462,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 49,
+        "title": "Nguucia Hari We Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 33,
         "title": "Karibu Sana"
+      },
+      {
+        "collection": "WNY",
+        "number": 33,
+        "title": "Wuonwa, Gonywa Gi Gweth Mari"
+      },
+      {
+        "collection": "OKN",
+        "number": 33,
+        "title": "Tata Tosibore Bono"
+      },
+      {
+        "collection": "SDAH",
+        "number": 301,
+        "title": "Nearer, Still Nearer"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Morris",
+    "oldBookNumber": 49
   },
   {
     "id": "nca-50",
@@ -2473,7 +3532,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "tune": "All to Christ",
+    "oldBookNumber": 50,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 50,
+        "title": "Jesu Niarihite Thiiri"
+      },
+      {
+        "collection": "NZK",
+        "number": 119,
+        "title": "Yesu Anasema"
+      },
+      {
+        "collection": "WNY",
+        "number": 119,
+        "title": "Sabato Mari, Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 119,
+        "title": "'Sabato Enchenu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 281,
+        "title": "I Gave My Life for Thee"
+      }
+    ]
   },
   {
     "id": "nca-51",
@@ -2526,7 +3615,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "tune": "The Ninety and Nine",
+    "oldBookNumber": 51,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 51,
+        "title": "Ngondu Miroongo Kenda Na Kenda"
+      },
+      {
+        "collection": "NZK",
+        "number": 104,
+        "title": "Yesu Aliniita, “Njoo”"
+      },
+      {
+        "collection": "WNY",
+        "number": 104,
+        "title": "Wagedi e Lwanda Mangima"
+      },
+      {
+        "collection": "OKN",
+        "number": 104,
+        "title": "Toagach' Egetare Ke Moyo"
+      },
+      {
+        "collection": "SDAH",
+        "number": 373,
+        "title": "Seeking The Lost"
+      }
+    ]
   },
   {
     "id": "nca-52",
@@ -2562,7 +3681,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "tune": "Cwm Rhondda",
+    "oldBookNumber": 52,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 52,
+        "title": "Muhonokia, Ndoongoria"
+      },
+      {
+        "collection": "NZK",
+        "number": 73,
+        "title": "Nakaza Mwendo Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 73,
+        "title": "Ahero Nyiso Weche"
+      },
+      {
+        "collection": "OKN",
+        "number": 73,
+        "title": "Nintebe Omogano"
+      },
+      {
+        "collection": "SDAH",
+        "number": 545,
+        "title": "Savior, Like a Shepherd"
+      }
+    ]
   },
   {
     "id": "nca-53",
@@ -2595,7 +3744,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 53,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 53,
+        "title": "Muumbi Wa Thi O Na Iria"
+      }
+    ]
   },
   {
     "id": "nca-54",
@@ -2644,7 +3802,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 54,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 54,
+        "title": "Muru Wa Ngai Niokire"
+      }
+    ]
   },
   {
     "id": "nca-55",
@@ -2686,11 +3853,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 55,
+        "title": "Ninguinira Ngai Hoti"
+      },
+      {
         "collection": "NZK",
         "number": 38,
         "title": "Nasifu Shani ya Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 38,
+        "title": "Anawer Hera Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 38,
+        "title": "Nintere Obwanchani"
+      },
+      {
+        "collection": "SDAH",
+        "number": 88,
+        "title": "I Sing the Mighty Power of God"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Varina",
+    "oldBookNumber": 55
   },
   {
     "id": "nca-56",
@@ -2751,11 +3941,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 56,
+        "title": "Mwathani Ninjiguaga"
+      },
+      {
         "collection": "NZK",
         "number": 39,
         "title": "Ati Kuna Mvua Njema"
+      },
+      {
+        "collection": "WNY",
+        "number": 39,
+        "title": "Nitie Wer Mamit E Dhoga"
+      },
+      {
+        "collection": "OKN",
+        "number": 39,
+        "title": "Ninde N'ogoter' Okuya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 195,
+        "title": "Showers of Blessing"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Showers of Blessing",
+    "oldBookNumber": 56
   },
   {
     "id": "nca-57",
@@ -2801,11 +4014,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 57,
+        "title": "Wee Roho Mutheru Uka"
+      },
+      {
         "collection": "NZK",
         "number": 40,
         "title": "Njoo, Roho Mtukufu"
+      },
+      {
+        "collection": "WNY",
+        "number": 40,
+        "title": "Alleluia! Ruoth Nochier"
+      },
+      {
+        "collection": "OKN",
+        "number": 40,
+        "title": "'Karar' As 'Embera"
+      },
+      {
+        "collection": "SDAH",
+        "number": 260,
+        "title": "Hover O’er Me, Holy Spirit"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Hover O'er Me",
+    "oldBookNumber": 57
   },
   {
     "id": "nca-58",
@@ -2847,11 +4083,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 58,
+        "title": "We Roho Mutheru Ma"
+      },
+      {
         "collection": "NZK",
         "number": 41,
         "title": "Roho Mtakatifu"
+      },
+      {
+        "collection": "WNY",
+        "number": 41,
+        "title": "E Kalwari Jawar Notho"
+      },
+      {
+        "collection": "OKN",
+        "number": 41,
+        "title": "'Se Kalvari"
+      },
+      {
+        "collection": "SDAH",
+        "number": 261,
+        "title": "The Spirit of the Lord Revealed"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 58
   },
   {
     "id": "nca-59",
@@ -2903,11 +4161,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 59,
+        "title": "Wee Roho Wa Matu-ini"
+      },
+      {
         "collection": "NZK",
         "number": 42,
         "title": "Ewe Roho wa Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 42,
+        "title": "Hera Ma Yesu Hera Go"
+      },
+      {
+        "collection": "OKN",
+        "number": 42,
+        "title": "'Gwancha Tikogokwaneka"
+      },
+      {
+        "collection": "SDAH",
+        "number": 268,
+        "title": "Holy Spirit, Light Divine"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Mercy",
+    "oldBookNumber": 59
   },
   {
     "id": "nca-60",
@@ -2946,7 +4227,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Morning & Evening Worship",
+    "oldBookNumber": 60,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 60,
+        "title": "Riua Nirithuire"
+      }
+    ]
   },
   {
     "id": "nca-61",
@@ -2984,11 +4274,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 61,
+        "title": "Ndaagia Gikeno Na Ngwataniro"
+      },
+      {
         "collection": "NZK",
         "number": 43,
         "title": "Furaha Gani"
+      },
+      {
+        "collection": "WNY",
+        "number": 43,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 43,
+        "title": "Ntebi' Amang'ana A Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 342,
+        "title": "Is This Day Of New Beginnings"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 61
   },
   {
     "id": "nca-62",
@@ -3034,11 +4346,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 62,
+        "title": "Gutiri Na Muraata Ta Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 44,
         "title": "Hakuna Rafiki Kama Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 44,
+        "title": "Ang`eyo Yesu Osewara"
+      },
+      {
+        "collection": "OKN",
+        "number": 44,
+        "title": "Naborigwe, Naki Ndararie!"
+      },
+      {
+        "collection": "SDAH",
+        "number": 499,
+        "title": "What a Friend We Have in Jesus"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "No, Not One",
+    "oldBookNumber": 62
   },
   {
     "id": "nca-63",
@@ -3082,11 +4417,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 63,
+        "title": "Utheri Wi Kirima-ini"
+      },
+      {
         "collection": "NZK",
         "number": 45,
         "title": "Mlimani Pana Mwanga"
+      },
+      {
+        "collection": "WNY",
+        "number": 45,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 45,
+        "title": "E Rituko Riomogoko"
+      },
+      {
+        "collection": "SDAH",
+        "number": 580,
+        "title": "This Little Light of Mine"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 63
   },
   {
     "id": "nca-64",
@@ -3128,11 +4485,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 64,
+        "title": "Guikaraga Hari Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 46,
         "title": "Miguuni Pake Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 46,
+        "title": "Chunya Nigi Mor Moloyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 46,
+        "title": "Nkoro Nere N'Omogoko"
+      },
+      {
+        "collection": "SDAH",
+        "number": 290,
+        "title": "Turn Your Eyes Upon Jesus"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 64
   },
   {
     "id": "nca-65",
@@ -3178,11 +4557,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 65,
+        "title": "Mwaathani Ningwendete Ma"
+      },
+      {
         "collection": "NZK",
         "number": 48,
         "title": "Ninakupenda Zaidi"
+      },
+      {
+        "collection": "WNY",
+        "number": 48,
+        "title": "Yesu Kristo Oberna Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 48,
+        "title": "Yeso Obeire Omosani"
+      },
+      {
+        "collection": "SDAH",
+        "number": 319,
+        "title": "Lord, I Want To Be A Christian"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 65
   },
   {
     "id": "nca-66",
@@ -3234,11 +4635,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 66,
+        "title": "Ndina Muraata Munene"
+      },
+      {
         "collection": "NZK",
         "number": 49,
         "title": "Ninaye Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 49,
+        "title": "Ywaya Machiegni Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 49,
+        "title": "Ng'usa Ang'e N'enkoro Yao"
+      },
+      {
+        "collection": "SDAH",
+        "number": 186,
+        "title": "I’ve Found a Friend"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Friend",
+    "oldBookNumber": 66
   },
   {
     "id": "nca-67",
@@ -3284,11 +4708,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 67,
+        "title": "Mwathani mumenyagirire"
+      },
+      {
         "collection": "NZK",
         "number": 50,
         "title": "Mungu Awe Nanyi Daima"
+      },
+      {
+        "collection": "WNY",
+        "number": 50,
+        "title": "Kristo Obedo Misango Mar Golo Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 50,
+        "title": "'Motoria Bw'Ogokumia"
+      },
+      {
+        "collection": "SDAH",
+        "number": 65,
+        "title": "God Be With You"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Towner",
+    "oldBookNumber": 67
   },
   {
     "id": "nca-68",
@@ -3326,11 +4773,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 68,
+        "title": "Jesu Mukuuri wakwa kuna"
+      },
+      {
         "collection": "NZK",
         "number": 51,
         "title": "Yesu Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 51,
+        "title": "Jakwath Nokwayo Rombege"
+      },
+      {
+        "collection": "OKN",
+        "number": 51,
+        "title": "Nchiare Emerongo Kianda Na Kianda"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 68
   },
   {
     "id": "nca-69",
@@ -3374,11 +4838,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 69,
+        "title": "Nihari Mwihoko Wa Goro"
+      },
+      {
         "collection": "NZK",
         "number": 162,
         "title": "Tumaini Liko"
+      },
+      {
+        "collection": "WNY",
+        "number": 162,
+        "title": "Abiro Ni Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 162,
+        "title": "Ngocha Nd' Omosalaba"
+      },
+      {
+        "collection": "SDAH",
+        "number": 440,
+        "title": "How Cheering Is The Christian’s Hope"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "oldBookNumber": 69
   },
   {
     "id": "nca-70",
@@ -3422,11 +4908,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 70,
+        "title": "Kwi Na Kiraathimo"
+      },
+      {
         "collection": "NZK",
         "number": 47,
         "title": "Ni Heri Kifungo"
+      },
+      {
+        "collection": "WNY",
+        "number": 47,
+        "title": "Yesu Jawarwa E Bethlehem Chon"
+      },
+      {
+        "collection": "OKN",
+        "number": 47,
+        "title": "Yeso Omotoria Bethlehemu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 195,
+        "title": "Showers of Blessing"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Showers of Blessing",
+    "oldBookNumber": 70
   },
   {
     "id": "nca-71",
@@ -3474,11 +4983,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 71,
+        "title": "He Bibilia Njata Ya Gikeno"
+      },
+      {
         "collection": "NZK",
         "number": 52,
         "title": "Nipe Biblia"
+      },
+      {
+        "collection": "WNY",
+        "number": 52,
+        "title": "Jawar Yesu Itelna"
+      },
+      {
+        "collection": "OKN",
+        "number": 52,
+        "title": "Ar 'As' Egetunwa"
+      },
+      {
+        "collection": "SDAH",
+        "number": 272,
+        "title": "Give Me the Bible"
       }
-    ]
+    ],
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Give Me the Bible",
+    "oldBookNumber": 71
   },
   {
     "id": "nca-72",
@@ -3531,11 +5063,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 72,
+        "title": "Ninyendeete Ibuku Ria Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 62,
         "title": "Napenda Kitabu Chake"
+      },
+      {
+        "collection": "WNY",
+        "number": 62,
+        "title": "Onge Osiep Moro Kaka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 62,
+        "title": "Tari 'Mosani Obuete Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 273,
+        "title": "Lord, I Have Made Thy Word My Choice"
       }
-    ]
+    ],
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Holy Bible, Book Divine",
+    "oldBookNumber": 72
   },
   {
     "id": "nca-73",
@@ -3579,11 +5134,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 73,
+        "title": "Ninyendeete Kuhuunjia"
+      },
+      {
         "collection": "NZK",
         "number": 53,
         "title": "Napenda Kuhubiri"
+      },
+      {
+        "collection": "WNY",
+        "number": 53,
+        "title": "Wapako Ruoth Ma Jawarwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 53,
+        "title": "Togi' Omonen' Omotoria"
+      },
+      {
+        "collection": "SDAH",
+        "number": 457,
+        "title": "I Love To Tell The Story"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Hankey",
+    "oldBookNumber": 73
   },
   {
     "id": "nca-74",
@@ -3634,7 +5212,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 74,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 74,
+        "title": "We Niukeyuumia Ruuho"
+      }
+    ]
   },
   {
     "id": "nca-75",
@@ -3680,11 +5267,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 75,
+        "title": "Ningwenda Kumenya Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 54,
         "title": "Nataka nimjue Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 54,
+        "title": "Wuod Dhano Ma Ne Otho"
+      },
+      {
+        "collection": "OKN",
+        "number": 54,
+        "title": "\"Bw'emechando\""
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 75
   },
   {
     "id": "nca-76",
@@ -3730,11 +5334,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 76,
+        "title": "Tuhaandaga Gwakia"
+      },
+      {
         "collection": "NZK",
         "number": 55,
         "title": "Twapanda Mapema"
+      },
+      {
+        "collection": "WNY",
+        "number": 55,
+        "title": "Awero Teko Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 55,
+        "title": "Nter' Okobua Kwa Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 369,
+        "title": "Bringing In The Sheaves"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Harvest",
+    "oldBookNumber": 76
   },
   {
     "id": "nca-77",
@@ -3788,11 +5415,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 77,
+        "title": "Mutihonokiei Aria Mekuura"
+      },
+      {
         "collection": "NZK",
         "number": 56,
         "title": "Walio Kifoni"
+      },
+      {
+        "collection": "WNY",
+        "number": 56,
+        "title": "Ruoth, Awinjo Wach Mar Gwethni"
+      },
+      {
+        "collection": "OKN",
+        "number": 56,
+        "title": "Nere Embura Engiya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 367,
+        "title": "Rescue The Perishing"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Rescue the Perishing",
+    "oldBookNumber": 77
   },
   {
     "id": "nca-78",
@@ -3833,11 +5483,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 78,
+        "title": "Ndiraririkana Bururi Muthaka"
+      },
+      {
         "collection": "NZK",
         "number": 58,
         "title": "Leo Ninafikiria"
+      },
+      {
+        "collection": "WNY",
+        "number": 58,
+        "title": "Muya Maler Jatendwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 58,
+        "title": "Omoika Omochenu"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "oldBookNumber": 78
   },
   {
     "id": "nca-79",
@@ -3877,11 +5544,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 79,
+        "title": "Ndukaarege Wira"
+      },
+      {
         "collection": "NZK",
         "number": 57,
         "title": "Usiikatae Kazi"
+      },
+      {
+        "collection": "WNY",
+        "number": 57,
+        "title": "Roho Mar Nyasaye, Ibina"
+      },
+      {
+        "collection": "OKN",
+        "number": 57,
+        "title": "Ichw' Omoik' Omochenu"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "oldBookNumber": 79
   },
   {
     "id": "nca-80",
@@ -3933,11 +5617,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 80,
+        "title": "Ninyonete Murata Wa Goro"
+      },
+      {
         "collection": "NZK",
         "number": 61,
         "title": "Nimemwona Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 61,
+        "title": "Osiep Manade, En Mor Manade"
+      },
+      {
+        "collection": "OKN",
+        "number": 61,
+        "title": "Ngosanga Ki Mogok'o Igoro"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "oldBookNumber": 80
   },
   {
     "id": "nca-81",
@@ -3979,11 +5680,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 81,
+        "title": "Andu Rutaai Wira"
+      },
+      {
         "collection": "NZK",
         "number": 59,
         "title": "Fanyeni Kazi Zenu"
+      },
+      {
+        "collection": "WNY",
+        "number": 59,
+        "title": "Muya Maler, Winj Alamwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 59,
+        "title": "'Moika Igw' Ogobaba"
+      },
+      {
+        "collection": "SDAH",
+        "number": 375,
+        "title": "Work, For The Night Is Coming"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Diligence",
+    "oldBookNumber": 81
   },
   {
     "id": "nca-82",
@@ -4030,7 +5754,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 82,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 82,
+        "title": "Ukaani Tukene Andu A Mwathani"
+      }
+    ]
   },
   {
     "id": "nca-83",
@@ -4069,11 +5802,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 83,
+        "title": "Wee Niwe Wandutiire"
+      },
+      {
         "collection": "NZK",
         "number": 121,
         "title": "Katika Wenye dhambi"
+      },
+      {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 281,
+        "title": "I Gave My Life for Thee"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 83
   },
   {
     "id": "nca-84",
@@ -4125,11 +5880,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 84,
+        "title": "Riria Nguona Mutharaba"
+      },
+      {
         "collection": "NZK",
         "number": 63,
         "title": "Niuonapo Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 63,
+        "title": "Ler Wang` Chieng`orieny E Gode"
+      },
+      {
+        "collection": "OKN",
+        "number": 63,
+        "title": "'Masase As' Egetunwa"
+      },
+      {
+        "collection": "SDAH",
+        "number": 154,
+        "title": "When I Survey the Wondrous Cross"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Hamburg",
+    "oldBookNumber": 84
   },
   {
     "id": "nca-85",
@@ -4186,7 +5964,37 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "tune": "Stille Nacht",
+    "oldBookNumber": 85,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 85,
+        "title": "Ni Utuku Gukiriitwo"
+      },
+      {
+        "collection": "NZK",
+        "number": 66,
+        "title": "Roho Yangu Amka Sasa"
+      },
+      {
+        "collection": "WNY",
+        "number": 66,
+        "title": "Aseyudo Osiep Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 66,
+        "title": "Nanyorire Omosani"
+      },
+      {
+        "collection": "SDAH",
+        "number": 143,
+        "title": "Silent Night, Holy Night"
+      }
+    ]
   },
   {
     "id": "nca-86",
@@ -4229,7 +6037,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 86,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 86,
+        "title": "Mee Ha Aria Mamenyagirira"
+      }
+    ]
   },
   {
     "id": "nca-87",
@@ -4282,7 +6099,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 87,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 87,
+        "title": "Jesu Niaretana Mugunda"
+      }
+    ]
   },
   {
     "id": "nca-88",
@@ -4331,7 +6157,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 88,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 88,
+        "title": "Jesu Mwega Mutheru"
+      }
+    ]
   },
   {
     "id": "nca-89",
@@ -4366,7 +6201,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 89,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 89,
+        "title": "Ugihanda Na Maithori"
+      }
+    ]
   },
   {
     "id": "nca-90",
@@ -4409,7 +6253,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 90,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 90,
+        "title": "Turaigua Witano"
+      }
+    ]
   },
   {
     "id": "nca-91",
@@ -4454,7 +6307,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 91,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 91,
+        "title": "Gwatiai Mataawa Manyu"
+      }
+    ]
   },
   {
     "id": "nca-92",
@@ -4500,11 +6362,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 92,
+        "title": "Huuha Coro Wa Injili"
+      },
+      {
         "collection": "NZK",
         "number": 64,
         "title": "Piga Panda ya Injili"
+      },
+      {
+        "collection": "WNY",
+        "number": 64,
+        "title": "Kabedo E Tiend Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 64,
+        "title": "Ko ndabe Amo Na Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 614,
+        "title": "Sound the Battle Cry"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Lenox",
+    "oldBookNumber": 92
   },
   {
     "id": "nca-93",
@@ -4550,11 +6435,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 93,
+        "title": "Nituthiini Ita Thigari Cia Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 65,
         "title": "Twendeni Askari"
+      },
+      {
+        "collection": "WNY",
+        "number": 65,
+        "title": "Ruodha, Aheri Maradier"
+      },
+      {
+        "collection": "OKN",
+        "number": 65,
+        "title": "Omonene Ningwanchete"
+      },
+      {
+        "collection": "SDAH",
+        "number": 612,
+        "title": "Onward, Christian Soldiers"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "St. Gertrude",
+    "oldBookNumber": 93
   },
   {
     "id": "nca-94",
@@ -4598,11 +6506,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 94,
+        "title": "Ngoro Yakwa Arahuka"
+      },
+      {
         "collection": "NZK",
         "number": 94,
         "title": "Po pote Mashamba Yajaa"
+      },
+      {
+        "collection": "WNY",
+        "number": 94,
+        "title": "Yesu Kristo Odwaro Walame"
+      },
+      {
+        "collection": "OKN",
+        "number": 94,
+        "title": "Motori' Atotebia Torende"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 94
   },
   {
     "id": "nca-95",
@@ -4647,11 +6572,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 95,
+        "title": "Gitina Kirumu Ni Ciugo Cia Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 75,
         "title": "Msingi Imara"
+      },
+      {
+        "collection": "WNY",
+        "number": 75,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 75,
+        "title": "Nindigetie Manye Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 509,
+        "title": "How Firm a Foundation"
       }
-    ]
+    ],
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Foundation",
+    "oldBookNumber": 95
   },
   {
     "id": "nca-96",
@@ -4687,11 +6635,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 96,
+        "title": "Arahuka Wee Ngoro"
+      },
+      {
         "collection": "NZK",
         "number": 67,
         "title": "Kesha Roho Yangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 67,
+        "title": "Nyasachwa Mondo Obed Kodu"
+      },
+      {
+        "collection": "OKN",
+        "number": 67,
+        "title": "Nyasa' Abarende Botambe"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 96
   },
   {
     "id": "nca-97",
@@ -4738,11 +6703,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 97,
+        "title": "Ningwihoka Thakame Io"
+      },
+      {
         "collection": "NZK",
         "number": 69,
         "title": "Cha Kutumaini Sina"
+      },
+      {
+        "collection": "WNY",
+        "number": 69,
+        "title": "Puonja Injili Lilo"
+      },
+      {
+        "collection": "OKN",
+        "number": 69,
+        "title": "Ntebi Omogano O Igoro"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "oldBookNumber": 97
   },
   {
     "id": "nca-98",
@@ -4780,11 +6762,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 98,
+        "title": "Ruagirira Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 68,
         "title": "Umtetee Mungu Duniani"
+      },
+      {
+        "collection": "WNY",
+        "number": 68,
+        "title": "Yesu Nowara"
+      },
+      {
+        "collection": "OKN",
+        "number": 68,
+        "title": "Amaena Yeso N'Oyone"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 98
   },
   {
     "id": "nca-99",
@@ -4825,11 +6824,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 99,
+        "title": "Wiigue Uhooe"
+      },
+      {
         "collection": "NZK",
         "number": 71,
         "title": "Kesha Ukaombe"
+      },
+      {
+        "collection": "WNY",
+        "number": 71,
+        "title": "Puonja Wach Biblos"
+      },
+      {
+        "collection": "OKN",
+        "number": 71,
+        "title": "Ng'a Ay' Ebuku"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 99
   },
   {
     "id": "nca-100",
@@ -4864,7 +6880,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Christian Mission & Warfare",
+    "oldBookNumber": 100,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 100,
+        "title": "Mbaara Ni Njihu"
+      }
+    ]
   },
   {
     "id": "nca-101",
@@ -4903,11 +6928,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 101,
+        "title": "Tugwaka Iguru Ria Ruaro"
+      },
+      {
         "collection": "NZK",
         "number": 72,
         "title": "Jenga Juu ya Mwamba"
+      },
+      {
+        "collection": "WNY",
+        "number": 72,
+        "title": "Ahero Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 72,
+        "title": "Nanchir' Eng'ana ya Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 522,
+        "title": "My Hope Is Built on Nothing Less"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Solid Rock",
+    "oldBookNumber": 101
   },
   {
     "id": "nca-102",
@@ -4953,11 +7001,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 102,
+        "title": "Undoongorie Mwathi Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 73,
         "title": "Nakaza Mwendo Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 73,
+        "title": "Ahero Nyiso Weche"
+      },
+      {
+        "collection": "OKN",
+        "number": 73,
+        "title": "Nintebe Omogano"
+      },
+      {
+        "collection": "SDAH",
+        "number": 545,
+        "title": "Savior, Like a Shepherd"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Cwm Rhondda",
+    "oldBookNumber": 102
   },
   {
     "id": "nca-103",
@@ -5019,11 +7090,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 103,
+        "title": "Ta Njiira Wee Muraangiri"
+      },
+      {
         "collection": "NZK",
         "number": 74,
         "title": "Niambie Ee Mlinzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 74,
+        "title": "Bende Nichungi E Ndalo Chandruok?"
+      },
+      {
+        "collection": "OKN",
+        "number": 74,
+        "title": "Inchwo Abegeni"
+      },
+      {
+        "collection": "SDAH",
+        "number": 601,
+        "title": "Watchman, on the Walls of Zion"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "Aberystwyth",
+    "oldBookNumber": 103
   },
   {
     "id": "nca-104",
@@ -5067,11 +7161,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 104,
+        "title": "Inyui Ni Inyui Ene Uthamaki"
+      },
+      {
         "collection": "NZK",
         "number": 76,
         "title": "Mrithi Ufalme"
+      },
+      {
+        "collection": "WNY",
+        "number": 76,
+        "title": "Chwoyo Ndalo Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 76,
+        "title": "Kobusura Mambia"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "oldBookNumber": 104
   },
   {
     "id": "nca-105",
@@ -5131,17 +7242,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 105,
+        "title": "Muraangiri Uruugamite Ruthiingo-ini"
+      },
+      {
         "collection": "NZK",
         "number": 77,
         "title": "Je! Mlinzi Ukutani"
+      },
+      {
+        "collection": "WNY",
+        "number": 77,
+        "title": "Kony Jo Madwaro Tho"
+      },
+      {
+        "collection": "OKN",
+        "number": 77,
+        "title": "Tori' Abagosiria"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "oldBookNumber": 105
   },
   {
     "id": "nca-106",
     "collection": "NCA",
     "number": 106,
-    "title": "Mwathani Ni Nginya  Ri?",
+    "title": "Mwathani Ni Nginya Ri?",
     "stanzas": [
       {
         "number": 1,
@@ -5186,7 +7314,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 106,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 106,
+        "title": "Mwathani Ni Nginya Ri?"
+      }
+    ]
   },
   {
     "id": "nca-107",
@@ -5238,11 +7375,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 107,
+        "title": "Mwaki Uria Wakanaga"
+      },
+      {
         "collection": "NZK",
         "number": 80,
         "title": "Tupe Moto wa Uhai"
+      },
+      {
+        "collection": "WNY",
+        "number": 80,
+        "title": "Daher Tiyo Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 80,
+        "title": "Omonene Rigoro Nainyora"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 107
   },
   {
     "id": "nca-108",
@@ -5291,7 +7445,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Christian Mission & Warfare",
+    "oldBookNumber": 108,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 108,
+        "title": "Atheru Ukirai"
+      }
+    ]
   },
   {
     "id": "nca-109",
@@ -5330,11 +7493,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 109,
+        "title": "Ngwenda Witikio Murumu"
+      },
+      {
         "collection": "NZK",
         "number": 79,
         "title": "Nataka Imani Hii"
+      },
+      {
+        "collection": "WNY",
+        "number": 79,
+        "title": "Kik Ibadhri Ni Tich"
+      },
+      {
+        "collection": "OKN",
+        "number": 79,
+        "title": "Totamera Kende"
+      },
+      {
+        "collection": "SDAH",
+        "number": 533,
+        "title": "O for a Faith"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 109
   },
   {
     "id": "nca-110",
@@ -5385,11 +7570,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 110,
+        "title": "Gitina Gia Kanitha"
+      },
+      {
         "collection": "NZK",
         "number": 195,
         "title": "Msingi wa Kanisa"
+      },
+      {
+        "collection": "WNY",
+        "number": 195,
+        "title": "Ka Yesu Ni Koda"
+      },
+      {
+        "collection": "OKN",
+        "number": 195,
+        "title": "And'onsi Na Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 348,
+        "title": "The Church Has One Foundation"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Aurelia",
+    "oldBookNumber": 110
   },
   {
     "id": "nca-111",
@@ -5439,11 +7647,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 111,
+        "title": "Aria Mendeete Ngai"
+      },
+      {
         "collection": "NZK",
         "number": 70,
         "title": "Wapenzi wa Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 70,
+        "title": "Nyasaye Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 70,
+        "title": "Seseni' Obwanchani"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 111
   },
   {
     "id": "nca-112",
@@ -5482,11 +7707,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 112,
+        "title": "Mithenya Itaandatu Riu"
+      },
+      {
         "collection": "NZK",
         "number": 81,
         "title": "Siku Sita Zimepita"
+      },
+      {
+        "collection": "WNY",
+        "number": 81,
+        "title": "Tiuru, Yesu `biro"
+      },
+      {
+        "collection": "OKN",
+        "number": 81,
+        "title": "Kor' Emeremo Mboire"
+      },
+      {
+        "collection": "SDAH",
+        "number": 388,
+        "title": "Don’t Forget The Sabbath"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Sabbath Morn",
+    "oldBookNumber": 112
   },
   {
     "id": "nca-113",
@@ -5530,11 +7778,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 113,
+        "title": "Muthenya Mutheru"
+      },
+      {
         "collection": "NZK",
         "number": 87,
         "title": "Siku ya Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 87,
+        "title": "Jokeyo Ni Kanye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 87,
+        "title": "O Ng'ai Abagesi"
+      },
+      {
+        "collection": "SDAH",
+        "number": 384,
+        "title": "Safely Through Another Week"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Sabbath",
+    "oldBookNumber": 113
   },
   {
     "id": "nca-114",
@@ -5579,11 +7850,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 114,
+        "title": "Wee Ririkanaga Thabatu"
+      },
+      {
         "collection": "NZK",
         "number": 84,
         "title": "Ikumbuke Kote Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 84,
+        "title": "Kaparo Yath Mar Kalwari"
+      },
+      {
+        "collection": "OKN",
+        "number": 84,
+        "title": "Kondaror' Omosalaba"
+      },
+      {
+        "collection": "SDAH",
+        "number": 388,
+        "title": "Don’t Forget The Sabbath"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Don't Forget the Sabbath",
+    "oldBookNumber": 114
   },
   {
     "id": "nca-115",
@@ -5644,7 +7938,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 115,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 115,
+        "title": "Ndi Na Mukuuri Uhaithanagira"
+      }
+    ]
   },
   {
     "id": "nca-116",
@@ -5686,11 +7989,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 116,
+        "title": "Muthenya Wa Gikeno"
+      },
+      {
         "collection": "NZK",
         "number": 82,
         "title": "Ni Siku ya Furaha"
+      },
+      {
+        "collection": "WNY",
+        "number": 82,
+        "title": "Ka Manade Ma Ruoth Luongae"
+      },
+      {
+        "collection": "OKN",
+        "number": 82,
+        "title": "Tekob' Egetunwa Igoro"
+      },
+      {
+        "collection": "SDAH",
+        "number": 382,
+        "title": "O Day Of Rest And Gladness"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Mendebras",
+    "oldBookNumber": 116
   },
   {
     "id": "nca-117",
@@ -5730,11 +8056,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 117,
+        "title": "Haria Andu Mahuurukaga"
+      },
+      {
         "collection": "NZK",
         "number": 83,
         "title": "Ewe Skuli ya Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 83,
+        "title": "Yesu Osiep Malong`o"
+      },
+      {
+        "collection": "OKN",
+        "number": 83,
+        "title": "Nimbwate Omosani"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "oldBookNumber": 117
   },
   {
     "id": "nca-118",
@@ -5786,11 +8129,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 118,
+        "title": "Kiumia Kiingi Kigima Nigiathira"
+      },
+      {
         "collection": "NZK",
         "number": 85,
         "title": "Salama Tumepita"
+      },
+      {
+        "collection": "WNY",
+        "number": 85,
+        "title": "Tiuru, Tiuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 85,
+        "title": "Tokor' Emerem' Abasomba ba Yeso"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "oldBookNumber": 118
   },
   {
     "id": "nca-119",
@@ -5826,11 +8186,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 119,
+        "title": "Muthenya Uyu Wa Thabatu"
+      },
+      {
         "collection": "NZK",
         "number": 88,
         "title": "Siku Hii ya Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 88,
+        "title": "E Dho Wath Man Loka Nam"
+      },
+      {
+        "collection": "OKN",
+        "number": 88,
+        "title": "'Ngegu Y'enyancha Ngu'mbu"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "oldBookNumber": 119
   },
   {
     "id": "nca-120",
@@ -5866,11 +8243,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 120,
+        "title": "Thabatu Niyakinya"
+      },
+      {
         "collection": "NZK",
         "number": 86,
         "title": "Ukaribie Tena"
+      },
+      {
+        "collection": "WNY",
+        "number": 86,
+        "title": "Wan Wamor Kwatiyo Ni Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 86,
+        "title": "'S'Omogoko Natomokerere"
+      },
+      {
+        "collection": "SDAH",
+        "number": 385,
+        "title": "Crowning Jewel Of Creation"
       }
-    ]
+    ],
+    "category": "The Sabbath",
+    "tune": "Lischer",
+    "oldBookNumber": 120
   },
   {
     "id": "nca-121",
@@ -5914,11 +8314,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 121,
+        "title": "Mugaambo Wakwa Ruciini"
+      },
+      {
         "collection": "NZK",
         "number": 121,
         "title": "Katika Wenye dhambi"
+      },
+      {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "oldBookNumber": 121
   },
   {
     "id": "nca-122",
@@ -5970,17 +8387,40 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 122,
+        "title": "Mwathani Wakwa Unjikarie"
+      },
+      {
         "collection": "NZK",
         "number": 91,
         "title": "Kaa Nami"
+      },
+      {
+        "collection": "WNY",
+        "number": 91,
+        "title": "Nitie Luong Mobiro E Wi Apaka"
+      },
+      {
+        "collection": "OKN",
+        "number": 91,
+        "title": "Korangerigwa Nkore Korwa Ng'umbu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 50,
+        "title": "Abide With Me"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "tune": "Eventide",
+    "oldBookNumber": 122
   },
   {
     "id": "nca-123",
     "collection": "NCA",
     "number": 123,
-    "title": "Riu Nikuraatuka (NK 92)",
+    "title": "Riu Nikuraatuka",
     "stanzas": [
       {
         "number": 1,
@@ -6022,7 +8462,31 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Morning & Evening Worship",
+    "oldBookNumber": 123,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 123,
+        "title": "Riu Nikuraatuka"
+      },
+      {
+        "collection": "NZK",
+        "number": 92,
+        "title": "Magharibini Jua"
+      },
+      {
+        "collection": "WNY",
+        "number": 92,
+        "title": "Bende Ipuonjo Ji Wach Nyasaye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 92,
+        "title": "Nkorandi'ore Ring'ana Ri'obonda"
+      }
+    ]
   },
   {
     "id": "nca-124",
@@ -6082,11 +8546,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 124,
+        "title": "Utheri Wa Ngoro"
+      },
+      {
         "collection": "NZK",
         "number": 93,
         "title": "Jua la Rohoni Mwangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 93,
+        "title": "Teche Duto Onego Liel"
+      },
+      {
+        "collection": "OKN",
+        "number": 93,
+        "title": "Tiga Ker' Etaya Yoke"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "oldBookNumber": 124
   },
   {
     "id": "nca-125",
@@ -6124,11 +8605,33 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 125,
+        "title": "Kuundu Guothe Miguunda-ini"
+      },
+      {
         "collection": "NZK",
-        "number": 94,
-        "title": "Po pote Mashamba Yajaa"
+        "number": 145,
+        "title": "Ulimwengu Siutaki"
+      },
+      {
+        "collection": "WNY",
+        "number": 145,
+        "title": "Yesu Jakwath Madieri"
+      },
+      {
+        "collection": "OKN",
+        "number": 145,
+        "title": "Yes' Omorisi' Omuya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 358,
+        "title": "Far And Near The Fields Are Teeming"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "oldBookNumber": 125
   },
   {
     "id": "nca-126",
@@ -6183,11 +8686,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 126,
+        "title": "Iguai Uhoro Wa Mwathani"
+      },
+      {
         "collection": "NZK",
         "number": 95,
         "title": "Sikieni Neno"
+      },
+      {
+        "collection": "WNY",
+        "number": 95,
+        "title": "Jarit, Go Tung` Mar Injili"
+      },
+      {
+        "collection": "OKN",
+        "number": 95,
+        "title": "Bugia Engoma Y' Enchili"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 126
   },
   {
     "id": "nca-127",
@@ -6231,11 +8751,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 127,
+        "title": "Nitwagucookeria Indo Ciaku"
+      },
+      {
         "collection": "NZK",
         "number": 96,
         "title": "Mali Yako Sasa"
+      },
+      {
+        "collection": "WNY",
+        "number": 96,
+        "title": "Dhiuru, Jokristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 96,
+        "title": "Imok' Abakristo Bun' Abesegi"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 127
   },
   {
     "id": "nca-128",
@@ -6288,7 +8825,22 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "tune": "O Store Gud",
+    "oldBookNumber": 128,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 128,
+        "title": "Mwathani Ngai Ningugega O Muno"
+      },
+      {
+        "collection": "SDAH",
+        "number": 86,
+        "title": "How Great Thou Art"
+      }
+    ]
   },
   {
     "id": "nca-129",
@@ -6342,11 +8894,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 129,
+        "title": "Nguthaambio Meehia Ni Kii?"
+      },
+      {
         "collection": "NZK",
         "number": 97,
         "title": "Sioshwi dhambi Zangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 97,
+        "title": "Chunya, Mondo Ichiew Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 97,
+        "title": "Enkoro Yane Imoka"
+      },
+      {
+        "collection": "SDAH",
+        "number": 336,
+        "title": "There Is A Foutain"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Plainfield",
+    "oldBookNumber": 129
   },
   {
     "id": "nca-130",
@@ -6390,11 +8965,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 130,
+        "title": "Aria Moorite Mimagacario"
+      },
+      {
         "collection": "NZK",
         "number": 100,
         "title": "Kuwatafuta"
+      },
+      {
+        "collection": "WNY",
+        "number": 100,
+        "title": "Ok Ageno Gimoro Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 100,
+        "title": "Tindi N'eki Nyegenete"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 130
   },
   {
     "id": "nca-131",
@@ -6440,11 +9032,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 131,
+        "title": "Niugwitwo Ni Jesu"
+      },
+      {
         "collection": "NZK",
         "number": 101,
         "title": "Yesu Akwita"
+      },
+      {
+        "collection": "WNY",
+        "number": 101,
+        "title": "Chunguru Matek Kuom Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 101,
+        "title": "Tenena Bokong'u ase Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 284,
+        "title": "For You I Am Praying"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "tune": "Thompson",
+    "oldBookNumber": 131
   },
   {
     "id": "nca-132",
@@ -6500,11 +9115,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 132,
+        "title": "Mugeni E Muromo-ini"
+      },
+      {
         "collection": "NZK",
-        "number": 192,
-        "title": "Mwamba Wenye Imara"
+        "number": 93,
+        "title": "Jua la Rohoni Mwangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 93,
+        "title": "Teche Duto Onego Liel"
+      },
+      {
+        "collection": "OKN",
+        "number": 93,
+        "title": "Tiga Ker' Etaya Yoke"
+      },
+      {
+        "collection": "SDAH",
+        "number": 286,
+        "title": "Wonderful Words of Life"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "tune": "Berthold",
+    "oldBookNumber": 132
   },
   {
     "id": "nca-133",
@@ -6550,11 +9188,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 133,
+        "title": "Jesu Aratwita Nohooreri"
+      },
+      {
         "collection": "NZK",
         "number": 103,
         "title": "Yesu Huita kwa Upole"
+      },
+      {
+        "collection": "WNY",
+        "number": 103,
+        "title": "Chungi, JaKristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 103,
+        "title": "Aka Eriogi"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "oldBookNumber": 133
   },
   {
     "id": "nca-134",
@@ -6603,7 +9258,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Holy Scriptures & Word of God",
+    "oldBookNumber": 134,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 134,
+        "title": "Mbuku Ya Ngai Ni Theru"
+      }
+    ]
   },
   {
     "id": "nca-135",
@@ -6647,11 +9311,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 135,
+        "title": "Muriithi Witu Mwega"
+      },
+      {
         "collection": "NZK",
         "number": 105,
         "title": "Mchungaji mpenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 105,
+        "title": "Awuotho Kachiko Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 105,
+        "title": "Nkogenda Nde Bo Igoro"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 135
   },
   {
     "id": "nca-136",
@@ -6703,11 +9384,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 136,
+        "title": "Jesu Riu Niaretana"
+      },
+      {
         "collection": "NZK",
         "number": 107,
         "title": "Sauti ni yake Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 107,
+        "title": "In Migeno Chamo Mwandu Me Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 107,
+        "title": "Omonyamwando Naki Ogosundoka?"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 136
   },
   {
     "id": "nca-137",
@@ -6759,11 +9457,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 137,
+        "title": "Nituiguite Uhoro"
+      },
+      {
         "collection": "NZK",
         "number": 108,
         "title": "Tumesikia Mbiu"
+      },
+      {
+        "collection": "WNY",
+        "number": 108,
+        "title": "Un Jorit Mar Dala Zayun"
+      },
+      {
+        "collection": "OKN",
+        "number": 108,
+        "title": "Abarendi Ba Zayoni"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "oldBookNumber": 137
   },
   {
     "id": "nca-138",
@@ -6801,11 +9516,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 138,
+        "title": "Mundu Aigua Nake Niamukirie"
+      },
+      {
         "collection": "NZK",
         "number": 109,
         "title": "Anisikiaye"
+      },
+      {
+        "collection": "WNY",
+        "number": 109,
+        "title": "Nyaka Karang`o Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 109,
+        "title": "Tokob'Omosunte"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 138
   },
   {
     "id": "nca-139",
@@ -6851,11 +9583,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 139,
+        "title": "Muraango Nimuhiingure Nguona"
+      },
+      {
         "collection": "NZK",
         "number": 110,
         "title": "Mlango Uko wa Wema"
+      },
+      {
+        "collection": "WNY",
+        "number": 110,
+        "title": "Kristo En Jatelowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 110,
+        "title": "Krist' Omorai Oito"
+      },
+      {
+        "collection": "SDAH",
+        "number": 283,
+        "title": "O Jesus, Thou Art Standing"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "tune": "The Gate Ajar",
+    "oldBookNumber": 139
   },
   {
     "id": "nca-140",
@@ -6901,11 +9656,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 140,
+        "title": "Murigiti Munene"
+      },
+      {
         "collection": "NZK",
         "number": 111,
         "title": "Tabibu Mkuu"
+      },
+      {
+        "collection": "WNY",
+        "number": 111,
+        "title": "Wakwayi, Ruoth, Kuom Tekoni"
+      },
+      {
+        "collection": "OKN",
+        "number": 111,
+        "title": "Twagosabire Chinguru"
+      },
+      {
+        "collection": "SDAH",
+        "number": 438,
+        "title": "You Will See Your Lord A-Coming"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Sympathy",
+    "oldBookNumber": 140
   },
   {
     "id": "nca-141",
@@ -6948,7 +9726,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 141,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 141,
+        "title": "Ukaani Inyui Eehia"
+      }
+    ]
   },
   {
     "id": "nca-142",
@@ -6989,7 +9776,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 142,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 142,
+        "title": "Jesu Kristo Niegutwita"
+      }
+    ]
   },
   {
     "id": "nca-143",
@@ -7041,11 +9837,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 143,
+        "title": "Wi Munogi Na Muthiini"
+      },
+      {
         "collection": "NZK",
         "number": 112,
         "title": "Wewe umechoka sana?"
+      },
+      {
+        "collection": "WNY",
+        "number": 112,
+        "title": "Keduru Jo Ka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 112,
+        "title": "Tenena Ase Yeso"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 143
   },
   {
     "id": "nca-144",
@@ -7094,7 +9907,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Gospel Invitation & Repentance",
+    "oldBookNumber": 144,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 144,
+        "title": "Ukaai Inyui Anogu"
+      }
+    ]
   },
   {
     "id": "nca-145",
@@ -7127,7 +9949,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "oldBookNumber": 145,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 145,
+        "title": "Nduuriri Niciinamirire"
+      }
+    ]
   },
   {
     "id": "nca-146",
@@ -7176,7 +10007,22 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "tune": "New Britain",
+    "oldBookNumber": 146,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 146,
+        "title": "Utugi Wa Magegania"
+      },
+      {
+        "collection": "SDAH",
+        "number": 108,
+        "title": "Amazing Grace"
+      }
+    ]
   },
   {
     "id": "nca-147",
@@ -7233,7 +10079,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Praise & Thanksgiving",
+    "oldBookNumber": 147,
+    "crossReferences": [
+      {
+        "collection": "NCA-OLD",
+        "number": 147,
+        "title": "Ni Nguuga Ugoocwo Ngai"
+      }
+    ]
   },
   {
     "id": "nca-148",
@@ -7287,11 +10142,28 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 148,
+        "title": "Ninjaangite O Kuraya"
+      },
+      {
         "collection": "NZK",
         "number": 118,
         "title": "Nilipotoka Kabisa"
+      },
+      {
+        "collection": "WNY",
+        "number": 118,
+        "title": "Ndalo Auchiel Oserumo"
+      },
+      {
+        "collection": "OKN",
+        "number": 118,
+        "title": "Emeremo Yaerire"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "oldBookNumber": 148
   },
   {
     "id": "nca-149",
@@ -7343,11 +10215,34 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "NCA-OLD",
+        "number": 149,
+        "title": "Kwi Na Rui Rua Thakame"
+      },
+      {
         "collection": "NZK",
         "number": 113,
         "title": "Damu Imebubujika"
+      },
+      {
+        "collection": "WNY",
+        "number": 113,
+        "title": "Yaye Mad Abed Gi Yie Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 113,
+        "title": "Ong' Okwegen' Okonene"
+      },
+      {
+        "collection": "SDAH",
+        "number": 336,
+        "title": "There Is A Foutain"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Cleansing Fountain",
+    "oldBookNumber": 149
   },
   {
     "id": "nca-150",
@@ -7394,8 +10289,19 @@
         "collection": "NZK",
         "number": 114,
         "title": "Yesu Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 114,
+        "title": "Jakristo We Nindo"
+      },
+      {
+        "collection": "OKN",
+        "number": 114,
+        "title": "'Mokristo Boka"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace"
   },
   {
     "id": "nca-151",
@@ -7438,7 +10344,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-152",
@@ -7487,8 +10395,19 @@
         "collection": "NZK",
         "number": 117,
         "title": "Wamwendea Yesu?"
+      },
+      {
+        "collection": "WNY",
+        "number": 117,
+        "title": "Nitie Lweny Mager Ahinya"
+      },
+      {
+        "collection": "OKN",
+        "number": 117,
+        "title": "'Monene Nakwegene?"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance"
   },
   {
     "id": "nca-153",
@@ -7537,8 +10456,25 @@
         "collection": "NZK",
         "number": 119,
         "title": "Yesu Anasema"
+      },
+      {
+        "collection": "WNY",
+        "number": 119,
+        "title": "Sabato Mari, Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 119,
+        "title": "'Sabato Enchenu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 281,
+        "title": "I Gave My Life for Thee"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "All to Christ"
   },
   {
     "id": "nca-154",
@@ -7581,7 +10517,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "crossReferences": []
   },
   {
     "id": "nca-155",
@@ -7630,8 +10568,25 @@
         "collection": "NZK",
         "number": 122,
         "title": "Yote Namtolea Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 122,
+        "title": "Kidira Chieng` Mar Yueyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 122,
+        "title": "Rituko Ri' Omogoko"
+      },
+      {
+        "collection": "SDAH",
+        "number": 308,
+        "title": "Wholly Thine"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Surrender"
   },
   {
     "id": "nca-156",
@@ -7672,7 +10627,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-157",
@@ -7707,7 +10664,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "crossReferences": []
   },
   {
     "id": "nca-158",
@@ -7756,8 +10715,25 @@
         "collection": "NZK",
         "number": 124,
         "title": "Umechoka? Je, Umesumbuka?"
+      },
+      {
+        "collection": "WNY",
+        "number": 124,
+        "title": "Walamo Nyasaye Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 124,
+        "title": "Kegima Twaikire Omokubio Naende"
+      },
+      {
+        "collection": "SDAH",
+        "number": 524,
+        "title": "‘Tis So Sweet to Trust in Jesus"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance",
+    "tune": "Tell It to Jesus"
   },
   {
     "id": "nca-159",
@@ -7798,8 +10774,25 @@
         "collection": "NZK",
         "number": 98,
         "title": "Nilikupa Wewe"
+      },
+      {
+        "collection": "WNY",
+        "number": 98,
+        "title": "Jo Maler Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 98,
+        "title": "'Bachenu More N'oboros' Obuya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 282,
+        "title": "I Hear Thy Welcome Voice"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Kenosis"
   },
   {
     "id": "nca-160",
@@ -7840,8 +10833,25 @@
         "collection": "NZK",
         "number": 125,
         "title": "Uniangalie"
+      },
+      {
+        "collection": "WNY",
+        "number": 125,
+        "title": "E Ndaloni Maler Mar Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 125,
+        "title": "Rituko Riao Richenu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 154,
+        "title": "When I Survey the Wondrous Cross"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Hamburg"
   },
   {
     "id": "nca-161",
@@ -7883,8 +10893,25 @@
         "collection": "NZK",
         "number": 123,
         "title": "Yesu kwa Imani"
+      },
+      {
+        "collection": "WNY",
+        "number": 123,
+        "title": "In Skul Marwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 123,
+        "title": "Eskuru Y'Esabato"
+      },
+      {
+        "collection": "SDAH",
+        "number": 517,
+        "title": "My Faith Looks Up to Thee"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Trust in Jesus"
   },
   {
     "id": "nca-162",
@@ -7926,8 +10953,25 @@
         "collection": "NZK",
         "number": 121,
         "title": "Katika Wenye dhambi"
+      },
+      {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
+      },
+      {
+        "collection": "SDAH",
+        "number": 295,
+        "title": "Chief of Sinners"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Gethsemane"
   },
   {
     "id": "nca-163",
@@ -7984,8 +11028,25 @@
         "collection": "NZK",
         "number": 126,
         "title": "Nina Haja Nawe"
+      },
+      {
+        "collection": "WNY",
+        "number": 126,
+        "title": "Kidich Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 126,
+        "title": "'Meremo Yaerire"
+      },
+      {
+        "collection": "SDAH",
+        "number": 483,
+        "title": "I Need Thee Every Hour"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Need"
   },
   {
     "id": "nca-164",
@@ -8034,8 +11095,25 @@
         "collection": "NZK",
         "number": 127,
         "title": "Nionapo Amani Kama Shwari"
+      },
+      {
+        "collection": "WNY",
+        "number": 127,
+        "title": "Nyasaye Gwedh Skundwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 127,
+        "title": "'Monen' Obuya Bwao"
+      },
+      {
+        "collection": "SDAH",
+        "number": 530,
+        "title": "It Is Well With My Soul"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Ville du Havre"
   },
   {
     "id": "nca-165",
@@ -8092,8 +11170,25 @@
         "collection": "NZK",
         "number": 128,
         "title": "Namwandama Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 128,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 128,
+        "title": "Rituko Richenu Mono"
+      },
+      {
+        "collection": "SDAH",
+        "number": 311,
+        "title": "I Would Be Like Jesus"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Assam"
   },
   {
     "id": "nca-166",
@@ -8142,8 +11237,24 @@
         "collection": "NZK",
         "number": 129,
         "title": "Kumtegemea Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 129,
+        "title": "In Odira Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 129,
+        "title": "Ika Ang' Omokubio"
+      },
+      {
+        "collection": "SDAH",
+        "number": 517,
+        "title": "My Faith Looks Up to Thee"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living"
   },
   {
     "id": "nca-167",
@@ -8185,7 +11296,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 167,
+        "title": "Yesu Bwana Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 167,
+        "title": "Yesu, Kar Msalabani"
+      },
+      {
+        "collection": "OKN",
+        "number": 167,
+        "title": "Yes' As' Omosalaba"
+      }
+    ]
   },
   {
     "id": "nca-168",
@@ -8230,14 +11359,31 @@
         "collection": "NZK",
         "number": 130,
         "title": "Yesu Kwetu ni Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 130,
+        "title": "Wachokore Gi Mor Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 130,
+        "title": "Ker'Emambia"
+      },
+      {
+        "collection": "SDAH",
+        "number": 499,
+        "title": "What a Friend We Have in Jesus"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Converse"
   },
   {
     "id": "nca-169",
     "collection": "NCA",
     "number": 169,
-    "title": "Mabataro-ini Ma Ruuciu (NZK 131a)",
+    "title": "Mabataro-ini Ma Ruuciu",
     "stanzas": [
       {
         "number": 1,
@@ -8270,7 +11416,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 131,
+        "title": "Namtegemea Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 131,
+        "title": "Nyasaye, Gokiny Mond` Iwinja"
+      },
+      {
+        "collection": "OKN",
+        "number": 131,
+        "title": "Omonene Ka Bogokia"
+      }
+    ]
   },
   {
     "id": "nca-170",
@@ -8325,8 +11489,25 @@
         "collection": "NZK",
         "number": 132,
         "title": "Bwana ni Mchunga"
+      },
+      {
+        "collection": "WNY",
+        "number": 132,
+        "title": "Wago Ni Ruoth Erokamano"
+      },
+      {
+        "collection": "OKN",
+        "number": 132,
+        "title": "Rituko Riaerire"
+      },
+      {
+        "collection": "SDAH",
+        "number": 552,
+        "title": "The Lord’s My Shepherd"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Crimond"
   },
   {
     "id": "nca-171",
@@ -8381,8 +11562,25 @@
         "collection": "NZK",
         "number": 134,
         "title": "Tafuta Daima Utakatifu"
+      },
+      {
+        "collection": "WNY",
+        "number": 134,
+        "title": "Wang` Chieng Koro Podhonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 134,
+        "title": "Ker' Erioba Riagure"
+      },
+      {
+        "collection": "SDAH",
+        "number": 531,
+        "title": "We’ll Build on the Rock"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Holiness"
   },
   {
     "id": "nca-172",
@@ -8417,7 +11615,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 172,
+        "title": "Mfalme Wetu Atuita"
+      },
+      {
+        "collection": "WNY",
+        "number": 172,
+        "title": "Nitie Ngima Kwang`iyo Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 172,
+        "title": "'Bogima Mbore Omosalaba"
+      }
+    ]
   },
   {
     "id": "nca-173",
@@ -8460,7 +11676,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-174",
@@ -8507,8 +11725,25 @@
         "collection": "NZK",
         "number": 133,
         "title": "Po pote na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 133,
+        "title": "Bedi Kod An"
+      },
+      {
+        "collection": "OKN",
+        "number": 133,
+        "title": "Kabe Nainche"
+      },
+      {
+        "collection": "SDAH",
+        "number": 508,
+        "title": "Anywhere With Jesus"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Security"
   },
   {
     "id": "nca-175",
@@ -8565,7 +11800,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-176",
@@ -8620,8 +11857,24 @@
         "collection": "NZK",
         "number": 37,
         "title": "Pendo Lako Ee Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 37,
+        "title": "Yesu In Miheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 37,
+        "title": "Yes' Omwanchi Omoy'one"
+      },
+      {
+        "collection": "SDAH",
+        "number": 343,
+        "title": "I Will sing Of My Redeemer"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-177",
@@ -8660,7 +11913,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-178",
@@ -8715,8 +11970,25 @@
         "collection": "NZK",
         "number": 135,
         "title": "Saa Heri ya Maombi"
+      },
+      {
+        "collection": "WNY",
+        "number": 135,
+        "title": "Yesu, In Ma Jahoch Mar Chuny"
+      },
+      {
+        "collection": "OKN",
+        "number": 135,
+        "title": "'Mobaso Bw'enkoro Yane"
+      },
+      {
+        "collection": "SDAH",
+        "number": 478,
+        "title": "Sweet Hour Of Prayer"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Sweet Hour"
   },
   {
     "id": "nca-179",
@@ -8773,8 +12045,19 @@
         "collection": "NZK",
         "number": 137,
         "title": "Saa Heri ya Sala"
+      },
+      {
+        "collection": "WNY",
+        "number": 137,
+        "title": "Winji Weche Ma Nondiki"
+      },
+      {
+        "collection": "OKN",
+        "number": 137,
+        "title": "Igwa Ring'ana Ria Nyasae Oito"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship"
   },
   {
     "id": "nca-180",
@@ -8831,8 +12114,19 @@
         "collection": "NZK",
         "number": 138,
         "title": "Nitakuandama Kote"
+      },
+      {
+        "collection": "WNY",
+        "number": 138,
+        "title": "Richona Diluok Gang`o?"
+      },
+      {
+        "collection": "OKN",
+        "number": 138,
+        "title": "Nki Keransibi' Ebibe?"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living"
   },
   {
     "id": "nca-181",
@@ -8876,8 +12170,25 @@
         "collection": "NZK",
         "number": 139,
         "title": "Uliniimbie Tena"
+      },
+      {
+        "collection": "WNY",
+        "number": 139,
+        "title": "Ringra Namiyo In"
+      },
+      {
+        "collection": "OKN",
+        "number": 139,
+        "title": "Ngakoa 'Bogima"
+      },
+      {
+        "collection": "SDAH",
+        "number": 286,
+        "title": "Wonderful Words of Life"
       }
-    ]
+    ],
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Words of Life"
   },
   {
     "id": "nca-182",
@@ -8940,8 +12251,25 @@
         "collection": "NZK",
         "number": 140,
         "title": "Nitwae Hivi Nilivyo"
+      },
+      {
+        "collection": "WNY",
+        "number": 140,
+        "title": "Adwaro Manyo Rombe"
+      },
+      {
+        "collection": "OKN",
+        "number": 140,
+        "title": "Rigi 'Abasiru"
+      },
+      {
+        "collection": "SDAH",
+        "number": 313,
+        "title": "Just As I Am"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Woodworth"
   },
   {
     "id": "nca-183",
@@ -8990,8 +12318,19 @@
         "collection": "NZK",
         "number": 142,
         "title": "Nasikia Mwito"
+      },
+      {
+        "collection": "WNY",
+        "number": 142,
+        "title": "Nitie Wendo E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 142,
+        "title": "'Mogeni Ngesieri Are"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-184",
@@ -9034,8 +12373,25 @@
         "collection": "NZK",
         "number": 144,
         "title": "Ni Wako Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 144,
+        "title": "Nawinjo Yesu Kowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 144,
+        "title": "Nkaigwa Yeso Ogokwana"
+      },
+      {
+        "collection": "SDAH",
+        "number": 306,
+        "title": "Draw Me Nearer"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "I Am Thine"
   },
   {
     "id": "nca-185",
@@ -9084,8 +12440,19 @@
         "collection": "NZK",
         "number": 145,
         "title": "Ulimwengu Siutaki"
+      },
+      {
+        "collection": "WNY",
+        "number": 145,
+        "title": "Yesu Jakwath Madieri"
+      },
+      {
+        "collection": "OKN",
+        "number": 145,
+        "title": "Yes' Omorisi' Omuya"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting"
   },
   {
     "id": "nca-186",
@@ -9136,7 +12503,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-187",
@@ -9179,7 +12548,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "crossReferences": []
   },
   {
     "id": "nca-188",
@@ -9222,8 +12593,25 @@
         "collection": "NZK",
         "number": 148,
         "title": "Univute Karibu"
+      },
+      {
+        "collection": "WNY",
+        "number": 148,
+        "title": "Ng`a Mowinjo Dwond Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 148,
+        "title": "Oyoraigwe"
+      },
+      {
+        "collection": "SDAH",
+        "number": 473,
+        "title": "Nearer My God, To Thee"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Bethany"
   },
   {
     "id": "nca-189",
@@ -9278,8 +12666,25 @@
         "collection": "NZK",
         "number": 141,
         "title": "Chini ya Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 141,
+        "title": "Yesu Oluongoi Mondo Ibi"
+      },
+      {
+        "collection": "OKN",
+        "number": 141,
+        "title": "Yes' As' Obworor' Okorangeirie"
+      },
+      {
+        "collection": "SDAH",
+        "number": 163,
+        "title": "At the Cross"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Hudson"
   },
   {
     "id": "nca-190",
@@ -9318,7 +12723,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 190,
+        "title": "Raha Yangu Yote, Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 190,
+        "title": "Ruoth, Ok Akwayoi Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 190,
+        "title": "'Monene Tari Ebi' Ankio"
+      }
+    ]
   },
   {
     "id": "nca-191",
@@ -9355,7 +12778,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-192",
@@ -9410,8 +12835,19 @@
         "collection": "NZK",
         "number": 147,
         "title": "Tawala Ndani Yangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 147,
+        "title": "Wasewinjo Wach Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 147,
+        "title": "Twarigure  Ring'ana"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living"
   },
   {
     "id": "nca-193",
@@ -9460,7 +12896,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 193,
+        "title": "Sauti ya Mchungaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 193,
+        "title": "Winj Weche Ma Yesu Nowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 193,
+        "title": "Igwa Amang'ana A Yeso"
+      }
+    ]
   },
   {
     "id": "nca-194",
@@ -9509,8 +12963,19 @@
         "collection": "NZK",
         "number": 115,
         "title": "Naendea Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 115,
+        "title": "Be An Jarit Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 115,
+        "title": "'Morendi Bw'Omosalaba?"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace"
   },
   {
     "id": "nca-195",
@@ -9551,8 +13016,19 @@
         "collection": "NZK",
         "number": 143,
         "title": "Baba Sina Msaada"
+      },
+      {
+        "collection": "WNY",
+        "number": 143,
+        "title": "Yesu Oluongowa Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 143,
+        "title": "Nkorangeri' Are Ng'ora"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship"
   },
   {
     "id": "nca-196",
@@ -9597,8 +13073,19 @@
         "collection": "NZK",
         "number": 150,
         "title": "Hasha Maneno Mabaya"
+      },
+      {
+        "collection": "WNY",
+        "number": 150,
+        "title": "Jathieth Maduong` Osudo Ka"
+      },
+      {
+        "collection": "OKN",
+        "number": 150,
+        "title": "Omogwenia Ore Ang'e"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-197",
@@ -9647,8 +13134,25 @@
         "collection": "NZK",
         "number": 151,
         "title": "Huniongoza Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 151,
+        "title": "Richo Oketho Ji Malit"
+      },
+      {
+        "collection": "OKN",
+        "number": 151,
+        "title": "K'ebibe Bire 'Birito"
+      },
+      {
+        "collection": "SDAH",
+        "number": 537,
+        "title": "He Leadeth Me"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Aughton"
   },
   {
     "id": "nca-198",
@@ -9703,8 +13207,25 @@
         "collection": "NZK",
         "number": 152,
         "title": "Karibu na Wewe"
+      },
+      {
+        "collection": "WNY",
+        "number": 152,
+        "title": "Yesu Okadho"
+      },
+      {
+        "collection": "OKN",
+        "number": 152,
+        "title": "Yeso Ngoet' Are"
+      },
+      {
+        "collection": "SDAH",
+        "number": 473,
+        "title": "Nearer My God, To Thee"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living",
+    "tune": "Bethany"
   },
   {
     "id": "nca-199",
@@ -9752,8 +13273,19 @@
         "collection": "NZK",
         "number": 153,
         "title": "Fikira Moja tu"
+      },
+      {
+        "collection": "WNY",
+        "number": 153,
+        "title": "Ngima Machiek Mawango!"
+      },
+      {
+        "collection": "OKN",
+        "number": 153,
+        "title": "'Bogim' Obuya  Mbweng'e"
       }
-    ]
+    ],
+    "category": "Worship & Adoration"
   },
   {
     "id": "nca-200",
@@ -9800,8 +13332,19 @@
         "collection": "NZK",
         "number": 154,
         "title": "Yanipasa Kuwa Naye"
+      },
+      {
+        "collection": "WNY",
+        "number": 154,
+        "title": "Yie Yesu Odonj E Chunyi"
+      },
+      {
+        "collection": "OKN",
+        "number": 154,
+        "title": "Tiga Yeso Ach' Enkoro"
       }
-    ]
+    ],
+    "category": "Consecration, Trust & Living"
   },
   {
     "id": "nca-201",
@@ -9856,7 +13399,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "tune": "Irby",
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 149,
+        "title": "Once in Royal David’s City"
+      }
+    ]
   },
   {
     "id": "nca-202",
@@ -9891,7 +13443,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-203",
@@ -9932,7 +13486,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "tune": "Safe in the Arms",
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 470,
+        "title": "There’s Sunshine In My Soul Today"
+      }
+    ]
   },
   {
     "id": "nca-204",
@@ -9967,7 +13530,31 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "tune": "Security",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 133,
+        "title": "Po pote na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 133,
+        "title": "Bedi Kod An"
+      },
+      {
+        "collection": "OKN",
+        "number": 133,
+        "title": "Kabe Nainche"
+      },
+      {
+        "collection": "SDAH",
+        "number": 508,
+        "title": "Anywhere With Jesus"
+      }
+    ]
   },
   {
     "id": "nca-205",
@@ -10016,8 +13603,19 @@
         "collection": "NZK",
         "number": 157,
         "title": "Mfalme yu Mlangoni"
+      },
+      {
+        "collection": "WNY",
+        "number": 157,
+        "title": "Winji Jawar Ni E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 157,
+        "title": "'Bwanchani Boria Bwakare"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace"
   },
   {
     "id": "nca-206",
@@ -10072,14 +13670,25 @@
         "collection": "NZK",
         "number": 158,
         "title": "U mwendo Gani Nyumbani?"
+      },
+      {
+        "collection": "WNY",
+        "number": 158,
+        "title": "Un Jo Mojony, Biuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 158,
+        "title": "Yeso Menya Ime Yane"
       }
-    ]
+    ],
+    "category": "Worship & Adoration"
   },
   {
     "id": "nca-207",
     "collection": "NCA",
     "number": 207,
-    "title": "Ni Uhoro Mwega Ma (159)",
+    "title": "Ni Uhoro Mwega Ma",
     "stanzas": [
       {
         "number": 1,
@@ -10116,7 +13725,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Praise & Thanksgiving",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 159,
+        "title": "Anakuja Upesi"
+      },
+      {
+        "collection": "WNY",
+        "number": 159,
+        "title": "Chungo E Adiera Kaka Daniel"
+      },
+      {
+        "collection": "OKN",
+        "number": 159,
+        "title": "Nkoro Yan'eyasiboirwe!"
+      }
+    ]
   },
   {
     "id": "nca-208",
@@ -10173,8 +13800,19 @@
         "collection": "NZK",
         "number": 160,
         "title": "Watakatifu Kesheni"
+      },
+      {
+        "collection": "WNY",
+        "number": 160,
+        "title": "Nitie Remo Ma Nochwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 160,
+        "title": "Ner Ensoko Y'amanyinga"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare"
   },
   {
     "id": "nca-209",
@@ -10231,8 +13869,19 @@
         "collection": "NZK",
         "number": 161,
         "title": "Piga Panda"
+      },
+      {
+        "collection": "WNY",
+        "number": 161,
+        "title": "Ruoth Yesu, Agomobo Bedo Ng`ati"
+      },
+      {
+        "collection": "OKN",
+        "number": 161,
+        "title": "Yeso Nche Nindigeti' Ogosibigwa"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope"
   },
   {
     "id": "nca-210",
@@ -10281,8 +13930,25 @@
         "collection": "NZK",
         "number": 164,
         "title": "Unakaribia Wakati"
+      },
+      {
+        "collection": "WNY",
+        "number": 164,
+        "title": "Analu Bang` Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 164,
+        "title": "Gwachir' Ase Yeso?"
+      },
+      {
+        "collection": "SDAH",
+        "number": 213,
+        "title": "Jesus Is Coming Again"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "Silver Trumpet"
   },
   {
     "id": "nca-211",
@@ -10325,8 +13991,25 @@
         "collection": "NZK",
         "number": 165,
         "title": "Ahadi Tamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 165,
+        "title": "Asebayo Mabor Kod Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 165,
+        "title": "Natayayire Kegima"
+      },
+      {
+        "collection": "SDAH",
+        "number": 214,
+        "title": "We Have This Hope"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "We Have This Hope"
   },
   {
     "id": "nca-212",
@@ -10387,8 +14070,25 @@
         "collection": "NZK",
         "number": 174,
         "title": "Sijui Atakapokuja"
+      },
+      {
+        "collection": "WNY",
+        "number": 174,
+        "title": "Anayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 174,
+        "title": "Namwanchire Yeso Bweka"
+      },
+      {
+        "collection": "SDAH",
+        "number": 604,
+        "title": "We Know Not the Hour"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "We Know Not the Hour"
   },
   {
     "id": "nca-213",
@@ -10439,8 +14139,25 @@
         "collection": "NZK",
         "number": 166,
         "title": "Furaha kwa Ulimwengu"
+      },
+      {
+        "collection": "WNY",
+        "number": 166,
+        "title": "Jawar Owachona"
+      },
+      {
+        "collection": "OKN",
+        "number": 166,
+        "title": "'Motori' Agantebia"
+      },
+      {
+        "collection": "SDAH",
+        "number": 125,
+        "title": "Joy to the World"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving",
+    "tune": "Antioch"
   },
   {
     "id": "nca-214",
@@ -10493,7 +14210,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-215",
@@ -10542,7 +14261,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Second Coming & Christian Hope",
+    "crossReferences": []
   },
   {
     "id": "nca-216",
@@ -10600,8 +14321,25 @@
         "collection": "NZK",
         "number": 163,
         "title": "Pengine Ni Saa"
+      },
+      {
+        "collection": "WNY",
+        "number": 163,
+        "title": "Agombo Bedo Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 163,
+        "title": "Omonene Ndigeti' Eke"
+      },
+      {
+        "collection": "SDAH",
+        "number": 218,
+        "title": "When He Cometh"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "Jewels"
   },
   {
     "id": "nca-217",
@@ -10640,7 +14378,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Second Coming & Christian Hope",
+    "crossReferences": []
   },
   {
     "id": "nca-218",
@@ -10689,7 +14429,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Praise & Thanksgiving",
+    "crossReferences": []
   },
   {
     "id": "nca-219",
@@ -10728,8 +14470,19 @@
         "collection": "NZK",
         "number": 167,
         "title": "Yesu Bwana Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 167,
+        "title": "Yesu, Kar Msalabani"
+      },
+      {
+        "collection": "OKN",
+        "number": 167,
+        "title": "Yes' As' Omosalaba"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance"
   },
   {
     "id": "nca-220",
@@ -10772,7 +14525,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "crossReferences": []
   },
   {
     "id": "nca-221",
@@ -10821,8 +14576,25 @@
         "collection": "NZK",
         "number": 168,
         "title": "Tarumbeta ya Mwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 168,
+        "title": "Duto Amiyo Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 168,
+        "title": "Bionsi Namoeire Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 216,
+        "title": "When the Roll Is Called Up Yonder"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "Roll Call"
   },
   {
     "id": "nca-222",
@@ -10871,8 +14643,25 @@
         "collection": "NZK",
         "number": 170,
         "title": "Siitafuti Mali"
+      },
+      {
+        "collection": "WNY",
+        "number": 170,
+        "title": "Nitie Ng`ama Noyie Tho Mondo Owara"
+      },
+      {
+        "collection": "OKN",
+        "number": 170,
+        "title": "Nareo Onyanchete"
+      },
+      {
+        "collection": "SDAH",
+        "number": 440,
+        "title": "How Cheering Is The Christian’s Hope"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "Is My Name Written There"
   },
   {
     "id": "nca-223",
@@ -10929,8 +14718,19 @@
         "collection": "NZK",
         "number": 172,
         "title": "Mfalme Wetu Atuita"
+      },
+      {
+        "collection": "WNY",
+        "number": 172,
+        "title": "Nitie Ngima Kwang`iyo Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 172,
+        "title": "'Bogima Mbore Omosalaba"
       }
-    ]
+    ],
+    "category": "Worship & Adoration"
   },
   {
     "id": "nca-224",
@@ -10965,7 +14765,30 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Second Coming & Christian Hope",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 171,
+        "title": "Imeanzishwa Hukumu"
+      },
+      {
+        "collection": "WNY",
+        "number": 171,
+        "title": "In Kiol Nikech Chandruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 171,
+        "title": "Kwarosir' Aye?"
+      },
+      {
+        "collection": "SDAH",
+        "number": 416,
+        "title": "The Judgment Has Set"
+      }
+    ]
   },
   {
     "id": "nca-225",
@@ -11011,8 +14834,19 @@
         "collection": "NZK",
         "number": 173,
         "title": "Hatujui Saa"
+      },
+      {
+        "collection": "WNY",
+        "number": 173,
+        "title": "Ka Satan Otemi"
+      },
+      {
+        "collection": "OKN",
+        "number": 173,
+        "title": "Korabe Nyancha Ime"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope"
   },
   {
     "id": "nca-226",
@@ -11061,7 +14895,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-227",
@@ -11118,8 +14954,19 @@
         "collection": "NZK",
         "number": 169,
         "title": "Hapo Yesu Atakapoita"
+      },
+      {
+        "collection": "WNY",
+        "number": 169,
+        "title": "Yesu Luongi, We Ting`ni Mar Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 169,
+        "title": "Nosiboke Korwa As' Ebibe"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope"
   },
   {
     "id": "nca-228",
@@ -11160,7 +15007,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Heaven & Life Everlasting",
+    "crossReferences": []
   },
   {
     "id": "nca-229",
@@ -11209,8 +15058,25 @@
         "collection": "NZK",
         "number": 175,
         "title": "Nitaonana na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 175,
+        "title": "Geno Kristo Kelonwa Mor"
+      },
+      {
+        "collection": "OKN",
+        "number": 175,
+        "title": "'Gosemeria Kw'Omokristo"
+      },
+      {
+        "collection": "SDAH",
+        "number": 432,
+        "title": "Shall We Gather At The River"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "Hanson Place"
   },
   {
     "id": "nca-230",
@@ -11261,7 +15127,30 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Heaven & Life Everlasting",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 176,
+        "title": "Ati twonane Mtoni?"
+      },
+      {
+        "collection": "WNY",
+        "number": 176,
+        "title": "Nyasaye Noolnwa Gweth Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 176,
+        "title": "'Mbura Netwe Korwa Igoro"
+      },
+      {
+        "collection": "SDAH",
+        "number": 432,
+        "title": "Shall We Gather At The River"
+      }
+    ]
   },
   {
     "id": "nca-231",
@@ -11308,8 +15197,25 @@
         "collection": "NZK",
         "number": 177,
         "title": "Kazi Yangu Ikiisha"
+      },
+      {
+        "collection": "WNY",
+        "number": 177,
+        "title": "Ka Chandruok Osudo Machiegni Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 177,
+        "title": "Kemechando Eragoetanane"
+      },
+      {
+        "collection": "SDAH",
+        "number": 430,
+        "title": "Joy By And By"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "I Shall Know Him"
   },
   {
     "id": "nca-232",
@@ -11358,8 +15264,19 @@
         "collection": "NZK",
         "number": 99,
         "title": "Twende kwa Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 99,
+        "title": "Chunya, Mond` Iritri"
+      },
+      {
+        "collection": "OKN",
+        "number": 99,
+        "title": "Enkoro Yane Renda"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance"
   },
   {
     "id": "nca-233",
@@ -11410,8 +15327,25 @@
         "collection": "NZK",
         "number": 178,
         "title": "Ukingoni Mwa Yordani"
+      },
+      {
+        "collection": "WNY",
+        "number": 178,
+        "title": "Beduru Gi Yie"
+      },
+      {
+        "collection": "OKN",
+        "number": 178,
+        "title": "'Ker' Arache"
+      },
+      {
+        "collection": "SDAH",
+        "number": 620,
+        "title": "On Jordan’s Stormy Banks"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "Varina"
   },
   {
     "id": "nca-234",
@@ -11452,8 +15386,19 @@
         "collection": "NZK",
         "number": 179,
         "title": "Wavunaji Watafurahi"
+      },
+      {
+        "collection": "WNY",
+        "number": 179,
+        "title": "Chunyi Dich Nikech Parruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 179,
+        "title": "'Nkoro Yao Yamigirwe"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting"
   },
   {
     "id": "nca-235",
@@ -11494,8 +15439,25 @@
         "collection": "NZK",
         "number": 180,
         "title": "Pana Mahali Pazuri Mno"
+      },
+      {
+        "collection": "WNY",
+        "number": 180,
+        "title": "Un Muhero Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 180,
+        "title": "Engaki Engiya Mono"
+      },
+      {
+        "collection": "SDAH",
+        "number": 428,
+        "title": "Sweet By And By"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "Sweet By and By"
   },
   {
     "id": "nca-236",
@@ -11536,8 +15498,19 @@
         "collection": "NZK",
         "number": 181,
         "title": "Mahali pa Maji"
+      },
+      {
+        "collection": "WNY",
+        "number": 181,
+        "title": "Nyasaye Ni Lerna"
+      },
+      {
+        "collection": "OKN",
+        "number": 181,
+        "title": "'Monen'Omobas' One"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting"
   },
   {
     "id": "nca-237",
@@ -11586,8 +15559,25 @@
         "collection": "NZK",
         "number": 182,
         "title": "Mchana Hauishi"
+      },
+      {
+        "collection": "WNY",
+        "number": 182,
+        "title": "Koro Wagenoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 182,
+        "title": "Yeso Nkwegenete"
+      },
+      {
+        "collection": "SDAH",
+        "number": 427,
+        "title": "No Night There"
       }
-    ]
+    ],
+    "category": "Heaven & Life Everlasting",
+    "tune": "No Night There"
   },
   {
     "id": "nca-238",
@@ -11622,7 +15612,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 183,
+        "title": "Furaha na Raha"
+      },
+      {
+        "collection": "WNY",
+        "number": 183,
+        "title": "Ang`eyo Wuonwa Ong`eyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 183,
+        "title": "Tat'O Igoro Namanyete"
+      }
+    ]
   },
   {
     "id": "nca-239",
@@ -11661,7 +15669,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Christian Mission & Warfare",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 184,
+        "title": "Vitu Vyote ni Sawa"
+      },
+      {
+        "collection": "WNY",
+        "number": 184,
+        "title": "Kat` Abed Jaketh Maduong`"
+      },
+      {
+        "collection": "OKN",
+        "number": 184,
+        "title": "Nimba Omobe Mono"
+      }
+    ]
   },
   {
     "id": "nca-240",
@@ -11704,7 +15730,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Morning & Evening Worship",
+    "crossReferences": []
   },
   {
     "id": "nca-241",
@@ -11761,8 +15789,25 @@
         "collection": "NZK",
         "number": 184,
         "title": "Vitu Vyote ni Sawa"
+      },
+      {
+        "collection": "WNY",
+        "number": 184,
+        "title": "Kat` Abed Jaketh Maduong`"
+      },
+      {
+        "collection": "OKN",
+        "number": 184,
+        "title": "Nimba Omobe Mono"
+      },
+      {
+        "collection": "SDAH",
+        "number": 652,
+        "title": "Love at Home"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship",
+    "tune": "Love at Home"
   },
   {
     "id": "nca-242",
@@ -11817,8 +15862,19 @@
         "collection": "NZK",
         "number": 185,
         "title": "Mungu U Mapenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 185,
+        "title": "Adwari Saa Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 185,
+        "title": "Nche Ninkoganetie"
       }
-    ]
+    ],
+    "category": "Worship & Adoration"
   },
   {
     "id": "nca-243",
@@ -11859,8 +15915,25 @@
         "collection": "NZK",
         "number": 186,
         "title": "Tuonanapo na Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 186,
+        "title": "Kata Ka Abedo Gi Ngima Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 186,
+        "title": "Ekero Nkoba n'Omorembe Nchera"
+      },
+      {
+        "collection": "SDAH",
+        "number": 350,
+        "title": "Belts Be The Tie That Binds"
       }
-    ]
+    ],
+    "category": "Morning & Evening Worship",
+    "tune": "Dennis"
   },
   {
     "id": "nca-244",
@@ -11907,8 +15980,25 @@
         "collection": "NZK",
         "number": 187,
         "title": "Kufariki Naye Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 187,
+        "title": "Kwawuotho Gi Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 187,
+        "title": "Gotara Na Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 305,
+        "title": "Give Me Jesus"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Rest"
   },
   {
     "id": "nca-245",
@@ -11957,8 +16047,19 @@
         "collection": "NZK",
         "number": 188,
         "title": "Wimbi la Damu"
+      },
+      {
+        "collection": "WNY",
+        "number": 188,
+        "title": "An Ayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 188,
+        "title": "Mbuya Komwegena Yeso"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace"
   },
   {
     "id": "nca-246",
@@ -11997,7 +16098,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-247",
@@ -12040,8 +16143,19 @@
         "collection": "NZK",
         "number": 189,
         "title": "Mimina Upya"
+      },
+      {
+        "collection": "WNY",
+        "number": 189,
+        "title": "Yesu Kristo En Osiepwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 189,
+        "title": "Naki Yes' Ar'omosani"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace"
   },
   {
     "id": "nca-248",
@@ -12086,8 +16200,25 @@
         "collection": "NZK",
         "number": 191,
         "title": "Mkate wa Mbingu"
+      },
+      {
+        "collection": "WNY",
+        "number": 191,
+        "title": "Ruoth En E Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 191,
+        "title": "Monen' Omorisia"
+      },
+      {
+        "collection": "SDAH",
+        "number": 274,
+        "title": "O Word of God Incarnate"
       }
-    ]
+    ],
+    "category": "Holy Scriptures & Word of God",
+    "tune": "Bread of Life"
   },
   {
     "id": "nca-249",
@@ -12126,7 +16257,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-250",
@@ -12177,8 +16310,25 @@
         "collection": "NZK",
         "number": 192,
         "title": "Mwamba Wenye Imara"
+      },
+      {
+        "collection": "WNY",
+        "number": 192,
+        "title": "Tim Kinda Mar Lemo"
+      },
+      {
+        "collection": "OKN",
+        "number": 192,
+        "title": "Rigi' Ob' Omochenu"
+      },
+      {
+        "collection": "SDAH",
+        "number": 300,
+        "title": "Rock of Ages"
       }
-    ]
+    ],
+    "category": "Salvation, Atonement & Grace",
+    "tune": "Toplady"
   },
   {
     "id": "nca-251",
@@ -12219,8 +16369,25 @@
         "collection": "NZK",
         "number": 193,
         "title": "Sauti ya Mchungaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 193,
+        "title": "Winj Weche Ma Yesu Nowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 193,
+        "title": "Igwa Amang'ana A Yeso"
+      },
+      {
+        "collection": "SDAH",
+        "number": 359,
+        "title": "Hark! The Voice Of Jesus Calling"
       }
-    ]
+    ],
+    "category": "Christian Mission & Warfare",
+    "tune": "Galilee"
   },
   {
     "id": "nca-252",
@@ -12275,8 +16442,19 @@
         "collection": "NZK",
         "number": 194,
         "title": "Twaomba Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 194,
+        "title": "Wuothi E Ler Mar Ruoth Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 194,
+        "title": "Tar' Enchera Y'Omonene"
       }
-    ]
+    ],
+    "category": "Prayer & Christian Fellowship"
   },
   {
     "id": "nca-253",
@@ -12319,7 +16497,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Heaven & Life Everlasting",
+    "crossReferences": []
   },
   {
     "id": "nca-254",
@@ -12360,7 +16540,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Christian Mission & Warfare",
+    "tune": "Yield Not",
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 608,
+        "title": "Faith Is the Victory"
+      }
+    ]
   },
   {
     "id": "nca-255",
@@ -12409,7 +16598,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "tune": "Easter Hymn",
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 166,
+        "title": "Christ the Lord Is Risen Today"
+      }
+    ]
   },
   {
     "id": "nca-256",
@@ -12450,8 +16648,19 @@
         "collection": "NZK",
         "number": 198,
         "title": "Nilinawa Mikono"
+      },
+      {
+        "collection": "WNY",
+        "number": 198,
+        "title": "Yesu Ni Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 198,
+        "title": "Yes' Omorisi' Oito"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-257",
@@ -12486,7 +16695,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 202,
+        "title": "Sikia Mlio"
+      },
+      {
+        "collection": "WNY",
+        "number": 202,
+        "title": "Weruru Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 202,
+        "title": "Ntererie Roik' Abaminto"
+      }
+    ]
   },
   {
     "id": "nca-258",
@@ -12529,8 +16756,19 @@
         "collection": "NZK",
         "number": 199,
         "title": "Upendo ni Furaha"
+      },
+      {
+        "collection": "WNY",
+        "number": 199,
+        "title": "Ruoth Yesu, Saa Mar Lamoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 199,
+        "title": "Ens' Engiya Y'ogosaba"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-259",
@@ -12579,8 +16817,19 @@
         "collection": "NZK",
         "number": 197,
         "title": "Anipenda ni Kweli"
+      },
+      {
+        "collection": "WNY",
+        "number": 197,
+        "title": "Owadwa Kik Iluor"
+      },
+      {
+        "collection": "OKN",
+        "number": 197,
+        "title": "Kae' Mbeo' Bwoba"
       }
-    ]
+    ],
+    "category": "Worship & Adoration"
   },
   {
     "id": "nca-260",
@@ -12621,8 +16870,25 @@
         "collection": "NZK",
         "number": 196,
         "title": "Kitambo Bwana Yuaja"
+      },
+      {
+        "collection": "WNY",
+        "number": 196,
+        "title": "Yesu En Osiep Maber Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 196,
+        "title": "Yeso N'Omosani Omuya"
+      },
+      {
+        "collection": "SDAH",
+        "number": 218,
+        "title": "When He Cometh"
       }
-    ]
+    ],
+    "category": "Second Coming & Christian Hope",
+    "tune": "Jewels"
   },
   {
     "id": "nca-261",
@@ -12681,7 +16947,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Benedictions & Doxologies",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 204,
+        "title": "Kuwa na Yesu Nyumbani"
+      },
+      {
+        "collection": "WNY",
+        "number": 204,
+        "title": "Awinjo Dwondi Maler"
+      },
+      {
+        "collection": "OKN",
+        "number": 204,
+        "title": "Naigw'eriogi Riao"
+      }
+    ]
   },
   {
     "id": "nca-262",
@@ -12722,8 +17006,25 @@
         "collection": "NZK",
         "number": 201,
         "title": "Mungu Huona Vindege"
+      },
+      {
+        "collection": "WNY",
+        "number": 201,
+        "title": "Analu Bang`i Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 201,
+        "title": "Ningotunye Omotoria"
+      },
+      {
+        "collection": "SDAH",
+        "number": 190,
+        "title": "Jesus Loves Me"
       }
-    ]
+    ],
+    "category": "Worship & Adoration",
+    "tune": "Sparrow"
   },
   {
     "id": "nca-263",
@@ -12772,8 +17073,19 @@
         "collection": "NZK",
         "number": 200,
         "title": "Baba Yetu Aliye Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 200,
+        "title": "Saa Mar Lemo Mogwedhi"
+      },
+      {
+        "collection": "OKN",
+        "number": 200,
+        "title": "'Nsa Ngiya Y'ogosaba"
       }
-    ]
+    ],
+    "category": "Praise & Thanksgiving"
   },
   {
     "id": "nca-264",
@@ -12814,7 +17126,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Second Coming & Christian Hope",
+    "crossReferences": []
   },
   {
     "id": "nca-265",
@@ -12847,7 +17161,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-266",
@@ -12888,7 +17204,16 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "tune": "Cradle Song",
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 124,
+        "title": "Away in a Manger"
+      }
+    ]
   },
   {
     "id": "nca-267",
@@ -12937,7 +17262,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-268",
@@ -12978,7 +17305,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-269",
@@ -13007,7 +17336,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "crossReferences": []
   },
   {
     "id": "nca-270",
@@ -13040,7 +17371,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Holy Scriptures & Word of God",
+    "crossReferences": []
   },
   {
     "id": "nca-271",
@@ -13076,7 +17409,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "crossReferences": []
   },
   {
     "id": "nca-272",
@@ -13098,7 +17433,10 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "tune": "Zacchaeus",
+    "crossReferences": []
   },
   {
     "id": "nca-273",
@@ -13155,7 +17493,10 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "tune": "Sabbath School",
+    "crossReferences": []
   },
   {
     "id": "nca-274",
@@ -13194,7 +17535,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Holy Scriptures & Word of God",
+    "crossReferences": []
   },
   {
     "id": "nca-275",
@@ -13229,7 +17572,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "The Sabbath",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 203,
+        "title": "Siku Sita Fanya Kazi"
+      },
+      {
+        "collection": "WNY",
+        "number": 203,
+        "title": "To Kak Abet Yesu Kawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 203,
+        "title": "Buna Nde"
+      }
+    ]
   },
   {
     "id": "nca-276",
@@ -13270,7 +17631,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-277",
@@ -13289,7 +17652,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 214,
+        "title": "Nataka Niwe Tayari"
+      },
+      {
+        "collection": "WNY",
+        "number": 214,
+        "title": "Asebayo Mabor Kodi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 214,
+        "title": "Bono Ngocha Nde"
+      }
+    ]
   },
   {
     "id": "nca-278",
@@ -13312,10 +17693,21 @@
     "crossReferences": [
       {
         "collection": "NZK",
-        "number": 210,
-        "title": "Roho Wa Mungu Wangu"
+        "number": 218,
+        "title": "Yesu Mwokozi Mpendwa"
+      },
+      {
+        "collection": "WNY",
+        "number": 218,
+        "title": "O Yesu, An Adwaro"
+      },
+      {
+        "collection": "OKN",
+        "number": 218,
+        "title": "O Yeso Narire Eira"
       }
-    ]
+    ],
+    "category": "Gospel Invitation & Repentance"
   },
   {
     "id": "nca-279",
@@ -13344,7 +17736,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Prayer & Christian Fellowship",
+    "crossReferences": []
   },
   {
     "id": "nca-280",
@@ -13363,7 +17757,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-281",
@@ -13382,7 +17778,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Christian Mission & Warfare",
+    "crossReferences": []
   },
   {
     "id": "nca-282",
@@ -13401,7 +17799,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-283",
@@ -13434,7 +17834,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Benedictions & Doxologies",
+    "crossReferences": []
   },
   {
     "id": "nca-284",
@@ -13457,7 +17859,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Salvation, Atonement & Grace",
+    "crossReferences": []
   },
   {
     "id": "nca-285",
@@ -13514,7 +17918,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-286",
@@ -13539,7 +17945,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 208,
+        "title": "Mungu Afanya Upinde"
+      },
+      {
+        "collection": "WNY",
+        "number": 208,
+        "title": "Bedi Mangima Kuoma"
+      },
+      {
+        "collection": "OKN",
+        "number": 208,
+        "title": "Ens'enyia Y'Omwando"
+      }
+    ]
   },
   {
     "id": "nca-287",
@@ -13588,7 +18012,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 207,
+        "title": "Nani Ayafanya Maua"
+      },
+      {
+        "collection": "WNY",
+        "number": 207,
+        "title": "Kaw Ngimana"
+      },
+      {
+        "collection": "OKN",
+        "number": 207,
+        "title": "Ir'obogima Bwane"
+      }
+    ]
   },
   {
     "id": "nca-288",
@@ -13625,7 +18067,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-289",
@@ -13650,8 +18094,19 @@
         "collection": "NZK",
         "number": 215,
         "title": "Ulimwengu Wataka"
+      },
+      {
+        "collection": "WNY",
+        "number": 215,
+        "title": "Isedwaro Yuweyo Kod Yie Momedore"
+      },
+      {
+        "collection": "OKN",
+        "number": 215,
+        "title": "Kwarure Ebinto Bionsi Ekeng'wanso?"
       }
-    ]
+    ],
+    "category": "The Sabbath"
   },
   {
     "id": "nca-290",
@@ -13708,7 +18163,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-291",
@@ -13727,7 +18184,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 210,
+        "title": "Roho Wa Mungu Wangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 210,
+        "title": "Diyie Dak Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 210,
+        "title": "Aye Nobe Buna Yeso"
+      }
+    ]
   },
   {
     "id": "nca-292",
@@ -13749,7 +18224,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "crossReferences": []
   },
   {
     "id": "nca-293",
@@ -13778,7 +18255,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-294",
@@ -13813,7 +18292,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Consecration, Trust & Living",
+    "crossReferences": []
   },
   {
     "id": "nca-295",
@@ -13870,7 +18351,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Gospel Invitation & Repentance",
+    "crossReferences": []
   },
   {
     "id": "nca-296",
@@ -13906,7 +18389,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Children & Youth Songs",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 209,
+        "title": "Napenda Sana Kufika"
+      },
+      {
+        "collection": "WNY",
+        "number": 209,
+        "title": "Ywaya Machiegni Buti, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 209,
+        "title": "Ong'use Ang'e N'aye Tata"
+      }
+    ]
   },
   {
     "id": "nca-297",
@@ -13925,7 +18426,25 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Benedictions & Doxologies",
+    "crossReferences": [
+      {
+        "collection": "NZK",
+        "number": 220,
+        "title": "Kwa Heri"
+      },
+      {
+        "collection": "WNY",
+        "number": 220,
+        "title": "Otelona!"
+      },
+      {
+        "collection": "OKN",
+        "number": 220,
+        "title": "Ondaire, Ondaire"
+      }
+    ]
   },
   {
     "id": "nca-298",
@@ -13975,7 +18494,9 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   },
   {
     "id": "nca-299",
@@ -14008,6 +18529,8 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "category": "Worship & Adoration",
+    "crossReferences": []
   }
 ]

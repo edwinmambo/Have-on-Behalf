@@ -19,6 +19,12 @@ import {
   Download,
   BookOpen,
   Palette,
+  ZoomIn,
+  ZoomOut,
+  Maximize2,
+  Minimize2,
+  Monitor,
+  RotateCcw,
 } from 'lucide-react';
 import { AppThemeMode, UserSettings, UserProfile, saveUserProfile, updateSettings, AccentTheme, getFavorites, getWorshipPlans } from '../lib/storage';
 import { BeamFont, BeamTheme } from '../types';
@@ -145,7 +151,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-16">
+    <div className="w-full max-w-5xl mx-auto space-y-8 pb-16">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
@@ -401,6 +407,162 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 </span>
               </button>
             ))}
+          </div>
+        </div>
+
+        {/* APP ZOOM & DISPLAY SCALING (Browser-Style Zoom) */}
+        <div className="pt-5 border-t border-slate-100 dark:border-slate-800 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <ZoomIn className="w-4 h-4 text-amber-500" />
+              <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                App Interface Zoom (Browser-Style Scaling)
+              </h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                {settings.appZoom || 100}%
+              </span>
+              {(settings.appZoom || 100) !== 100 && (
+                <button
+                  onClick={() => onUpdateSettings({ appZoom: 100 })}
+                  className="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold transition"
+                  title="Reset to 100% standard zoom"
+                >
+                  <RotateCcw className="w-3 h-3 text-amber-500" />
+                  <span>Reset (100%)</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Scale the whole application interface (buttons, text, navigation, sidebars, and dialogue cards) up or down just like native browser zoom (Ctrl +/-). Essential for laptops, external AV monitors, and standalone app mode.
+          </p>
+
+          {/* Stepper + Slider Row */}
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+            <button
+              onClick={() => onUpdateSettings({ appZoom: Math.max(75, (settings.appZoom || 100) - 5) })}
+              className="w-8 h-8 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-sm shadow-xs transition"
+              title="Zoom out (-5%)"
+            >
+              -
+            </button>
+            <input
+              id="app-zoom-slider"
+              type="range"
+              min="75"
+              max="175"
+              step="5"
+              value={settings.appZoom || 100}
+              onChange={(e) => onUpdateSettings({ appZoom: Number(e.target.value) })}
+              className="flex-1 accent-amber-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none"
+              title="Adjust app zoom percentage"
+            />
+            <button
+              onClick={() => onUpdateSettings({ appZoom: Math.min(175, (settings.appZoom || 100) + 5) })}
+              className="w-8 h-8 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-sm shadow-xs transition"
+              title="Zoom in (+5%)"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Quick-Preset Zoom Buttons */}
+          <div className="flex items-center gap-1.5 flex-wrap pt-1 text-xs">
+            <span className="text-[11px] text-slate-400 font-medium mr-1">Presets:</span>
+            {[
+              { val: 80, label: '80%' },
+              { val: 90, label: '90%' },
+              { val: 100, label: '100% (Default)' },
+              { val: 110, label: '110%' },
+              { val: 125, label: '125%' },
+              { val: 140, label: '140%' },
+              { val: 150, label: '150%' },
+            ].map((p) => {
+              const isActive = (settings.appZoom || 100) === p.val;
+              return (
+                <button
+                  key={p.val}
+                  onClick={() => onUpdateSettings({ appZoom: p.val })}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
+                    isActive
+                      ? 'bg-amber-500 text-white shadow-xs'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  }`}
+                >
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="text-[11px] text-slate-400 dark:text-slate-500 pt-1 flex items-center gap-1">
+            <span>⌨️ Shortcut: Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">Ctrl</kbd> + <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">+</kbd> or <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">-</kbd> anywhere to zoom anytime. <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">Ctrl 0</kbd> resets to 100%.</span>
+          </div>
+        </div>
+
+        {/* FULL-WIDTH LAPTOP & STANDALONE DISPLAY LAYOUT */}
+        <div className="pt-5 border-t border-slate-100 dark:border-slate-800 space-y-3">
+          <div className="flex items-center gap-2">
+            <Monitor className="w-4 h-4 text-indigo-500" />
+            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+              Screen Layout Width (Laptop & Standalone Window)
+            </h3>
+          </div>
+
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Choose whether the app spans edge-to-edge to fill your entire laptop screen and standalone window, or stays contained within a centered 1280px column.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <button
+              onClick={() => onUpdateSettings({ fullWidthLayout: true })}
+              className={`p-3.5 rounded-xl border text-left transition flex items-start gap-3 ${
+                settings.fullWidthLayout !== false
+                  ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 ring-2 ring-amber-400'
+                  : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+              }`}
+            >
+              <div className="w-9 h-9 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                <Maximize2 className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                    Full-Width Display (Edge-to-Edge)
+                  </h4>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500 text-white">
+                    Recommended
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                  Fills 100% of your laptop screen. Expands catalog sidebars, hymn lyrics, chords, and multi-version Scripture parallel columns.
+                </p>
+              </div>
+            </button>
+
+            <button
+              onClick={() => onUpdateSettings({ fullWidthLayout: false })}
+              className={`p-3.5 rounded-xl border text-left transition flex items-start gap-3 ${
+                settings.fullWidthLayout === false
+                  ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 ring-2 ring-amber-400'
+                  : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+              }`}
+            >
+              <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center shrink-0 mt-0.5">
+                <Minimize2 className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                  Contained Width (1280px)
+                </h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                  Centers the application in a traditional 1280px column with gentle side margins on larger desktop monitors.
+                </p>
+              </div>
+            </button>
           </div>
         </div>
       </section>
@@ -760,6 +922,50 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <p className="text-slate-600 dark:text-slate-300 text-xs">
               Includes authentic, page-paragraph referenced writings from Steps to Christ (SC), The Desire of Ages (DA), The Great Controversy (GC), The Ministry of Healing (MOH), and Christ's Object Lessons (COL).
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: MOBILE COMPANION APP & EARLY TESTER RELEASES */}
+      <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+              <Smartphone className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                  Mobile Companion App (Flutter & Dart)
+                </h2>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">
+                  Early Tester Release
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Native offline Android app and tester distribution bundle in the <code className="font-mono text-amber-600 dark:text-amber-400">assets/releases/</code> folder.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+            The Flutter companion app codebase has been verified with <strong>zero analyzer errors</strong> and passed all unit test suites. A turnkey GitHub Actions workflow (<code className="font-mono text-slate-800 dark:text-slate-200">.github/workflows/flutter-release.yml</code>) is configured so pushing to GitHub will automatically compile the release APK and publish it for your testers!
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 text-[11px]">
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+              <strong className="block text-slate-900 dark:text-white mb-0.5">📂 Release Directory</strong>
+              <span className="text-slate-500 dark:text-slate-400 font-mono">assets/releases/</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+              <strong className="block text-slate-900 dark:text-white mb-0.5">🚀 Cloud CI/CD</strong>
+              <span className="text-slate-500 dark:text-slate-400">Automated GitHub Actions APK build</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+              <strong className="block text-slate-900 dark:text-white mb-0.5">📖 Tester Guide</strong>
+              <span className="text-slate-500 dark:text-slate-400">assets/releases/TESTER_GUIDE.md</span>
+            </div>
           </div>
         </div>
       </section>

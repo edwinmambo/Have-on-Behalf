@@ -2,7 +2,29 @@
  * Core type definitions for Berean: Bible, Hymnal & EGW Platform
  */
 
-export type HymnalCollection = 'SDAH' | 'SDAH-EXT' | 'NZK' | 'NCA';
+export type HymnalCollection =
+  | 'SDAH'
+  | 'SDAH-EXT'
+  | 'ENG_OLD'
+  | 'CIS'
+  | 'NZK'
+  | 'WNY'
+  | 'DHO'
+  | 'OKN'
+  | 'NCA'
+  | 'NCA-OLD'
+  | 'KAL'
+  | 'LUG'
+  | 'LOZ'
+  | 'NAN'
+  | 'TON'
+  | 'RUN'
+  | 'LUO_UG'
+  | 'KMN'
+  | 'ICB'
+  | 'KIN'
+  | 'SHO'
+  | 'UKE';
 
 export interface HymnStanza {
   number: number;
@@ -25,6 +47,8 @@ export interface Hymn {
   tune?: string;
   scriptureReference?: string;
   hasChords?: boolean;
+  oldBookNumber?: number; // NCA Ibuku Rikuru number if applicable
+  newBookNumber?: number; // NCA Ibuku Rieru number if applicable
   crossReferences?: {
     collection: HymnalCollection;
     number: number;
@@ -33,7 +57,19 @@ export interface Hymn {
   stanzas: HymnStanza[];
 }
 
-export type BibleVersionId = 'KJV' | 'NKJV' | 'ESV' | 'NLT' | 'MSG' | 'SUV' | 'GIK';
+export type BibleVersionId =
+  | 'KJV'
+  | 'WEB'
+  | 'ASV'
+  | 'BBE'
+  | 'SUV'
+  | 'GIK'
+  | 'LUO'
+  | 'LUG'
+  | 'NKJV'
+  | 'ESV'
+  | 'NLT'
+  | 'MSG';
 
 export interface BibleVersionMeta {
   id: BibleVersionId;
@@ -125,13 +161,17 @@ export interface RecentBeamItem {
 }
 
 export interface BeamSlide {
-  label: string; // "Intro", "Verse 1", "Verse 2a", "Refrain"
+  label: string; // "Intro", "Verse 1", "Verse 2a", "Refrain", "Amen"
   title: string;
   sourceBadge: string; // "Hymn 159", "John 14:1-3 (KJV)", "MOH 17.1"
   lines: string[];
-  verseTag?: string; // e.g. "Verse 2a" as in image.png
+  verseTag?: string; // e.g. "Verse 2a"
   isIntro?: boolean;
+  isOutro?: boolean;
   isRefrain?: boolean;
+  stanzaNumber?: number; // e.g. 1, 2, 3
+  totalStanzas?: number; // total counted stanzas, e.g. 3
+  associatedStanzaNumber?: number; // for refrains following stanza 1, 2, 3
   introDetails?: {
     hymnNumber?: number;
     collection?: string;
@@ -147,6 +187,19 @@ export interface BeamSlide {
   totalHymnsInSession?: number;
   hymnSlideIndex?: number;
   totalHymnSlides?: number;
+}
+
+export interface HymnFeedbackItem {
+  id: string;
+  hymnId: string;
+  hymnNumber: number;
+  collection: string;
+  title: string;
+  category: 'typo' | 'missing_stanza' | 'refrain_issue' | 'tune_meter' | 'key_pitch' | 'translation' | 'general';
+  stanzaReference?: string;
+  comment: string;
+  testerName?: string;
+  createdAt: number;
 }
 
 export interface BeamState {

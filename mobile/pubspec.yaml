@@ -1,0 +1,43 @@
+name: have_on_behalf_companion
+description: "Have On Behalf (H.O.B) - Offline Liturgical Hymnal Companion for Seventh-day Adventists (SDAH, NZK, NCA)"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # State management & Dependency injection
+  provider: ^6.1.2
+  # Local offline preferences & notes storage
+  shared_preferences: ^2.2.2
+  # Distinctive liturgical typography
+  google_fonts: ^6.1.0
+  # Vector icon rendering
+  flutter_svg: ^2.0.10+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/
+    - assets/data/sdah.json
+    - assets/data/nzk.json
+    - assets/data/nca.json
+    - assets/data/nca_old.json
+    - assets/data/sdah_ext.json
+    - assets/data/wny.json
+    - assets/data/okn.json
+    - assets/data/kin.json
+    - assets/data/cis.json
+    - assets/data/kmn.json
+    - assets/data/icb.json
+    - assets/data/sho.json
+    - assets/data/uke.json

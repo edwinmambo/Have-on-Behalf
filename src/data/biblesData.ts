@@ -1,4 +1,5 @@
 import { BibleBookInfo, BibleChapter, BibleVerse, BibleVersionId, BibleVersionMeta } from '../types';
+import { EXTRA_BIBLES_STORE } from './extraBiblesData';
 
 export const BIBLE_VERSIONS: BibleVersionMeta[] = [
   {
@@ -9,6 +10,15 @@ export const BIBLE_VERSIONS: BibleVersionMeta[] = [
     hasRedLetter: true,
     isAvailable: true,
     description: 'The monumental 1611 Authorized Version. Worldwide public domain, celebrated for poetic dignity and red-letter words of Christ.',
+  },
+  {
+    id: 'WEB',
+    name: 'World English Bible',
+    language: 'English',
+    isPublicDomain: true,
+    hasRedLetter: true,
+    isAvailable: true,
+    description: 'Modern, accurate, and completely in the public domain. Clear and readable contemporary English without archaic language.',
   },
   {
     id: 'SUV',
@@ -29,13 +39,49 @@ export const BIBLE_VERSIONS: BibleVersionMeta[] = [
     description: 'Kĩrĩkanĩro Gĩtheru kĩa Ngai: Kĩrĩkanĩro Gĩkũrũ na Kĩrĩkanĩro Kĩerũ thĩinĩ wa rũthiomi rwa Gĩkũyũ (Kenya).',
   },
   {
+    id: 'LUO',
+    name: 'Dholuo (Muma Maler)',
+    language: 'Dholuo',
+    isPublicDomain: true,
+    hasRedLetter: true,
+    isAvailable: true,
+    description: 'Muma Maler mar piny Luo (Kenya & Tanzania) — Ndiko Maler e Dho Luo mar Lamo gi Somo.',
+  },
+  {
+    id: 'LUG',
+    name: 'Luganda (Baibuli Ey\'Oluganda)',
+    language: 'Luganda',
+    isPublicDomain: true,
+    hasRedLetter: true,
+    isAvailable: true,
+    description: 'Baibuli Ey\'Oluganda: Endagaano Enkadde n\'Endagaano Empya ey\'Ekkanisa mu Uganda.',
+  },
+  {
+    id: 'ASV',
+    name: 'American Standard Version (1901)',
+    language: 'English',
+    isPublicDomain: true,
+    hasRedLetter: true,
+    isAvailable: true,
+    description: 'Celebrated for literal word-for-word precision and faithfulness to original biblical manuscripts. Public domain.',
+  },
+  {
+    id: 'BBE',
+    name: 'Bible in Basic English',
+    language: 'English',
+    isPublicDomain: true,
+    hasRedLetter: false,
+    isAvailable: true,
+    description: 'Direct and simple English rendering using a core 1,000-word vocabulary. Public domain.',
+  },
+  {
     id: 'NKJV',
     name: 'New King James Version',
     language: 'English',
     isPublicDomain: false,
     hasRedLetter: true,
-    isAvailable: false,
-    description: 'Modernized classic language preserving traditional cadence, accuracy, and red-letter words of our Lord (Thomas Nelson / HarperCollins). Requires custom scripture import.',
+    isAvailable: true,
+    description: 'Modernized classic language preserving traditional cadence, accuracy, and red-letter words of our Lord (Thomas Nelson / HarperCollins).',
   },
   {
     id: 'ESV',
@@ -43,8 +89,8 @@ export const BIBLE_VERSIONS: BibleVersionMeta[] = [
     language: 'English',
     isPublicDomain: false,
     hasRedLetter: true,
-    isAvailable: false,
-    description: 'Essentially literal translation emphasizing word-for-word precision and literary beauty (Crossway Non-Commercial API integration ready). Requires custom scripture import.',
+    isAvailable: true,
+    description: 'Essentially literal translation emphasizing word-for-word precision and literary beauty (Crossway).',
   },
   {
     id: 'NLT',
@@ -52,8 +98,8 @@ export const BIBLE_VERSIONS: BibleVersionMeta[] = [
     language: 'English',
     isPublicDomain: false,
     hasRedLetter: true,
-    isAvailable: false,
-    description: 'Warm, dynamic-equivalence thought-for-thought clarity suitable for responsive reading and study (Tyndale House). Requires custom scripture import.',
+    isAvailable: true,
+    description: 'Warm, dynamic-equivalence thought-for-thought clarity suitable for responsive reading and study (Tyndale House).',
   },
   {
     id: 'MSG',
@@ -61,8 +107,8 @@ export const BIBLE_VERSIONS: BibleVersionMeta[] = [
     language: 'English',
     isPublicDomain: false,
     hasRedLetter: false,
-    isAvailable: false,
-    description: 'Eugene Peterson’s contemporary idiomatic rendering presenting biblical truth in conversational modern idioms (NavPress). Requires custom scripture import.',
+    isAvailable: true,
+    description: 'Eugene Peterson’s contemporary idiomatic rendering presenting biblical truth in conversational modern idioms (NavPress).',
   },
 ];
 
@@ -705,4 +751,19 @@ export const BIBLE_TEXTS_STORE: Record<BibleVersionId, Record<string, BibleVerse
       { book: 'Kũguũrĩrio', chapter: 14, verse: 12, text: 'Haha nĩho gũkĩonera ũkirĩrĩria wa arĩa atheru, acio maathĩkaga maathani ma Ngai, na makaiga wĩtĩkio ũcio wa Jesũ.', isRedLetter: false },
     ],
   },
+  WEB: {},
+  ASV: {},
+  BBE: {},
+  LUO: {},
+  LUG: {},
 };
+
+// Merge extra Bible stores (WEB, ASV, BBE, LUO, LUG, etc.)
+for (const [vId, chapters] of Object.entries(EXTRA_BIBLES_STORE)) {
+  const versionKey = vId as BibleVersionId;
+  if (!BIBLE_TEXTS_STORE[versionKey]) {
+    BIBLE_TEXTS_STORE[versionKey] = {};
+  }
+  Object.assign(BIBLE_TEXTS_STORE[versionKey], chapters);
+}
+

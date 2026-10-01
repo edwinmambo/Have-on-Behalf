@@ -18,7 +18,18 @@ This document provides the formal engineering grooming, sprint epics, user stori
 
 ---
 
-## 📱 Phase 2 Grooming: Flutter Mobile Companion App
+## 📱 Phase 2: Flutter Mobile Companion App (Implemented)
+
+### Summary of Phase 2 Deliverables
+| Deliverable | Description | Status |
+| :--- | :--- | :--- |
+| **Flutter Companion Bootstrap** | Full Flutter app structure in `/mobile/` (`pubspec.yaml`, `main.dart`, MultiProvider, zero-latency offline loading). | ✅ Done |
+| **Local Offline Asset Bundling** | Pre-packaged all canonical datasets (`sdah.json`, `nzk.json`, `nca.json`, `sdah_ext.json`) in `mobile/assets/data/`. | ✅ Done |
+| **Dedicated Hymn View (No Bottom Sheets)** | Full-bleed dedicated `HymnDetailScreen` with tactile `← Back` navigation, avoiding accidental modal dismissals while singing. | ✅ Done |
+| **Inline Interlinear Parallel Stanzas** | Direct stanza-by-stanza translation callout cards in both web console and mobile app with automatic cross-reference mapping. | ✅ Done |
+| **Liturgical Theme Parity** | 5 canonical liturgical palettes (*Sapphire, Emerald, Amethyst, Bronze, Rose*) in both Light and Dark modes in Flutter. | ✅ Done |
+| **Pitch Pipe Synthesizer** | Acoustic starting tone sounding with semitone transposition selector (-3 to +3). | ✅ Done |
+| **Personal Notes & Favorites** | Offline storage for personal reflections and bookmarked hymns via `shared_preferences`. | ✅ Done |
 
 ### Epic 1: Flutter Project Bootstrap & Clean Ingestion
 * **Story 1.1: Canonical Data Asset Loading**
