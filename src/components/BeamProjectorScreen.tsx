@@ -33,10 +33,13 @@ import { HYMNS_DATA } from '../data/hymnsData';
 import { getSettings, getRecentBeams } from '../lib/storage';
 
 function getInitialBeamState(): ActiveBeamState {
+  const s = getSettings();
   const stored = getStoredBeamState();
   if (stored && stored.slides && stored.slides.length > 0) {
     return {
       ...stored,
+      font: s.beamFont || stored.font || 'lora',
+      theme: s.beamTheme || stored.theme || 'ah-sanctuary',
       isBlackout: false,
       isTextCleared: false,
       currentIndex:
@@ -76,7 +79,6 @@ function getInitialBeamState(): ActiveBeamState {
     includeIntro: true,
     includeOutro: true,
   });
-  const s = getSettings();
   const state: ActiveBeamState = {
     isOpen: true,
     title: `${defaultHymn.collection} #${defaultHymn.number} · ${defaultHymn.title}`,
@@ -120,6 +122,33 @@ export const BeamProjectorScreen: React.FC = () => {
     requestBeamStateSync();
   }, []);
 
+  // 3. Listen to direct settings updates over BroadcastChannel for immediate font persistence
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    let bc: BroadcastChannel | null = null;
+    try {
+      bc = new BroadcastChannel('haveonbehalf_beam_channel');
+      bc.onmessage = (event) => {
+        if (event.data && event.data.type === 'BEAM_SETTINGS_UPDATE' && event.data.payload) {
+          const s = getSettings();
+          setActiveSettings(s);
+          if (event.data.payload.beamFont) {
+            setBeamState((prev) => ({
+              ...prev,
+              font: event.data.payload.beamFont,
+              updatedAt: Date.now(),
+            }));
+          }
+        }
+      };
+    } catch {
+      // ignore
+    }
+    return () => {
+      if (bc) bc.close();
+    };
+  }, []);
+
   const slides = beamState.slides || [];
   const currentIndex =
     typeof beamState.currentIndex === 'number' &&
@@ -154,11 +183,23 @@ export const BeamProjectorScreen: React.FC = () => {
     }
   }, [beamState?.title]);
 
+  const [activeSettings, setActiveSettings] = useState(() => getSettings());
+
+  useEffect(() => {
+    const handleStorage = () => setActiveSettings(getSettings());
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener('haveonbehalf_settings_changed', handleStorage);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener('haveonbehalf_settings_changed', handleStorage);
+    };
+  }, []);
+
   const currentSlide = slides[currentIndex] || slides[0] || null;
   const isBlackout = beamState.isBlackout ?? false;
   const isTextCleared = beamState.isTextCleared ?? false;
-  const theme: BeamTheme = beamState.theme || 'ah-sanctuary';
-  const font: BeamFont = beamState.font || 'lora';
+  const theme: BeamTheme = beamState.theme || activeSettings.beamTheme || 'ah-sanctuary';
+  const font: BeamFont = activeSettings.beamFont || beamState.font || 'lora';
   const fontScale = beamState.fontScale ?? 1.0;
 
   // Auto-hide HUD on idle mouse
@@ -625,7 +666,16 @@ export const BeamProjectorScreen: React.FC = () => {
           ) : (
             /* STANDARD SLIDE LYRICS OR SCRIPTURE (SINGLE SLIDE OR CONTINUOUS FLOW) */
             isContinuousFlow ? (
-              <div className="max-w-4xl mx-auto space-y-8 py-6 max-h-[80vh] overflow-y-auto no-scrollbar">
+              <div
+                data-continuous-flow="true"
+                className="max-w-4xl mx-auto space-y-8 py-10 px-4 sm:px-6 max-h-[82vh] overflow-y-auto no-scrollbar scrollbar-none select-none scroll-smooth continuous-flow-container"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)',
+                }}
+              >
                 {slides.map((s, idx) => {
                   const isActive = idx === currentIndex;
                   if (s.isIntro || s.isOutro) return null;
@@ -646,33 +696,33 @@ export const BeamProjectorScreen: React.FC = () => {
                           broadcastBeamState(updated);
                         }
                       }}
-                      className={`cursor-pointer transition-all duration-500 rounded-2xl p-4 sm:p-6 ${
+                      className={`cursor-pointer transition-all duration-500 rounded-3xl p-6 sm:p-8 ${
                         isActive
                           ? isLight
-                            ? 'bg-amber-500/10 border-l-4 border-amber-500 text-slate-950 scale-[1.02] shadow-sm'
-                            : 'bg-white/10 border-l-4 border-amber-400 text-white scale-[1.02] shadow-lg'
+                            ? 'bg-amber-500/15 border-2 border-amber-500/60 text-slate-950 scale-[1.01] shadow-md ring-1 ring-amber-400/40'
+                            : 'bg-white/12 border-2 border-amber-400/70 text-white scale-[1.01] shadow-2xl backdrop-blur-xs ring-1 ring-amber-300/30'
                           : isLight
                           ? 'opacity-40 hover:opacity-75 text-slate-800'
-                          : 'opacity-35 hover:opacity-70 text-slate-300'
+                          : 'opacity-30 hover:opacity-65 text-slate-300'
                       }`}
                     >
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-3">
                         <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-500">
                           {s.isRefrain ? 'Refrain' : s.verseTag || s.label || `Stanza ${idx}`}
                         </span>
                         {isActive && (
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-300 font-semibold animate-pulse">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/25 text-amber-600 dark:text-amber-300 font-bold animate-pulse">
                             Active Stanza
                           </span>
                         )}
                       </div>
                       <div
-                        className={`space-y-2 leading-relaxed ${fontClass} ${
+                        className={`space-y-2.5 leading-relaxed ${fontClass} ${
                           s.isRefrain ? 'italic font-serif font-medium' : ''
                         }`}
                         style={{
                           fontSize: `clamp(1.5rem, ${2.2 * fontScale}vw + 0.8rem, 3.2rem)`,
-                          lineHeight: 1.35,
+                          lineHeight: 1.38,
                         }}
                       >
                         {s.lines && s.lines.length > 0 ? (

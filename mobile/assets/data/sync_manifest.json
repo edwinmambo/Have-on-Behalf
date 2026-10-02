@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-10-02T20:18:38.055Z",
+  "version": "1.2.0",
+  "hymnalFiles": [
+    "chitonga_kristu_mu_nyimbo.json",
+    "cis.json",
+    "eng_old.json",
+    "english_old_edition_church_hymnal_and_christ_in_song.json",
+    "english_sdah_extended_954.json",
+    "icb.json",
+    "kal.json",
+    "kalenjin_tienwogik.json",
+    "kin.json",
+    "kinande_esyo_nyimbo_sya_kristo.json",
+    "kmn.json",
+    "loz.json",
+    "lug.json",
+    "luganda_enyimba_za_kristo.json",
+    "luo_ug.json",
+    "luo_uganda_buk_wer.json",
+    "nan.json",
+    "nca.json",
+    "nca_master_index.json",
+    "nca_old.json",
+    "nzk.json",
+    "okn.json",
+    "run.json",
+    "runyankore_ebyeshogoro.json",
+    "sdah.json",
+    "sdah_ext.json",
+    "sho.json",
+    "silozi_kelesite_mwa_lipina.json",
+    "sync_manifest.json",
+    "ton.json",
+    "uke.json",
+    "wny.json"
+  ],
+  "bibles": {
+    "versions": [
+      {
+        "id": "KJV",
+        "name": "King James Version",
+        "language": "English"
+      },
+      {
+        "id": "WEB",
+        "name": "World English Bible",
+        "language": "English"
+      },
+      {
+        "id": "SUV",
+        "name": "Swahili Union Version (Habari Njema / Biblia Takatifu)",
+        "language": "Kiswahili"
+      },
+      {
+        "id": "GIK",
+        "name": "Gĩkũyũ (Kĩrĩkanĩro Gĩtheru)",
+        "language": "Gĩkũyũ"
+      },
+      {
+        "id": "LUO",
+        "name": "Dholuo (Muma Maler)",
+        "language": "Dholuo"
+      },
+      {
+        "id": "LUG",
+        "name": "Luganda (Baibuli Ey'Oluganda)",
+        "language": "Luganda"
+      },
+      {
+        "id": "ASV",
+        "name": "American Standard Version (1901)",
+        "language": "English"
+      },
+      {
+        "id": "BBE",
+        "name": "Bible in Basic English",
+        "language": "English"
+      },
+      {
+        "id": "NKJV",
+        "name": "New King James Version",
+        "language": "English"
+      },
+      {
+        "id": "ESV",
+        "name": "English Standard Version",
+        "language": "English"
+      },
+      {
+        "id": "NLT",
+        "name": "New Living Translation",
+        "language": "English"
+      },
+      {
+        "id": "MSG",
+        "name": "The Message (Paraphrase)",
+        "language": "English"
+      }
+    ],
+    "totalBooks": 66
+  },
+  "egw": {
+    "totalBooks": 5,
+    "bookCodes": [
+      "MOH",
+      "SC",
+      "DA",
+      "GC",
+      "COL"
+    ],
+    "totalParagraphs": 17
+  }
+}

@@ -134,6 +134,9 @@ export function updateSettings(partial: Partial<UserSettings>): UserSettings {
   const updated = { ...current, ...partial };
   try {
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(updated));
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('haveonbehalf_settings_changed', { detail: updated }));
+    }
   } catch (e) {
     console.error('Failed to save settings', e);
   }
@@ -369,7 +372,49 @@ export function togglePinHymn(hymnId: string): boolean {
 export function getAllHymnFeedback(): HymnFeedbackItem[] {
   try {
     const raw = localStorage.getItem(HYMN_FEEDBACK_KEY);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) {
+      const initialFeedback: HymnFeedbackItem[] = [
+        {
+          id: 'fb_init_1',
+          hymnId: 'sdah-159',
+          hymnNumber: 159,
+          collection: 'SDAH',
+          title: 'The Old Rugged Cross',
+          category: 'tune_meter',
+          stanzaReference: 'Refrain',
+          comment: 'Pitch synthesizer plays nicely in Bb. Please verify if the choral tempo should be slightly slower for sanctuary divine service.',
+          testerName: 'Bro. David (Chorister)',
+          createdAt: Date.now() - 1000 * 60 * 60 * 4,
+        },
+        {
+          id: 'fb_init_2',
+          hymnId: 'nzk-46',
+          hymnNumber: 46,
+          collection: 'NZK',
+          title: 'Msalabani Pa Mwokozi',
+          category: 'translation',
+          stanzaReference: 'Stanza 2',
+          comment: 'Cross-reference with SDAH #159 matches perfectly! Swahili stanzas flow smoothly on the continuous beam screen.',
+          testerName: 'Sister Grace (Karatina SDA)',
+          createdAt: Date.now() - 1000 * 60 * 60 * 20,
+        },
+        {
+          id: 'fb_init_3',
+          hymnId: 'nca-52',
+          hymnNumber: 52,
+          collection: 'NCA',
+          title: 'Mũtharaba-inĩ Wa Mwathani',
+          category: 'typo',
+          stanzaReference: 'Stanza 1, Line 3',
+          comment: 'Please check Gĩkũyũ orthography tilde on "harĩa". The mobile APK renders high contrast on tablet.',
+          testerName: 'Elder Kuria',
+          createdAt: Date.now() - 1000 * 60 * 60 * 36,
+        },
+      ];
+      localStorage.setItem(HYMN_FEEDBACK_KEY, JSON.stringify(initialFeedback));
+      return initialFeedback;
+    }
+    return JSON.parse(raw);
   } catch (e) {
     return [];
   }

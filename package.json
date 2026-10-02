@@ -1,14 +1,20 @@
 {
-  "name": "react-example",
+  "name": "have-on-behalf",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
+    "prebuild": "npm run sync:data && npm run changelog:auto",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "sync:data": "tsx scripts/sync_data_bridge.ts",
+    "changelog": "tsx scripts/auto_changelog.ts",
+    "changelog:auto": "tsx scripts/auto_changelog.ts",
+    "changelog:tester": "tsx scripts/generate_tester_changelog.ts",
+    "changelog:git": "tsx scripts/generate_git_changelog.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

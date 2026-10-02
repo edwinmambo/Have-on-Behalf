@@ -4893,7 +4893,7 @@
           "Zvino irirpo nguva, bata nemasimba,",
           "Usiku unouya, basa rapera    Usiku hunouya, bata basa renyu,",
           "Denga’ro rakatsvuka, repamanheru,",
-          "Bata, irikupera, nguva’yo yebasa, ,",
+          "Bata, irikupera, nguva’yo yebasa,",
           "Usiku hunouya, basa rapera"
         ]
       }
@@ -4945,7 +4945,7 @@
           "Itanyi nzira ichene,",
           "Kuneni munzira    Avo vanhu varikuda,",
           "Vachapiwa tuso,",
-          "Mwari anova chengeta, ,",
+          "Mwari anova chengeta,",
           "Nemutsa nenhowo"
         ]
       }
@@ -5005,9 +5005,9 @@
           "Kudza zita’ro raTenzi       Jesu zita remasimba,",
           "Kune tsime yedi unza vakaneta,",
           "Tinoshumaira, Jesu vatifira,",
-          "Pamchinjiko wake wakatiponesa       Ngatibvume zvinyangadz ,",
+          "Pamchinjiko wake wakatiponesa       Ngatibvume zvinyangadz",
           "Kudza zita’ro raTenzi,",
-          "Tachenurwa ngeroparo, ,",
+          "Tachenurwa ngeroparo,",
           "Kudza zita’ro raTenzi"
         ]
       }
@@ -5063,7 +5063,7 @@
           "Tinoenda kumusha, Apo kusina dima,",
           "Jesu ari kupenya, Toimba pa rwendo       Nge rufaro toenda, toenda, toenda,",
           "Ngerufaro toenda, Toimba pa rwendo,",
-          "Hatiregi kuimba, Mwoyo iri kushinga, ,",
+          "Hatiregi kuimba, Mwoyo iri kushinga,",
           "Dakara tinoswika, Toimba pa rwendo"
         ]
       }
@@ -5108,14 +5108,14 @@
         "type": "verse",
         "lines": [
           "Ndoimba simba raMwari wakwidza makomo,",
-          "Waparadzira nyanza’yo, Wavaka kumsoro, ,",
+          "Waparadzira nyanza’yo, Wavaka kumsoro,",
           "Ungwaro hwaita zuva kutonga sikati,",
           "Mwedzi upenye usiku, Nedzese nyenyedzi       Ndoimba mutsa waTenzi wagadzira chidyo,",
           "Wakasika zviro zvese, ngeinzwi rake’ro,",
           "Tenzi zvishamiso zvenyu zvinoonekwa’yo,",
           "Ndinozviona kwese’ko, Zvimwe nekumsoro       Miti yese nemaruva zvinokudza Imwi,",
           "Makore nechampupuri zvatumirwa nemwi,",
-          "Zvisikwa zvese ngezvenyu, Munozvichengeta, ,",
+          "Zvisikwa zvese ngezvenyu, Munozvichengeta,",
           "Zviro zvese pasi pano, Zvese munoziva"
         ]
       }
@@ -5167,10 +5167,10 @@
           "Tonzwa kutinhira kudenga kwake,",
           "Zviripo pamsoro, nepamakore    Munochengeta zviro’zvo zvese,",
           "Munopa mweya, neupenyuzve,",
-          "Zvipo zvenyu zviri pasi, kudenga, ,",
+          "Zvipo zvenyu zviri pasi, kudenga,",
           "Muzuva, mudima, m’dowa nem’mvura    Tirivaduku, nevemhukuta,",
-          "O, Baba wedu, tinosimbira ,",
-          "Musiki wezvese, neMuchengeti, ,",
+          "O, Baba wedu, tinosimbira",
+          "Musiki wezvese, neMuchengeti,",
           "Mununuri wedu, nezveShamwari"
         ]
       }
@@ -5275,7 +5275,7 @@
         "type": "verse",
         "lines": [
           "Musandipfuure Tenzi,",
-          "Inzwai ndochema ,",
+          "Inzwai ndochema",
           "Apo mwadaidza vamwe,",
           "Musandipfuure"
         ]
@@ -5288,13 +5288,13 @@
           "Apo mwadaidza vamwe,",
           "Musandipfuure       Ndipenyi’wo wenyumutsa,",
           "Ndinokumbira,",
-          "Ndirikumupfugamira ,",
+          "Ndirikumupfugamira",
           "Nekudaira       Ndinomusimbira Jesu,",
-          "Ndinokutsvaka ,",
+          "Ndinokutsvaka",
           "Rapanyi’wo mwoyo wangu,",
-          "Kundiponesa       Muritsime rangu Tenzi ,",
+          "Kundiponesa       Muritsime rangu Tenzi",
           "Zve neupenyu,",
-          "Hakuchina Mubatsiri ,",
+          "Hakuchina Mubatsiri",
           "Asi’mwi Jesu"
         ]
       }
@@ -5345,13 +5345,13 @@
           "Munguva dzekutambudzwa,",
           "Mwoyo yedu yanyaradzwa,",
           "Yapukunyuka kubatwa,",
-          "Ne’yo nguva yekutenda      Nguva’yo yekunamata ,",
-          "Tapinda’vo kukumbira ,",
-          "Kuna Iye warindira   ,",
-          "Isu kutikomborera ,",
-          "Ngekuti wandidaidza  ,",
-          "Mutsa wake ndasimbira  ,",
-          "Vachabvisa zvakaipa   ,",
+          "Ne’yo nguva yekutenda      Nguva’yo yekunamata",
+          "Tapinda’vo kukumbira",
+          "Kuna Iye warindira",
+          "Isu kutikomborera",
+          "Ngekuti wandidaidza",
+          "Mutsa wake ndasimbira",
+          "Vachabvisa zvakaipa",
           "Panguva yekunamata      Nguva’yo yekunamata,",
           "Ndinodisa kunyaradzwa,",
           "Sepagoma’ro rePisgah,",
@@ -5468,7 +5468,7 @@
         "type": "verse",
         "lines": [
           "O ri… ndira, O na…mata,",
-          "Rindira masikati nemudima ,",
+          "Rindira masikati nemudima",
           "MaKristu rindira     Muka mukurara, rega kupokana,",
           "Chipo chirichako, zorora kudenga,",
           "Rindira MaKristu, Jesu warindira,",
@@ -5520,7 +5520,7 @@
         "lines": [
           "Musarikanganwe Sabata raMwari,",
           "Riri rakanaka kupinda misi yese,",
-          "Rinounza zororo, rudo nerufaro ,",
+          "Rinounza zororo, rudo nerufaro",
           "Kunaka kwekudenga kunojeka naro"
         ]
       },
@@ -5531,10 +5531,10 @@
           "Tinotenda ngeSabata, musi waMwari,",
           "Tinotenda ngeSabata, musi waMwari     Chengeta Sabata, mum’kudze’di Jesu,",
           "Wakati, Ndirinzira, Idi Neupenyu,",
-          "Kuti timuteere Jesu pasi pano ,",
+          "Kuti timuteere Jesu pasi pano",
           "Anotipa kudenga kugara ikwoyo      Musi unoyera, ngatiimbe nhasi,",
-          "Zviyimbo zvekutenda Jesu Muponesi ,",
-          "O, Mponesi wemutsa, ngerudo rukuru ,",
+          "Zviyimbo zvekutenda Jesu Muponesi",
+          "O, Mponesi wemutsa, ngerudo rukuru",
           "Tatenda ngechitsidzo, munogara nesu"
         ]
       }
@@ -5578,7 +5578,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Musi wekuzorora, Musi werufaro ,",
+          "Musi wekuzorora, Musi werufaro",
           "Musi wekubatsira vakanaka avo,",
           "Musi’wo zvengerosi dzichiri kukudza,",
           "Ozofugama pamberi paMwari, Jehova     Musi wekubatsira avo vatambudzwa,",
@@ -16519,7 +16519,7 @@
         "type": "verse",
         "lines": [
           "Nyenyedzi yakabud’ usiku,  Yakapenya nembiri huru",
-          "Yakatungamira vazivi ,  Kuna M’ponesi kudanga"
+          "Yakatungamira vazivi  Kuna M’ponesi kudanga"
         ]
       },
       {
@@ -16740,7 +16740,7 @@
         "type": "verse",
         "lines": [
           "Kune nzvimbo yakanaka, Petyo pana Baba",
-          "Nzvimbo isina chitema , Petyo kuna Baba"
+          "Nzvimbo isina chitema Petyo kuna Baba"
         ]
       },
       {

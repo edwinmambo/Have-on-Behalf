@@ -4,36 +4,141 @@ import { HYMNS_DATA } from '../data/hymnsData';
 import { resolveHymnCategory } from './hymnGrouping';
 
 /**
+ * Deep text purifier for extracted datasets.
+ * Fixes HTML entities, mojibake UTF-8 encoding flaws, repetitive title prefixes,
+ * bracketed verse markers, and formatting dirt.
+ */
+export function sanitizeText(text: string): string {
+  if (!text || typeof text !== 'string') return '';
+
+  let s = text;
+
+  // 1. Decode common HTML entities
+  s = s
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&mdash;/gi, '—')
+    .replace(/&ndash;/gi, '–')
+    .replace(/&hellip;/gi, '…')
+    .replace(/&ldquo;|&rdquo;/gi, '"')
+    .replace(/&lsquo;|&rsquo;/gi, "'")
+    .replace(/&#8217;|&#x2019;/gi, "'")
+    .replace(/&#8216;|&#x2018;/gi, "'")
+    .replace(/&#8220;|&#x201C;/gi, '"')
+    .replace(/&#8221;|&#x201D;/gi, '"')
+    .replace(/&#8211;/gi, '–')
+    .replace(/&#8212;/gi, '—');
+
+  // 2. Fix common UTF-8 Mojibake / encoding corruption artifacts
+  s = s
+    .replace(/â€™|â€˜/g, "'")
+    .replace(/â€œ|â€/g, '"')
+    .replace(/â€”/g, '—')
+    .replace(/â€“/g, '–')
+    .replace(/â€¦/g, '…')
+    .replace(/Ã©/g, 'é')
+    .replace(/Ã¨/g, 'è')
+    .replace(/Ã±/g, 'ñ')
+    .replace(/Ã®/g, 'î')
+    .replace(/Ã´/g, 'ô')
+    .replace(/Ã§/g, 'ç')
+    .replace(/Ã¹/g, 'ù')
+    .replace(/Ã¡/g, 'á')
+    .replace(/Ã­/g, 'í')
+    .replace(/Ã³/g, 'ó')
+    .replace(/Ãº/g, 'ú');
+
+  // 3. Remove leading/stray verse markers like "[Verse 1]", "Verse 1:", "Stanza 1:"
+  s = s
+    .replace(/^\[(?:verse|stanza|chorus|refrain)\s*\d*\]:?\s*/i, '')
+    .replace(/^(?:verse|stanza)\s*\d+[:.-]\s*/i, '')
+    .replace(/^(?:chorus|refrain)[:.-]\s*/i, '');
+
+  // 4. Normalize spacing around punctuation and remove double spaces
+  s = s
+    .replace(/\r\n|\r/g, '\n')
+    .replace(/[\t\f\v]/g, ' ')
+    .replace(/ +/g, ' ')
+    .trim();
+
+  return s;
+}
+
+/**
+ * Cleans titles by stripping redundant repeated number prefixes like "123. Praise to the Lord"
+ */
+export function sanitizeHymnTitle(title: string, hymnNumber?: number): string {
+  let cleaned = sanitizeText(title);
+  if (hymnNumber) {
+    const numPrefixRegex = new RegExp(`^#?\\s*${hymnNumber}\\s*[-.:)]\\s*`, 'i');
+    cleaned = cleaned.replace(numPrefixRegex, '');
+  }
+  // Generic leading number prefix clean
+  cleaned = cleaned.replace(/^\d+[-.:)]\s*/, '');
+  return cleaned.trim() || title;
+}
+
+/**
  * Normalizes hymns whose stanzas might be collapsed into a single stanza with multiple lines
  * into clean, separate stanzas and refrains for card display and slide generation.
  */
 export function normalizeHymn(hymn: Hymn): Hymn {
   if (!hymn) return hymn;
   const category = resolveHymnCategory(hymn);
+  const cleanTitle = sanitizeHymnTitle(hymn.title, hymn.number);
+  const cleanAuthor = hymn.author ? sanitizeText(hymn.author) : hymn.author;
+  const cleanTune = hymn.tune ? sanitizeText(hymn.tune) : hymn.tune;
 
   if (!hymn.stanzas || hymn.stanzas.length === 0) {
-    return { ...hymn, category };
+    return {
+      ...hymn,
+      title: cleanTitle,
+      author: cleanAuthor,
+      tune: cleanTune,
+      category,
+    };
   }
 
   // Clean and split lines that contain newlines
   const stanzasWithSplitLines = hymn.stanzas.map((st) => {
     const lines: string[] = [];
-    for (const l of st.lines || []) {
-      if (l.includes('\n')) {
-        lines.push(...l.split('\n').map((s) => s.trim()).filter(Boolean));
-      } else {
-        lines.push(l);
+    for (const rawLine of st.lines || []) {
+      const sanitized = sanitizeText(rawLine);
+      if (sanitized.includes('\n')) {
+        lines.push(...sanitized.split('\n').map((s) => sanitizeText(s)).filter(Boolean));
+      } else if (sanitized) {
+        lines.push(sanitized);
       }
     }
     return { ...st, lines };
   });
 
   if (stanzasWithSplitLines.length > 1) {
-    return { ...hymn, category, stanzas: stanzasWithSplitLines };
+    return {
+      ...hymn,
+      title: cleanTitle,
+      author: cleanAuthor,
+      tune: cleanTune,
+      category,
+      stanzas: stanzasWithSplitLines,
+    };
   }
 
   const rawLines = stanzasWithSplitLines[0].lines;
-  if (!rawLines || rawLines.length <= 1) return { ...hymn, category, stanzas: stanzasWithSplitLines };
+  if (!rawLines || rawLines.length <= 1) {
+    return {
+      ...hymn,
+      title: cleanTitle,
+      author: cleanAuthor,
+      tune: cleanTune,
+      category,
+      stanzas: stanzasWithSplitLines,
+    };
+  }
 
   const newStanzas: Hymn['stanzas'] = [];
   let verseIndex = 1;
@@ -58,24 +163,25 @@ export function normalizeHymn(hymn: Hymn): Hymn {
       stanzaNumber = verseIndex++;
     }
 
-    const cleaned = raw
-      .replace(/^(refrain|chorus):?\s*/i, '')
-      .replace(/^([1-9]\d*)\.?\s*/, '')
-      .replace(/^[:\s-]+/, '')
-      .replace(/,([A-Za-z])/g, ', $1')
-      .replace(/:([A-Za-z])/g, ': $1')
-      .replace(/;([A-Za-z])/g, '; $1')
-      .replace(/!([A-Za-z])/g, '! $1')
-      .replace(/\?([A-Za-z])/g, '? $1')
-      .replace(/\s+/g, ' ')
-      .trim();
+    const cleaned = sanitizeText(
+      raw
+        .replace(/^(refrain|chorus):?\s*/i, '')
+        .replace(/^([1-9]\d*)\.?\s*/, '')
+        .replace(/^[:\s-]+/, '')
+        .replace(/,([A-Za-z])/g, ', $1')
+        .replace(/:([A-Za-z])/g, ': $1')
+        .replace(/;([A-Za-z])/g, '; $1')
+        .replace(/!([A-Za-z])/g, '! $1')
+        .replace(/\?([A-Za-z])/g, '? $1')
+    );
 
     let lines: string[] = [];
     if (cleaned.includes('\n')) {
-      lines = cleaned.split('\n').map((s) => s.trim()).filter(Boolean);
+      lines = cleaned.split('\n').map((s) => sanitizeText(s)).filter(Boolean);
     } else {
-      const parts = cleaned.split(/(?<=[,;:!?])\s+(?=[A-Z])/);
-      lines = parts.map((p) => p.trim().replace(/^[:\s-]+/, '')).filter(Boolean);
+      // Split only on deliberate verse delimiters or explicit semicolons followed by capitals, never commas
+      const parts = cleaned.split(/(?<=[.!?])\s+(?=[A-Z0-9])/);
+      lines = parts.map((p) => sanitizeText(p.replace(/^[:\s-]+/, ''))).filter(Boolean);
     }
 
     if (lines.length === 0 && cleaned) {
@@ -89,10 +195,16 @@ export function normalizeHymn(hymn: Hymn): Hymn {
     });
   }
 
-  if (newStanzas.length > 0) {
-    return { ...hymn, category, stanzas: newStanzas };
-  }
-  return { ...hymn, category, stanzas: stanzasWithSplitLines };
+  const finalStanzas = newStanzas.length > 0 ? newStanzas : stanzasWithSplitLines;
+
+  return {
+    ...hymn,
+    title: cleanTitle,
+    author: cleanAuthor,
+    tune: cleanTune,
+    category,
+    stanzas: finalStanzas,
+  };
 }
 
 let loadedFullHymns: Hymn[] = HYMNS_DATA.map(normalizeHymn);

@@ -1834,40 +1834,7 @@
         "lines": [
           "Siku zeku zikizidi, tuzitoe kwa Yesu,",
           "Tuwe na nguvu moyoni, tusichoke njiani,",
-          "Hata tutakapoona, Utukufu wa Bwana.",
-          "<h3>26a Mungu Mtukufu</h3> God the Omnipotent"
-        ]
-      },
-      {
-        "number": 1,
-        "type": "verse",
-        "lines": [
-          "Mungu mtukufu, aliyeumba Pepo kuvuma na radi kali;",
-          "Toa neema unapotawala, tupe amani Bwana wa wema."
-        ]
-      },
-      {
-        "number": 2,
-        "type": "verse",
-        "lines": [
-          "Mungu wa neema, nchi imeacha Amri tukufu na Neno lako,",
-          "Hasira zako zisituharibu, tupe amani, Bwana wa wema."
-        ]
-      },
-      {
-        "number": 3,
-        "type": "verse",
-        "lines": [
-          "Mwumbaji wa haki, watu wabaya wamedharau utukufu wako,",
-          "Lakini wema wako utadumu; endesha kweli Bwana wa wema."
-        ]
-      },
-      {
-        "number": 4,
-        "type": "verse",
-        "lines": [
-          "Tunakutolea Ibada, safi kwa ajili ya Wokovu wako,",
-          "Hivi tunaziimba sifa zako, wako uwezo na utukufu."
+          "Hata tutakapoona, Utukufu wa Bwana."
         ]
       }
     ],
@@ -1897,6 +1864,56 @@
         "collection": "SDAH",
         "number": 67,
         "title": "O Lord, Now Let Your Servant"
+      }
+    ]
+  },
+  {
+    "id": "nzk-26a",
+    "collection": "NZK",
+    "number": 26,
+    "subNumber": "a",
+    "title": "Mungu Mtukufu",
+    "subtitle": "God the Omnipotent",
+    "stanzas": [
+      {
+        "number": 1,
+        "type": "verse",
+        "lines": [
+          "Mungu mtukufu, aliyeumba Pepo kuvuma na radi kali;",
+          "Toa neema unapotawala, tupe amani Bwana wa wema."
+        ]
+      },
+      {
+        "number": 2,
+        "type": "verse",
+        "lines": [
+          "Mungu wa neema, nchi imeacha Amri tukufu na Neno lako;",
+          "Hasira zako zisituharibu, tupe amani, Bwana wa wema."
+        ]
+      },
+      {
+        "number": 3,
+        "type": "verse",
+        "lines": [
+          "Mwumbaji wa haki, watu wabaya wamedharau utukufu wako;",
+          "Lakini wema wako utadumu; endesha kweli Bwana wa wema."
+        ]
+      },
+      {
+        "number": 4,
+        "type": "verse",
+        "lines": [
+          "Tunakutolea Ibada, safi kwa ajili ya Wokovu wako;",
+          "Hivi tunaziimba sifa zako, wako uwezo na utukufu."
+        ]
+      }
+    ],
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 84,
+        "title": "God the Omnipotent"
       }
     ]
   },
@@ -5297,7 +5314,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Niambie Ee mlinzi, je, kumepambazuka ,",
+          "Niambie Ee mlinzi, je, kumepambazuka",
           "Utukufu wa Zayuni, pana dalili zake?",
           "Msafiri uondoke, utazame mbinguni,",
           "Kiunoni ujifunge, ni kucha alfajiri."
@@ -9270,10 +9287,37 @@
         "type": "verse",
         "lines": [
           "Bondeni mwa giza na upweke, mchunga wangu yu anilinda,",
-          "Kwa upole aniongoza, Baba wa mbinguni anilinda.",
-          "<h3>131a Kwa Mahitaji ya Kesho</h3>  Lord for Tomorrow and Its Needs"
+          "Kwa upole aniongoza, Baba wa mbinguni anilinda."
         ]
+      }
+    ],
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 131,
+        "title": "Nyasaye, Gokiny Mond` Iwinja"
       },
+      {
+        "collection": "OKN",
+        "number": 131,
+        "title": "Omonene Ka Bogokia"
+      },
+      {
+        "collection": "NCA",
+        "number": 169,
+        "title": "Mabataro-ini Ma Ruuciu"
+      }
+    ]
+  },
+  {
+    "id": "nzk-131a",
+    "collection": "NZK",
+    "number": 131,
+    "subNumber": "a",
+    "title": "Kwa Mahitaji ya Kesho",
+    "subtitle": "Lord for Tomorrow and Its Needs",
+    "stanzas": [
       {
         "number": 1,
         "type": "verse",
@@ -9306,23 +9350,7 @@
       }
     ],
     "hasChords": false,
-    "crossReferences": [
-      {
-        "collection": "WNY",
-        "number": 131,
-        "title": "Nyasaye, Gokiny Mond` Iwinja"
-      },
-      {
-        "collection": "OKN",
-        "number": 131,
-        "title": "Omonene Ka Bogokia"
-      },
-      {
-        "collection": "NCA",
-        "number": 169,
-        "title": "Mabataro-ini Ma Ruuciu"
-      }
-    ]
+    "crossReferences": []
   },
   {
     "id": "nzk-132",
@@ -12746,7 +12774,7 @@
         "lines": [
           "Tutaimba nyimbo za shangwe kuu,",
           "Tutaimba nyimbo za shangwe kuu,",
-          "Tutaimba nyimbo za shangwe kuu ,Yesu anaporudi."
+          "Tutaimba nyimbo za shangwe kuuYesu anaporudi."
         ]
       },
       {

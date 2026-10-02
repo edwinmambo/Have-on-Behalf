@@ -231,6 +231,13 @@ export default function App() {
     }
   }, [settings.appTheme]);
 
+  // Apply dynamic accent theme attribute to body & root for buttons, outlines and highlights
+  useEffect(() => {
+    const accent = settings.accentTheme || 'sapphire';
+    document.body.setAttribute('data-accent', accent);
+    document.documentElement.setAttribute('data-accent', accent);
+  }, [settings.accentTheme]);
+
   // Play / Auto-scroll feature for Reading Mode (Bible, EGW, Hymn passages)
   const [isAutoScrolling, setIsAutoScrolling] = useState<boolean>(false);
   const [autoScrollSpeed, setAutoScrollSpeed] = useState<number>(1.0);

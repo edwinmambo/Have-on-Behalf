@@ -69,3 +69,134 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Clean sanctuary scrollbar hiding for continuous flow beam projection, Bible reader, and lists */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar,
+.continuous-flow-container::-webkit-scrollbar,
+[data-continuous-flow]::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+.no-scrollbar,
+.scrollbar-none,
+.continuous-flow-container,
+[data-continuous-flow] {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Dynamic Accent Variables for Theme Customization */
+:root {
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #1d4ed8;
+  --theme-accent-subtle: rgba(37, 99, 235, 0.12);
+  --theme-accent-border: rgba(37, 99, 235, 0.35);
+  --theme-accent-glow: rgba(37, 99, 235, 0.25);
+  --theme-accent-ring: rgba(37, 99, 235, 0.4);
+}
+
+body[data-accent="gold"] {
+  --theme-accent: #d97706;
+  --theme-accent-hover: #b45309;
+  --theme-accent-subtle: rgba(217, 119, 6, 0.14);
+  --theme-accent-border: rgba(217, 119, 6, 0.4);
+  --theme-accent-glow: rgba(217, 119, 6, 0.25);
+  --theme-accent-ring: rgba(217, 119, 6, 0.45);
+}
+
+body[data-accent="emerald"] {
+  --theme-accent: #059669;
+  --theme-accent-hover: #047857;
+  --theme-accent-subtle: rgba(5, 150, 105, 0.14);
+  --theme-accent-border: rgba(5, 150, 105, 0.4);
+  --theme-accent-glow: rgba(5, 150, 105, 0.25);
+  --theme-accent-ring: rgba(5, 150, 105, 0.45);
+}
+
+body[data-accent="crimson"] {
+  --theme-accent: #e11d48;
+  --theme-accent-hover: #be123c;
+  --theme-accent-subtle: rgba(225, 29, 72, 0.14);
+  --theme-accent-border: rgba(225, 29, 72, 0.4);
+  --theme-accent-glow: rgba(225, 29, 72, 0.25);
+  --theme-accent-ring: rgba(225, 29, 72, 0.45);
+}
+
+body[data-accent="amethyst"] {
+  --theme-accent: #9333ea;
+  --theme-accent-hover: #7e22ce;
+  --theme-accent-subtle: rgba(147, 51, 234, 0.14);
+  --theme-accent-border: rgba(147, 51, 234, 0.4);
+  --theme-accent-glow: rgba(147, 51, 234, 0.25);
+  --theme-accent-ring: rgba(147, 51, 234, 0.45);
+}
+
+body[data-accent="sapphire"] {
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #1d4ed8;
+  --theme-accent-subtle: rgba(37, 99, 235, 0.14);
+  --theme-accent-border: rgba(37, 99, 235, 0.4);
+  --theme-accent-glow: rgba(37, 99, 235, 0.25);
+  --theme-accent-ring: rgba(37, 99, 235, 0.45);
+}
+
+/* Adapt primary action buttons to the chosen liturgical theme accent */
+body[data-accent] button.btn-theme-action,
+body[data-accent] .theme-btn-primary {
+  background-color: var(--theme-accent) !important;
+  color: #ffffff !important;
+}
+
+body[data-accent] button.btn-theme-action:hover,
+body[data-accent] .theme-btn-primary:hover {
+  background-color: var(--theme-accent-hover) !important;
+}
+
+/* Adapt input borders & focus outlines to the chosen liturgical theme */
+body[data-accent] input:focus,
+body[data-accent] textarea:focus,
+body[data-accent] select:focus,
+body[data-accent] .theme-focus-ring:focus {
+  border-color: var(--theme-accent) !important;
+  box-shadow: 0 0 0 2px var(--theme-accent-ring) !important;
+  outline: none !important;
+}
+
+/* Adapt active borders & badges to the chosen liturgical theme */
+body[data-accent] .theme-border-active {
+  border-color: var(--theme-accent) !important;
+}
+
+body[data-accent] .theme-badge-active {
+  background-color: var(--theme-accent-subtle) !important;
+  color: var(--theme-accent) !important;
+  border-color: var(--theme-accent-border) !important;
+}
+
+.btn-theme-accent {
+  background-color: var(--theme-accent) !important;
+  color: #ffffff !important;
+}
+.btn-theme-accent:hover {
+  background-color: var(--theme-accent-hover) !important;
+}
+
+.border-theme-accent {
+  border-color: var(--theme-accent) !important;
+}
+
+.ring-theme-accent {
+  --tw-ring-color: var(--theme-accent-glow) !important;
+}
+
+.text-theme-accent {
+  color: var(--theme-accent) !important;
+}
+
+.bg-theme-accent-subtle {
+  background-color: var(--theme-accent-subtle) !important;
+}
+

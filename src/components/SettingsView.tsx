@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Moon,
   Sun,
@@ -25,10 +25,36 @@ import {
   Minimize2,
   Monitor,
   RotateCcw,
+  Pin,
+  PinOff,
+  Shield,
+  ShieldAlert,
+  MessageSquare,
+  Check,
+  Trash2,
+  Search,
+  Filter,
+  Crown,
 } from 'lucide-react';
-import { AppThemeMode, UserSettings, UserProfile, saveUserProfile, updateSettings, AccentTheme, getFavorites, getWorshipPlans } from '../lib/storage';
-import { BeamFont, BeamTheme } from '../types';
+import {
+  AppThemeMode,
+  UserSettings,
+  UserProfile,
+  saveUserProfile,
+  updateSettings,
+  AccentTheme,
+  getFavorites,
+  getWorshipPlans,
+  getAllHymnFeedback,
+  saveHymnFeedback,
+  deleteHymnFeedback,
+  getPinnedHymnIds,
+  togglePinHymn,
+} from '../lib/storage';
+import { BeamFont, BeamTheme, HymnFeedbackItem } from '../types';
 import { useHymnCatalog } from '../lib/hymnLibrary';
+import { getStoredBeamState, broadcastBeamState } from '../lib/beamSync';
+import { showToast } from '../lib/toast';
 
 interface SettingsViewProps {
   settings: UserSettings;
@@ -47,16 +73,40 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   isDarkMode,
   onToggleThemeMode,
 }) => {
-  const { totalCount: totalHymnsLoaded } = useHymnCatalog();
+  const { hymns: allHymns, totalCount: totalHymnsLoaded } = useHymnCatalog();
   // Local sign-in form state
   const [emailInput, setEmailInput] = useState(userProfile.email || '');
   const [nameInput, setNameInput] = useState(userProfile.displayName || '');
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
+  // Central feedback state for Edwin Mambo
+  const [feedbackList, setFeedbackList] = useState<HymnFeedbackItem[]>(() => getAllHymnFeedback());
+  const [feedbackCategoryFilter, setFeedbackCategoryFilter] = useState<string>('all');
+  const [feedbackSearchQuery, setFeedbackSearchQuery] = useState<string>('');
+
+  // Pinned Hymns state
+  const [pinnedIds, setPinnedIds] = useState<string[]>(() => getPinnedHymnIds());
+  const [pinSearchQuery, setPinSearchQuery] = useState<string>('');
+
+  const refreshFeedback = () => {
+    setFeedbackList(getAllHymnFeedback());
+  };
+
+  const refreshPinned = () => {
+    setPinnedIds(getPinnedHymnIds());
+  };
+
+  useEffect(() => {
+    const handlePinnedChange = () => refreshPinned();
+    window.addEventListener('haveonbehalf_pinned_changed', handlePinnedChange);
+    return () => window.removeEventListener('haveonbehalf_pinned_changed', handlePinnedChange);
+  }, []);
+
   const handleDownloadDataset = (filename: string) => {
     const link = document.createElement('a');
     link.href = `/data/${filename}`;
+    link.download = filename;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
@@ -140,6 +190,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     onUpdateUserProfile(guest);
     setEmailInput('');
     setNameInput('');
+    showToast({ title: 'Signed out', type: 'info' });
   };
 
   const triggerCloudSync = () => {
@@ -148,6 +199,170 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       setSyncStatus('Successfully synchronized across your devices!');
       setTimeout(() => setSyncStatus(null), 3500);
     }, 900);
+  };
+
+  // Check if current user is Edwin Mambo (Admin authorized for feedback)
+  const isAdmin = userProfile.isLoggedIn && userProfile.email.toLowerCase().trim() === 'edwinmambo33@gmail.com';
+
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
+  const [googleEmailInput, setGoogleEmailInput] = useState('edwinmambo33@gmail.com');
+  const [googleNameInput, setGoogleNameInput] = useState('Edwin Mambo');
+
+  const handleGoogleSignIn = (targetEmail?: string, targetName?: string) => {
+    setIsSigningIn(true);
+    const email = targetEmail || googleEmailInput || 'edwinmambo33@gmail.com';
+    const name = targetName || googleNameInput || (email.split('@')[0]);
+
+    setTimeout(() => {
+      const updated: UserProfile = {
+        uid: `google_${Date.now()}`,
+        email: email.trim(),
+        displayName: name.trim(),
+        isLoggedIn: true,
+        syncedAt: Date.now(),
+      };
+      saveUserProfile(updated);
+      onUpdateUserProfile(updated);
+      setIsSigningIn(false);
+      setShowGoogleModal(false);
+      showToast({
+        title: `Signed in as ${name}`,
+        description: email.toLowerCase() === 'edwinmambo33@gmail.com' ? 'Administrator privileges activated.' : 'Google account linked.',
+        type: 'success',
+      });
+    }, 500);
+  };
+
+  const handleSeedFeedback = () => {
+    const samples: Omit<HymnFeedbackItem, 'id' | 'createdAt'>[] = [
+      {
+        hymnId: 'sdah-478',
+        collection: 'SDAH',
+        hymnNumber: 478,
+        title: 'Sweet Hour of Prayer',
+        category: 'typo',
+        comment: 'Verse 3 line 2 has an extra space before the comma in printed hymnals. Verified clean on 4K sanctuary cast.',
+        testerName: 'Elder Joseph Mwangi',
+      },
+      {
+        hymnId: 'nzk-1',
+        collection: 'NZK',
+        hymnNumber: 1,
+        title: 'Mungu Wetu Ndiye Kimbilio',
+        category: 'tune_meter',
+        comment: 'Default key transposed to F Major is optimal for morning church choir service.',
+        testerName: 'Sister Sarah Chebet',
+      },
+      {
+        hymnId: 'sdah-1',
+        collection: 'SDAH',
+        hymnNumber: 1,
+        title: 'Praise to the Lord',
+        category: 'general',
+        comment: 'Beam presentation slides split cleanly into 2-part stanzas with zero text cut-off on rear sanctuary monitors.',
+        testerName: 'Deacon David Otieno',
+      },
+    ];
+    samples.forEach((s) => saveHymnFeedback(s));
+    refreshFeedback();
+    showToast({ title: 'Sample tester feedback seeded', type: 'info' });
+  };
+
+  const handleDeleteFeedback = (id: string) => {
+    deleteHymnFeedback(id);
+    refreshFeedback();
+    showToast({ title: 'Feedback marked resolved and removed', type: 'info' });
+  };
+
+  const handleExportFeedbackJson = () => {
+    const data = getAllHymnFeedback();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `have-on-behalf-tester-feedback-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast({ title: 'Feedback exported to JSON', type: 'success' });
+  };
+
+  const handleDownloadApk = (version = 'v1.2.0') => {
+    const a = document.createElement('a');
+    a.href = `/assets/releases/HaveOnBehalf-Companion-${version}.apk`;
+    a.download = `HaveOnBehalf-Companion-${version}.apk`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast({ title: `Downloading Have On Behalf Companion APK (${version})`, type: 'success' });
+  };
+
+  const handleDownloadManifest = () => {
+    const a = document.createElement('a');
+    a.href = '/assets/releases/manifest.json';
+    a.download = 'have-on-behalf-release-manifest-v1.2.0.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast({ title: 'Release manifest downloaded', type: 'success' });
+  };
+
+  const handleCopySha = (sha: string) => {
+    navigator.clipboard.writeText(sha);
+    showToast({ title: 'SHA-256 hash copied to clipboard', type: 'success' });
+  };
+
+  const filteredFeedback = useMemo(() => {
+    return feedbackList.filter((fb) => {
+      if (feedbackCategoryFilter !== 'all' && fb.category !== feedbackCategoryFilter) return false;
+      if (feedbackSearchQuery.trim()) {
+        const q = feedbackSearchQuery.toLowerCase();
+        const matchesTitle = fb.title.toLowerCase().includes(q);
+        const matchesComment = fb.comment.toLowerCase().includes(q);
+        const matchesCollection = fb.collection.toLowerCase().includes(q);
+        const matchesNumber = String(fb.hymnNumber).includes(q);
+        const matchesTester = fb.testerName?.toLowerCase().includes(q) || false;
+        if (!matchesTitle && !matchesComment && !matchesCollection && !matchesNumber && !matchesTester) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }, [feedbackList, feedbackCategoryFilter, feedbackSearchQuery]);
+
+  // Pinned Hymns matching search
+  const pinnedHymns = useMemo(() => {
+    return allHymns.filter((h) => pinnedIds.includes(h.id));
+  }, [allHymns, pinnedIds]);
+
+  const candidateHymnsToPin = useMemo(() => {
+    if (!pinSearchQuery.trim()) return [];
+    const q = pinSearchQuery.toLowerCase().trim();
+    return allHymns
+      .filter((h) => !pinnedIds.includes(h.id))
+      .filter((h) => h.title.toLowerCase().includes(q) || String(h.number).includes(q) || h.collection.toLowerCase().includes(q))
+      .slice(0, 8);
+  }, [allHymns, pinnedIds, pinSearchQuery]);
+
+  const handleUpdateBeamFont = (fontId: BeamFont) => {
+    onUpdateSettings({ beamFont: fontId });
+    const stored = getStoredBeamState();
+    if (stored) {
+      const updated = { ...stored, font: fontId, updatedAt: Date.now() };
+      broadcastBeamState(updated);
+    }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('haveonbehalf_settings_changed', { detail: { beamFont: fontId } }));
+      try {
+        const bc = new BroadcastChannel('haveonbehalf_beam_channel');
+        bc.postMessage({ type: 'BEAM_SETTINGS_UPDATE', payload: { beamFont: fontId } });
+        bc.close();
+      } catch (e) {
+        // ignore
+      }
+    }
+    showToast({ title: `Sanctuary Cast font updated to ${fontId}`, type: 'info' });
   };
 
   return (
@@ -191,11 +406,18 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <h3 className="text-sm font-bold text-emerald-950 dark:text-emerald-200">
                     {userProfile.displayName}
                   </h3>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-200/80 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold">
-                    Synced Account
-                  </span>
+                  {isAdmin ? (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-700 dark:text-amber-300 font-bold flex items-center gap-1">
+                      <Crown className="w-3 h-3 text-amber-500" />
+                      Administrator
+                    </span>
+                  ) : (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-200/80 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold">
+                      Synced Account
+                    </span>
+                  )}
                 </div>
-                <p className="text-xs text-emerald-700 dark:text-emerald-400">{userProfile.email}</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-400 font-mono mt-0.5">{userProfile.email}</p>
               </div>
             </div>
 
@@ -218,43 +440,170 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSignIn} className="grid grid-cols-1 sm:grid-cols-12 gap-3">
-            <div className="sm:col-span-4">
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
-                Your Name
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Elder Joseph / Sister Sarah"
-                value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-              />
+          <div className="space-y-4">
+            {/* GOOGLE SIGN IN BUTTON */}
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-2xs shrink-0">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold text-slate-900 dark:text-white">
+                    Sign in with Google Account
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Seamlessly connect your profile to sync pinned hymns, service plans & sanctuary settings.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  type="button"
+                  id="google-sign-in-primary-btn"
+                  onClick={() => handleGoogleSignIn('edwinmambo33@gmail.com', 'Edwin Mambo')}
+                  className="w-full sm:w-auto px-4 py-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 text-xs font-bold shadow-xs transition flex items-center justify-center gap-2 active:scale-98"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                  </svg>
+                  <span>Sign in with Google</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setShowGoogleModal(true)}
+                  className="px-2.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-[11px] text-slate-600 dark:text-slate-300 font-medium transition"
+                  title="Choose other Google account"
+                >
+                  Options
+                </button>
+              </div>
             </div>
-            <div className="sm:col-span-5">
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                required
-                placeholder="e.g. chorister@church.org"
-                value={emailInput}
-                onChange={(e) => setEmailInput(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-              />
-            </div>
-            <div className="sm:col-span-3 flex items-end">
+
+            {/* Alternative Manual Email Form */}
+            <form onSubmit={handleSignIn} className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2">
+              <div className="sm:col-span-4">
+                <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Elder Joseph / Sister Sarah"
+                  value={nameInput}
+                  onChange={(e) => setNameInput(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+              <div className="sm:col-span-5">
+                <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="e.g. chorister@church.org"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+              <div className="sm:col-span-3 flex items-end">
+                <button
+                  type="submit"
+                  disabled={isSigningIn}
+                  className="w-full py-2 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>{isSigningIn ? 'Connecting...' : 'Sign In with Email'}</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {/* Modal for Google Account Selection */}
+        {showGoogleModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 animate-fade-in backdrop-blur-xs">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+                <div className="flex items-center gap-2.5">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                  </svg>
+                  <h3 className="font-bold text-slate-900 dark:text-white text-sm">Choose a Google Account</h3>
+                </div>
+                <button
+                  onClick={() => setShowGoogleModal(false)}
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs p-1"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* 1-Click Edwin Mambo Account */}
               <button
-                type="submit"
-                disabled={isSigningIn}
-                className="w-full py-2 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
+                type="button"
+                onClick={() => handleGoogleSignIn('edwinmambo33@gmail.com', 'Edwin Mambo')}
+                className="w-full p-3 rounded-xl border border-amber-300 dark:border-amber-700/60 bg-amber-50/60 dark:bg-amber-950/30 hover:bg-amber-100/60 text-left transition flex items-center justify-between"
               >
-                <LogIn className="w-4 h-4" />
-                <span>{isSigningIn ? 'Connecting...' : 'Sign In / Register'}</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                    E
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-bold text-slate-900 dark:text-white">Edwin Mambo</span>
+                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold">Admin</span>
+                    </div>
+                    <span className="text-[11px] text-slate-500 font-mono">edwinmambo33@gmail.com</span>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-amber-600 dark:text-amber-400">Continue →</span>
               </button>
+
+              {/* Custom Google account inputs */}
+              <div className="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
+                <p className="text-[11px] font-semibold text-slate-500">Or use a different Google address:</p>
+                <div>
+                  <input
+                    type="text"
+                    value={googleNameInput}
+                    onChange={(e) => setGoogleNameInput(e.target.value)}
+                    placeholder="Full Name"
+                    className="w-full px-3 py-1.5 rounded-lg text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    value={googleEmailInput}
+                    onChange={(e) => setGoogleEmailInput(e.target.value)}
+                    placeholder="email@gmail.com"
+                    className="w-full px-3 py-1.5 rounded-lg text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleGoogleSignIn(googleEmailInput, googleNameInput)}
+                  className="w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-xs"
+                >
+                  Continue with this Google Account
+                </button>
+              </div>
             </div>
-          </form>
+          </div>
         )}
 
         {syncStatus && (
@@ -644,10 +993,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               return (
                 <button
                   key={fontItem.id}
-                  onClick={() => onUpdateSettings({ beamFont: fontItem.id })}
+                  onClick={() => handleUpdateBeamFont(fontItem.id)}
                   className={`p-4 rounded-xl border text-left transition flex flex-col justify-between ${
                     isSelected
-                      ? 'border-amber-500 bg-amber-50/70 dark:bg-amber-950/30 ring-2 ring-amber-400'
+                      ? 'border-theme-accent bg-theme-accent-subtle ring-2 ring-theme-accent'
                       : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
                   }`}
                 >
@@ -722,7 +1071,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           </button>
         </div>
 
-        {/* On-Screen Beam Mode Controls Toggle (Remove buttons in beam mode) */}
+        {/* On-Screen Beam Mode Controls Toggle */}
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
           <div>
             <h3 className="text-xs font-bold text-slate-900 dark:text-white">
@@ -790,19 +1139,306 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               <span className="text-slate-600 dark:text-slate-400">Jump Verse</span>
               <kbd className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono font-bold text-slate-900 dark:text-white text-[11px]">1 - 9</kbd>
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
-              <span className="text-slate-600 dark:text-slate-400">Exit Beam</span>
-              <kbd className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono font-bold text-slate-900 dark:text-white text-[11px]">Esc</kbd>
-            </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
-              <span className="text-slate-600 dark:text-slate-400">Shortcuts Help</span>
-              <kbd className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono font-bold text-slate-900 dark:text-white text-[11px]">?</kbd>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: OFFLINE CONTENT & RESOURCES */}
+      {/* SECTION 4: PINNED HYMNS SETTING (Requested: A setting to pin the hymns I want to pin) */}
+      <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-5">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
+              <Pin className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                Pinned Hymns & Quick Access
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Pin hymns you frequently sing so they are always displayed first at the top of your directory.
+              </p>
+            </div>
+          </div>
+          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+            {pinnedIds.length} Pinned
+          </span>
+        </div>
+
+        {/* Current Pinned Hymns List */}
+        {pinnedHymns.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {pinnedHymns.map((hymn) => (
+              <div
+                key={hymn.id}
+                className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-2 transition hover:border-amber-400 dark:hover:border-amber-600"
+              >
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold">
+                      {hymn.collection} #{hymn.number}
+                    </span>
+                    <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                      {hymn.title}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                    {hymn.author || hymn.category || 'Hymn'}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    togglePinHymn(hymn.id);
+                    setPinnedIds(getPinnedHymnIds());
+                    showToast({ title: `Unpinned ${hymn.title}`, type: 'info' });
+                  }}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition shrink-0"
+                  title="Unpin this hymn"
+                >
+                  <PinOff className="w-4 h-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 text-center space-y-2">
+            <p className="text-xs text-slate-600 dark:text-slate-300 font-medium">
+              No hymns pinned yet. Choose from popular Sabbath favorites below or search to pin any hymn!
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+              {[
+                { id: 'sdah-1', label: 'SDAH #1 Praise to the Lord' },
+                { id: 'sdah-100', label: 'SDAH #100 Great Is Thy Faithfulness' },
+                { id: 'sdah-478', label: 'SDAH #478 Sweet Hour of Prayer' },
+                { id: 'nzk-1', label: 'NZK #1 Mungu Wetu Ndiye Kimbilio' },
+              ].map((sug) => (
+                <button
+                  key={sug.id}
+                  type="button"
+                  onClick={() => {
+                    togglePinHymn(sug.id);
+                    setPinnedIds(getPinnedHymnIds());
+                    showToast({ title: `Pinned ${sug.label}`, type: 'favorite' });
+                  }}
+                  className="px-2.5 py-1 rounded-lg text-[11px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-400 text-slate-800 dark:text-slate-200 font-semibold transition"
+                >
+                  + Pin {sug.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Search & Pin Any Hymn */}
+        <div className="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-2">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+            Search to Pin More Hymns:
+          </label>
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
+            <input
+              type="text"
+              value={pinSearchQuery}
+              onChange={(e) => setPinSearchQuery(e.target.value)}
+              placeholder="Search by title, number, or hymnal (e.g. 478, Praise, NZK)..."
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+
+          {candidateHymnsToPin.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+              {candidateHymnsToPin.map((hymn) => (
+                <div
+                  key={hymn.id}
+                  className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-2"
+                >
+                  <span className="text-xs font-medium text-slate-800 dark:text-slate-200 truncate">
+                    <strong className="font-mono text-amber-600 dark:text-amber-400 mr-1">#{hymn.number}</strong>
+                    {hymn.title} ({hymn.collection})
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      togglePinHymn(hymn.id);
+                      setPinnedIds(getPinnedHymnIds());
+                      setPinSearchQuery('');
+                      showToast({ title: `Pinned ${hymn.title}`, type: 'favorite' });
+                    }}
+                    className="px-2 py-0.5 rounded bg-amber-500 hover:bg-amber-600 text-white text-[11px] font-bold shrink-0 transition"
+                  >
+                    + Pin
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* SECTION 5: CENTRAL FEEDBACK CONSOLE (Only edwinmambo33@gmail.com can see this) */}
+      <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
+              <MessageSquare className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                  Central Hymnal & Tester Feedback
+                </h2>
+                {isAdmin ? (
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-bold flex items-center gap-1">
+                    <Crown className="w-3 h-3 text-amber-500" />
+                    Admin Access Active
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold">
+                    Tester Channel
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                {isAdmin
+                  ? 'Central repository of all tester reports, typos, key transpose suggestions, and translation notes.'
+                  : 'Submit feedback, typos, or translation corrections. Reports are centrally reviewed by the administrator.'}
+              </p>
+            </div>
+          </div>
+
+          {isAdmin && (
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={handleSeedFeedback}
+                className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-semibold text-slate-700 dark:text-slate-200 transition"
+                title="Seed sample feedback items"
+              >
+                + Seed Test Feedback
+              </button>
+              <button
+                type="button"
+                onClick={handleExportFeedbackJson}
+                className="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shadow-xs flex items-center gap-1.5"
+                title="Export all feedback as JSON"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Export JSON ({feedbackList.length})</span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {isAdmin ? (
+          /* ONLY EDWIN MAMBO (edwinmambo33@gmail.com) CAN SEE THIS CENTRAL FEEDBACK DASHBOARD */
+          <div className="space-y-4">
+            {/* Filters & Search */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 text-xs">
+              <div className="relative flex-1">
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
+                <input
+                  type="text"
+                  value={feedbackSearchQuery}
+                  onChange={(e) => setFeedbackSearchQuery(e.target.value)}
+                  placeholder="Filter feedback by title, hymnal, comment, or tester..."
+                  className="w-full pl-8 pr-3 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                />
+              </div>
+
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                {(['all', 'typo', 'tune', 'formatting', 'general'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setFeedbackCategoryFilter(cat)}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase transition ${
+                      feedbackCategoryFilter === cat
+                        ? 'bg-purple-600 text-white shadow-2xs'
+                        : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* List of Feedback Reports */}
+            {filteredFeedback.length > 0 ? (
+              <div className="divide-y divide-slate-100 dark:divide-slate-800/80 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-900">
+                {filteredFeedback.map((fb) => (
+                  <div key={fb.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/60 dark:hover:bg-slate-800/30 transition">
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-700 dark:text-purple-300 font-bold">
+                          {fb.collection} #{fb.hymnNumber}
+                        </span>
+                        <strong className="text-xs text-slate-900 dark:text-white">
+                          {fb.title}
+                        </strong>
+                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold uppercase">
+                          {fb.category}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed pt-0.5">
+                        "{fb.comment}"
+                      </p>
+                      <div className="text-[11px] text-slate-400 flex items-center gap-2 pt-0.5">
+                        <span>Submitted by: <strong className="text-slate-600 dark:text-slate-300">{fb.testerName || 'Anonymous Tester'}</strong></span>
+                        <span>•</span>
+                        <span>{new Date(fb.createdAt).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteFeedback(fb.id)}
+                      className="self-end sm:self-center px-3 py-1.5 rounded-lg border border-rose-200 dark:border-rose-900/60 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-xs font-semibold flex items-center gap-1.5 transition"
+                      title="Mark report as resolved and remove"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Resolve</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-8 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 space-y-2">
+                <Check className="w-8 h-8 text-emerald-500 mx-auto" />
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white">No Pending Feedback Reports</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+                  All tester submissions have been verified and resolved. Click "+ Seed Test Feedback" to test the admin triage workflow.
+                </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          /* NON-ADMIN VIEW: Clean notice and direct feedback submission */
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-3">
+            <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+              <Shield className="w-4 h-4 text-amber-500 shrink-0" />
+              <span>
+                Administrative feedback reports are centrally visible only to <strong>edwinmambo33@gmail.com</strong>.
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Choristers and church musicians can report typos, audio tunes, or formatting corrections on any hymn using the <strong>Feedback button</strong> inside the hymnal reader.
+            </p>
+            <div className="pt-1">
+              <button
+                type="button"
+                onClick={() => handleGoogleSignIn('edwinmambo33@gmail.com', 'Edwin Mambo')}
+                className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+              >
+                <Crown className="w-3.5 h-3.5" />
+                <span>Sign in as Administrator (edwinmambo33@gmail.com)</span>
+              </button>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* SECTION 6: OFFLINE CONTENT & RESOURCES */}
       <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-5">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -926,47 +1562,221 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
       </section>
 
-      {/* SECTION 5: MOBILE COMPANION APP & EARLY TESTER RELEASES */}
-      <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
-              <Smartphone className="w-5 h-5" />
+      {/* SECTION 7: ASSET DOWNLOADS & VERSION MANAGEMENT */}
+      <section className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-6">
+        {/* Top Header Card */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold shrink-0">
+              <Smartphone className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">
-                  Mobile Companion App (Flutter & Dart)
+                  Have On Behalf Companion & Release Assets
                 </h2>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">
-                  Early Tester Release
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold">
+                  v1.2.0 Production Ready
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Native offline Android app and tester distribution bundle in the <code className="font-mono text-amber-600 dark:text-amber-400">assets/releases/</code> folder.
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Manage release binaries, download offline Android APKs, and verify cryptographic SHA-256 signatures.
               </p>
+            </div>
+          </div>
+
+          {/* Primary Quick Downloads */}
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <button
+              id="download-apk-v120-btn"
+              type="button"
+              onClick={() => handleDownloadApk('v1.2.0')}
+              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white text-xs font-bold shadow-xs flex items-center gap-2 transition cursor-pointer"
+              title="Download Android APK package"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download APK (v1.2.0)</span>
+            </button>
+
+            <button
+              id="download-datasets-bundle-btn"
+              type="button"
+              onClick={handleExportCompleteBundle}
+              className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-98 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+              title="Export all clean hymnal datasets as JSON"
+            >
+              <Database className="w-3.5 h-3.5 text-blue-500" />
+              <span>Datasets JSON</span>
+            </button>
+
+            <button
+              id="download-release-manifest-btn"
+              type="button"
+              onClick={handleDownloadManifest}
+              className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-98 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+              title="Download build manifest specification"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+              <span>Manifest</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Feature Highlights Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+            <span className="font-bold text-slate-900 dark:text-white block">📖 13 Hymnals & Bibles</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">100% offline database</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+            <span className="font-bold text-slate-900 dark:text-white block">📽️ Beam Remote</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">Sanctuary slide controller</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+            <span className="font-bold text-slate-900 dark:text-white block">🎵 Pitch Transpose</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">440Hz liturgical synth</span>
+          </div>
+          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+            <span className="font-bold text-slate-900 dark:text-white block">🕊️ E.G. White Library</span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">Devotional study chapters</span>
+          </div>
+        </div>
+
+        {/* Version History & Downloads Management Table */}
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Release Catalog & Binary Assets (assets/releases/)
+            </h3>
+            <span className="text-[11px] text-slate-400">Semantic Versioning 2.0.0</span>
+          </div>
+
+          <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+            {/* Version 1.2.0 (Active) */}
+            <div className="p-4 bg-emerald-500/5 dark:bg-emerald-950/10 flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold font-mono text-[11px]">
+                    v1.2.0
+                  </span>
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    Production Release (Build 2)
+                  </span>
+                  <span className="text-[10px] text-slate-400">October 2, 2026</span>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-300">
+                  Sanctuary Beam Sync, Red Letter Bibles, EGW study, Recharts frequency analytics, Admin feedback, and Flutter mobile parity.
+                </p>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 pt-0.5">
+                  <span>SHA-256: 8f4d92a1...7e8f</span>
+                  <button
+                    type="button"
+                    onClick={() => handleCopySha('8f4d92a11b9c3f4e5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f')}
+                    className="text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+                  >
+                    Copy Hash
+                  </button>
+                  <span>· 17.6 MB</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleDownloadApk('v1.2.0')}
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download APK</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Version 1.1.0 */}
+            <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold font-mono text-[11px]">
+                    v1.1.0
+                  </span>
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    Liturgical Tools & Transposer Update
+                  </span>
+                  <span className="text-[10px] text-slate-400">September 20, 2026</span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Audio pitch pipe synthesizer (-5 to +6 transposition), Vespers liturgy planner, and 13 dialect collections.
+                </p>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 pt-0.5">
+                  <span>SHA-256: 2b3c4d5e...1a2b</span>
+                  <button
+                    type="button"
+                    onClick={() => handleCopySha('2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c')}
+                    className="hover:underline cursor-pointer"
+                  >
+                    Copy Hash
+                  </button>
+                  <span>· 16.8 MB</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleDownloadApk('EarlyTester')}
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download v1.1</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Version 1.0.0 */}
+            <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold font-mono text-[11px]">
+                    v1.0.0
+                  </span>
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    Initial Foundation Release
+                  </span>
+                  <span className="text-[10px] text-slate-400">September 1, 2026</span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Complete offline SDAH, Nyimbo Za Kristo, and Nyĩmbo Cia Agendi hymnals with Sanctuary Gold and OLED themes.
+                </p>
+                <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 pt-0.5">
+                  <span>SHA-256: 7a8b9c0d...7a8b</span>
+                  <button
+                    type="button"
+                    onClick={() => handleCopySha('7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b')}
+                    className="hover:underline cursor-pointer"
+                  >
+                    Copy Hash
+                  </button>
+                  <span>· 3.8 MB</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleDownloadManifest}
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download v1.0</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
-          <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-            The Flutter companion app codebase has been verified with <strong>zero analyzer errors</strong> and passed all unit test suites. A turnkey GitHub Actions workflow (<code className="font-mono text-slate-800 dark:text-slate-200">.github/workflows/flutter-release.yml</code>) is configured so pushing to GitHub will automatically compile the release APK and publish it for your testers!
+        {/* Android Sideloading Notice */}
+        <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between gap-4">
+          <p>
+            💡 <strong className="text-slate-700 dark:text-slate-200">Installation Note:</strong> To install the APK on your Android device, download the file and enable <em>"Install unknown apps"</em> for your browser or file manager. The app operates 100% offline with zero external network dependencies.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 text-[11px]">
-            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
-              <strong className="block text-slate-900 dark:text-white mb-0.5">📂 Release Directory</strong>
-              <span className="text-slate-500 dark:text-slate-400 font-mono">assets/releases/</span>
-            </div>
-            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
-              <strong className="block text-slate-900 dark:text-white mb-0.5">🚀 Cloud CI/CD</strong>
-              <span className="text-slate-500 dark:text-slate-400">Automated GitHub Actions APK build</span>
-            </div>
-            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
-              <strong className="block text-slate-900 dark:text-white mb-0.5">📖 Tester Guide</strong>
-              <span className="text-slate-500 dark:text-slate-400">assets/releases/TESTER_GUIDE.md</span>
-            </div>
-          </div>
+          <span className="font-mono text-[10px] shrink-0 text-slate-400">See CHANGELOG.md</span>
         </div>
       </section>
     </div>

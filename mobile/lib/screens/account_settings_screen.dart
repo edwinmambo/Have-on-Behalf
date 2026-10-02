@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../services/hymn_repository.dart';
 import '../services/user_storage_service.dart';
 import '../theme/liturgical_themes.dart';
+import 'feedback_screen.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({super.key});
@@ -362,6 +363,45 @@ class AccountSettingsScreen extends StatelessWidget {
                       const SnackBar(content: Text('Backup summary copied to clipboard!')),
                     );
                   },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 6. Community & Publishing Metadata
+          _buildSectionHeader('FEEDBACK & PUBLISHING METADATA'),
+          Card(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.bug_report_outlined),
+                  title: const Text('Chorister & Tester Feedback Center', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                  subtitle: Text(
+                    '${storage.feedbackList.length} logged reports · Submit typos or beam suggestions',
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  trailing: const Icon(Icons.chevron_right, size: 18),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const FeedbackScreen()),
+                    );
+                  },
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.verified_outlined, color: Colors.green),
+                  title: const Text('Have On Behalf Companion', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                  subtitle: const Text('Version 1.2.0 (Build 2) · Production Ready', style: TextStyle(fontSize: 12)),
+                  trailing: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: Colors.green.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: const Text('READY', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.green)),
+                  ),
                 ),
               ],
             ),

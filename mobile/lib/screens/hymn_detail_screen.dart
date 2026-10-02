@@ -484,6 +484,43 @@ class _HymnDetailScreenState extends State<HymnDetailScreen> {
           ],
         ),
         actions: [
+          // Pin / Unpin Button
+          IconButton(
+            icon: Icon(
+              storage.isPinned(_currentHymn.id) ? Icons.push_pin_rounded : Icons.push_pin_outlined,
+              color: storage.isPinned(_currentHymn.id) ? Colors.amber : null,
+            ),
+            tooltip: storage.isPinned(_currentHymn.id) ? 'Unpin Hymn' : 'Pin Hymn for Sabbath',
+            onPressed: () {
+              storage.togglePin(_currentHymn.id);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(storage.isPinned(_currentHymn.id)
+                      ? 'Pinned #${_currentHymn.number} to Sabbath Quick Access'
+                      : 'Unpinned #${_currentHymn.number}'),
+                  duration: const Duration(seconds: 1),
+                ),
+              );
+            },
+          ),
+          // Project to Sanctuary Beam Screen
+          IconButton(
+            icon: const Icon(Icons.cast_connected_rounded),
+            tooltip: 'Project Hymn to Sanctuary Screen',
+            onPressed: () {
+              storage.projectHymn(
+                _currentHymn.title,
+                '${_currentHymn.collection} #${_currentHymn.number}',
+                _currentHymn.stanzas.length,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Projecting "${_currentHymn.title}" to Sanctuary Screen!'),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            },
+          ),
           // Add to Worship Plan Button
           IconButton(
             icon: const Icon(Icons.playlist_add),

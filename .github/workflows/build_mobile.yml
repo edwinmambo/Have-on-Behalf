@@ -1,0 +1,122 @@
+name: Build Mobile Companion & Bundle Releases
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build_mobile_and_bundle:
+    name: Build Flutter Mobile App & Upload Release Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm ci || npm install
+
+      - name: Synchronize Shared Datasets (Web PWA <-> Flutter Mobile Parity)
+        run: npm run sync:data
+
+      - name: Set up Java Development Kit (JDK) 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install & Configure Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.3'
+          channel: 'stable'
+          cache: true
+
+      - name: Verify Flutter Installation
+        run: |
+          flutter --version
+          dart --version
+
+      - name: Install Mobile Dependencies
+        working-directory: mobile
+        run: flutter pub get
+
+      - name: Execute Mobile Unit & Model Tests
+        working-directory: mobile
+        run: flutter test
+
+      - name: Compile Split-per-ABI Android APKs
+        working-directory: mobile
+        run: flutter build apk --release --split-per-abi
+
+      - name: Compile Universal Production Android APK
+        working-directory: mobile
+        run: flutter build apk --release
+
+      - name: Create /assets/releases Directory & Bundle Binaries
+        run: |
+          mkdir -p assets/releases public/assets/releases
+          
+          # Copy universal production APK
+          cp mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+          cp mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-Latest.apk
+          cp mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
+          cp mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
+          
+          # Copy architecture-specific APKs
+          cp mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk || true
+          cp mobile/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk || true
+          cp mobile/build/app/outputs/flutter-apk/app-x86_64-release.apk assets/releases/HaveOnBehalf-Companion-x86_64.apk || true
+
+      - name: Generate Automated Git Changelog & Tester Release Notes
+        run: npm run changelog:auto
+
+      - name: Upload Release Artifacts to assets/releases
+        uses: actions/upload-artifact@v4
+        with:
+          name: HaveOnBehalf-Mobile-Releases
+          path: |
+            assets/releases/*.apk
+            assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
+            assets/releases/manifest.json
+            assets/releases/versions.json
+          retention-days: 30
+
+      - name: Commit Bundled Release Assets & Changelog
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [Release Builder]"
+          git add assets/releases/ public/assets/releases/ CHANGELOG.md
+          git diff --staged --quiet || git commit -m "chore(release): bundle mobile release binaries and update changelog [skip ci]"
+          git push origin HEAD:${{ github.ref_name }} || true
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
+          files: |
+            assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            assets/releases/HaveOnBehalf-Companion-Latest.apk
+            assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk
+            assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk
+            assets/releases/manifest.json
+            assets/releases/versions.json
+            assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
+          name: Have On Behalf Companion Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false

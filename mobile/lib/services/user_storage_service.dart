@@ -7,6 +7,9 @@ import '../theme/liturgical_themes.dart';
 
 class UserStorageService extends ChangeNotifier {
   static const String _keyFavorites = 'hob_favorites';
+  static const String _keyPinned = 'hob_pinned_hymns';
+  static const String _keyHistory = 'hob_hymn_history';
+  static const String _keyFeedback = 'hob_tester_feedback';
   static const String _keyNotes = 'hob_notes';
   static const String _keyPalette = 'hob_theme_palette';
   static const String _keyDarkMode = 'hob_dark_mode';
@@ -21,12 +24,24 @@ class UserStorageService extends ChangeNotifier {
   static const String _keyActivePlanId = 'hob_active_plan_id';
 
   final Set<String> _favorites = {};
+  final Set<String> _pinnedHymns = {'sdah_1', 'nzk_46', 'nca_52'};
+  final List<Map<String, dynamic>> _history = [];
+  final List<Map<String, dynamic>> _feedbackList = [];
   final Map<String, String> _notes = {};
   LiturgicalPalette _activePalette = LiturgicalPalette.sapphire;
   bool _isDarkMode = true; // Default to modern sleek dark mode
   bool _pureOledBlack = false;
   bool _useSerif = false; // Default to modern sans-serif
   double _fontScale = 1.0;
+  bool _isAdmin = true;
+  bool _isReadingMode = false;
+
+  // Beam Remote projection state
+  String? _projectedHymnTitle = 'Praise to the Lord';
+  String? _projectedHymnNumber = 'SDAH #1';
+  int _projectedSlideIndex = 0;
+  int _projectedTotalSlides = 4;
+  bool _isBeamBlackout = false;
 
   String _userName = 'Edwin Mambo';
   String _userRole = 'Chorister & Worship Leader';
@@ -39,16 +54,33 @@ class UserStorageService extends ChangeNotifier {
 
   bool get isLoaded => _isLoaded;
   Set<String> get favorites => _favorites;
+  Set<String> get pinnedHymns => _pinnedHymns;
+  List<Map<String, dynamic>> get history => List.unmodifiable(_history);
+  List<Map<String, dynamic>> get feedbackList => List.unmodifiable(_feedbackList);
+  bool get isAdmin => _isAdmin;
   LiturgicalPalette get activePalette => _activePalette;
   bool get isDarkMode => _isDarkMode;
   bool get pureOledBlack => _pureOledBlack;
   bool get useSerif => _useSerif;
   double get fontScale => _fontScale;
+  bool get isReadingMode => _isReadingMode;
+
+  void toggleReadingMode([bool? val]) {
+    _isReadingMode = val ?? !_isReadingMode;
+    notifyListeners();
+  }
 
   String get userName => _userName;
   String get userRole => _userRole;
   String get churchName => _churchName;
   String get userEmail => _userEmail;
+
+  // Beam remote getters
+  String? get projectedHymnTitle => _projectedHymnTitle;
+  String? get projectedHymnNumber => _projectedHymnNumber;
+  int get projectedSlideIndex => _projectedSlideIndex;
+  int get projectedTotalSlides => _projectedTotalSlides;
+  bool get isBeamBlackout => _isBeamBlackout;
 
   List<WorshipPlan> get plans => List.unmodifiable(_plans);
   String get activePlanId => _activePlanId;
@@ -62,7 +94,49 @@ class UserStorageService extends ChangeNotifier {
   }
 
   bool isFavorited(String hymnId) => _favorites.contains(hymnId);
+  bool isPinned(String hymnId) => _pinnedHymns.contains(hymnId);
   String? getNote(String hymnId) => _notes[hymnId];
+
+  // Beam remote methods
+  void nextSlide() {
+    if (_projectedSlideIndex < _projectedTotalSlides - 1) {
+      _projectedSlideIndex++;
+      notifyListeners();
+    }
+  }
+
+  void prevSlide() {
+    if (_projectedSlideIndex > 0) {
+      _projectedSlideIndex--;
+      notifyListeners();
+    }
+  }
+
+  void setSlideIndex(int index) {
+    if (index >= 0 && index < _projectedTotalSlides) {
+      _projectedSlideIndex = index;
+      notifyListeners();
+    }
+  }
+
+  void toggleBeamBlackout() {
+    _isBeamBlackout = !_isBeamBlackout;
+    notifyListeners();
+  }
+
+  void projectHymn(String title, String number, int totalSlides) {
+    _projectedHymnTitle = title;
+    _projectedHymnNumber = number;
+    _projectedSlideIndex = 0;
+    _projectedTotalSlides = totalSlides > 0 ? totalSlides : 4;
+    _isBeamBlackout = false;
+    notifyListeners();
+  }
+
+  void toggleAdmin([bool? val]) {
+    _isAdmin = val ?? !_isAdmin;
+    notifyListeners();
+  }
 
   Future<void> initialize() async {
     if (_isLoaded) return;
@@ -72,6 +146,33 @@ class UserStorageService extends ChangeNotifier {
       // Favorites
       final favList = prefs.getStringList(_keyFavorites) ?? [];
       _favorites.addAll(favList);
+
+      // Pinned
+      final pinnedList = prefs.getStringList(_keyPinned);
+      if (pinnedList != null && pinnedList.isNotEmpty) {
+        _pinnedHymns.clear();
+        _pinnedHymns.addAll(pinnedList);
+      }
+
+      // History
+      final histJson = prefs.getString(_keyHistory);
+      if (histJson != null) {
+        final decodedHist = jsonDecode(histJson) as List<dynamic>;
+        _history.clear();
+        for (final item in decodedHist) {
+          _history.add(Map<String, dynamic>.from(item as Map));
+        }
+      }
+
+      // Feedback
+      final fbJson = prefs.getString(_keyFeedback);
+      if (fbJson != null) {
+        final decodedFb = jsonDecode(fbJson) as List<dynamic>;
+        _feedbackList.clear();
+        for (final item in decodedFb) {
+          _feedbackList.add(Map<String, dynamic>.from(item as Map));
+        }
+      }
 
       // Notes
       final notesJson = prefs.getString(_keyNotes);
@@ -333,6 +434,86 @@ class UserStorageService extends ChangeNotifier {
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_keyNotes, jsonEncode(_notes));
+  }
+
+  // --- Pinned Hymns (Sabbath Quick Access) ---
+
+  Future<void> togglePin(String hymnId) async {
+    if (_pinnedHymns.contains(hymnId)) {
+      _pinnedHymns.remove(hymnId);
+    } else {
+      _pinnedHymns.add(hymnId);
+    }
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_keyPinned, _pinnedHymns.toList());
+  }
+
+  // --- Hymn Visit & History Tracker ---
+
+  Future<void> recordHymnVisit({
+    required String hymnId,
+    required String title,
+    required int number,
+    required String collection,
+  }) async {
+    _history.removeWhere((h) => h['id'] == hymnId);
+    _history.insert(0, {
+      'id': hymnId,
+      'title': title,
+      'number': number,
+      'collection': collection,
+      'timestamp': DateTime.now().toIso8601String(),
+    });
+    if (_history.length > 50) _history.removeLast();
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyHistory, jsonEncode(_history));
+  }
+
+  // --- Tester & Chorister Feedback ---
+
+  Future<void> submitFeedback({
+    required String category,
+    required String title,
+    required String comment,
+    String? collection,
+    int? hymnNumber,
+  }) async {
+    final report = {
+      'id': 'fb_${DateTime.now().millisecondsSinceEpoch}',
+      'category': category,
+      'title': title.trim(),
+      'comment': comment.trim(),
+      'collection': collection ?? 'General',
+      'hymnNumber': hymnNumber ?? 0,
+      'testerName': _userName,
+      'testerEmail': _userEmail,
+      'status': 'open',
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+    _feedbackList.insert(0, report);
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyFeedback, jsonEncode(_feedbackList));
+  }
+
+  Future<void> resolveFeedback(String id) async {
+    final idx = _feedbackList.indexWhere((f) => f['id'] == id);
+    if (idx != -1) {
+      final current = _feedbackList[idx]['status'];
+      _feedbackList[idx]['status'] = current == 'resolved' ? 'open' : 'resolved';
+      notifyListeners();
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_keyFeedback, jsonEncode(_feedbackList));
+    }
+  }
+
+  Future<void> deleteFeedback(String id) async {
+    _feedbackList.removeWhere((f) => f['id'] == id);
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyFeedback, jsonEncode(_feedbackList));
   }
 
   // --- Plan Management (Worship Planner) ---

@@ -807,7 +807,7 @@
         "lines": [
           "Mĩgambo yothe ta nĩ ĩĩnĩre, Rĩĩtwa rĩa Jesũ Mwathani!",
           "Mũthamakĩ na nĩngĩ no Ngai, Rĩĩtwa rĩake rĩrĩ ngumo!",
-          "Rĩĩtwa rĩĩ ngumo ,rĩĩtwa rĩĩ ngũmo",
+          "Rĩĩtwa rĩĩ ngumorĩĩtwa rĩĩ ngũmo",
           "Rĩĩtwa rĩa Jesũ Mwathani,",
           "Rĩĩtwa rĩĩ ngumo, rĩĩtwa rĩĩ ngumo,",
           "Rĩĩtwa rĩa Jesũ rĩĩ ngumo."
@@ -8119,7 +8119,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "ũmũũthĩ ithuĩ eehia , twĩtĩkie ũhoro wa Ngai,",
+          "ũmũũthĩ ithuĩ eehia twĩtĩkie ũhoro wa Ngai,",
           "ũtuongerere hinya, O na ũtũhonagie,",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;"
@@ -9970,7 +9970,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "ũtugi wa magegania ,nĩ wa honokirie",
+          "ũtugi wa mageganianĩ wa honokirie",
           "Rĩrĩa ndarĩ mũtumumu ngĩhingũka maitho."
         ]
       },
@@ -10421,7 +10421,7 @@
         "lines": [
           "Jesũ nĩaroiga, “we ndũrĩ na hinya;",
           "Wĩhũũge ũhoe, ũka mwana wakwa.",
-          "Thiirĩ  wa mehia ,we nĩandĩhĩire",
+          "Thiirĩ  wa mehiawe nĩandĩhĩire",
           "Hau Mũtharaba-inĩ,na akĩnjohere."
         ]
       },
@@ -10437,15 +10437,15 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ndĩngĩkĩrandũra ,wega waku mũingĩ;",
-          "Rĩu nĩ ngwĩtheria  ,na thakame yaku."
+          "Ndĩngĩkĩrandũrawega waku mũingĩ;",
+          "Rĩu nĩ ngwĩtheriana thakame yaku."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          ".Rĩrĩa ngarũũgama ,O kũu matu-inĩ",
+          ".Rĩrĩa ngarũũgamaO kũu matu-inĩ",
           "Thũũmbĩ nĩngamĩiga magũrũ-inĩ ma Jesũ."
         ]
       }
@@ -10531,8 +10531,8 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ nwĩheana ,ngoro yakwa o na indo",
-          "Nĩngũcĩrĩirio nĩ wendo , nĩkĩo ngwĩneana biũ.",
+          "Harĩ Jesũ nwĩheanangoro yakwa o na indo",
+          "Nĩngũcĩrĩirio nĩ wendo nĩkĩo ngwĩneana biũ.",
           "Ngwĩneana biũ, ngwĩneana biũ;",
           "Nĩngũcĩrĩrio nĩ wendo ngwĩneana biũ."
         ]
@@ -10541,7 +10541,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ ngwĩneana ,ndĩmũinamagĩrĩre;",
+          "Harĩ Jesũ ngwĩneanandĩmũinamagĩrĩre;",
           "Nĩndigĩte ikeno ciothe Jesũ ũnyamũkĩre!"
         ]
       },
@@ -10549,7 +10549,7 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ ngwĩneana ,ngarũra nduĩke waku;",
+          "Harĩ Jesũ ngwĩneanangarũra nduĩke waku;",
           "Roho amenyagĩrĩre matukũ makwa mothe."
         ]
       },
@@ -10983,7 +10983,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Nĩmbatario nĩwe , o hingo ciothe;",
+          "Nĩmbatario nĩwe o hingo ciothe;",
           "Nandirĩ na ũngĩ mwagĩrĩru;",
           "Jesũ nĩngũbataire, mũno hingo ciothe;",
           "Kĩhotithie mũkũũri nĩnjũkĩte."
@@ -10993,7 +10993,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe , ũnjikarie;",
+          "Nĩmbatairio nĩwe ũnjikarie;",
           "Magerio no tũhũ matingĩndooria."
         ]
       },
@@ -11009,7 +11009,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe , ũndungate;",
+          "Nĩmbatairio nĩwe ũndungate;",
           "Ciĩranĩro ciaku ndĩcihingie."
         ]
       },
@@ -11017,8 +11017,8 @@
         "number": 5,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe ,hoti ya mothe;",
-          "Ndĩ waku waku ki , matukũ mothe."
+          "Nĩmbatairio nĩwehoti ya mothe;",
+          "Ndĩ waku waku ki matukũ mothe."
         ]
       }
     ],
@@ -11930,7 +11930,7 @@
           "Hĩndĩ njega ya mahoya rĩu nĩtwoka harĩ we;",
           "ũtũehererie mathĩĩna,o na mĩnyamaaro yothe",
           "Rĩrĩa gwĩ kĩeha na ruo,nĩũhonagia ngoro ciitũ;",
-          "Nĩtũhootaga mathĩna ,hĩndĩ njega ya mahoya."
+          "Nĩtũhootaga mathĩnahĩndĩ njega ya mahoya."
         ]
       },
       {
@@ -12654,7 +12654,7 @@
         "type": "verse",
         "lines": [
           "Mũndũ ũkwenda gũkinya, Kwa Jesũ Igũrũ,",
-          "Njĩra ya mũtharaba , Noyo ya matu-inĩ;",
+          "Njĩra ya mũtharaba Noyo ya matu-inĩ;",
           "Jesũ nĩ Mũhonokia, Hatirĩ na ũngĩ,",
           "Gwĩ gĩkeno kĩnene ma, Kwa Mwathani."
         ]
@@ -13164,23 +13164,23 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Hakuhĩ nawe Ngai niguo ngwenda , hakuhĩ makĩria Ngai wakwa;",
-          "Hingo yakwa yothe njikarage nawe ,hakuhĩ makĩria Ngai wakwa."
+          "Hakuhĩ nawe Ngai niguo ngwenda hakuhĩ makĩria Ngai wakwa;",
+          "Hingo yakwa yothe njikarage nawehakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 2,
         "type": "verse",
         "lines": [
-          "Niĩ ndĩ mũgendi rũgendo-inĩ ,ndirĩ ndahurũka ngoro-inĩ",
-          "No rwĩmbo nyinaga ũguo ngĩthiaga , hakuhĩ makĩria Ngai wakwa."
+          "Niĩ ndĩ mũgendi rũgendo-inĩndirĩ ndahurũka ngoro-inĩ",
+          "No rwĩmbo nyinaga ũguo ngĩthiaga hakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 3,
         "type": "verse",
         "lines": [
-          "Maũndũ matheru mangucagia , nĩmo maku mega ma igũrũ;",
+          "Maũndũ matheru mangucagia nĩmo maku mega ma igũrũ;",
           "Hĩndĩ ĩrĩa ndĩ toro ũnjikaragie, hakuhĩ makĩria Ngai wakwa."
         ]
       },
@@ -13189,14 +13189,14 @@
         "type": "verse",
         "lines": [
           "Rĩu ngũkũgooca na hinya ma wee ndũũmba ya ihiga rĩa ũhonokio",
-          "Rĩrĩa ndĩna thĩĩna ndĩũragĩra gwaku , Hakuhĩ makĩria Ngai wakwa."
+          "Rĩrĩa ndĩna thĩĩna ndĩũragĩra gwaku Hakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 5,
         "type": "verse",
         "lines": [
-          "Rũgendo rwathira rwa gũkũ thĩ ,ũkandwara igũrũ kũu gwaku",
+          "Rũgendo rwathira rwa gũkũ thĩũkandwara igũrũ kũu gwaku",
           "Nĩkuo ngakenera tondũ ngatũũraga,hakuhĩ makĩria Ngai wakwa."
         ]
       }
@@ -13638,7 +13638,7 @@
         "type": "verse",
         "lines": [
           "Ngĩũria thĩ, ĩrĩa na riũa igĩcokia mũgambo ũmwe",
-          "Rĩu ihinda nĩ rĩthiru ,mũthenya nĩ mũũku;",
+          "Rĩu ihinda nĩ rĩthirumũthenya nĩ mũũku;",
           "Kĩgirĩko no wĩhũge, marũũri no maratwonia",
           "Thĩ yothe rĩu yetereire cooro wake wiki;"
         ]
@@ -13647,20 +13647,20 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ngĩũria njaamba ĩrĩ werũ-inĩ , rũĩmbo rũgĩkĩmĩguucia",
+          "Ngĩũria njaamba ĩrĩ werũ-inĩ rũĩmbo rũgĩkĩmĩguucia",
           "ũmĩrĩria ũhotane mbara ti ndaaya rĩu;",
-          "Kĩgirĩko ũmĩrĩria ũguucanie ũhootane ;",
-          "Kĩheo kĩrĩ ho kũna , Ombara ya thira."
+          "Kĩgirĩko ũmĩrĩria ũguucanie ũhootane",
+          "Kĩheo kĩrĩ ho kũna Ombara ya thira."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          "Rĩu mũciĩ ti kũraihu , mũgendi gĩkũngũĩre;",
+          "Rĩu mũciĩ ti kũraihu mũgendi gĩkũngũĩre;",
           "Kĩhonia rĩu nĩkĩo gĩkĩ kĩniarie maithori;",
           "Kĩgirĩko tũcemanie, kũrĩa gũtagirĩkagwo;",
-          "Tiga gĩkeno gĩtheri , mũciĩ gwa Ithe witũ"
+          "Tiga gĩkeno gĩtheri mũciĩ gwa Ithe witũ"
         ]
       }
     ],
@@ -13713,15 +13713,15 @@
         "type": "verse",
         "lines": [
           "Tũtikamũkana rĩngĩ tũrĩ nao,nĩtũkaina nyĩnbo njega;",
-          "Magacemanagia rũũrĩrĩ o rũũrĩrĩ , magũrũ-inĩ ma Gatũrũme."
+          "Magacemanagia rũũrĩrĩ o rũũrĩrĩ magũrũ-inĩ ma Gatũrũme."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          "Haleluyah! Amen Haleluyah o rĩngĩ , wendo wake nĩ mũnene;",
-          "Tũkamũgocaga tene ona tene , tũgegeete nĩgũtũkũũra."
+          "Haleluyah! Amen Haleluyah o rĩngĩ wendo wake nĩ mũnene;",
+          "Tũkamũgocaga tene ona tene tũgegeete nĩgũtũkũũra."
         ]
       }
     ],
@@ -14919,7 +14919,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Nĩtũkaigua mũgambo wa Jesũ , Twĩtwo ‘ngombo’ njathĩki",
+          "Nĩtũkaigua mũgambo wa Jesũ Twĩtwo ‘ngombo’ njathĩki",
           "Kana nĩ kũinaina tũkainaina Tũthengio gĩtĩ-inĩ gĩake."
         ]
       },
@@ -15288,7 +15288,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Mũrĩmo ũrĩa wa Jordani , nĩkuo ndĩroreire",
+          "Mũrĩmo ũrĩa wa Jordani nĩkuo ndĩroreire",
           "Bũrũri mwega Kaanani, nĩkuo njerekeire",
           "Tũgatũraga hamwe na Jesũ",
           "Bũrũri ũcio mwega wa gĩkeno",
@@ -15316,7 +15316,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Gĩkeno gĩakwa ngoro-inĩ ,nĩgũka kũiyĩrwo",
+          "Gĩkeno gĩakwa ngoro-inĩnĩgũka kũiyĩrwo",
           "Ndingĩtigĩra makũũmbĩ, moothe ma Jordani."
         ]
       }
@@ -16289,9 +16289,9 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ndirĩ na ihaki niĩ ,ngwĩhoka o mũtharaba",
+          "Ndirĩ na ihaki niĩngwĩhoka o mũtharaba",
           "Ndĩ njaga humba nguo,ndĩ mũhũthũ ndeithagia",
-          "Ndĩ o mwĩhia no ngũka ,ũthambie itanakua."
+          "Ndĩ o mwĩhia no ngũkaũthambie itanakua."
         ]
       },
       {
@@ -16782,7 +16782,7 @@
         "lines": [
           "Jesũ nĩwe mũnyendi,na nĩnjũĩ nĩguo ki!",
           "Mbuku ya Ngai yugaga,nĩwe mwendi wa twana.",
-          "ĩĩ nĩanyendete ,Jesũ we mwene;",
+          "ĩĩ nĩanyendeteJesũ we mwene;",
           "ĩĩ nĩanyendete,nĩnjuĩ nĩguo ma."
         ]
       },
@@ -16790,7 +16790,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,nĩanguĩrĩire mũtĩ-inĩ",
+          "Jesũ nĩwe mũnyeendinĩanguĩrĩire mũtĩ-inĩ",
           "Wĩhia wakwa anine,Mwana wake ndakore."
         ]
       },
@@ -16798,7 +16798,7 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,rĩrĩa ndĩhatĩka-inĩ",
+          "Jesũ nĩwe mũnyeendirĩrĩa ndĩhatĩka-inĩ",
           "Ekũu matu-inĩ no anjũthagĩrĩria."
         ]
       },
@@ -16806,7 +16806,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,tũtigatigana ni;",
+          "Jesũ nĩwe mũnyeenditũtigatigana ni;",
           "Tũrĩthiaga nake,O kinya mũciĩ gwake."
         ]
       }

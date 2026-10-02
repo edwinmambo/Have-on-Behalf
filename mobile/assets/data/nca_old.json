@@ -700,7 +700,7 @@
         "lines": [
           "Mĩgambo yothe ta nĩ ĩĩnĩre, Rĩĩtwa rĩa Jesũ Mwathani!",
           "Mũthamakĩ na nĩngĩ no Ngai, Rĩĩtwa rĩake rĩrĩ ngumo!",
-          "Rĩĩtwa rĩĩ ngumo ,rĩĩtwa rĩĩ ngũmo",
+          "Rĩĩtwa rĩĩ ngumorĩĩtwa rĩĩ ngũmo",
           "Rĩĩtwa rĩa Jesũ Mwathani,",
           "Rĩĩtwa rĩĩ ngumo, rĩĩtwa rĩĩ ngumo,",
           "Rĩĩtwa rĩa Jesũ rĩĩ ngumo."
@@ -7210,7 +7210,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "ũmũũthĩ ithuĩ eehia , twĩtĩkie ũhoro wa Ngai,",
+          "ũmũũthĩ ithuĩ eehia twĩtĩkie ũhoro wa Ngai,",
           "ũtuongerere hinya, O na ũtũhonagie,",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;"
@@ -8861,7 +8861,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "ũtugi wa magegania ,nĩ wa honokirie",
+          "ũtugi wa mageganianĩ wa honokirie",
           "Rĩrĩa ndarĩ mũtumumu ngĩhingũka maitho."
         ]
       },

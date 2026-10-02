@@ -558,31 +558,31 @@ export const BibleView: React.FC<BibleViewProps> = ({
   const fontClass = useMemo(() => {
     switch (readerFontFamily) {
       case 'lora':
-        return 'font-serif [font-family:"Lora",serif]';
+        return 'font-serif-reading [font-family:"Lora",Georgia,serif]';
       case 'cinzel':
-        return '[font-family:"Cinzel",serif]';
+        return 'font-serif-display [font-family:"Cinzel","Playfair Display",serif]';
       case 'sans':
-        return 'font-sans [font-family:"Plus_Jakarta_Sans",sans-serif]';
+        return 'font-sans-ui [font-family:"Plus Jakarta Sans",system-ui,sans-serif]';
       case 'mono':
-        return 'font-mono [font-family:"JetBrains_Mono",monospace]';
+        return 'font-mono [font-family:"JetBrains Mono",monospace]';
       case 'serif':
       default:
-        return 'font-serif [font-family:"EB_Garamond",serif]';
+        return 'font-serif-reading [font-family:"EB Garamond","Lora",Georgia,serif]';
     }
   }, [readerFontFamily]);
 
-  // Font size class resolver
+  // Font size class resolver for sanctuary reading - high legibility & comfortable sizing
   const sizeClass = useMemo(() => {
     switch (readerFontSize) {
       case 'sm':
-        return 'text-sm leading-relaxed';
+        return 'text-base sm:text-lg leading-relaxed';
       case 'base':
-        return 'text-base leading-relaxed';
+        return 'text-lg sm:text-xl leading-relaxed tracking-normal';
       case 'xl':
-        return 'text-xl leading-loose';
+        return 'text-2xl sm:text-3xl leading-loose tracking-wide';
       case 'lg':
       default:
-        return 'text-lg leading-relaxed';
+        return 'text-xl sm:text-2xl leading-relaxed sm:leading-loose tracking-normal';
     }
   }, [readerFontSize]);
 
@@ -1063,7 +1063,12 @@ export const BibleView: React.FC<BibleViewProps> = ({
         )}
 
         {/* Verses Reading Pane: Smooth Continuous Flow or Verse Cards */}
-        <div id="bible-reading-scroll-container" className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+        <div
+          id="bible-reading-scroll-container"
+          data-continuous-flow="true"
+          className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto no-scrollbar scrollbar-none continuous-flow-container"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {isLoadingVerses && (
             <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs mb-3 animate-pulse">
               <Sparkles className="w-3.5 h-3.5 animate-spin text-amber-500" />
@@ -1138,46 +1143,49 @@ export const BibleView: React.FC<BibleViewProps> = ({
               </div>
             </div>
           ) : readingLayout === 'continuous' && !secondaryVersion ? (
-            /* Continuous Scripture Flow: Eliminates content movement when switching versions */
-            <div
-              className={`w-full max-w-4xl mx-auto p-4 sm:p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-800/20 border border-slate-100 dark:border-slate-800/80 select-text leading-loose transition-opacity duration-200 ${fontClass} ${sizeClass}`}
+            /* Continuous Scripture Flow: Book-like readability with optimal line-length and contrast */
+            <article
+              className={`w-full max-w-3xl mx-auto py-6 sm:py-10 px-4 sm:px-8 select-text transition-opacity duration-200 ${fontClass} ${sizeClass}`}
               style={{
-                fontSize: readerFontSizePx ? `${readerFontSizePx}px` : undefined,
-                lineHeight: readerLineHeight ? `${readerLineHeight}` : undefined,
+                fontSize: readerFontSizePx ? `${Math.max(18, readerFontSizePx)}px` : undefined,
+                lineHeight: readerLineHeight ? `${Math.max(1.85, readerLineHeight)}` : '1.9',
               }}
             >
-              <div className="text-left select-text">
-                {primaryVerses.map((verse) => {
-                  const isSelected = selectedVerseNumbers.includes(verse.verse);
-                  return (
-                    <span
-                      key={verse.verse}
-                      id={`verse-${verse.verse}`}
-                      onClick={(e) => handleVerseClick(verse.verse, e)}
-                      className={`inline cursor-pointer rounded px-1 py-0.5 transition-colors ${
-                        isSelected
-                          ? 'bg-amber-500/25 text-amber-950 dark:text-amber-100 font-semibold ring-1 ring-amber-400/60 rounded-md'
-                          : 'hover:bg-amber-100/60 dark:hover:bg-amber-900/30'
-                      }`}
-                      title={`Click to select verse ${verse.verse} (Shift+Click for range)`}
-                    >
-                      <sup className="font-mono text-[11px] font-bold text-amber-600 dark:text-amber-400 select-none mr-1 inline-block">
-                        {verse.verse}
-                      </sup>
+              <div className="text-left select-text space-y-4 text-slate-900 dark:text-slate-100 leading-relaxed font-normal">
+                {/* Clean continuous verse flow with comfortable spacing */}
+                <p className="m-0 text-justify sm:text-left leading-relaxed">
+                  {primaryVerses.map((verse) => {
+                    const isSelected = selectedVerseNumbers.includes(verse.verse);
+                    return (
                       <span
-                        className={
-                          redLetterEnabled && verse.isRedLetter
-                            ? 'text-red-700 dark:text-rose-400 font-medium'
-                            : 'text-slate-800 dark:text-slate-200'
-                        }
+                        key={verse.verse}
+                        id={`verse-${verse.verse}`}
+                        onClick={(e) => handleVerseClick(verse.verse, e)}
+                        className={`inline cursor-pointer rounded-md px-1 py-0.5 transition-colors ${
+                          isSelected
+                            ? 'bg-amber-500/25 text-amber-950 dark:text-amber-100 font-semibold ring-2 ring-amber-400/80 shadow-2xs'
+                            : 'hover:bg-amber-100/70 dark:hover:bg-amber-950/40'
+                        }`}
+                        title={`Click to select verse ${verse.verse} (Shift+Click for range)`}
                       >
-                        {verse.text}{' '}
+                        <sup className="font-mono text-[12px] font-bold text-amber-600 dark:text-amber-400 select-none mr-1.5 inline-block opacity-90">
+                          {verse.verse}
+                        </sup>
+                        <span
+                          className={
+                            redLetterEnabled && verse.isRedLetter
+                              ? 'text-red-700 dark:text-rose-400 font-medium'
+                              : 'text-slate-950 dark:text-slate-100 font-normal'
+                          }
+                        >
+                          {verse.text}{' '}
+                        </span>
                       </span>
-                    </span>
-                  );
-                })}
+                    );
+                  })}
+                </p>
               </div>
-            </div>
+            </article>
           ) : (
             /* Verse-By-Verse Card Display */
             <div className="w-full text-left space-y-1.5">

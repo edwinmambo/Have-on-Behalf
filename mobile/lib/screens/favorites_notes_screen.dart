@@ -23,12 +23,18 @@ class FavoritesNotesScreen extends StatelessWidget {
         .cast<Hymn>()
         .toList();
 
+    final pinnedHymns = storage.pinnedHymns
+        .map((id) => repo.getHymnById(id))
+        .where((h) => h != null)
+        .cast<Hymn>()
+        .toList();
+
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Saved Hymns & Liturgy Notes',
+            'Saved & Worship History',
             style: LiturgicalThemes.getHymnTitleStyle(
               useSerif: storage.useSerif,
               isDark: isDark,
@@ -41,19 +47,23 @@ class FavoritesNotesScreen extends StatelessWidget {
             unselectedLabelColor: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
             tabs: [
               Tab(
-                icon: const Icon(Icons.bookmark_rounded, size: 20),
+                icon: const Icon(Icons.bookmark_rounded, size: 18),
                 text: 'Bookmarks (${favoriteHymns.length})',
               ),
-              const Tab(
-                icon: Icon(Icons.edit_note_rounded, size: 20),
-                text: 'Pastoral Notes',
+              Tab(
+                icon: const Icon(Icons.push_pin_rounded, size: 18),
+                text: 'Pinned (${pinnedHymns.length})',
+              ),
+              Tab(
+                icon: const Icon(Icons.history_rounded, size: 18),
+                text: 'History (${storage.history.length})',
               ),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            // Favorites List
+            // 1. Favorites List
             favoriteHymns.isEmpty
                 ? Center(
                     child: Column(
@@ -99,38 +109,17 @@ class FavoritesNotesScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          title: Text(
-                            hymn.title,
-                            style: LiturgicalThemes.getHymnTitleStyle(
-                              useSerif: storage.useSerif,
-                              isDark: isDark,
-                              fontSize: 14.5 * storage.fontScale,
-                            ),
-                          ),
-                          subtitle: Text(
-                            '${hymn.collection} · ${hymn.category ?? "General Liturgy"}',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
-                            ),
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.delete_outline, size: 18),
-                                tooltip: 'Remove Bookmark',
-                                onPressed: () => storage.toggleFavorite(hymn.id),
-                              ),
-                              const Icon(Icons.chevron_right, size: 18),
-                            ],
+                          title: Text(hymn.title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                          subtitle: Text('${hymn.collection} · Key: ${hymn.key ?? "C"} · ${hymn.stanzas.length} stanzas'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.bookmark_remove_rounded, color: Colors.redAccent),
+                            tooltip: 'Remove bookmark',
+                            onPressed: () => storage.toggleFavorite(hymn.id),
                           ),
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => HymnDetailScreen(hymn: hymn),
-                              ),
+                              MaterialPageRoute(builder: (_) => HymnDetailScreen(hymn: hymn)),
                             );
                           },
                         ),
@@ -138,62 +127,116 @@ class FavoritesNotesScreen extends StatelessWidget {
                     },
                   ),
 
-            // Notes List
-            ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                ...storage.favorites.map((hymnId) {
-                  final note = storage.getNote(hymnId);
-                  final hymn = repo.getHymnById(hymnId);
-                  if (note == null || hymn == null) return const SizedBox.shrink();
-
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    child: Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  '${hymn.collection} #${hymn.number} · ${hymn.title}',
-                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.open_in_new, size: 18),
-                                tooltip: 'Open Hymn Reader',
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => HymnDetailScreen(hymn: hymn),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
+            // 2. Pinned Hymns List
+            pinnedHymns.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.push_pin_outlined, size: 48, color: Colors.amber),
+                        const SizedBox(height: 12),
+                        Text(
+                          'No hymns pinned for Sabbath yet.\nTap the pin icon on any hymn for 1-tap quick access.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
                           ),
-                          const Divider(height: 12),
-                          Text(
-                            note,
-                            style: TextStyle(
-                              fontSize: 13.5 * storage.fontScale,
-                              height: 1.5,
-                              color: isDark ? const Color(0xFFE2E8F0) : const Color(0xFF1E293B),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.separated(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: pinnedHymns.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (context, index) {
+                      final hymn = pinnedHymns[index];
+                      return Card(
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                          leading: Container(
+                            width: 44,
+                            height: 38,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.amber.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.amber.withOpacity(0.4)),
+                            ),
+                            child: Text(
+                              '#${hymn.number}',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber,
+                              ),
                             ),
                           ),
-                        ],
-                      ),
+                          title: Text(hymn.title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                          subtitle: Text('Sabbath Selection · ${hymn.collection}'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.close_rounded, color: Colors.grey),
+                            tooltip: 'Unpin hymn',
+                            onPressed: () => storage.togglePin(hymn.id),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => HymnDetailScreen(hymn: hymn)),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+
+            // 3. History List
+            storage.history.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.history_rounded, size: 48, color: Colors.grey.withOpacity(0.5)),
+                        const SizedBox(height: 12),
+                        Text(
+                          'No hymn viewing history yet.\nOpened hymns will automatically be logged here.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                }),
-              ],
-            ),
+                  )
+                : ListView.separated(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: storage.history.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (context, index) {
+                      final item = storage.history[index];
+                      final id = item['id'] as String;
+                      final hymn = repo.getHymnById(id);
+
+                      return Card(
+                        child: ListTile(
+                          leading: const Icon(Icons.music_note_rounded),
+                          title: Text(item['title'] as String, style: const TextStyle(fontWeight: FontWeight.bold)),
+                          subtitle: Text('${item['collection']} #${item['number']}'),
+                          trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                          onTap: () {
+                            if (hymn != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => HymnDetailScreen(hymn: hymn)),
+                              );
+                            }
+                          },
+                        ),
+                      );
+                    },
+                  ),
           ],
         ),
       ),

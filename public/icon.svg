@@ -1,120 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Sacred Adventist Sanctuary Disc -->
   <defs>
-    <!-- Background Gradient: Deep Sanctuary Sapphire to Midnight Slate -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="40%" stop-color="#1e293b" />
-      <stop offset="100%" stop-color="#0a101f" />
+    <radialGradient id="sdaBg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="70%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="flameGoldLeft" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fde047"/>
     </linearGradient>
-
-    <!-- Metallic Gold Gradient -->
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fef08a" />
-      <stop offset="35%" stop-color="#fbbf24" />
-      <stop offset="70%" stop-color="#d97706" />
-      <stop offset="100%" stop-color="#92400e" />
+    <linearGradient id="flameGoldCenter" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="45%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fef08a"/>
     </linearGradient>
-
-    <!-- Sapphire Accent Gradient -->
-    <linearGradient id="sapphireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa" />
-      <stop offset="50%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#1d4ed8" />
+    <linearGradient id="flameGoldRight" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fde047"/>
     </linearGradient>
-
-    <!-- Sacred Book Pages Gradient -->
-    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="70%" stop-color="#f8fafc" />
-      <stop offset="100%" stop-color="#e2e8f0" />
+    <linearGradient id="bookPageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
     </linearGradient>
-
-    <!-- Radiant Glow Filter -->
-    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="16" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-
-    <filter id="crossGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <radialGradient id="flameAura" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="divineGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
 
-  <!-- Outer Rounded Canvas with Sapphire-Gold Edge -->
-  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
-  <rect width="504" height="504" x="4" y="4" rx="110" fill="none" stroke="url(#sapphireGrad)" stroke-width="3" opacity="0.6" />
-  <rect width="496" height="496" x="8" y="8" rx="106" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4" />
+  <!-- Outer Protective Halo Circle -->
+  <circle cx="256" cy="256" r="244" fill="url(#sdaBg)" stroke="#f59e0b" stroke-width="5" stroke-opacity="0.6"/>
+  <circle cx="256" cy="256" r="234" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.25" stroke-dasharray="6 6"/>
 
-  <!-- Heavenly Radiance Ambient Aura -->
-  <circle cx="256" cy="210" r="140" fill="#3b82f6" opacity="0.12" filter="url(#softGlow)" />
-  <circle cx="256" cy="180" r="90" fill="#f59e0b" opacity="0.15" filter="url(#softGlow)" />
+  <!-- Divine Warm Glow behind Flame -->
+  <circle cx="256" cy="220" r="160" fill="url(#flameAura)"/>
 
-  <!-- Rays of Light -->
-  <g opacity="0.25">
-    <line x1="256" y1="110" x2="256" y2="40" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" />
-    <line x1="200" y1="125" x2="155" y2="65" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" />
-    <line x1="312" y1="125" x2="357" y2="65" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" />
-    <line x1="150" y1="160" x2="90" y2="120" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
-    <line x1="362" y1="160" x2="422" y2="120" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
+  <!-- Iconic SDA Three-Fold Flame & Christian Cross Core -->
+  <g filter="url(#divineGlow)">
+    <!-- Left Sweeping Flame of the Holy Spirit -->
+    <path d="M 234 300 C 218 250 172 215 182 145 C 191 90 234 50 248 35 C 236 75 246 122 228 165 C 214 202 200 240 234 300 Z" fill="url(#flameGoldLeft)"/>
+
+    <!-- Right Sweeping Flame of the Holy Spirit -->
+    <path d="M 278 300 C 294 250 340 215 330 145 C 321 90 278 50 264 35 C 276 75 266 122 284 165 C 298 202 312 240 278 300 Z" fill="url(#flameGoldRight)"/>
+
+    <!-- Center Ascending Flame (Third Angel's Message) -->
+    <path d="M 256 42 C 267 98 284 150 272 200 C 264 240 256 268 256 300 C 256 268 248 240 240 200 C 228 150 245 98 256 42 Z" fill="url(#flameGoldCenter)"/>
+
+    <!-- Sacrificial Cross of Christ (Pure Light in Center) -->
+    <!-- Vertical Cross Beam -->
+    <rect x="250" y="115" width="12" height="180" rx="3" fill="#ffffff" fill-opacity="0.98"/>
+    <!-- Horizontal Cross Beam -->
+    <rect x="224" y="158" width="64" height="12" rx="3" fill="#ffffff" fill-opacity="0.98"/>
   </g>
 
-  <!-- The Open Sacred Book & Hymnal -->
-  <g id="sacred-book" transform="translate(0, 30)">
-    <!-- Book Shadow & Outer Cover -->
-    <path d="M256 160 C 210 138, 138 138, 92 156 L 92 342 C 138 324, 210 324, 256 346 C 302 324, 374 324, 420 342 L 420 156 C 374 138, 302 138, 256 160 Z" 
-          fill="#090d16" stroke="url(#goldGrad)" stroke-width="4.5" />
+  <!-- Open Word of God (Holy Scriptures & Hymnal Base) -->
+  <g id="open-bible">
+    <!-- Left Page Curves -->
+    <path d="M 256 385 C 210 358 152 358 108 375 C 106 376 112 334 156 318 C 200 302 244 324 256 342 Z" fill="url(#bookPageGrad)"/>
+    <!-- Right Page Curves -->
+    <path d="M 256 385 C 302 358 360 358 404 375 C 406 376 400 334 356 318 C 312 302 268 324 256 342 Z" fill="url(#bookPageGrad)"/>
 
-    <!-- Left Book Page (Scripture & Spirit of Prophecy) -->
-    <path d="M256 166 C 214 146, 146 146, 104 163 L 104 336 C 146 320, 214 320, 256 340 Z" 
-          fill="url(#pageGrad)" />
-    
-    <!-- Right Book Page (Hymnal Choral Score) -->
-    <path d="M256 166 C 298 146, 366 146, 408 163 L 408 336 C 366 320, 298 320, 256 340 Z" 
-          fill="url(#pageGrad)" />
+    <!-- Golden Book Spine & Bookmark Ribbon -->
+    <path d="M 256 338 L 256 396 C 256 396 247 414 238 418 L 256 408 L 274 418 C 265 414 256 396 256 396 Z" fill="#f59e0b"/>
 
-    <!-- Left Page: Sacred Scripture & Red-Letter Words of Christ -->
-    <line x1="126" y1="192" x2="236" y2="186" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-    <line x1="126" y1="212" x2="236" y2="206" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-    <line x1="126" y1="232" x2="236" y2="226" stroke="#dc2626" stroke-width="3" stroke-linecap="round" opacity="0.95" />
-    <line x1="126" y1="252" x2="210" y2="246" stroke="#dc2626" stroke-width="3" stroke-linecap="round" opacity="0.95" />
-    <line x1="126" y1="272" x2="236" y2="266" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-    <line x1="126" y1="292" x2="220" y2="286" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+    <!-- Sacred Scripture Inscription Lines on Pages -->
+    <line x1="135" y1="340" x2="232" y2="334" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="130" y1="352" x2="228" y2="346" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="125" y1="364" x2="222" y2="358" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
 
-    <!-- Right Page: Hymnal Musical Staff & Melody Notes -->
-    <line x1="276" y1="186" x2="386" y2="192" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.8" />
-    <line x1="276" y1="198" x2="386" y2="204" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.8" />
-    <line x1="276" y1="210" x2="386" y2="216" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.8" />
-
-    <!-- Musical Notes on the Staff -->
-    <circle cx="298" cy="195" r="4.5" fill="#1e293b" />
-    <line x1="302" y1="195" x2="302" y2="178" stroke="#1e293b" stroke-width="2" />
-    <circle cx="330" cy="201" r="4.5" fill="#1e293b" />
-    <line x1="334" y1="201" x2="334" y2="184" stroke="#1e293b" stroke-width="2" />
-    <circle cx="362" cy="207" r="4.5" fill="#1e293b" />
-    <line x1="366" y1="207" x2="366" y2="190" stroke="#1e293b" stroke-width="2" />
-    <path d="M302 178 Q 334 172 366 190" fill="none" stroke="#1e293b" stroke-width="2.5" />
-
-    <!-- Stanza Lines Below Notes -->
-    <line x1="276" y1="244" x2="386" y2="250" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-    <line x1="276" y1="264" x2="386" y2="270" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-    <line x1="276" y1="284" x2="350" y2="289" stroke="#475569" stroke-width="3" stroke-linecap="round" />
-
-    <!-- Center Spine Bookmark Ribbon -->
-    <path d="M256 160 L 256 362 C 256 376, 276 382, 270 414 L 256 398 L 242 414 C 248 382, 256 376, 256 362 Z" 
-          fill="url(#goldGrad)" />
-
-    <!-- Central Illuminated Cross -->
-    <g transform="translate(256, 115)" filter="url(#crossGlow)">
-      <rect x="-4.5" y="-38" width="9" height="44" rx="2.5" fill="url(#goldGrad)" />
-      <rect x="-20" y="-28" width="40" height="9" rx="2.5" fill="url(#goldGrad)" />
-      <circle cx="0" cy="-23.5" r="4" fill="#ffffff" opacity="0.9" />
-    </g>
-  </g>
-
-  <!-- Sanctuary Projection Waves (Symbolizing Beaming / Casting) -->
-  <g opacity="0.85">
-    <path d="M190 435 C 230 415, 282 415, 322 435" fill="none" stroke="url(#sapphireGrad)" stroke-width="3.5" stroke-linecap="round" />
-    <path d="M165 452 C 220 426, 292 426, 347 452" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+    <line x1="280" y1="334" x2="377" y2="340" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="284" y1="346" x2="382" y2="352" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="290" y1="358" x2="387" y2="364" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
   </g>
 </svg>

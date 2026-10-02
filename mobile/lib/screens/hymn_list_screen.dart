@@ -255,6 +255,66 @@ class _HymnListScreenState extends State<HymnListScreen> {
             ),
           ),
 
+          // Pinned Hymns Quick-Access Row
+          if (storage.pinnedHymns.isNotEmpty)
+            Container(
+              height: 38,
+              margin: const EdgeInsets.only(top: 4),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6, top: 8),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.push_pin_rounded, size: 13, color: Colors.amber),
+                        const SizedBox(width: 4),
+                        Text(
+                          'PINNED:',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.8,
+                            color: isDark ? Colors.white70 : Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ...storage.pinnedHymns.map((id) {
+                    final h = repo.getHymnById(id);
+                    if (h == null) return const SizedBox.shrink();
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 6),
+                      child: ActionChip(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        labelPadding: const EdgeInsets.only(left: 2, right: 4),
+                        avatar: Icon(Icons.music_note, size: 14, color: accent),
+                        label: Text(
+                          '${h.collection} #${h.number}',
+                          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          storage.recordHymnVisit(
+                            hymnId: h.id,
+                            title: h.title,
+                            number: h.number,
+                            collection: h.collection,
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => HymnDetailScreen(hymn: h)),
+                          );
+                        },
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+
           // Search Field
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
@@ -368,6 +428,12 @@ class _HymnListScreenState extends State<HymnListScreen> {
 
                       return InkWell(
                         onTap: () {
+                          storage.recordHymnVisit(
+                            hymnId: hymn.id,
+                            title: hymn.title,
+                            number: hymn.number,
+                            collection: hymn.collection,
+                          );
                           Navigator.push(
                             context,
                             MaterialPageRoute(

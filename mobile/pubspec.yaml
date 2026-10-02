@@ -1,7 +1,7 @@
 name: have_on_behalf_companion
-description: "Have On Behalf (H.O.B) - Offline Liturgical Hymnal Companion for Seventh-day Adventists (SDAH, NZK, NCA)"
+description: "Have On Behalf (H.O.B) - Offline Liturgical Hymnal Companion for Seventh-day Adventists (SDAH, NZK, NCA, Bibles, EGW, Beam Remote)"
 publish_to: "none"
-version: 1.0.0+1
+version: 1.2.0+2
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -41,3 +41,6 @@ flutter:
     - assets/data/icb.json
     - assets/data/sho.json
     - assets/data/uke.json
+    - assets/data/bibles.json
+    - assets/data/egw.json
+    - assets/data/sync_manifest.json

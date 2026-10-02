@@ -40,6 +40,16 @@
     "scriptureReference": "Ufunuo 4:8-11",
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 1,
+        "title": "Nyasachwa Man Malo"
+      },
+      {
+        "collection": "OKN",
+        "number": 1,
+        "title": "'Mochenu Omochenu"
+      },
+      {
         "collection": "NCA",
         "number": 1,
         "title": "No Wee Wi Mutheru"
@@ -114,6 +124,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 2,
+        "title": "Wapaki, Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 2,
+        "title": "Tobake Nyasae"
+      },
+      {
         "collection": "NCA",
         "number": 2,
         "title": "Twakugatha Ngai"
@@ -179,6 +199,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 3,
+        "title": "Duong` Obed Ni Wuonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 3,
+        "title": "Motogie Tat'Okorir' Amanene"
+      },
       {
         "collection": "NCA",
         "number": 3,
@@ -260,6 +290,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 4,
+        "title": "Nying Yesu Mondo Yudi Pak"
+      },
+      {
+        "collection": "OKN",
+        "number": 4,
+        "title": "Togi' Okobua Kwa Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 4,
         "title": "Kumiai Riitwa Ria Jesu"
@@ -326,6 +366,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 5,
+        "title": "To Pakuru Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 5,
+        "title": "'Ba Igoro Mosasim' Omogambi"
+      },
+      {
         "collection": "NCA",
         "number": 5,
         "title": "Nitumuhooe Jesu Munene"
@@ -375,6 +425,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 6,
+        "title": "Wuonwa, Wabironi"
+      },
+      {
+        "collection": "OKN",
+        "number": 6,
+        "title": "Tata Twagochera"
+      },
       {
         "collection": "NCA",
         "number": 6,
@@ -442,6 +502,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 7,
+        "title": "Nyasaye Indi Nikonyowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 7,
+        "title": "Nyasaye 'Motoria Oito"
+      },
+      {
         "collection": "NCA",
         "number": 7,
         "title": "Ngai Atuire Atuteithagia"
@@ -508,6 +578,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 8,
+        "title": "Winji Yuakna"
+      },
+      {
+        "collection": "OKN",
+        "number": 8,
+        "title": "'Gw' Ekerero Nyoroki' Amabera"
+      },
+      {
         "collection": "NCA",
         "number": 8,
         "title": "Njigua Ngikaya"
@@ -570,6 +650,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 9,
+        "title": "Jachwechna Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 9,
+        "title": "Omotongi One"
+      },
+      {
         "collection": "NCA",
         "number": 9,
         "title": "Muthamaki Muumbi"
@@ -625,6 +715,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 10,
+        "title": "Kristo In Wuon Ng`wono Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 10,
+        "title": "Nchw' Ensoko"
+      },
       {
         "collection": "NCA",
         "number": 10,
@@ -700,14 +800,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 11,
+        "title": "Yesu, Isesingo"
+      },
+      {
+        "collection": "OKN",
+        "number": 11,
+        "title": "Yes 'Omonyaira"
+      },
+      {
         "collection": "NCA",
-        "number": 12,
-        "title": "Migambo Yothe Nĩ iinire"
+        "number": 28,
+        "title": "Ninagainaga Uhoro Mwega"
       },
       {
         "collection": "NCA-OLD",
-        "number": 12,
-        "title": "Migambo Yothe Nĩ iinire"
+        "number": 28,
+        "title": "Ninagainaga Uhoro Mwega"
       }
     ]
   },
@@ -730,6 +840,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 12,
+        "title": "Ji Duto Mondo Wer Wendni"
+      },
+      {
+        "collection": "OKN",
+        "number": 12,
+        "title": "'Mariogi Onsi Tig 'Atare"
+      },
       {
         "collection": "NCA",
         "number": 13,
@@ -790,6 +910,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 13,
+        "title": "Paki Nyasaye Mogwedhowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 13,
+        "title": "Baka Tat' Ogesesenia"
+      },
+      {
         "collection": "NCA",
         "number": 11,
         "title": "Jesu Uugite Eri Kana Atatu"
@@ -837,6 +967,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 14,
+        "title": "Nyasacha Mond` Awuoth Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 14,
+        "title": "Nyasae Nintare N' Aye"
+      },
       {
         "collection": "NCA",
         "number": 14,
@@ -899,6 +1039,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 15,
+        "title": "Wuo Gi Chunya, Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 15,
+        "title": "Kwana N'enkoro Yane"
+      },
+      {
         "collection": "NCA",
         "number": 15,
         "title": "Njariria Mwathani Jesu"
@@ -959,6 +1109,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 16,
+        "title": "Ruoth Maler, Adwari Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 16,
+        "title": "Ninkoganeti' Omonene!"
+      },
       {
         "collection": "NCA",
         "number": 16,
@@ -1026,6 +1186,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 17,
+        "title": "Kristo, Ok An"
+      },
+      {
+        "collection": "OKN",
+        "number": 17,
+        "title": "N'Yeso Tai Nche"
+      },
+      {
         "collection": "NCA",
         "number": 17,
         "title": "Ti Nii No Kristo"
@@ -1078,6 +1248,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 18,
+        "title": "Yesu, Mond` Itawa Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 18,
+        "title": "Omotoria Torae Ntwe"
+      },
       {
         "collection": "NCA",
         "number": 18,
@@ -1145,6 +1325,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 19,
+        "title": "Ka ma Yesu Chon Notho E Yath"
+      },
+      {
+        "collection": "OKN",
+        "number": 19,
+        "title": "Mosalab' Omotori' Agakwa"
+      },
+      {
         "collection": "NCA",
         "number": 19,
         "title": "Mutharaba-ini wa Mwathani"
@@ -1211,6 +1401,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 20,
+        "title": "Nyasachwa En E Lwandawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 20,
+        "title": "Nyasae Oito Negetare"
+      },
+      {
         "collection": "NCA",
         "number": 20,
         "title": "Ngai Witu Ni Ta Ruaro"
@@ -1273,6 +1473,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 21,
+        "title": "Adwaro Ket Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 21,
+        "title": "Ngwekane Buna Yeso"
+      },
       {
         "collection": "NCA",
         "number": 21,
@@ -1340,6 +1550,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 22,
+        "title": "Kik Ibarna, Yaye Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 22,
+        "title": "Tong'etani' Omotori' One"
+      },
+      {
         "collection": "NCA",
         "number": 22,
         "title": "Ndukandige Muhonokia"
@@ -1405,6 +1625,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 23,
+        "title": "Aheri, Aheri"
+      },
+      {
+        "collection": "OKN",
+        "number": 23,
+        "title": "Ngwanchete"
+      },
       {
         "collection": "NCA",
         "number": 25,
@@ -1472,6 +1702,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 24,
+        "title": "Jawarna To Ni Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 24,
+        "title": "O Yes' Omobori' One"
+      },
+      {
         "collection": "NCA",
         "number": 30,
         "title": "Riitwa Ria Jesu Ni Riega"
@@ -1538,6 +1778,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 25,
+        "title": "In E Ngimana Mochwere"
+      },
+      {
+        "collection": "OKN",
+        "number": 25,
+        "title": "Naye Obogima Bwane"
+      },
+      {
         "collection": "NCA",
         "number": 26,
         "title": "Niekiruo Thuumbi"
@@ -1584,45 +1834,22 @@
         "lines": [
           "Siku zeku zikizidi, tuzitoe kwa Yesu,",
           "Tuwe na nguvu moyoni, tusichoke njiani,",
-          "Hata tutakapoona, Utukufu wa Bwana.",
-          "<h3>26a Mungu Mtukufu</h3> God the Omnipotent"
-        ]
-      },
-      {
-        "number": 1,
-        "type": "verse",
-        "lines": [
-          "Mungu mtukufu, aliyeumba Pepo kuvuma na radi kali;",
-          "Toa neema unapotawala, tupe amani Bwana wa wema."
-        ]
-      },
-      {
-        "number": 2,
-        "type": "verse",
-        "lines": [
-          "Mungu wa neema, nchi imeacha Amri tukufu na Neno lako,",
-          "Hasira zako zisituharibu, tupe amani, Bwana wa wema."
-        ]
-      },
-      {
-        "number": 3,
-        "type": "verse",
-        "lines": [
-          "Mwumbaji wa haki, watu wabaya wamedharau utukufu wako,",
-          "Lakini wema wako utadumu; endesha kweli Bwana wa wema."
-        ]
-      },
-      {
-        "number": 4,
-        "type": "verse",
-        "lines": [
-          "Tunakutolea Ibada, safi kwa ajili ya Wokovu wako,",
-          "Hivi tunaziimba sifa zako, wako uwezo na utukufu."
+          "Hata tutakapoona, Utukufu wa Bwana."
         ]
       }
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 26,
+        "title": "Ji Duto Te Mondo Giwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 26,
+        "title": "Chimeme Chionsi Chitere"
+      },
       {
         "collection": "NCA",
         "number": 33,
@@ -1637,6 +1864,56 @@
         "collection": "SDAH",
         "number": 67,
         "title": "O Lord, Now Let Your Servant"
+      }
+    ]
+  },
+  {
+    "id": "nzk-26a",
+    "collection": "NZK",
+    "number": 26,
+    "subNumber": "a",
+    "title": "Mungu Mtukufu",
+    "subtitle": "God the Omnipotent",
+    "stanzas": [
+      {
+        "number": 1,
+        "type": "verse",
+        "lines": [
+          "Mungu mtukufu, aliyeumba Pepo kuvuma na radi kali;",
+          "Toa neema unapotawala, tupe amani Bwana wa wema."
+        ]
+      },
+      {
+        "number": 2,
+        "type": "verse",
+        "lines": [
+          "Mungu wa neema, nchi imeacha Amri tukufu na Neno lako;",
+          "Hasira zako zisituharibu, tupe amani, Bwana wa wema."
+        ]
+      },
+      {
+        "number": 3,
+        "type": "verse",
+        "lines": [
+          "Mwumbaji wa haki, watu wabaya wamedharau utukufu wako;",
+          "Lakini wema wako utadumu; endesha kweli Bwana wa wema."
+        ]
+      },
+      {
+        "number": 4,
+        "type": "verse",
+        "lines": [
+          "Tunakutolea Ibada, safi kwa ajili ya Wokovu wako;",
+          "Hivi tunaziimba sifa zako, wako uwezo na utukufu."
+        ]
+      }
+    ],
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "SDAH",
+        "number": 84,
+        "title": "God the Omnipotent"
       }
     ]
   },
@@ -1689,6 +1966,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 27,
+        "title": "To En Ng`a Man E Kund Dhok"
+      },
+      {
+        "collection": "OKN",
+        "number": 27,
+        "title": "Ning'ore?"
+      },
       {
         "collection": "NCA",
         "number": 34,
@@ -1760,6 +2047,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 28,
+        "title": "Nying Mamit E Piny Gi Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 28,
+        "title": "'Rieta Ria Yeso Rigiya"
+      },
+      {
         "collection": "NCA",
         "number": 35,
         "title": "Oya Riitwa Riu Ria Jesu"
@@ -1826,14 +2123,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 29,
+        "title": "Yesu Jakwath Moheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 29,
+        "title": "Yes' Omwanchi Omorisi 'One"
+      },
+      {
         "collection": "NCA",
-        "number": 23,
-        "title": "Ningwendete Jesu"
+        "number": 36,
+        "title": "Jesu Ningwendetee"
       },
       {
         "collection": "NCA-OLD",
-        "number": 23,
-        "title": "Ningwendete Jesu"
+        "number": 36,
+        "title": "Jesu Ningwendetee"
       },
       {
         "collection": "SDAH",
@@ -1891,6 +2198,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 30,
+        "title": "Apako Hera Nyasaye Wuora"
+      },
+      {
+        "collection": "OKN",
+        "number": 30,
+        "title": "Nter' Obwanchani Bwa Nyasae"
+      },
       {
         "collection": "NCA",
         "number": 37,
@@ -1958,19 +2275,29 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 31,
+        "title": "Duto Paki, Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 31,
+        "title": "'Binto Biakobak' Aye"
+      },
+      {
         "collection": "NCA",
-        "number": 24,
-        "title": "Jesu Mukuuri Wakwa"
+        "number": 38,
+        "title": "Nguinira Wendo Wake"
       },
       {
         "collection": "NCA-OLD",
-        "number": 24,
-        "title": "Jesu Mukuuri Wakwa"
+        "number": 38,
+        "title": "Nguinira Wendo Wake"
       },
       {
         "collection": "SDAH",
-        "number": 152,
-        "title": "Tell Me the Story of Jesus"
+        "number": 340,
+        "title": "Jesus Saves"
       }
     ]
   },
@@ -2023,6 +2350,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 32,
+        "title": "Koro Ka Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 32,
+        "title": "Mbe N'Obosera Bwa Yeso"
+      },
       {
         "collection": "NCA",
         "number": 39,
@@ -2085,6 +2422,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 33,
+        "title": "Wuonwa, Gonywa Gi Gweth Mari"
+      },
+      {
+        "collection": "OKN",
+        "number": 33,
+        "title": "Tata Tosibore Bono"
+      },
       {
         "collection": "NCA",
         "number": 49,
@@ -2149,6 +2496,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 34,
+        "title": "Nyasaye Wachungo Ka Wawer"
+      },
+      {
+        "collection": "OKN",
+        "number": 34,
+        "title": "Motoria Twabak'Erieta Riao"
+      },
       {
         "collection": "NCA",
         "number": 43,
@@ -2216,6 +2573,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 35,
+        "title": "Paruru Nying Yesu Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 35,
+        "title": "Ira Erieta Ria Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 44,
         "title": "Nindakuuriruo Ni Mwathani"
@@ -2274,6 +2641,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 36,
+        "title": "Ruoth Yesu, Nithona"
+      },
+      {
+        "collection": "OKN",
+        "number": 36,
+        "title": "Yeso Nagwanchire Aye Noyone"
+      },
       {
         "collection": "NCA",
         "number": 45,
@@ -2341,6 +2718,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 37,
+        "title": "Yesu In Miheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 37,
+        "title": "Yes' Omwanchi Omoy'one"
+      },
+      {
         "collection": "NCA",
         "number": 176,
         "title": "Wendo Waku We Mukuuri"
@@ -2391,6 +2778,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 38,
+        "title": "Anawer Hera Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 38,
+        "title": "Nintere Obwanchani"
+      },
       {
         "collection": "NCA",
         "number": 55,
@@ -2456,6 +2853,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 39,
+        "title": "Nitie Wer Mamit E Dhoga"
+      },
+      {
+        "collection": "OKN",
+        "number": 39,
+        "title": "Ninde N'ogoter' Okuya"
+      },
       {
         "collection": "NCA",
         "number": 56,
@@ -2523,19 +2930,29 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 40,
+        "title": "Alleluia! Ruoth Nochier"
+      },
+      {
+        "collection": "OKN",
+        "number": 40,
+        "title": "'Karar' As 'Embera"
+      },
+      {
         "collection": "NCA",
-        "number": 31,
-        "title": "Jesu Muukuri Ruaro Rurumu"
+        "number": 57,
+        "title": "Wee Roho Mutheru Uka"
       },
       {
         "collection": "NCA-OLD",
-        "number": 31,
-        "title": "Jesu Muukuri Ruaro Rurumu"
+        "number": 57,
+        "title": "Wee Roho Mutheru Uka"
       },
       {
         "collection": "SDAH",
-        "number": 507,
-        "title": "Moment by Moment"
+        "number": 260,
+        "title": "Hover O’er Me, Holy Spirit"
       }
     ]
   },
@@ -2578,6 +2995,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 41,
+        "title": "E Kalwari Jawar Notho"
+      },
+      {
+        "collection": "OKN",
+        "number": 41,
+        "title": "'Se Kalvari"
+      },
       {
         "collection": "NCA",
         "number": 58,
@@ -2645,6 +3072,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 42,
+        "title": "Hera Ma Yesu Hera Go"
+      },
+      {
+        "collection": "OKN",
+        "number": 42,
+        "title": "'Gwancha Tikogokwaneka"
+      },
+      {
         "collection": "NCA",
         "number": 59,
         "title": "Wee Roho Wa Matu-ini"
@@ -2702,6 +3139,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 43,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 43,
+        "title": "Ntebi' Amang'ana A Yeso"
+      },
       {
         "collection": "NCA",
         "number": 61,
@@ -2769,6 +3216,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 44,
+        "title": "Ang`eyo Yesu Osewara"
+      },
+      {
+        "collection": "OKN",
+        "number": 44,
+        "title": "Naborigwe, Naki Ndararie!"
+      },
+      {
         "collection": "NCA",
         "number": 62,
         "title": "Gutiri Na Muraata Ta Jesu"
@@ -2833,6 +3290,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 45,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 45,
+        "title": "E Rituko Riomogoko"
+      },
+      {
         "collection": "NCA",
         "number": 63,
         "title": "Utheri Wi Kirima-ini"
@@ -2888,6 +3355,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 46,
+        "title": "Chunya Nigi Mor Moloyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 46,
+        "title": "Nkoro Nere N'Omogoko"
+      },
       {
         "collection": "NCA",
         "number": 64,
@@ -2946,6 +3423,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 47,
+        "title": "Yesu Jawarwa E Bethlehem Chon"
+      },
+      {
+        "collection": "OKN",
+        "number": 47,
+        "title": "Yeso Omotoria Bethlehemu"
+      },
       {
         "collection": "NCA",
         "number": 70,
@@ -3007,6 +3494,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 48,
+        "title": "Yesu Kristo Oberna Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 48,
+        "title": "Yeso Obeire Omosani"
+      },
       {
         "collection": "NCA",
         "number": 65,
@@ -3074,6 +3571,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 49,
+        "title": "Ywaya Machiegni Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 49,
+        "title": "Ng'usa Ang'e N'enkoro Yao"
+      },
+      {
         "collection": "NCA",
         "number": 66,
         "title": "Ndina Muraata Munene"
@@ -3140,6 +3647,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 50,
+        "title": "Kristo Obedo Misango Mar Golo Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 50,
+        "title": "'Motoria Bw'Ogokumia"
+      },
+      {
         "collection": "NCA",
         "number": 67,
         "title": "Mwathani mumenyagirire"
@@ -3197,6 +3714,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 51,
+        "title": "Jakwath Nokwayo Rombege"
+      },
+      {
+        "collection": "OKN",
+        "number": 51,
+        "title": "Nchiare Emerongo Kianda Na Kianda"
+      },
       {
         "collection": "NCA",
         "number": 68,
@@ -3260,14 +3787,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 52,
+        "title": "Jawar Yesu Itelna"
+      },
+      {
+        "collection": "OKN",
+        "number": 52,
+        "title": "Ar 'As' Egetunwa"
+      },
+      {
         "collection": "NCA",
-        "number": 32,
-        "title": "Mbuku Ya Ngai"
+        "number": 71,
+        "title": "He Bibilia Njata Ya Gikeno"
       },
       {
         "collection": "NCA-OLD",
-        "number": 32,
-        "title": "Mbuku Ya Ngai"
+        "number": 71,
+        "title": "He Bibilia Njata Ya Gikeno"
       },
       {
         "collection": "SDAH",
@@ -3333,6 +3870,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 53,
+        "title": "Wapako Ruoth Ma Jawarwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 53,
+        "title": "Togi' Omonen' Omotoria"
+      },
       {
         "collection": "NCA",
         "number": 73,
@@ -3400,6 +3947,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 54,
+        "title": "Wuod Dhano Ma Ne Otho"
+      },
+      {
+        "collection": "OKN",
+        "number": 54,
+        "title": "\"Bw'emechando\""
+      },
+      {
         "collection": "NCA",
         "number": 75,
         "title": "Ningwenda Kumenya Jesu"
@@ -3460,6 +4017,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 55,
+        "title": "Awero Teko Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 55,
+        "title": "Nter' Okobua Kwa Nyasae"
+      },
       {
         "collection": "NCA",
         "number": 76,
@@ -3535,6 +4102,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 56,
+        "title": "Ruoth, Awinjo Wach Mar Gwethni"
+      },
+      {
+        "collection": "OKN",
+        "number": 56,
+        "title": "Nere Embura Engiya"
+      },
+      {
         "collection": "NCA",
         "number": 77,
         "title": "Mutihonokiei Aria Mekuura"
@@ -3600,6 +4177,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 57,
+        "title": "Roho Mar Nyasaye, Ibina"
+      },
+      {
+        "collection": "OKN",
+        "number": 57,
+        "title": "Ichw' Omoik' Omochenu"
+      },
+      {
         "collection": "NCA",
         "number": 79,
         "title": "Ndukaarege Wira"
@@ -3653,6 +4240,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 58,
+        "title": "Muya Maler Jatendwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 58,
+        "title": "Omoika Omochenu"
+      },
+      {
         "collection": "NCA",
         "number": 78,
         "title": "Ndiraririkana Bururi Muthaka"
@@ -3703,6 +4300,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 59,
+        "title": "Muya Maler, Winj Alamwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 59,
+        "title": "'Moika Igw' Ogobaba"
+      },
       {
         "collection": "NCA",
         "number": 81,
@@ -3765,7 +4372,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 60,
+        "title": "Much Nyasaye, Iler Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 60,
+        "title": "Moik' Omochenu O Igoro"
+      }
+    ]
   },
   {
     "id": "nzk-61",
@@ -3816,6 +4435,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 61,
+        "title": "Osiep Manade, En Mor Manade"
+      },
+      {
+        "collection": "OKN",
+        "number": 61,
+        "title": "Ngosanga Ki Mogok'o Igoro"
+      },
       {
         "collection": "NCA",
         "number": 80,
@@ -3878,6 +4507,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 62,
+        "title": "Onge Osiep Moro Kaka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 62,
+        "title": "Tari 'Mosani Obuete Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 72,
         "title": "Ninyendeete Ibuku Ria Ngai"
@@ -3935,6 +4574,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 63,
+        "title": "Ler Wang` Chieng`orieny E Gode"
+      },
+      {
+        "collection": "OKN",
+        "number": 63,
+        "title": "'Masase As' Egetunwa"
+      },
       {
         "collection": "NCA",
         "number": 84,
@@ -4001,6 +4650,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 64,
+        "title": "Kabedo E Tiend Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 64,
+        "title": "Ko ndabe Amo Na Yeso"
+      },
       {
         "collection": "NCA",
         "number": 92,
@@ -4069,6 +4728,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 65,
+        "title": "Ruodha, Aheri Maradier"
+      },
+      {
+        "collection": "OKN",
+        "number": 65,
+        "title": "Omonene Ningwanchete"
+      },
+      {
         "collection": "NCA",
         "number": 93,
         "title": "Nituthiini Ita Thigari Cia Ngai"
@@ -4127,6 +4796,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 66,
+        "title": "Aseyudo Osiep Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 66,
+        "title": "Nanyorire Omosani"
+      },
+      {
         "collection": "NCA",
         "number": 85,
         "title": "Ni Utuku Gukiriitwo"
@@ -4176,6 +4855,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 67,
+        "title": "Nyasachwa Mondo Obed Kodu"
+      },
+      {
+        "collection": "OKN",
+        "number": 67,
+        "title": "Nyasa' Abarende Botambe"
+      },
       {
         "collection": "NCA",
         "number": 96,
@@ -4231,6 +4920,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 68,
+        "title": "Yesu Nowara"
+      },
+      {
+        "collection": "OKN",
+        "number": 68,
+        "title": "Amaena Yeso N'Oyone"
+      },
       {
         "collection": "NCA",
         "number": 98,
@@ -4293,6 +4992,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 69,
+        "title": "Puonja Injili Lilo"
+      },
+      {
+        "collection": "OKN",
+        "number": 69,
+        "title": "Ntebi Omogano O Igoro"
+      },
       {
         "collection": "NCA",
         "number": 97,
@@ -4360,6 +5069,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 70,
+        "title": "Nyasaye Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 70,
+        "title": "Seseni' Obwanchani"
+      },
+      {
         "collection": "NCA",
         "number": 111,
         "title": "Aria Mendeete Ngai"
@@ -4419,6 +5138,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 71,
+        "title": "Puonja Wach Biblos"
+      },
+      {
+        "collection": "OKN",
+        "number": 71,
+        "title": "Ng'a Ay' Ebuku"
+      },
+      {
         "collection": "NCA",
         "number": 99,
         "title": "Wiigue Uhooe"
@@ -4472,6 +5201,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 72,
+        "title": "Ahero Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 72,
+        "title": "Nanchir' Eng'ana ya Nyasae"
+      },
       {
         "collection": "NCA",
         "number": 101,
@@ -4539,14 +5278,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 73,
+        "title": "Ahero Nyiso Weche"
+      },
+      {
+        "collection": "OKN",
+        "number": 73,
+        "title": "Nintebe Omogano"
+      },
+      {
         "collection": "NCA",
-        "number": 52,
-        "title": "Muhonokia, Ndoongoria"
+        "number": 102,
+        "title": "Undoongorie Mwathi Jesu"
       },
       {
         "collection": "NCA-OLD",
-        "number": 52,
-        "title": "Muhonokia, Ndoongoria"
+        "number": 102,
+        "title": "Undoongorie Mwathi Jesu"
       },
       {
         "collection": "SDAH",
@@ -4565,7 +5314,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Niambie Ee mlinzi, je, kumepambazuka ,",
+          "Niambie Ee mlinzi, je, kumepambazuka",
           "Utukufu wa Zayuni, pana dalili zake?",
           "Msafiri uondoke, utazame mbinguni,",
           "Kiunoni ujifunge, ni kucha alfajiri."
@@ -4614,6 +5363,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 74,
+        "title": "Bende Nichungi E Ndalo Chandruok?"
+      },
+      {
+        "collection": "OKN",
+        "number": 74,
+        "title": "Inchwo Abegeni"
+      },
       {
         "collection": "NCA",
         "number": 103,
@@ -4680,6 +5439,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 75,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 75,
+        "title": "Nindigetie Manye Yeso"
+      },
       {
         "collection": "NCA",
         "number": 95,
@@ -4757,6 +5526,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 76,
+        "title": "Chwoyo Ndalo Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 76,
+        "title": "Kobusura Mambia"
+      },
+      {
         "collection": "NCA",
         "number": 104,
         "title": "Inyui Ni Inyui Ene Uthamaki"
@@ -4818,6 +5597,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 77,
+        "title": "Kony Jo Madwaro Tho"
+      },
+      {
+        "collection": "OKN",
+        "number": 77,
+        "title": "Tori' Abagosiria"
+      },
+      {
         "collection": "NCA",
         "number": 105,
         "title": "Muraangiri Uruugamite Ruthiingo-ini"
@@ -4866,7 +5655,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 78,
+        "title": "Aparo Tinende Kuom Pinyno"
+      },
+      {
+        "collection": "OKN",
+        "number": 78,
+        "title": "Korer'Omonen' Emerem'Emiya"
+      }
+    ]
   },
   {
     "id": "nzk-79",
@@ -4922,6 +5723,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 79,
+        "title": "Kik Ibadhri Ni Tich"
+      },
+      {
+        "collection": "OKN",
+        "number": 79,
+        "title": "Totamera Kende"
+      },
       {
         "collection": "NCA",
         "number": 109,
@@ -4981,6 +5792,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 80,
+        "title": "Daher Tiyo Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 80,
+        "title": "Omonene Rigoro Nainyora"
+      },
+      {
         "collection": "NCA",
         "number": 107,
         "title": "Mwaki Uria Wakanaga"
@@ -5033,6 +5854,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 81,
+        "title": "Tiuru, Yesu `biro"
+      },
+      {
+        "collection": "OKN",
+        "number": 81,
+        "title": "Kor' Emeremo Mboire"
+      },
       {
         "collection": "NCA",
         "number": 112,
@@ -5089,6 +5920,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 82,
+        "title": "Ka Manade Ma Ruoth Luongae"
+      },
+      {
+        "collection": "OKN",
+        "number": 82,
+        "title": "Tekob' Egetunwa Igoro"
+      },
       {
         "collection": "NCA",
         "number": 116,
@@ -5148,6 +5989,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 83,
+        "title": "Yesu Osiep Malong`o"
+      },
+      {
+        "collection": "OKN",
+        "number": 83,
+        "title": "Nimbwate Omosani"
+      },
+      {
         "collection": "NCA",
         "number": 117,
         "title": "Haria Andu Mahuurukaga"
@@ -5206,6 +6057,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 84,
+        "title": "Kaparo Yath Mar Kalwari"
+      },
+      {
+        "collection": "OKN",
+        "number": 84,
+        "title": "Kondaror' Omosalaba"
+      },
       {
         "collection": "NCA",
         "number": 114,
@@ -5273,6 +6134,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 85,
+        "title": "Tiuru, Tiuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 85,
+        "title": "Tokor' Emerem' Abasomba ba Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 118,
         "title": "Kiumia Kiingi Kigima Nigiathira"
@@ -5317,6 +6188,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 86,
+        "title": "Wan Wamor Kwatiyo Ni Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 86,
+        "title": "'S'Omogoko Natomokerere"
+      },
       {
         "collection": "NCA",
         "number": 120,
@@ -5376,6 +6257,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 87,
+        "title": "Jokeyo Ni Kanye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 87,
+        "title": "O Ng'ai Abagesi"
+      },
+      {
         "collection": "NCA",
         "number": 113,
         "title": "Muthenya Mutheru"
@@ -5425,6 +6316,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 88,
+        "title": "E Dho Wath Man Loka Nam"
+      },
+      {
+        "collection": "OKN",
+        "number": 88,
+        "title": "'Ngegu Y'enyancha Ngu'mbu"
+      },
       {
         "collection": "NCA",
         "number": 119,
@@ -5476,7 +6377,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 89,
+        "title": "En Madhiyo Tich Gi Chandruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 89,
+        "title": "Gosimekr' Amarigo"
+      }
+    ]
   },
   {
     "id": "nzk-90",
@@ -5535,6 +6448,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 90,
+        "title": "Winjuru Sigandwa Miwuoro"
+      },
+      {
+        "collection": "OKN",
+        "number": 90,
+        "title": "igw' Omogano Bw'ogokumia"
+      },
       {
         "collection": "NCA",
         "number": 41,
@@ -5601,6 +6524,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 91,
+        "title": "Nitie Luong Mobiro E Wi Apaka"
+      },
+      {
+        "collection": "OKN",
+        "number": 91,
+        "title": "Korangerigwa Nkore Korwa Ng'umbu"
+      },
       {
         "collection": "NCA",
         "number": 122,
@@ -5676,6 +6609,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 92,
+        "title": "Bende Ipuonjo Ji Wach Nyasaye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 92,
+        "title": "Nkorandi'ore Ring'ana Ri'obonda"
+      },
+      {
         "collection": "NCA",
         "number": 123,
         "title": "Riu Nikuraatuka"
@@ -5745,14 +6688,29 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 93,
+        "title": "Teche Duto Onego Liel"
+      },
+      {
+        "collection": "OKN",
+        "number": 93,
+        "title": "Tiga Ker' Etaya Yoke"
+      },
+      {
         "collection": "NCA",
-        "number": 124,
-        "title": "Utheri Wa Ngoro"
+        "number": 132,
+        "title": "Mugeni E Muromo-ini"
       },
       {
         "collection": "NCA-OLD",
-        "number": 124,
-        "title": "Utheri Wa Ngoro"
+        "number": 132,
+        "title": "Mugeni E Muromo-ini"
+      },
+      {
+        "collection": "SDAH",
+        "number": 286,
+        "title": "Wonderful Words of Life"
       }
     ]
   },
@@ -5797,6 +6755,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 94,
+        "title": "Yesu Kristo Odwaro Walame"
+      },
+      {
+        "collection": "OKN",
+        "number": 94,
+        "title": "Motori' Atotebia Torende"
+      },
       {
         "collection": "NCA",
         "number": 94,
@@ -5867,6 +6835,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 95,
+        "title": "Jarit, Go Tung` Mar Injili"
+      },
+      {
+        "collection": "OKN",
+        "number": 95,
+        "title": "Bugia Engoma Y' Enchili"
+      },
+      {
         "collection": "NCA",
         "number": 126,
         "title": "Iguai Uhoro Wa Mwathani"
@@ -5919,6 +6897,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 96,
+        "title": "Dhiuru, Jokristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 96,
+        "title": "Imok' Abakristo Bun' Abesegi"
+      },
       {
         "collection": "NCA",
         "number": 127,
@@ -5988,6 +6976,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 97,
+        "title": "Chunya, Mondo Ichiew Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 97,
+        "title": "Enkoro Yane Imoka"
+      },
       {
         "collection": "NCA",
         "number": 129,
@@ -6063,6 +7061,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 98,
+        "title": "Jo Maler Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 98,
+        "title": "'Bachenu More N'oboros' Obuya"
+      },
+      {
         "collection": "NCA",
         "number": 159,
         "title": "Nindaakurutiire Muoyo Wakwa"
@@ -6116,6 +7124,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 99,
+        "title": "Chunya, Mond` Iritri"
+      },
+      {
+        "collection": "OKN",
+        "number": 99,
+        "title": "Enkoro Yane Renda"
+      },
+      {
         "collection": "NCA",
         "number": 232,
         "title": "Uka Kwi Jesu Ndukaarege"
@@ -6164,6 +7182,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 100,
+        "title": "Ok Ageno Gimoro Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 100,
+        "title": "Tindi N'eki Nyegenete"
+      },
       {
         "collection": "NCA",
         "number": 130,
@@ -6224,6 +7252,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 101,
+        "title": "Chunguru Matek Kuom Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 101,
+        "title": "Tenena Bokong'u ase Nyasae"
+      },
       {
         "collection": "NCA",
         "number": 131,
@@ -6288,7 +7326,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 102,
+        "title": "Rituru, Lemuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 102,
+        "title": "Rend' Engaki Nenke"
+      }
+    ]
   },
   {
     "id": "nzk-103",
@@ -6340,6 +7390,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 103,
+        "title": "Chungi, JaKristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 103,
+        "title": "Aka Eriogi"
+      },
+      {
         "collection": "NCA",
         "number": 133,
         "title": "Jesu Aratwita Nohooreri"
@@ -6390,6 +7450,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 104,
+        "title": "Wagedi e Lwanda Mangima"
+      },
+      {
+        "collection": "OKN",
+        "number": 104,
+        "title": "Toagach' Egetare Ke Moyo"
+      },
       {
         "collection": "NCA",
         "number": 51,
@@ -6455,6 +7525,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 105,
+        "title": "Awuotho Kachiko Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 105,
+        "title": "Nkogenda Nde Bo Igoro"
+      },
+      {
         "collection": "NCA",
         "number": 135,
         "title": "Muriithi Witu Mwega"
@@ -6513,7 +7593,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 106,
+        "title": "Jarito Mar Dala Zayun"
+      },
+      {
+        "collection": "OKN",
+        "number": 106,
+        "title": "Morendi Obonene Mboche"
+      }
+    ]
   },
   {
     "id": "nzk-107",
@@ -6564,6 +7656,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 107,
+        "title": "In Migeno Chamo Mwandu Me Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 107,
+        "title": "Omonyamwando Naki Ogosundoka?"
+      },
       {
         "collection": "NCA",
         "number": 136,
@@ -6626,6 +7728,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 108,
+        "title": "Un Jorit Mar Dala Zayun"
+      },
+      {
+        "collection": "OKN",
+        "number": 108,
+        "title": "Abarendi Ba Zayoni"
+      },
+      {
         "collection": "NCA",
         "number": 137,
         "title": "Nituiguite Uhoro"
@@ -6679,6 +7791,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 109,
+        "title": "Nyaka Karang`o Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 109,
+        "title": "Tokob'Omosunte"
+      },
       {
         "collection": "NCA",
         "number": 138,
@@ -6740,6 +7862,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 110,
+        "title": "Kristo En Jatelowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 110,
+        "title": "Krist' Omorai Oito"
+      },
       {
         "collection": "NCA",
         "number": 139,
@@ -6807,6 +7939,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 111,
+        "title": "Wakwayi, Ruoth, Kuom Tekoni"
+      },
+      {
+        "collection": "OKN",
+        "number": 111,
+        "title": "Twagosabire Chinguru"
+      },
+      {
         "collection": "NCA",
         "number": 140,
         "title": "Murigiti Munene"
@@ -6872,6 +8014,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 112,
+        "title": "Keduru Jo Ka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 112,
+        "title": "Tenena Ase Yeso"
+      },
       {
         "collection": "NCA",
         "number": 143,
@@ -6942,6 +8094,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 113,
+        "title": "Yaye Mad Abed Gi Yie Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 113,
+        "title": "Ong' Okwegen' Okonene"
+      },
+      {
         "collection": "NCA",
         "number": 149,
         "title": "Kwi Na Rui Rua Thakame"
@@ -7000,6 +8162,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 114,
+        "title": "Jakristo We Nindo"
+      },
+      {
+        "collection": "OKN",
+        "number": 114,
+        "title": "'Mokristo Boka"
+      },
+      {
         "collection": "NCA",
         "number": 150,
         "title": "Mwathani Jesu Ngwenda Gutherio"
@@ -7056,6 +8228,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 115,
+        "title": "Be An Jarit Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 115,
+        "title": "'Morendi Bw'Omosalaba?"
+      },
+      {
         "collection": "NCA",
         "number": 194,
         "title": "Nguuka Mutharaba-ini"
@@ -7101,7 +8283,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 116,
+        "title": "Biuru, Jo Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 116,
+        "title": "Abanchete Nyasaye"
+      }
+    ]
   },
   {
     "id": "nzk-117",
@@ -7152,6 +8346,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 117,
+        "title": "Nitie Lweny Mager Ahinya"
+      },
+      {
+        "collection": "OKN",
+        "number": 117,
+        "title": "'Monene Nakwegene?"
+      },
       {
         "collection": "NCA",
         "number": 152,
@@ -7217,6 +8421,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 118,
+        "title": "Ndalo Auchiel Oserumo"
+      },
+      {
+        "collection": "OKN",
+        "number": 118,
+        "title": "Emeremo Yaerire"
+      },
+      {
         "collection": "NCA",
         "number": 148,
         "title": "Ninjaangite O Kuraya"
@@ -7278,14 +8492,19 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
-        "number": 50,
-        "title": "Jesu Niarihite Thiiri"
+        "collection": "WNY",
+        "number": 119,
+        "title": "Sabato Mari, Ruoth"
       },
       {
-        "collection": "NCA-OLD",
-        "number": 50,
-        "title": "Jesu Niarihite Thiiri"
+        "collection": "OKN",
+        "number": 119,
+        "title": "'Sabato Enchenu"
+      },
+      {
+        "collection": "NCA",
+        "number": 153,
+        "title": "Jesu Niaroiga"
       },
       {
         "collection": "SDAH",
@@ -7341,7 +8560,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 120,
+        "title": "Ruoth, Wabiro Iri"
+      },
+      {
+        "collection": "OKN",
+        "number": 120,
+        "title": "Tibweb' Esabato"
+      }
+    ]
   },
   {
     "id": "nzk-121",
@@ -7380,19 +8611,24 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
-        "number": 83,
-        "title": "Wee Niwe Wandutiire"
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
       },
       {
-        "collection": "NCA-OLD",
-        "number": 83,
-        "title": "Wee Niwe Wandutiire"
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
+      },
+      {
+        "collection": "NCA",
+        "number": 162,
+        "title": "Thiini Wa Eehia Othe"
       },
       {
         "collection": "SDAH",
-        "number": 281,
-        "title": "I Gave My Life for Thee"
+        "number": 295,
+        "title": "Chief of Sinners"
       }
     ]
   },
@@ -7446,6 +8682,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 122,
+        "title": "Kidira Chieng` Mar Yueyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 122,
+        "title": "Rituko Ri' Omogoko"
+      },
+      {
         "collection": "NCA",
         "number": 155,
         "title": "Hari Jesu Ngwiheana"
@@ -7492,6 +8738,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 123,
+        "title": "In Skul Marwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 123,
+        "title": "Eskuru Y'Esabato"
+      },
       {
         "collection": "NCA",
         "number": 161,
@@ -7554,6 +8810,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 124,
+        "title": "Walamo Nyasaye Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 124,
+        "title": "Kegima Twaikire Omokubio Naende"
+      },
+      {
         "collection": "NCA",
         "number": 158,
         "title": "Wi Munogu Na Ugatangika"
@@ -7606,6 +8872,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 125,
+        "title": "E Ndaloni Maler Mar Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 125,
+        "title": "Rituko Riao Richenu"
+      },
       {
         "collection": "NCA",
         "number": 160,
@@ -7676,6 +8952,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 126,
+        "title": "Kidich Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 126,
+        "title": "'Meremo Yaerire"
+      },
+      {
         "collection": "NCA",
         "number": 163,
         "title": "Nimbatairio Niwe"
@@ -7735,6 +9021,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 127,
+        "title": "Nyasaye Gwedh Skundwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 127,
+        "title": "'Monen' Obuya Bwao"
+      },
       {
         "collection": "NCA",
         "number": 164,
@@ -7805,6 +9101,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 128,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 128,
+        "title": "Rituko Richenu Mono"
+      },
+      {
         "collection": "NCA",
         "number": 165,
         "title": "Numiriire Jesu"
@@ -7853,6 +9159,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 129,
+        "title": "In Odira Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 129,
+        "title": "Ika Ang' Omokubio"
+      },
       {
         "collection": "NCA",
         "number": 166,
@@ -7904,6 +9220,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 130,
+        "title": "Wachokore Gi Mor Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 130,
+        "title": "Ker'Emambia"
+      },
       {
         "collection": "NCA",
         "number": 168,
@@ -7961,10 +9287,37 @@
         "type": "verse",
         "lines": [
           "Bondeni mwa giza na upweke, mchunga wangu yu anilinda,",
-          "Kwa upole aniongoza, Baba wa mbinguni anilinda.",
-          "<h3>131a Kwa Mahitaji ya Kesho</h3>  Lord for Tomorrow and Its Needs"
+          "Kwa upole aniongoza, Baba wa mbinguni anilinda."
         ]
+      }
+    ],
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 131,
+        "title": "Nyasaye, Gokiny Mond` Iwinja"
       },
+      {
+        "collection": "OKN",
+        "number": 131,
+        "title": "Omonene Ka Bogokia"
+      },
+      {
+        "collection": "NCA",
+        "number": 169,
+        "title": "Mabataro-ini Ma Ruuciu"
+      }
+    ]
+  },
+  {
+    "id": "nzk-131a",
+    "collection": "NZK",
+    "number": 131,
+    "subNumber": "a",
+    "title": "Kwa Mahitaji ya Kesho",
+    "subtitle": "Lord for Tomorrow and Its Needs",
+    "stanzas": [
       {
         "number": 1,
         "type": "verse",
@@ -7997,13 +9350,7 @@
       }
     ],
     "hasChords": false,
-    "crossReferences": [
-      {
-        "collection": "NCA",
-        "number": 169,
-        "title": "Mabataro-ini Ma Ruuciu"
-      }
-    ]
+    "crossReferences": []
   },
   {
     "id": "nzk-132",
@@ -8054,6 +9401,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 132,
+        "title": "Wago Ni Ruoth Erokamano"
+      },
+      {
+        "collection": "OKN",
+        "number": 132,
+        "title": "Rituko Riaerire"
+      },
       {
         "collection": "NCA",
         "number": 170,
@@ -8108,9 +9465,19 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 133,
+        "title": "Bedi Kod An"
+      },
+      {
+        "collection": "OKN",
+        "number": 133,
+        "title": "Kabe Nainche"
+      },
+      {
         "collection": "NCA",
-        "number": 174,
-        "title": "O Guothe Jesu E Ho"
+        "number": 204,
+        "title": "Kuria Guothe Angienda Thii"
       },
       {
         "collection": "SDAH",
@@ -8160,6 +9527,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 134,
+        "title": "Wang` Chieng Koro Podhonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 134,
+        "title": "Ker' Erioba Riagure"
+      },
       {
         "collection": "NCA",
         "number": 171,
@@ -8212,6 +9589,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 135,
+        "title": "Yesu, In Ma Jahoch Mar Chuny"
+      },
+      {
+        "collection": "OKN",
+        "number": 135,
+        "title": "'Mobaso Bw'enkoro Yane"
+      },
+      {
         "collection": "NCA",
         "number": 178,
         "title": "Hindi Njega Ya Mahooya"
@@ -8262,7 +9649,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 136,
+        "title": "Puothe Chiek E Pinje Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 136,
+        "title": "'Megondo Yamire Mono"
+      }
+    ]
   },
   {
     "id": "nzk-137",
@@ -8315,6 +9714,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 137,
+        "title": "Winji Weche Ma Nondiki"
+      },
+      {
+        "collection": "OKN",
+        "number": 137,
+        "title": "Igwa Ring'ana Ria Nyasae Oito"
+      },
       {
         "collection": "NCA",
         "number": 179,
@@ -8380,6 +9789,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 138,
+        "title": "Richona Diluok Gang`o?"
+      },
+      {
+        "collection": "OKN",
+        "number": 138,
+        "title": "Nki Keransibi' Ebibe?"
+      },
+      {
         "collection": "NCA",
         "number": 180,
         "title": "Nindiikurumagirira"
@@ -8430,6 +9849,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 139,
+        "title": "Ringra Namiyo In"
+      },
+      {
+        "collection": "OKN",
+        "number": 139,
+        "title": "Ngakoa 'Bogima"
+      },
       {
         "collection": "NCA",
         "number": 181,
@@ -8500,6 +9929,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 140,
+        "title": "Adwaro Manyo Rombe"
+      },
+      {
+        "collection": "OKN",
+        "number": 140,
+        "title": "Rigi 'Abasiru"
+      },
+      {
         "collection": "NCA",
         "number": 182,
         "title": "Njoya Uguo Ndarii Jesu"
@@ -8561,14 +10000,19 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
-        "number": 40,
-        "title": "Niakuire Muti-ini"
+        "collection": "WNY",
+        "number": 141,
+        "title": "Yesu Oluongoi Mondo Ibi"
       },
       {
-        "collection": "NCA-OLD",
-        "number": 40,
-        "title": "Niakuire Muti-ini"
+        "collection": "OKN",
+        "number": 141,
+        "title": "Yes' As' Obworor' Okorangeirie"
+      },
+      {
+        "collection": "NCA",
+        "number": 189,
+        "title": "Haha Mutharaba-ini"
       },
       {
         "collection": "SDAH",
@@ -8627,6 +10071,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 142,
+        "title": "Nitie Wendo E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 142,
+        "title": "'Mogeni Ngesieri Are"
+      },
+      {
         "collection": "NCA",
         "number": 183,
         "title": "Ninguigua Mugambo"
@@ -8674,6 +10128,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 143,
+        "title": "Yesu Oluongowa Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 143,
+        "title": "Nkorangeri' Are Ng'ora"
+      },
       {
         "collection": "NCA",
         "number": 195,
@@ -8724,6 +10188,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 144,
+        "title": "Nawinjo Yesu Kowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 144,
+        "title": "Nkaigwa Yeso Ogokwana"
+      },
       {
         "collection": "NCA",
         "number": 184,
@@ -8786,19 +10260,19 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 145,
+        "title": "Yesu Jakwath Madieri"
+      },
+      {
+        "collection": "OKN",
+        "number": 145,
+        "title": "Yes' Omorisi' Omuya"
+      },
+      {
         "collection": "NCA",
-        "number": 125,
-        "title": "Kuundu Guothe Miguunda-ini"
-      },
-      {
-        "collection": "NCA-OLD",
-        "number": 125,
-        "title": "Kuundu Guothe Miguunda-ini"
-      },
-      {
-        "collection": "SDAH",
-        "number": 358,
-        "title": "Far And Near The Fields Are Teeming"
+        "number": 185,
+        "title": "Thi Ino Ni Inogete"
       }
     ]
   },
@@ -8857,7 +10331,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 146,
+        "title": "Winji Dwond Yesu Kawuono"
+      },
+      {
+        "collection": "OKN",
+        "number": 146,
+        "title": "Igwa Eriogi Ria Yeso"
+      }
+    ]
   },
   {
     "id": "nzk-147",
@@ -8909,6 +10395,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 147,
+        "title": "Wasewinjo Wach Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 147,
+        "title": "Twarigure  Ring'ana"
+      },
+      {
         "collection": "NCA",
         "number": 192,
         "title": "Thamaka Thiini Wakwa"
@@ -8958,6 +10454,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 148,
+        "title": "Ng`a Mowinjo Dwond Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 148,
+        "title": "Oyoraigwe"
+      },
       {
         "collection": "NCA",
         "number": 188,
@@ -9015,7 +10521,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 149,
+        "title": "Dhoranga Polo Yawore"
+      },
+      {
+        "collection": "OKN",
+        "number": 149,
+        "title": "Geita Giasie Botambe"
+      }
+    ]
   },
   {
     "id": "nzk-150",
@@ -9062,6 +10580,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 150,
+        "title": "Jathieth Maduong` Osudo Ka"
+      },
+      {
+        "collection": "OKN",
+        "number": 150,
+        "title": "Omogwenia Ore Ang'e"
+      },
       {
         "collection": "NCA",
         "number": 196,
@@ -9118,6 +10646,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 151,
+        "title": "Richo Oketho Ji Malit"
+      },
+      {
+        "collection": "OKN",
+        "number": 151,
+        "title": "K'ebibe Bire 'Birito"
+      },
       {
         "collection": "NCA",
         "number": 197,
@@ -9190,6 +10728,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 152,
+        "title": "Yesu Okadho"
+      },
+      {
+        "collection": "OKN",
+        "number": 152,
+        "title": "Yeso Ngoet' Are"
+      },
+      {
         "collection": "NCA",
         "number": 198,
         "title": "Hakuhi Nawe Ngai"
@@ -9243,6 +10791,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 153,
+        "title": "Ngima Machiek Mawango!"
+      },
+      {
+        "collection": "OKN",
+        "number": 153,
+        "title": "'Bogim' Obuya  Mbweng'e"
+      },
       {
         "collection": "NCA",
         "number": 199,
@@ -9300,6 +10858,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 154,
+        "title": "Yie Yesu Odonj E Chunyi"
+      },
+      {
+        "collection": "OKN",
+        "number": 154,
+        "title": "Tiga Yeso Ach' Enkoro"
+      },
+      {
         "collection": "NCA",
         "number": 200,
         "title": "Njagiriiruo Ngoruo Nake"
@@ -9343,7 +10911,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 155,
+        "title": "Be Iseyudo Jawar Maber?"
+      },
+      {
+        "collection": "OKN",
+        "number": 155,
+        "title": "Ir' Obogima Bwane"
+      }
+    ]
   },
   {
     "id": "nzk-156",
@@ -9379,7 +10959,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 156,
+        "title": "Bi Ka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 156,
+        "title": "Inchwo Bono"
+      }
+    ]
   },
   {
     "id": "nzk-157",
@@ -9430,6 +11022,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 157,
+        "title": "Winji Jawar Ni E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 157,
+        "title": "'Bwanchani Boria Bwakare"
+      },
       {
         "collection": "NCA",
         "number": 205,
@@ -9487,6 +11089,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 158,
+        "title": "Un Jo Mojony, Biuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 158,
+        "title": "Yeso Menya Ime Yane"
+      },
+      {
         "collection": "NCA",
         "number": 206,
         "title": "Hatigairie aigana Atia"
@@ -9542,6 +11154,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 159,
+        "title": "Chungo E Adiera Kaka Daniel"
+      },
+      {
+        "collection": "OKN",
+        "number": 159,
+        "title": "Nkoro Yan'eyasiboirwe!"
+      },
       {
         "collection": "NCA",
         "number": 207,
@@ -9607,6 +11229,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 160,
+        "title": "Nitie Remo Ma Nochwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 160,
+        "title": "Ner Ensoko Y'amanyinga"
+      },
+      {
         "collection": "NCA",
         "number": 208,
         "title": "Aria Atheru Wihuugei"
@@ -9670,6 +11302,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 161,
+        "title": "Ruoth Yesu, Agomobo Bedo Ng`ati"
+      },
+      {
+        "collection": "OKN",
+        "number": 161,
+        "title": "Yeso Nche Nindigeti' Ogosibigwa"
+      },
+      {
         "collection": "NCA",
         "number": 209,
         "title": "Huuhai Coro Mugaambie Muno"
@@ -9717,6 +11359,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 162,
+        "title": "Abiro Ni Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 162,
+        "title": "Ngocha Nd' Omosalaba"
+      },
       {
         "collection": "NCA",
         "number": 69,
@@ -9789,6 +11441,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 163,
+        "title": "Agombo Bedo Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 163,
+        "title": "Omonene Ndigeti' Eke"
+      },
+      {
         "collection": "NCA",
         "number": 216,
         "title": "Angigooka Riri Ruoro Rutemaga"
@@ -9850,6 +11512,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 164,
+        "title": "Analu Bang` Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 164,
+        "title": "Gwachir' Ase Yeso?"
+      },
+      {
         "collection": "NCA",
         "number": 210,
         "title": "Muthenya Wa Gucooka Kwa Jesu"
@@ -9903,6 +11575,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 165,
+        "title": "Asebayo Mabor Kod Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 165,
+        "title": "Natayayire Kegima"
+      },
+      {
         "collection": "NCA",
         "number": 211,
         "title": "Kiiriro Kiega Kia Eetikia"
@@ -9950,6 +11632,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 166,
+        "title": "Jawar Owachona"
+      },
+      {
+        "collection": "OKN",
+        "number": 166,
+        "title": "'Motori' Agantebia"
+      },
       {
         "collection": "NCA",
         "number": 213,
@@ -10003,9 +11695,19 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
+        "collection": "WNY",
         "number": 167,
-        "title": "Meehia Maku Mangikoruo"
+        "title": "Yesu, Kar Msalabani"
+      },
+      {
+        "collection": "OKN",
+        "number": 167,
+        "title": "Yes' As' Omosalaba"
+      },
+      {
+        "collection": "NCA",
+        "number": 219,
+        "title": "Jesu Muhonokia"
       }
     ]
   },
@@ -10056,6 +11758,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 168,
+        "title": "Duto Amiyo Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 168,
+        "title": "Bionsi Namoeire Yeso"
+      },
       {
         "collection": "NCA",
         "number": 221,
@@ -10126,6 +11838,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 169,
+        "title": "Yesu Luongi, We Ting`ni Mar Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 169,
+        "title": "Nosiboke Korwa As' Ebibe"
+      },
+      {
         "collection": "NCA",
         "number": 227,
         "title": "Riria Jesu Agacookereria"
@@ -10180,6 +11902,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 170,
+        "title": "Nitie Ng`ama Noyie Tho Mondo Owara"
+      },
+      {
+        "collection": "OKN",
+        "number": 170,
+        "title": "Nareo Onyanchete"
+      },
+      {
         "collection": "NCA",
         "number": 222,
         "title": "Ndingicaria Utoonga"
@@ -10232,6 +11964,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 171,
+        "title": "In Kiol Nikech Chandruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 171,
+        "title": "Kwarosir' Aye?"
+      },
       {
         "collection": "NCA",
         "number": 224,
@@ -10302,9 +12044,19 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
+        "collection": "WNY",
         "number": 172,
-        "title": "Igua Wega Ciugo Cia Jesu"
+        "title": "Nitie Ngima Kwang`iyo Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 172,
+        "title": "'Bogima Mbore Omosalaba"
+      },
+      {
+        "collection": "NCA",
+        "number": 223,
+        "title": "Muthamaki Niatwitite"
       }
     ]
   },
@@ -10351,6 +12103,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 173,
+        "title": "Ka Satan Otemi"
+      },
+      {
+        "collection": "OKN",
+        "number": 173,
+        "title": "Korabe Nyancha Ime"
+      },
       {
         "collection": "NCA",
         "number": 225,
@@ -10410,6 +12172,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 174,
+        "title": "Anayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 174,
+        "title": "Namwanchire Yeso Bweka"
+      },
       {
         "collection": "NCA",
         "number": 212,
@@ -10471,6 +12243,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 175,
+        "title": "Geno Kristo Kelonwa Mor"
+      },
+      {
+        "collection": "OKN",
+        "number": 175,
+        "title": "'Gosemeria Kw'Omokristo"
+      },
       {
         "collection": "NCA",
         "number": 229,
@@ -10541,6 +12323,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 176,
+        "title": "Nyasaye Noolnwa Gweth Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 176,
+        "title": "'Mbura Netwe Korwa Igoro"
+      },
+      {
         "collection": "NCA",
         "number": 230,
         "title": "Tugaacemania Ruui-ini"
@@ -10610,6 +12402,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 177,
+        "title": "Ka Chandruok Osudo Machiegni Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 177,
+        "title": "Kemechando Eragoetanane"
+      },
+      {
         "collection": "NCA",
         "number": 231,
         "title": "Wira Wakwa Wathira"
@@ -10673,6 +12475,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 178,
+        "title": "Beduru Gi Yie"
+      },
+      {
+        "collection": "OKN",
+        "number": 178,
+        "title": "'Ker' Arache"
+      },
+      {
         "collection": "NCA",
         "number": 233,
         "title": "Murimo Uria Wa Jordani"
@@ -10726,6 +12538,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 179,
+        "title": "Chunyi Dich Nikech Parruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 179,
+        "title": "'Nkoro Yao Yamigirwe"
+      },
+      {
         "collection": "NCA",
         "number": 234,
         "title": "Hindi Iria Wira Ugaathira"
@@ -10773,6 +12595,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 180,
+        "title": "Un Muhero Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 180,
+        "title": "Engaki Engiya Mono"
+      },
       {
         "collection": "NCA",
         "number": 235,
@@ -10826,6 +12658,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 181,
+        "title": "Nyasaye Ni Lerna"
+      },
+      {
+        "collection": "OKN",
+        "number": 181,
+        "title": "'Monen'Omobas' One"
+      },
       {
         "collection": "NCA",
         "number": 236,
@@ -10883,6 +12725,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 182,
+        "title": "Koro Wagenoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 182,
+        "title": "Yeso Nkwegenete"
+      },
+      {
         "collection": "NCA",
         "number": 237,
         "title": "Kuu Gutitukaga"
@@ -10922,7 +12774,7 @@
         "lines": [
           "Tutaimba nyimbo za shangwe kuu,",
           "Tutaimba nyimbo za shangwe kuu,",
-          "Tutaimba nyimbo za shangwe kuu ,Yesu anaporudi."
+          "Tutaimba nyimbo za shangwe kuuYesu anaporudi."
         ]
       },
       {
@@ -10936,6 +12788,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 183,
+        "title": "Ang`eyo Wuonwa Ong`eyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 183,
+        "title": "Tat'O Igoro Namanyete"
+      },
       {
         "collection": "NCA",
         "number": 238,
@@ -11000,9 +12862,24 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 184,
+        "title": "Kat` Abed Jaketh Maduong`"
+      },
+      {
+        "collection": "OKN",
+        "number": 184,
+        "title": "Nimba Omobe Mono"
+      },
+      {
         "collection": "NCA",
-        "number": 239,
-        "title": "Twaragia Uhoro Mwega"
+        "number": 241,
+        "title": "Mucii Wi Na Wendani"
+      },
+      {
+        "collection": "SDAH",
+        "number": 652,
+        "title": "Love at Home"
       }
     ]
   },
@@ -11056,6 +12933,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 185,
+        "title": "Adwari Saa Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 185,
+        "title": "Nche Ninkoganetie"
+      },
+      {
         "collection": "NCA",
         "number": 242,
         "title": "Ngai Wi Wendo Mukinyaniru"
@@ -11103,6 +12990,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 186,
+        "title": "Kata Ka Abedo Gi Ngima Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 186,
+        "title": "Ekero Nkoba n'Omorembe Nchera"
+      },
       {
         "collection": "NCA",
         "number": 243,
@@ -11156,6 +13053,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 187,
+        "title": "Kwawuotho Gi Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 187,
+        "title": "Gotara Na Yeso"
+      },
       {
         "collection": "NCA",
         "number": 244,
@@ -11218,6 +13125,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 188,
+        "title": "An Ayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 188,
+        "title": "Mbuya Komwegena Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 245,
         "title": "Nindionerire Githima"
@@ -11275,6 +13192,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 189,
+        "title": "Yesu Kristo En Osiepwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 189,
+        "title": "Naki Yes' Ar'omosani"
+      },
+      {
         "collection": "NCA",
         "number": 247,
         "title": "Tubatithie Na Hinya Wa Iguru"
@@ -11331,6 +13258,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 190,
+        "title": "Ruoth, Ok Akwayoi Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 190,
+        "title": "'Monene Tari Ebi' Ankio"
+      },
+      {
         "collection": "NCA",
         "number": 190,
         "title": "Mwathani Riu Ndigiite Maundu"
@@ -11370,6 +13307,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 191,
+        "title": "Ruoth En E Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 191,
+        "title": "Monen' Omorisia"
+      },
       {
         "collection": "NCA",
         "number": 248,
@@ -11428,6 +13375,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 192,
+        "title": "Tim Kinda Mar Lemo"
+      },
+      {
+        "collection": "OKN",
+        "number": 192,
+        "title": "Rigi' Ob' Omochenu"
+      },
+      {
         "collection": "NCA",
         "number": 250,
         "title": "Ihiga Ria Tene Ma"
@@ -11481,9 +13438,24 @@
     "hasChords": false,
     "crossReferences": [
       {
-        "collection": "NCA",
+        "collection": "WNY",
         "number": 193,
-        "title": "Kwenda Gwaku Ngai"
+        "title": "Winj Weche Ma Yesu Nowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 193,
+        "title": "Igwa Amang'ana A Yeso"
+      },
+      {
+        "collection": "NCA",
+        "number": 251,
+        "title": "Ni Mugaambo Wa Muriithi"
+      },
+      {
+        "collection": "SDAH",
+        "number": 359,
+        "title": "Hark! The Voice Of Jesus Calling"
       }
     ]
   },
@@ -11537,6 +13509,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 194,
+        "title": "Wuothi E Ler Mar Ruoth Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 194,
+        "title": "Tar' Enchera Y'Omonene"
+      },
       {
         "collection": "NCA",
         "number": 252,
@@ -11593,6 +13575,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 195,
+        "title": "Ka Yesu Ni Koda"
+      },
+      {
+        "collection": "OKN",
+        "number": 195,
+        "title": "And'onsi Na Yeso"
+      },
       {
         "collection": "NCA",
         "number": 110,
@@ -11651,6 +13643,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 196,
+        "title": "Yesu En Osiep Maber Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 196,
+        "title": "Yeso N'Omosani Omuya"
+      },
       {
         "collection": "NCA",
         "number": 260,
@@ -11713,6 +13715,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 197,
+        "title": "Owadwa Kik Iluor"
+      },
+      {
+        "collection": "OKN",
+        "number": 197,
+        "title": "Kae' Mbeo' Bwoba"
+      },
+      {
         "collection": "NCA",
         "number": 259,
         "title": "Jesu Niwe Munyeendi"
@@ -11760,6 +13772,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 198,
+        "title": "Yesu Ni Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 198,
+        "title": "Yes' Omorisi' Oito"
+      },
       {
         "collection": "NCA",
         "number": 256,
@@ -11811,6 +13833,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 199,
+        "title": "Ruoth Yesu, Saa Mar Lamoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 199,
+        "title": "Ens' Engiya Y'ogosaba"
+      },
+      {
         "collection": "NCA",
         "number": 258,
         "title": "Wendo Niguo Gikeno"
@@ -11859,6 +13891,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 200,
+        "title": "Saa Mar Lemo Mogwedhi"
+      },
+      {
+        "collection": "OKN",
+        "number": 200,
+        "title": "'Nsa Ngiya Y'ogosaba"
+      },
+      {
         "collection": "NCA",
         "number": 263,
         "title": "Ninjiguaga Gikeno Kiingi"
@@ -11906,6 +13948,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 201,
+        "title": "Analu Bang`i Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 201,
+        "title": "Ningotunye Omotoria"
+      },
       {
         "collection": "NCA",
         "number": 262,
@@ -11968,6 +14020,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 202,
+        "title": "Weruru Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 202,
+        "title": "Ntererie Roik' Abaminto"
+      },
+      {
         "collection": "NCA",
         "number": 257,
         "title": "Iguai Mugaambo Mbeeca Ikigaamba"
@@ -12015,6 +14077,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 203,
+        "title": "To Kak Abet Yesu Kawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 203,
+        "title": "Buna Nde"
+      },
       {
         "collection": "NCA",
         "number": 275,
@@ -12073,6 +14145,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 204,
+        "title": "Awinjo Dwondi Maler"
+      },
+      {
+        "collection": "OKN",
+        "number": 204,
+        "title": "Naigw'eriogi Riao"
+      },
+      {
         "collection": "NCA",
         "number": 261,
         "title": "Gwitu Twaikara Na Jesu"
@@ -12110,7 +14192,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 205,
+        "title": "An Ni Mari Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 205,
+        "title": "Nche Nomwan'oo"
+      }
+    ]
   },
   {
     "id": "nzk-206",
@@ -12151,7 +14245,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 206,
+        "title": "Kaw Piny Duto Miya Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 206,
+        "title": "Ira Ense Yonsi Ong'e  Yeso"
+      }
+    ]
   },
   {
     "id": "nzk-207",
@@ -12186,6 +14292,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 207,
+        "title": "Kaw Ngimana"
+      },
+      {
+        "collection": "OKN",
+        "number": 207,
+        "title": "Ir'obogima Bwane"
+      },
+      {
         "collection": "NCA",
         "number": 287,
         "title": "Nuu Ungiumba Ihua?"
@@ -12217,6 +14333,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 208,
+        "title": "Bedi Mangima Kuoma"
+      },
+      {
+        "collection": "OKN",
+        "number": 208,
+        "title": "Ens'enyia Y'Omwando"
+      },
       {
         "collection": "NCA",
         "number": 286,
@@ -12282,6 +14408,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 209,
+        "title": "Ywaya Machiegni Buti, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 209,
+        "title": "Ong'use Ang'e N'aye Tata"
+      },
+      {
         "collection": "NCA",
         "number": 296,
         "title": "Twi Gakundi Ga Twaana"
@@ -12308,6 +14444,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 210,
+        "title": "Diyie Dak Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 210,
+        "title": "Aye Nobe Buna Yeso"
+      },
+      {
         "collection": "NCA",
         "number": 291,
         "title": "Roho Wa Ngai Witu"
@@ -12331,7 +14477,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 211,
+        "title": "Aseweyo Tich Maricho"
+      },
+      {
+        "collection": "OKN",
+        "number": 211,
+        "title": "Yes' Omosalaba One"
+      }
+    ]
   },
   {
     "id": "nzk-212",
@@ -12350,7 +14508,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 212,
+        "title": "Adwaro Bedo Nyathi Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 212,
+        "title": "Nanchire Koba Omwan' Oye"
+      }
+    ]
   },
   {
     "id": "nzk-213",
@@ -12369,7 +14539,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 213,
+        "title": "Teko Nyasaye Orita"
+      },
+      {
+        "collection": "OKN",
+        "number": 213,
+        "title": "Okogacherwa Yeso"
+      }
+    ]
   },
   {
     "id": "nzk-214",
@@ -12389,6 +14571,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 214,
+        "title": "Asebayo Mabor Kodi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 214,
+        "title": "Bono Ngocha Nde"
+      },
       {
         "collection": "NCA",
         "number": 277,
@@ -12416,6 +14608,16 @@
     "hasChords": false,
     "crossReferences": [
       {
+        "collection": "WNY",
+        "number": 215,
+        "title": "Isedwaro Yuweyo Kod Yie Momedore"
+      },
+      {
+        "collection": "OKN",
+        "number": 215,
+        "title": "Kwarure Ebinto Bionsi Ekeng'wanso?"
+      },
+      {
         "collection": "NCA",
         "number": 289,
         "title": "Andu A Thi Mabataire Kuona Mwathani"
@@ -12439,7 +14641,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 216,
+        "title": "Mana Kak` Abet Abironi"
+      },
+      {
+        "collection": "OKN",
+        "number": 216,
+        "title": "Buna Nde Nachire as' ore"
+      }
+    ]
   },
   {
     "id": "nzk-217",
@@ -12471,7 +14685,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 217,
+        "title": "Wuora, Atang`oni Lueta"
+      },
+      {
+        "collection": "OKN",
+        "number": 217,
+        "title": "Tata Nachire As' Ore"
+      }
+    ]
   },
   {
     "id": "nzk-218",
@@ -12491,6 +14717,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 218,
+        "title": "O Yesu, An Adwaro"
+      },
+      {
+        "collection": "OKN",
+        "number": 218,
+        "title": "O Yeso Narire Eira"
+      },
       {
         "collection": "NCA",
         "number": 278,
@@ -12514,7 +14750,19 @@
         ]
       }
     ],
-    "hasChords": false
+    "hasChords": false,
+    "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 219,
+        "title": "Weche Mag Mirima"
+      },
+      {
+        "collection": "OKN",
+        "number": 219,
+        "title": "Tokwan' Amang'an' Amabe"
+      }
+    ]
   },
   {
     "id": "nzk-220",
@@ -12534,6 +14782,16 @@
     ],
     "hasChords": false,
     "crossReferences": [
+      {
+        "collection": "WNY",
+        "number": 220,
+        "title": "Otelona!"
+      },
+      {
+        "collection": "OKN",
+        "number": 220,
+        "title": "Ondaire, Ondaire"
+      },
       {
         "collection": "NCA",
         "number": 297,

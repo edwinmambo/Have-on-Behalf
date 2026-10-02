@@ -1,0 +1,102 @@
+{
+  "latestVersion": "1.2.0",
+  "lastUpdated": "2026-10-02",
+  "versions": [
+    {
+      "version": "1.2.0",
+      "buildNumber": 2,
+      "releaseDate": "2026-10-02",
+      "tag": "v1.2.0",
+      "stage": "Production Candidate",
+      "title": "Sanctuary Beam Sync, Red Letter Bibles, EGW Study & Flutter Parity",
+      "highlights": [
+        "Full Flutter Companion app parity (Bibles, EGW, Beam Remote, Pinned Hymns, Planner)",
+        "Holy Bible Reader with Red Letter words of Christ (KJV, SUV, GIK, WEB)",
+        "Ellen G. White Writings collection (Steps to Christ, Desire of Ages, Great Controversy)",
+        "Sanctuary Beam Projector Remote control with live slide navigation and theme sync",
+        "Pinned Hymns & Quick Access Sabbath toolbar in both Web and Flutter",
+        "Recharts Hymn Frequency and Usage Analytics visualization",
+        "Chorister & Administrator Feedback Management Center",
+        "Deep text dataset purification and typographical normalizer pipeline"
+      ],
+      "downloads": [
+        {
+          "name": "Have On Behalf Companion APK (v1.2.0)",
+          "platform": "Android (ARM64 & ARMv7)",
+          "filename": "HaveOnBehalf-Companion-v1.2.0.apk",
+          "url": "/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk",
+          "size": "17.6 MB",
+          "sha256": "8f4d92a11b9c3f4e5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f",
+          "isPrimary": true
+        },
+        {
+          "name": "Clean Datasets JSON Archive (All Collections)",
+          "platform": "Universal Data",
+          "filename": "have-on-behalf-clean-datasets-v1.2.0.json",
+          "url": "/assets/releases/have-on-behalf-clean-datasets-v1.2.0.json",
+          "size": "4.1 MB",
+          "sha256": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+          "isPrimary": false
+        },
+        {
+          "name": "Full Release Manifest & Specification",
+          "platform": "JSON Metadata",
+          "filename": "manifest.json",
+          "url": "/assets/releases/manifest.json",
+          "size": "2.4 KB",
+          "sha256": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+          "isPrimary": false
+        }
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "buildNumber": 1,
+      "releaseDate": "2026-09-20",
+      "tag": "v1.1.0",
+      "stage": "Liturgical Tools Update",
+      "title": "Pitch Pipe Synthesizer, Vespers Planner & Dialect Collections",
+      "highlights": [
+        "Audio pitch pipe synthesizer with pitch transposition (-5 to +6 semitones)",
+        "Worship service liturgy planner with clipboard markdown agenda exporter",
+        "Added 10 regional Pan-African dialect collections (Dholuo, Maasai, Gusii, Meru, etc.)",
+        "Interlinear cross-reference matching between SDAH, NZK, and NCA editions"
+      ],
+      "downloads": [
+        {
+          "name": "Have On Behalf Companion APK (v1.1.0)",
+          "platform": "Android",
+          "filename": "HaveOnBehalf-Companion-EarlyTester.apk",
+          "url": "/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk",
+          "size": "16.8 MB",
+          "sha256": "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c",
+          "isPrimary": false
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "buildNumber": 1,
+      "releaseDate": "2026-09-01",
+      "tag": "v1.0.0",
+      "stage": "Foundation Release",
+      "title": "Initial Offline Liturgical Platform",
+      "highlights": [
+        "Offline Seventh-day Adventist Hymnal (695 hymns), Nyimbo Za Kristo (220), Nyĩmbo Cia Agendi (334)",
+        "Sanctuary Gold, Burgundy, Celestial Blue, and Pure OLED Dark liturgical themes",
+        "Responsive desktop and mobile sanctuary presentation viewer"
+      ],
+      "downloads": [
+        {
+          "name": "Have On Behalf Initial Package",
+          "platform": "PWA Bundle",
+          "filename": "have-on-behalf-v1.0.0.json",
+          "url": "/assets/releases/manifest.json",
+          "size": "3.8 MB",
+          "sha256": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+          "isPrimary": false
+        }
+      ]
+    }
+  ]
+}

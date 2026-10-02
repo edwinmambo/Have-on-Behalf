@@ -49,6 +49,16 @@
         "title": "U Mtakatifu"
       },
       {
+        "collection": "WNY",
+        "number": 1,
+        "title": "Nyasachwa Man Malo"
+      },
+      {
+        "collection": "OKN",
+        "number": 1,
+        "title": "'Mochenu Omochenu"
+      },
+      {
         "collection": "SDAH",
         "number": 73,
         "title": "Holy, Holy, Holy"
@@ -111,6 +121,16 @@
         "collection": "NZK",
         "number": 2,
         "title": "Twamsifu Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 2,
+        "title": "Wapaki, Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 2,
+        "title": "Tobake Nyasae"
       },
       {
         "collection": "SDAH",
@@ -176,6 +196,16 @@
         "title": "Mungu Atukuzwe"
       },
       {
+        "collection": "WNY",
+        "number": 3,
+        "title": "Duong` Obed Ni Wuonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 3,
+        "title": "Motogie Tat'Okorir' Amanene"
+      },
+      {
         "collection": "SDAH",
         "number": 341,
         "title": "To God Be The Glory"
@@ -239,6 +269,16 @@
         "collection": "NZK",
         "number": 4,
         "title": "Jina la Yesu, Salamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 4,
+        "title": "Nying Yesu Mondo Yudi Pak"
+      },
+      {
+        "collection": "OKN",
+        "number": 4,
+        "title": "Togi' Okobua Kwa Yeso"
       },
       {
         "collection": "SDAH",
@@ -313,6 +353,16 @@
         "title": "Na Tumwabudu Huyo Mfalme"
       },
       {
+        "collection": "WNY",
+        "number": 5,
+        "title": "To Pakuru Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 5,
+        "title": "'Ba Igoro Mosasim' Omogambi"
+      },
+      {
         "collection": "SDAH",
         "number": 83,
         "title": "O Worship the King"
@@ -361,6 +411,16 @@
         "collection": "NZK",
         "number": 6,
         "title": "Kumekucha kwa Uzuri"
+      },
+      {
+        "collection": "WNY",
+        "number": 6,
+        "title": "Wuonwa, Wabironi"
+      },
+      {
+        "collection": "OKN",
+        "number": 6,
+        "title": "Tata Twagochera"
       },
       {
         "collection": "SDAH",
@@ -432,6 +492,16 @@
         "title": "Mungu Msaada Wetu"
       },
       {
+        "collection": "WNY",
+        "number": 7,
+        "title": "Nyasaye Indi Nikonyowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 7,
+        "title": "Nyasaye 'Motoria Oito"
+      },
+      {
         "collection": "SDAH",
         "number": 103,
         "title": "O God, Our Help"
@@ -495,6 +565,16 @@
         "collection": "NZK",
         "number": 8,
         "title": "Unisikie Ninapolia"
+      },
+      {
+        "collection": "WNY",
+        "number": 8,
+        "title": "Winji Yuakna"
+      },
+      {
+        "collection": "OKN",
+        "number": 8,
+        "title": "'Gw' Ekerero Nyoroki' Amabera"
       },
       {
         "collection": "SDAH",
@@ -565,6 +645,16 @@
         "title": "Mwumbaji Mfalme"
       },
       {
+        "collection": "WNY",
+        "number": 9,
+        "title": "Jachwechna Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 9,
+        "title": "Omotongi One"
+      },
+      {
         "collection": "SDAH",
         "number": 15,
         "title": "My Maker and My King"
@@ -619,6 +709,16 @@
         "collection": "NZK",
         "number": 10,
         "title": "Kristo wa Neema Yote"
+      },
+      {
+        "collection": "WNY",
+        "number": 10,
+        "title": "Kristo In Wuon Ng`wono Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 10,
+        "title": "Nchw' Ensoko"
       },
       {
         "collection": "SDAH",
@@ -680,6 +780,16 @@
         "collection": "NZK",
         "number": 13,
         "title": "Umetuahidi"
+      },
+      {
+        "collection": "WNY",
+        "number": 13,
+        "title": "Paki Nyasaye Mogwedhowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 13,
+        "title": "Baka Tat' Ogesesenia"
       }
     ],
     "category": "Prayer & Christian Fellowship",
@@ -697,7 +807,7 @@
         "lines": [
           "Mĩgambo yothe ta nĩ ĩĩnĩre, Rĩĩtwa rĩa Jesũ Mwathani!",
           "Mũthamakĩ na nĩngĩ no Ngai, Rĩĩtwa rĩake rĩrĩ ngumo!",
-          "Rĩĩtwa rĩĩ ngumo ,rĩĩtwa rĩĩ ngũmo",
+          "Rĩĩtwa rĩĩ ngumorĩĩtwa rĩĩ ngũmo",
           "Rĩĩtwa rĩa Jesũ Mwathani,",
           "Rĩĩtwa rĩĩ ngumo, rĩĩtwa rĩĩ ngumo,",
           "Rĩĩtwa rĩa Jesũ rĩĩ ngumo."
@@ -732,6 +842,16 @@
         "collection": "NZK",
         "number": 11,
         "title": "Sauti Zote Ziimbe"
+      },
+      {
+        "collection": "WNY",
+        "number": 11,
+        "title": "Yesu, Isesingo"
+      },
+      {
+        "collection": "OKN",
+        "number": 11,
+        "title": "Yes 'Omonyaira"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -768,6 +888,16 @@
         "collection": "NZK",
         "number": 12,
         "title": "Msifu Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 12,
+        "title": "Ji Duto Mondo Wer Wendni"
+      },
+      {
+        "collection": "OKN",
+        "number": 12,
+        "title": "'Mariogi Onsi Tig 'Atare"
       },
       {
         "collection": "SDAH",
@@ -821,6 +951,16 @@
         "collection": "NZK",
         "number": 14,
         "title": "Nitembee Nawe"
+      },
+      {
+        "collection": "WNY",
+        "number": 14,
+        "title": "Nyasacha Mond` Awuoth Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 14,
+        "title": "Nyasae Nintare N' Aye"
       }
     ],
     "category": "Prayer & Christian Fellowship",
@@ -878,6 +1018,16 @@
         "collection": "NZK",
         "number": 15,
         "title": "Nena Rohoni Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 15,
+        "title": "Wuo Gi Chunya, Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 15,
+        "title": "Kwana N'enkoro Yane"
       }
     ],
     "category": "Prayer & Christian Fellowship",
@@ -935,6 +1085,16 @@
         "collection": "NZK",
         "number": 16,
         "title": "Bwana Ninakuhitaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 16,
+        "title": "Ruoth Maler, Adwari Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 16,
+        "title": "Ninkoganeti' Omonene!"
       },
       {
         "collection": "SDAH",
@@ -1006,6 +1166,16 @@
         "title": "Si Mimi, Kristo"
       },
       {
+        "collection": "WNY",
+        "number": 17,
+        "title": "Kristo, Ok An"
+      },
+      {
+        "collection": "OKN",
+        "number": 17,
+        "title": "N'Yeso Tai Nche"
+      },
+      {
         "collection": "SDAH",
         "number": 570,
         "title": "Not I, But Christ"
@@ -1063,6 +1233,16 @@
         "collection": "NZK",
         "number": 18,
         "title": "Mwokozi Kama Mchunga"
+      },
+      {
+        "collection": "WNY",
+        "number": 18,
+        "title": "Yesu, Mond` Itawa Pile"
+      },
+      {
+        "collection": "OKN",
+        "number": 18,
+        "title": "Omotoria Torae Ntwe"
       },
       {
         "collection": "SDAH",
@@ -1128,6 +1308,16 @@
         "title": "Msalabani pa Mwokozi"
       },
       {
+        "collection": "WNY",
+        "number": 19,
+        "title": "Ka ma Yesu Chon Notho E Yath"
+      },
+      {
+        "collection": "OKN",
+        "number": 19,
+        "title": "Mosalab' Omotori' Agakwa"
+      },
+      {
         "collection": "SDAH",
         "number": 309,
         "title": "I Surrender All"
@@ -1181,6 +1371,16 @@
         "collection": "NZK",
         "number": 20,
         "title": "Mungu Wetu Yeye Mwamba"
+      },
+      {
+        "collection": "WNY",
+        "number": 20,
+        "title": "Nyasachwa En E Lwandawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 20,
+        "title": "Nyasae Oito Negetare"
       },
       {
         "collection": "SDAH",
@@ -1255,6 +1455,16 @@
         "title": "Baba Twakujia"
       },
       {
+        "collection": "WNY",
+        "number": 21,
+        "title": "Adwaro Ket Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 21,
+        "title": "Ngwekane Buna Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 484,
         "title": "I Need Thee, Precious Jesus"
@@ -1313,6 +1523,16 @@
         "collection": "NZK",
         "number": 22,
         "title": "Usinipite"
+      },
+      {
+        "collection": "WNY",
+        "number": 22,
+        "title": "Kik Ibarna, Yaye Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 22,
+        "title": "Tong'etani' Omotori' One"
       },
       {
         "collection": "SDAH",
@@ -1387,6 +1607,16 @@
         "title": "Yesu Nakupenda"
       },
       {
+        "collection": "WNY",
+        "number": 29,
+        "title": "Yesu Jakwath Moheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 29,
+        "title": "Yes' Omwanchi Omorisi 'One"
+      },
+      {
         "collection": "SDAH",
         "number": 321,
         "title": "My Jesus, I love Thee"
@@ -1448,6 +1678,16 @@
         "collection": "NZK",
         "number": 31,
         "title": "Niimbe Pendo Lake"
+      },
+      {
+        "collection": "WNY",
+        "number": 31,
+        "title": "Duto Paki, Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 31,
+        "title": "'Binto Biakobak' Aye"
       },
       {
         "collection": "SDAH",
@@ -1514,6 +1754,16 @@
         "collection": "NZK",
         "number": 23,
         "title": "Yesu Furaha ya Moyo"
+      },
+      {
+        "collection": "WNY",
+        "number": 23,
+        "title": "Aheri, Aheri"
+      },
+      {
+        "collection": "OKN",
+        "number": 23,
+        "title": "Ngwanchete"
       },
       {
         "collection": "SDAH",
@@ -1583,6 +1833,16 @@
         "collection": "NZK",
         "number": 25,
         "title": "Taji Mvikeni"
+      },
+      {
+        "collection": "WNY",
+        "number": 25,
+        "title": "In E Ngimana Mochwere"
+      },
+      {
+        "collection": "OKN",
+        "number": 25,
+        "title": "Naye Obogima Bwane"
       },
       {
         "collection": "SDAH",
@@ -1740,6 +2000,16 @@
         "collection": "NZK",
         "number": 11,
         "title": "Sauti Zote Ziimbe"
+      },
+      {
+        "collection": "WNY",
+        "number": 11,
+        "title": "Yesu, Isesingo"
+      },
+      {
+        "collection": "OKN",
+        "number": 11,
+        "title": "Yes 'Omonyaira"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -1853,6 +2123,16 @@
         "title": "Jina Lake Yesu Tamu Tukilisikia"
       },
       {
+        "collection": "WNY",
+        "number": 24,
+        "title": "Jawarna To Ni Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 24,
+        "title": "O Yes' Omobori' One"
+      },
+      {
         "collection": "SDAH",
         "number": 232,
         "title": "At the Name of Jesus"
@@ -1914,6 +2194,16 @@
         "collection": "NZK",
         "number": 40,
         "title": "Njoo, Roho Mtukufu"
+      },
+      {
+        "collection": "WNY",
+        "number": 40,
+        "title": "Alleluia! Ruoth Nochier"
+      },
+      {
+        "collection": "OKN",
+        "number": 40,
+        "title": "'Karar' As 'Embera"
       },
       {
         "collection": "SDAH",
@@ -1982,6 +2272,16 @@
         "title": "Nipe Biblia"
       },
       {
+        "collection": "WNY",
+        "number": 52,
+        "title": "Jawar Yesu Itelna"
+      },
+      {
+        "collection": "OKN",
+        "number": 52,
+        "title": "Ar 'As' Egetunwa"
+      },
+      {
         "collection": "SDAH",
         "number": 272,
         "title": "Give Me the Bible"
@@ -2033,6 +2333,16 @@
         "collection": "NZK",
         "number": 26,
         "title": "Tutokapo Tubariki"
+      },
+      {
+        "collection": "WNY",
+        "number": 26,
+        "title": "Ji Duto Te Mondo Giwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 26,
+        "title": "Chimeme Chionsi Chitere"
       },
       {
         "collection": "SDAH",
@@ -2104,6 +2414,16 @@
         "title": "Tena Mwokozi Twalitukuza"
       },
       {
+        "collection": "WNY",
+        "number": 27,
+        "title": "To En Ng`a Man E Kund Dhok"
+      },
+      {
+        "collection": "OKN",
+        "number": 27,
+        "title": "Ning'ore?"
+      },
+      {
         "collection": "SDAH",
         "number": 249,
         "title": "Praise Him! Praise Him!"
@@ -2165,6 +2485,16 @@
         "collection": "NZK",
         "number": 28,
         "title": "Jina Lake Yesu Tamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 28,
+        "title": "Nying Mamit E Piny Gi Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 28,
+        "title": "'Rieta Ria Yeso Rigiya"
       },
       {
         "collection": "SDAH",
@@ -2236,6 +2566,16 @@
         "title": "Yesu Nakupenda"
       },
       {
+        "collection": "WNY",
+        "number": 29,
+        "title": "Yesu Jakwath Moheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 29,
+        "title": "Yes' Omwanchi Omorisi 'One"
+      },
+      {
         "collection": "SDAH",
         "number": 321,
         "title": "My Jesus, I love Thee"
@@ -2303,6 +2643,16 @@
         "collection": "NZK",
         "number": 30,
         "title": "Yesu Unipendaye"
+      },
+      {
+        "collection": "WNY",
+        "number": 30,
+        "title": "Apako Hera Nyasaye Wuora"
+      },
+      {
+        "collection": "OKN",
+        "number": 30,
+        "title": "Nter' Obwanchani Bwa Nyasae"
       },
       {
         "collection": "SDAH",
@@ -2384,6 +2734,16 @@
         "title": "Niimbe Pendo Lake"
       },
       {
+        "collection": "WNY",
+        "number": 31,
+        "title": "Duto Paki, Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 31,
+        "title": "'Binto Biakobak' Aye"
+      },
+      {
         "collection": "SDAH",
         "number": 340,
         "title": "Jesus Saves"
@@ -2438,6 +2798,16 @@
         "collection": "NZK",
         "number": 32,
         "title": "Ninao Wimbo Mzuri"
+      },
+      {
+        "collection": "WNY",
+        "number": 32,
+        "title": "Koro Ka Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 32,
+        "title": "Mbe N'Obosera Bwa Yeso"
       },
       {
         "collection": "SDAH",
@@ -2506,6 +2876,16 @@
         "collection": "NZK",
         "number": 141,
         "title": "Chini ya Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 141,
+        "title": "Yesu Oluongoi Mondo Ibi"
+      },
+      {
+        "collection": "OKN",
+        "number": 141,
+        "title": "Yes' As' Obworor' Okorangeirie"
       },
       {
         "collection": "SDAH",
@@ -2580,6 +2960,16 @@
         "collection": "NZK",
         "number": 90,
         "title": "Mapya Ni Mapenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 90,
+        "title": "Winjuru Sigandwa Miwuoro"
+      },
+      {
+        "collection": "OKN",
+        "number": 90,
+        "title": "igw' Omogano Bw'ogokumia"
       },
       {
         "collection": "SDAH",
@@ -2709,6 +3099,16 @@
         "title": "Nipe Habari za Yesu"
       },
       {
+        "collection": "WNY",
+        "number": 34,
+        "title": "Nyasaye Wachungo Ka Wawer"
+      },
+      {
+        "collection": "OKN",
+        "number": 34,
+        "title": "Motoria Twabak'Erieta Riao"
+      },
+      {
         "collection": "SDAH",
         "number": 152,
         "title": "Tell Me the Story of Jesus"
@@ -2770,6 +3170,16 @@
         "collection": "NZK",
         "number": 35,
         "title": "Nimekombolewa na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 35,
+        "title": "Paruru Nying Yesu Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 35,
+        "title": "Ira Erieta Ria Yeso"
       },
       {
         "collection": "SDAH",
@@ -2834,6 +3244,16 @@
         "collection": "NZK",
         "number": 36,
         "title": "Ni Siku Kuu"
+      },
+      {
+        "collection": "WNY",
+        "number": 36,
+        "title": "Ruoth Yesu, Nithona"
+      },
+      {
+        "collection": "OKN",
+        "number": 36,
+        "title": "Yeso Nagwanchire Aye Noyone"
       },
       {
         "collection": "SDAH",
@@ -3052,6 +3472,16 @@
         "title": "Karibu Sana"
       },
       {
+        "collection": "WNY",
+        "number": 33,
+        "title": "Wuonwa, Gonywa Gi Gweth Mari"
+      },
+      {
+        "collection": "OKN",
+        "number": 33,
+        "title": "Tata Tosibore Bono"
+      },
+      {
         "collection": "SDAH",
         "number": 301,
         "title": "Nearer, Still Nearer"
@@ -3116,6 +3546,16 @@
         "collection": "NZK",
         "number": 119,
         "title": "Yesu Anasema"
+      },
+      {
+        "collection": "WNY",
+        "number": 119,
+        "title": "Sabato Mari, Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 119,
+        "title": "'Sabato Enchenu"
       },
       {
         "collection": "SDAH",
@@ -3191,6 +3631,16 @@
         "title": "Yesu Aliniita, “Njoo”"
       },
       {
+        "collection": "WNY",
+        "number": 104,
+        "title": "Wagedi e Lwanda Mangima"
+      },
+      {
+        "collection": "OKN",
+        "number": 104,
+        "title": "Toagach' Egetare Ke Moyo"
+      },
+      {
         "collection": "SDAH",
         "number": 373,
         "title": "Seeking The Lost"
@@ -3245,6 +3695,16 @@
         "collection": "NZK",
         "number": 73,
         "title": "Nakaza Mwendo Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 73,
+        "title": "Ahero Nyiso Weche"
+      },
+      {
+        "collection": "OKN",
+        "number": 73,
+        "title": "Nintebe Omogano"
       },
       {
         "collection": "SDAH",
@@ -3403,6 +3863,16 @@
         "title": "Nasifu Shani ya Mungu"
       },
       {
+        "collection": "WNY",
+        "number": 38,
+        "title": "Anawer Hera Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 38,
+        "title": "Nintere Obwanchani"
+      },
+      {
         "collection": "SDAH",
         "number": 88,
         "title": "I Sing the Mighty Power of God"
@@ -3481,6 +3951,16 @@
         "title": "Ati Kuna Mvua Njema"
       },
       {
+        "collection": "WNY",
+        "number": 39,
+        "title": "Nitie Wer Mamit E Dhoga"
+      },
+      {
+        "collection": "OKN",
+        "number": 39,
+        "title": "Ninde N'ogoter' Okuya"
+      },
+      {
         "collection": "SDAH",
         "number": 195,
         "title": "Showers of Blessing"
@@ -3544,6 +4024,16 @@
         "title": "Njoo, Roho Mtukufu"
       },
       {
+        "collection": "WNY",
+        "number": 40,
+        "title": "Alleluia! Ruoth Nochier"
+      },
+      {
+        "collection": "OKN",
+        "number": 40,
+        "title": "'Karar' As 'Embera"
+      },
+      {
         "collection": "SDAH",
         "number": 260,
         "title": "Hover O’er Me, Holy Spirit"
@@ -3601,6 +4091,16 @@
         "collection": "NZK",
         "number": 41,
         "title": "Roho Mtakatifu"
+      },
+      {
+        "collection": "WNY",
+        "number": 41,
+        "title": "E Kalwari Jawar Notho"
+      },
+      {
+        "collection": "OKN",
+        "number": 41,
+        "title": "'Se Kalvari"
       },
       {
         "collection": "SDAH",
@@ -3669,6 +4169,16 @@
         "collection": "NZK",
         "number": 42,
         "title": "Ewe Roho wa Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 42,
+        "title": "Hera Ma Yesu Hera Go"
+      },
+      {
+        "collection": "OKN",
+        "number": 42,
+        "title": "'Gwancha Tikogokwaneka"
       },
       {
         "collection": "SDAH",
@@ -3774,6 +4284,16 @@
         "title": "Furaha Gani"
       },
       {
+        "collection": "WNY",
+        "number": 43,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 43,
+        "title": "Ntebi' Amang'ana A Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 342,
         "title": "Is This Day Of New Beginnings"
@@ -3834,6 +4354,16 @@
         "collection": "NZK",
         "number": 44,
         "title": "Hakuna Rafiki Kama Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 44,
+        "title": "Ang`eyo Yesu Osewara"
+      },
+      {
+        "collection": "OKN",
+        "number": 44,
+        "title": "Naborigwe, Naki Ndararie!"
       },
       {
         "collection": "SDAH",
@@ -3897,6 +4427,16 @@
         "title": "Mlimani Pana Mwanga"
       },
       {
+        "collection": "WNY",
+        "number": 45,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 45,
+        "title": "E Rituko Riomogoko"
+      },
+      {
         "collection": "SDAH",
         "number": 580,
         "title": "This Little Light of Mine"
@@ -3953,6 +4493,16 @@
         "collection": "NZK",
         "number": 46,
         "title": "Miguuni Pake Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 46,
+        "title": "Chunya Nigi Mor Moloyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 46,
+        "title": "Nkoro Nere N'Omogoko"
       },
       {
         "collection": "SDAH",
@@ -4015,6 +4565,16 @@
         "collection": "NZK",
         "number": 48,
         "title": "Ninakupenda Zaidi"
+      },
+      {
+        "collection": "WNY",
+        "number": 48,
+        "title": "Yesu Kristo Oberna Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 48,
+        "title": "Yeso Obeire Omosani"
       },
       {
         "collection": "SDAH",
@@ -4085,6 +4645,16 @@
         "title": "Ninaye Rafiki"
       },
       {
+        "collection": "WNY",
+        "number": 49,
+        "title": "Ywaya Machiegni Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 49,
+        "title": "Ng'usa Ang'e N'enkoro Yao"
+      },
+      {
         "collection": "SDAH",
         "number": 186,
         "title": "I’ve Found a Friend"
@@ -4148,6 +4718,16 @@
         "title": "Mungu Awe Nanyi Daima"
       },
       {
+        "collection": "WNY",
+        "number": 50,
+        "title": "Kristo Obedo Misango Mar Golo Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 50,
+        "title": "'Motoria Bw'Ogokumia"
+      },
+      {
         "collection": "SDAH",
         "number": 65,
         "title": "God Be With You"
@@ -4201,6 +4781,16 @@
         "collection": "NZK",
         "number": 51,
         "title": "Yesu Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 51,
+        "title": "Jakwath Nokwayo Rombege"
+      },
+      {
+        "collection": "OKN",
+        "number": 51,
+        "title": "Nchiare Emerongo Kianda Na Kianda"
       }
     ],
     "category": "Consecration, Trust & Living",
@@ -4256,6 +4846,16 @@
         "collection": "NZK",
         "number": 162,
         "title": "Tumaini Liko"
+      },
+      {
+        "collection": "WNY",
+        "number": 162,
+        "title": "Abiro Ni Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 162,
+        "title": "Ngocha Nd' Omosalaba"
       },
       {
         "collection": "SDAH",
@@ -4316,6 +4916,16 @@
         "collection": "NZK",
         "number": 47,
         "title": "Ni Heri Kifungo"
+      },
+      {
+        "collection": "WNY",
+        "number": 47,
+        "title": "Yesu Jawarwa E Bethlehem Chon"
+      },
+      {
+        "collection": "OKN",
+        "number": 47,
+        "title": "Yeso Omotoria Bethlehemu"
       },
       {
         "collection": "SDAH",
@@ -4381,6 +4991,16 @@
         "collection": "NZK",
         "number": 52,
         "title": "Nipe Biblia"
+      },
+      {
+        "collection": "WNY",
+        "number": 52,
+        "title": "Jawar Yesu Itelna"
+      },
+      {
+        "collection": "OKN",
+        "number": 52,
+        "title": "Ar 'As' Egetunwa"
       },
       {
         "collection": "SDAH",
@@ -4453,6 +5073,16 @@
         "title": "Napenda Kitabu Chake"
       },
       {
+        "collection": "WNY",
+        "number": 62,
+        "title": "Onge Osiep Moro Kaka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 62,
+        "title": "Tari 'Mosani Obuete Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 273,
         "title": "Lord, I Have Made Thy Word My Choice"
@@ -4512,6 +5142,16 @@
         "collection": "NZK",
         "number": 53,
         "title": "Napenda Kuhubiri"
+      },
+      {
+        "collection": "WNY",
+        "number": 53,
+        "title": "Wapako Ruoth Ma Jawarwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 53,
+        "title": "Togi' Omonen' Omotoria"
       },
       {
         "collection": "SDAH",
@@ -4635,6 +5275,16 @@
         "collection": "NZK",
         "number": 54,
         "title": "Nataka nimjue Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 54,
+        "title": "Wuod Dhano Ma Ne Otho"
+      },
+      {
+        "collection": "OKN",
+        "number": 54,
+        "title": "\"Bw'emechando\""
       }
     ],
     "category": "Consecration, Trust & Living",
@@ -4692,6 +5342,16 @@
         "collection": "NZK",
         "number": 55,
         "title": "Twapanda Mapema"
+      },
+      {
+        "collection": "WNY",
+        "number": 55,
+        "title": "Awero Teko Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 55,
+        "title": "Nter' Okobua Kwa Nyasae"
       },
       {
         "collection": "SDAH",
@@ -4765,6 +5425,16 @@
         "title": "Walio Kifoni"
       },
       {
+        "collection": "WNY",
+        "number": 56,
+        "title": "Ruoth, Awinjo Wach Mar Gwethni"
+      },
+      {
+        "collection": "OKN",
+        "number": 56,
+        "title": "Nere Embura Engiya"
+      },
+      {
         "collection": "SDAH",
         "number": 367,
         "title": "Rescue The Perishing"
@@ -4821,6 +5491,16 @@
         "collection": "NZK",
         "number": 58,
         "title": "Leo Ninafikiria"
+      },
+      {
+        "collection": "WNY",
+        "number": 58,
+        "title": "Muya Maler Jatendwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 58,
+        "title": "Omoika Omochenu"
       }
     ],
     "category": "Heaven & Life Everlasting",
@@ -4872,6 +5552,16 @@
         "collection": "NZK",
         "number": 57,
         "title": "Usiikatae Kazi"
+      },
+      {
+        "collection": "WNY",
+        "number": 57,
+        "title": "Roho Mar Nyasaye, Ibina"
+      },
+      {
+        "collection": "OKN",
+        "number": 57,
+        "title": "Ichw' Omoik' Omochenu"
       }
     ],
     "category": "Christian Mission & Warfare",
@@ -4935,6 +5625,16 @@
         "collection": "NZK",
         "number": 61,
         "title": "Nimemwona Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 61,
+        "title": "Osiep Manade, En Mor Manade"
+      },
+      {
+        "collection": "OKN",
+        "number": 61,
+        "title": "Ngosanga Ki Mogok'o Igoro"
       }
     ],
     "category": "Salvation, Atonement & Grace",
@@ -4988,6 +5688,16 @@
         "collection": "NZK",
         "number": 59,
         "title": "Fanyeni Kazi Zenu"
+      },
+      {
+        "collection": "WNY",
+        "number": 59,
+        "title": "Muya Maler, Winj Alamwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 59,
+        "title": "'Moika Igw' Ogobaba"
       },
       {
         "collection": "SDAH",
@@ -5102,6 +5812,16 @@
         "title": "Katika Wenye dhambi"
       },
       {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
+      },
+      {
         "collection": "SDAH",
         "number": 281,
         "title": "I Gave My Life for Thee"
@@ -5168,6 +5888,16 @@
         "collection": "NZK",
         "number": 63,
         "title": "Niuonapo Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 63,
+        "title": "Ler Wang` Chieng`orieny E Gode"
+      },
+      {
+        "collection": "OKN",
+        "number": 63,
+        "title": "'Masase As' Egetunwa"
       },
       {
         "collection": "SDAH",
@@ -5248,6 +5978,16 @@
         "collection": "NZK",
         "number": 66,
         "title": "Roho Yangu Amka Sasa"
+      },
+      {
+        "collection": "WNY",
+        "number": 66,
+        "title": "Aseyudo Osiep Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 66,
+        "title": "Nanyorire Omosani"
       },
       {
         "collection": "SDAH",
@@ -5632,6 +6372,16 @@
         "title": "Piga Panda ya Injili"
       },
       {
+        "collection": "WNY",
+        "number": 64,
+        "title": "Kabedo E Tiend Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 64,
+        "title": "Ko ndabe Amo Na Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 614,
         "title": "Sound the Battle Cry"
@@ -5695,6 +6445,16 @@
         "title": "Twendeni Askari"
       },
       {
+        "collection": "WNY",
+        "number": 65,
+        "title": "Ruodha, Aheri Maradier"
+      },
+      {
+        "collection": "OKN",
+        "number": 65,
+        "title": "Omonene Ningwanchete"
+      },
+      {
         "collection": "SDAH",
         "number": 612,
         "title": "Onward, Christian Soldiers"
@@ -5754,6 +6514,16 @@
         "collection": "NZK",
         "number": 94,
         "title": "Po pote Mashamba Yajaa"
+      },
+      {
+        "collection": "WNY",
+        "number": 94,
+        "title": "Yesu Kristo Odwaro Walame"
+      },
+      {
+        "collection": "OKN",
+        "number": 94,
+        "title": "Motori' Atotebia Torende"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -5812,6 +6582,16 @@
         "title": "Msingi Imara"
       },
       {
+        "collection": "WNY",
+        "number": 75,
+        "title": "Adwaro Ng`eyo Wach Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 75,
+        "title": "Nindigetie Manye Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 509,
         "title": "How Firm a Foundation"
@@ -5863,6 +6643,16 @@
         "collection": "NZK",
         "number": 67,
         "title": "Kesha Roho Yangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 67,
+        "title": "Nyasachwa Mondo Obed Kodu"
+      },
+      {
+        "collection": "OKN",
+        "number": 67,
+        "title": "Nyasa' Abarende Botambe"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -5921,6 +6711,16 @@
         "collection": "NZK",
         "number": 69,
         "title": "Cha Kutumaini Sina"
+      },
+      {
+        "collection": "WNY",
+        "number": 69,
+        "title": "Puonja Injili Lilo"
+      },
+      {
+        "collection": "OKN",
+        "number": 69,
+        "title": "Ntebi Omogano O Igoro"
       }
     ],
     "category": "Salvation, Atonement & Grace",
@@ -5970,6 +6770,16 @@
         "collection": "NZK",
         "number": 68,
         "title": "Umtetee Mungu Duniani"
+      },
+      {
+        "collection": "WNY",
+        "number": 68,
+        "title": "Yesu Nowara"
+      },
+      {
+        "collection": "OKN",
+        "number": 68,
+        "title": "Amaena Yeso N'Oyone"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -6022,6 +6832,16 @@
         "collection": "NZK",
         "number": 71,
         "title": "Kesha Ukaombe"
+      },
+      {
+        "collection": "WNY",
+        "number": 71,
+        "title": "Puonja Wach Biblos"
+      },
+      {
+        "collection": "OKN",
+        "number": 71,
+        "title": "Ng'a Ay' Ebuku"
       }
     ],
     "category": "Gospel Invitation & Repentance",
@@ -6118,6 +6938,16 @@
         "title": "Jenga Juu ya Mwamba"
       },
       {
+        "collection": "WNY",
+        "number": 72,
+        "title": "Ahero Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 72,
+        "title": "Nanchir' Eng'ana ya Nyasae"
+      },
+      {
         "collection": "SDAH",
         "number": 522,
         "title": "My Hope Is Built on Nothing Less"
@@ -6179,6 +7009,16 @@
         "collection": "NZK",
         "number": 73,
         "title": "Nakaza Mwendo Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 73,
+        "title": "Ahero Nyiso Weche"
+      },
+      {
+        "collection": "OKN",
+        "number": 73,
+        "title": "Nintebe Omogano"
       },
       {
         "collection": "SDAH",
@@ -6260,6 +7100,16 @@
         "title": "Niambie Ee Mlinzi"
       },
       {
+        "collection": "WNY",
+        "number": 74,
+        "title": "Bende Nichungi E Ndalo Chandruok?"
+      },
+      {
+        "collection": "OKN",
+        "number": 74,
+        "title": "Inchwo Abegeni"
+      },
+      {
         "collection": "SDAH",
         "number": 601,
         "title": "Watchman, on the Walls of Zion"
@@ -6319,6 +7169,16 @@
         "collection": "NZK",
         "number": 76,
         "title": "Mrithi Ufalme"
+      },
+      {
+        "collection": "WNY",
+        "number": 76,
+        "title": "Chwoyo Ndalo Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 76,
+        "title": "Kobusura Mambia"
       }
     ],
     "category": "Christian Mission & Warfare",
@@ -6390,6 +7250,16 @@
         "collection": "NZK",
         "number": 77,
         "title": "Je! Mlinzi Ukutani"
+      },
+      {
+        "collection": "WNY",
+        "number": 77,
+        "title": "Kony Jo Madwaro Tho"
+      },
+      {
+        "collection": "OKN",
+        "number": 77,
+        "title": "Tori' Abagosiria"
       }
     ],
     "category": "Second Coming & Christian Hope",
@@ -6513,6 +7383,16 @@
         "collection": "NZK",
         "number": 80,
         "title": "Tupe Moto wa Uhai"
+      },
+      {
+        "collection": "WNY",
+        "number": 80,
+        "title": "Daher Tiyo Kodi, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 80,
+        "title": "Omonene Rigoro Nainyora"
       }
     ],
     "category": "Worship & Adoration",
@@ -6623,6 +7503,16 @@
         "title": "Nataka Imani Hii"
       },
       {
+        "collection": "WNY",
+        "number": 79,
+        "title": "Kik Ibadhri Ni Tich"
+      },
+      {
+        "collection": "OKN",
+        "number": 79,
+        "title": "Totamera Kende"
+      },
+      {
         "collection": "SDAH",
         "number": 533,
         "title": "O for a Faith"
@@ -6690,6 +7580,16 @@
         "title": "Msingi wa Kanisa"
       },
       {
+        "collection": "WNY",
+        "number": 195,
+        "title": "Ka Yesu Ni Koda"
+      },
+      {
+        "collection": "OKN",
+        "number": 195,
+        "title": "And'onsi Na Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 348,
         "title": "The Church Has One Foundation"
@@ -6755,6 +7655,16 @@
         "collection": "NZK",
         "number": 70,
         "title": "Wapenzi wa Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 70,
+        "title": "Nyasaye Wachokore"
+      },
+      {
+        "collection": "OKN",
+        "number": 70,
+        "title": "Seseni' Obwanchani"
       }
     ],
     "category": "Worship & Adoration",
@@ -6805,6 +7715,16 @@
         "collection": "NZK",
         "number": 81,
         "title": "Siku Sita Zimepita"
+      },
+      {
+        "collection": "WNY",
+        "number": 81,
+        "title": "Tiuru, Yesu `biro"
+      },
+      {
+        "collection": "OKN",
+        "number": 81,
+        "title": "Kor' Emeremo Mboire"
       },
       {
         "collection": "SDAH",
@@ -6868,6 +7788,16 @@
         "title": "Siku ya Sabato"
       },
       {
+        "collection": "WNY",
+        "number": 87,
+        "title": "Jokeyo Ni Kanye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 87,
+        "title": "O Ng'ai Abagesi"
+      },
+      {
         "collection": "SDAH",
         "number": 384,
         "title": "Safely Through Another Week"
@@ -6928,6 +7858,16 @@
         "collection": "NZK",
         "number": 84,
         "title": "Ikumbuke Kote Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 84,
+        "title": "Kaparo Yath Mar Kalwari"
+      },
+      {
+        "collection": "OKN",
+        "number": 84,
+        "title": "Kondaror' Omosalaba"
       },
       {
         "collection": "SDAH",
@@ -7059,6 +7999,16 @@
         "title": "Ni Siku ya Furaha"
       },
       {
+        "collection": "WNY",
+        "number": 82,
+        "title": "Ka Manade Ma Ruoth Luongae"
+      },
+      {
+        "collection": "OKN",
+        "number": 82,
+        "title": "Tekob' Egetunwa Igoro"
+      },
+      {
         "collection": "SDAH",
         "number": 382,
         "title": "O Day Of Rest And Gladness"
@@ -7114,6 +8064,16 @@
         "collection": "NZK",
         "number": 83,
         "title": "Ewe Skuli ya Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 83,
+        "title": "Yesu Osiep Malong`o"
+      },
+      {
+        "collection": "OKN",
+        "number": 83,
+        "title": "Nimbwate Omosani"
       }
     ],
     "category": "The Sabbath",
@@ -7159,7 +8119,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "ũmũũthĩ ithuĩ eehia , twĩtĩkie ũhoro wa Ngai,",
+          "ũmũũthĩ ithuĩ eehia twĩtĩkie ũhoro wa Ngai,",
           "ũtuongerere hinya, O na ũtũhonagie,",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;",
           "ũtũkenagia ngoro, ũtũhũũnagia irio;"
@@ -7177,6 +8137,16 @@
         "collection": "NZK",
         "number": 85,
         "title": "Salama Tumepita"
+      },
+      {
+        "collection": "WNY",
+        "number": 85,
+        "title": "Tiuru, Tiuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 85,
+        "title": "Tokor' Emerem' Abasomba ba Yeso"
       }
     ],
     "category": "The Sabbath",
@@ -7224,6 +8194,16 @@
         "collection": "NZK",
         "number": 88,
         "title": "Siku Hii ya Sabato"
+      },
+      {
+        "collection": "WNY",
+        "number": 88,
+        "title": "E Dho Wath Man Loka Nam"
+      },
+      {
+        "collection": "OKN",
+        "number": 88,
+        "title": "'Ngegu Y'enyancha Ngu'mbu"
       }
     ],
     "category": "The Sabbath",
@@ -7271,6 +8251,16 @@
         "collection": "NZK",
         "number": 86,
         "title": "Ukaribie Tena"
+      },
+      {
+        "collection": "WNY",
+        "number": 86,
+        "title": "Wan Wamor Kwatiyo Ni Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 86,
+        "title": "'S'Omogoko Natomokerere"
       },
       {
         "collection": "SDAH",
@@ -7332,6 +8322,16 @@
         "collection": "NZK",
         "number": 121,
         "title": "Katika Wenye dhambi"
+      },
+      {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
       }
     ],
     "category": "Morning & Evening Worship",
@@ -7395,6 +8395,16 @@
         "collection": "NZK",
         "number": 91,
         "title": "Kaa Nami"
+      },
+      {
+        "collection": "WNY",
+        "number": 91,
+        "title": "Nitie Luong Mobiro E Wi Apaka"
+      },
+      {
+        "collection": "OKN",
+        "number": 91,
+        "title": "Korangerigwa Nkore Korwa Ng'umbu"
       },
       {
         "collection": "SDAH",
@@ -7465,6 +8475,16 @@
         "collection": "NZK",
         "number": 92,
         "title": "Magharibini Jua"
+      },
+      {
+        "collection": "WNY",
+        "number": 92,
+        "title": "Bende Ipuonjo Ji Wach Nyasaye?"
+      },
+      {
+        "collection": "OKN",
+        "number": 92,
+        "title": "Nkorandi'ore Ring'ana Ri'obonda"
       }
     ]
   },
@@ -7534,6 +8554,16 @@
         "collection": "NZK",
         "number": 93,
         "title": "Jua la Rohoni Mwangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 93,
+        "title": "Teche Duto Onego Liel"
+      },
+      {
+        "collection": "OKN",
+        "number": 93,
+        "title": "Tiga Ker' Etaya Yoke"
       }
     ],
     "category": "Morning & Evening Worship",
@@ -7583,6 +8613,16 @@
         "collection": "NZK",
         "number": 145,
         "title": "Ulimwengu Siutaki"
+      },
+      {
+        "collection": "WNY",
+        "number": 145,
+        "title": "Yesu Jakwath Madieri"
+      },
+      {
+        "collection": "OKN",
+        "number": 145,
+        "title": "Yes' Omorisi' Omuya"
       },
       {
         "collection": "SDAH",
@@ -7654,6 +8694,16 @@
         "collection": "NZK",
         "number": 95,
         "title": "Sikieni Neno"
+      },
+      {
+        "collection": "WNY",
+        "number": 95,
+        "title": "Jarit, Go Tung` Mar Injili"
+      },
+      {
+        "collection": "OKN",
+        "number": 95,
+        "title": "Bugia Engoma Y' Enchili"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -7709,6 +8759,16 @@
         "collection": "NZK",
         "number": 96,
         "title": "Mali Yako Sasa"
+      },
+      {
+        "collection": "WNY",
+        "number": 96,
+        "title": "Dhiuru, Jokristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 96,
+        "title": "Imok' Abakristo Bun' Abesegi"
       }
     ],
     "category": "Praise & Thanksgiving",
@@ -7844,6 +8904,16 @@
         "title": "Sioshwi dhambi Zangu"
       },
       {
+        "collection": "WNY",
+        "number": 97,
+        "title": "Chunya, Mondo Ichiew Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 97,
+        "title": "Enkoro Yane Imoka"
+      },
+      {
         "collection": "SDAH",
         "number": 336,
         "title": "There Is A Foutain"
@@ -7903,6 +8973,16 @@
         "collection": "NZK",
         "number": 100,
         "title": "Kuwatafuta"
+      },
+      {
+        "collection": "WNY",
+        "number": 100,
+        "title": "Ok Ageno Gimoro Ngang`"
+      },
+      {
+        "collection": "OKN",
+        "number": 100,
+        "title": "Tindi N'eki Nyegenete"
       }
     ],
     "category": "Gospel Invitation & Repentance",
@@ -7960,6 +9040,16 @@
         "collection": "NZK",
         "number": 101,
         "title": "Yesu Akwita"
+      },
+      {
+        "collection": "WNY",
+        "number": 101,
+        "title": "Chunguru Matek Kuom Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 101,
+        "title": "Tenena Bokong'u ase Nyasae"
       },
       {
         "collection": "SDAH",
@@ -8035,6 +9125,16 @@
         "title": "Jua la Rohoni Mwangu"
       },
       {
+        "collection": "WNY",
+        "number": 93,
+        "title": "Teche Duto Onego Liel"
+      },
+      {
+        "collection": "OKN",
+        "number": 93,
+        "title": "Tiga Ker' Etaya Yoke"
+      },
+      {
         "collection": "SDAH",
         "number": 286,
         "title": "Wonderful Words of Life"
@@ -8096,6 +9196,16 @@
         "collection": "NZK",
         "number": 103,
         "title": "Yesu Huita kwa Upole"
+      },
+      {
+        "collection": "WNY",
+        "number": 103,
+        "title": "Chungi, JaKristo"
+      },
+      {
+        "collection": "OKN",
+        "number": 103,
+        "title": "Aka Eriogi"
       }
     ],
     "category": "Prayer & Christian Fellowship",
@@ -8209,6 +9319,16 @@
         "collection": "NZK",
         "number": 105,
         "title": "Mchungaji mpenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 105,
+        "title": "Awuotho Kachiko Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 105,
+        "title": "Nkogenda Nde Bo Igoro"
       }
     ],
     "category": "Consecration, Trust & Living",
@@ -8272,6 +9392,16 @@
         "collection": "NZK",
         "number": 107,
         "title": "Sauti ni yake Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 107,
+        "title": "In Migeno Chamo Mwandu Me Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 107,
+        "title": "Omonyamwando Naki Ogosundoka?"
       }
     ],
     "category": "Gospel Invitation & Repentance",
@@ -8335,6 +9465,16 @@
         "collection": "NZK",
         "number": 108,
         "title": "Tumesikia Mbiu"
+      },
+      {
+        "collection": "WNY",
+        "number": 108,
+        "title": "Un Jorit Mar Dala Zayun"
+      },
+      {
+        "collection": "OKN",
+        "number": 108,
+        "title": "Abarendi Ba Zayoni"
       }
     ],
     "category": "Christian Mission & Warfare",
@@ -8384,6 +9524,16 @@
         "collection": "NZK",
         "number": 109,
         "title": "Anisikiaye"
+      },
+      {
+        "collection": "WNY",
+        "number": 109,
+        "title": "Nyaka Karang`o Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 109,
+        "title": "Tokob'Omosunte"
       }
     ],
     "category": "Gospel Invitation & Repentance",
@@ -8441,6 +9591,16 @@
         "collection": "NZK",
         "number": 110,
         "title": "Mlango Uko wa Wema"
+      },
+      {
+        "collection": "WNY",
+        "number": 110,
+        "title": "Kristo En Jatelowa"
+      },
+      {
+        "collection": "OKN",
+        "number": 110,
+        "title": "Krist' Omorai Oito"
       },
       {
         "collection": "SDAH",
@@ -8504,6 +9664,16 @@
         "collection": "NZK",
         "number": 111,
         "title": "Tabibu Mkuu"
+      },
+      {
+        "collection": "WNY",
+        "number": 111,
+        "title": "Wakwayi, Ruoth, Kuom Tekoni"
+      },
+      {
+        "collection": "OKN",
+        "number": 111,
+        "title": "Twagosabire Chinguru"
       },
       {
         "collection": "SDAH",
@@ -8675,6 +9845,16 @@
         "collection": "NZK",
         "number": 112,
         "title": "Wewe umechoka sana?"
+      },
+      {
+        "collection": "WNY",
+        "number": 112,
+        "title": "Keduru Jo Ka Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 112,
+        "title": "Tenena Ase Yeso"
       }
     ],
     "category": "Gospel Invitation & Repentance",
@@ -8790,7 +9970,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "ũtugi wa magegania ,nĩ wa honokirie",
+          "ũtugi wa mageganianĩ wa honokirie",
           "Rĩrĩa ndarĩ mũtumumu ngĩhingũka maitho."
         ]
       },
@@ -8970,6 +10150,16 @@
         "collection": "NZK",
         "number": 118,
         "title": "Nilipotoka Kabisa"
+      },
+      {
+        "collection": "WNY",
+        "number": 118,
+        "title": "Ndalo Auchiel Oserumo"
+      },
+      {
+        "collection": "OKN",
+        "number": 118,
+        "title": "Emeremo Yaerire"
       }
     ],
     "category": "Consecration, Trust & Living",
@@ -9035,6 +10225,16 @@
         "title": "Damu Imebubujika"
       },
       {
+        "collection": "WNY",
+        "number": 113,
+        "title": "Yaye Mad Abed Gi Yie Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 113,
+        "title": "Ong' Okwegen' Okonene"
+      },
+      {
         "collection": "SDAH",
         "number": 336,
         "title": "There Is A Foutain"
@@ -9089,6 +10289,16 @@
         "collection": "NZK",
         "number": 114,
         "title": "Yesu Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 114,
+        "title": "Jakristo We Nindo"
+      },
+      {
+        "collection": "OKN",
+        "number": 114,
+        "title": "'Mokristo Boka"
       }
     ],
     "category": "Salvation, Atonement & Grace"
@@ -9185,6 +10395,16 @@
         "collection": "NZK",
         "number": 117,
         "title": "Wamwendea Yesu?"
+      },
+      {
+        "collection": "WNY",
+        "number": 117,
+        "title": "Nitie Lweny Mager Ahinya"
+      },
+      {
+        "collection": "OKN",
+        "number": 117,
+        "title": "'Monene Nakwegene?"
       }
     ],
     "category": "Gospel Invitation & Repentance"
@@ -9201,7 +10421,7 @@
         "lines": [
           "Jesũ nĩaroiga, “we ndũrĩ na hinya;",
           "Wĩhũũge ũhoe, ũka mwana wakwa.",
-          "Thiirĩ  wa mehia ,we nĩandĩhĩire",
+          "Thiirĩ  wa mehiawe nĩandĩhĩire",
           "Hau Mũtharaba-inĩ,na akĩnjohere."
         ]
       },
@@ -9217,15 +10437,15 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ndĩngĩkĩrandũra ,wega waku mũingĩ;",
-          "Rĩu nĩ ngwĩtheria  ,na thakame yaku."
+          "Ndĩngĩkĩrandũrawega waku mũingĩ;",
+          "Rĩu nĩ ngwĩtheriana thakame yaku."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          ".Rĩrĩa ngarũũgama ,O kũu matu-inĩ",
+          ".Rĩrĩa ngarũũgamaO kũu matu-inĩ",
           "Thũũmbĩ nĩngamĩiga magũrũ-inĩ ma Jesũ."
         ]
       }
@@ -9236,6 +10456,16 @@
         "collection": "NZK",
         "number": 119,
         "title": "Yesu Anasema"
+      },
+      {
+        "collection": "WNY",
+        "number": 119,
+        "title": "Sabato Mari, Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 119,
+        "title": "'Sabato Enchenu"
       },
       {
         "collection": "SDAH",
@@ -9301,8 +10531,8 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ nwĩheana ,ngoro yakwa o na indo",
-          "Nĩngũcĩrĩirio nĩ wendo , nĩkĩo ngwĩneana biũ.",
+          "Harĩ Jesũ nwĩheanangoro yakwa o na indo",
+          "Nĩngũcĩrĩirio nĩ wendo nĩkĩo ngwĩneana biũ.",
           "Ngwĩneana biũ, ngwĩneana biũ;",
           "Nĩngũcĩrĩrio nĩ wendo ngwĩneana biũ."
         ]
@@ -9311,7 +10541,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ ngwĩneana ,ndĩmũinamagĩrĩre;",
+          "Harĩ Jesũ ngwĩneanandĩmũinamagĩrĩre;",
           "Nĩndigĩte ikeno ciothe Jesũ ũnyamũkĩre!"
         ]
       },
@@ -9319,7 +10549,7 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Harĩ Jesũ ngwĩneana ,ngarũra nduĩke waku;",
+          "Harĩ Jesũ ngwĩneanangarũra nduĩke waku;",
           "Roho amenyagĩrĩre matukũ makwa mothe."
         ]
       },
@@ -9338,6 +10568,16 @@
         "collection": "NZK",
         "number": 122,
         "title": "Yote Namtolea Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 122,
+        "title": "Kidira Chieng` Mar Yueyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 122,
+        "title": "Rituko Ri' Omogoko"
       },
       {
         "collection": "SDAH",
@@ -9477,6 +10717,16 @@
         "title": "Umechoka? Je, Umesumbuka?"
       },
       {
+        "collection": "WNY",
+        "number": 124,
+        "title": "Walamo Nyasaye Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 124,
+        "title": "Kegima Twaikire Omokubio Naende"
+      },
+      {
         "collection": "SDAH",
         "number": 524,
         "title": "‘Tis So Sweet to Trust in Jesus"
@@ -9526,6 +10776,16 @@
         "title": "Nilikupa Wewe"
       },
       {
+        "collection": "WNY",
+        "number": 98,
+        "title": "Jo Maler Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 98,
+        "title": "'Bachenu More N'oboros' Obuya"
+      },
+      {
         "collection": "SDAH",
         "number": 282,
         "title": "I Hear Thy Welcome Voice"
@@ -9573,6 +10833,16 @@
         "collection": "NZK",
         "number": 125,
         "title": "Uniangalie"
+      },
+      {
+        "collection": "WNY",
+        "number": 125,
+        "title": "E Ndaloni Maler Mar Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 125,
+        "title": "Rituko Riao Richenu"
       },
       {
         "collection": "SDAH",
@@ -9625,6 +10895,16 @@
         "title": "Yesu kwa Imani"
       },
       {
+        "collection": "WNY",
+        "number": 123,
+        "title": "In Skul Marwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 123,
+        "title": "Eskuru Y'Esabato"
+      },
+      {
         "collection": "SDAH",
         "number": 517,
         "title": "My Faith Looks Up to Thee"
@@ -9675,6 +10955,16 @@
         "title": "Katika Wenye dhambi"
       },
       {
+        "collection": "WNY",
+        "number": 121,
+        "title": "Mokwongo Ruodhwa Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 121,
+        "title": "'Mochakano Nyasae"
+      },
+      {
         "collection": "SDAH",
         "number": 295,
         "title": "Chief of Sinners"
@@ -9693,7 +10983,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Nĩmbatario nĩwe , o hingo ciothe;",
+          "Nĩmbatario nĩwe o hingo ciothe;",
           "Nandirĩ na ũngĩ mwagĩrĩru;",
           "Jesũ nĩngũbataire, mũno hingo ciothe;",
           "Kĩhotithie mũkũũri nĩnjũkĩte."
@@ -9703,7 +10993,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe , ũnjikarie;",
+          "Nĩmbatairio nĩwe ũnjikarie;",
           "Magerio no tũhũ matingĩndooria."
         ]
       },
@@ -9719,7 +11009,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe , ũndungate;",
+          "Nĩmbatairio nĩwe ũndungate;",
           "Ciĩranĩro ciaku ndĩcihingie."
         ]
       },
@@ -9727,8 +11017,8 @@
         "number": 5,
         "type": "verse",
         "lines": [
-          "Nĩmbatairio nĩwe ,hoti ya mothe;",
-          "Ndĩ waku waku ki , matukũ mothe."
+          "Nĩmbatairio nĩwehoti ya mothe;",
+          "Ndĩ waku waku ki matukũ mothe."
         ]
       }
     ],
@@ -9738,6 +11028,16 @@
         "collection": "NZK",
         "number": 126,
         "title": "Nina Haja Nawe"
+      },
+      {
+        "collection": "WNY",
+        "number": 126,
+        "title": "Kidich Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 126,
+        "title": "'Meremo Yaerire"
       },
       {
         "collection": "SDAH",
@@ -9795,6 +11095,16 @@
         "collection": "NZK",
         "number": 127,
         "title": "Nionapo Amani Kama Shwari"
+      },
+      {
+        "collection": "WNY",
+        "number": 127,
+        "title": "Nyasaye Gwedh Skundwa Mar Sabato"
+      },
+      {
+        "collection": "OKN",
+        "number": 127,
+        "title": "'Monen' Obuya Bwao"
       },
       {
         "collection": "SDAH",
@@ -9862,6 +11172,16 @@
         "title": "Namwandama Bwana"
       },
       {
+        "collection": "WNY",
+        "number": 128,
+        "title": "Ndalo Mamor"
+      },
+      {
+        "collection": "OKN",
+        "number": 128,
+        "title": "Rituko Richenu Mono"
+      },
+      {
         "collection": "SDAH",
         "number": 311,
         "title": "I Would Be Like Jesus"
@@ -9919,6 +11239,16 @@
         "title": "Kumtegemea Mwokozi"
       },
       {
+        "collection": "WNY",
+        "number": 129,
+        "title": "In Odira Mar Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 129,
+        "title": "Ika Ang' Omokubio"
+      },
+      {
         "collection": "SDAH",
         "number": 517,
         "title": "My Faith Looks Up to Thee"
@@ -9973,6 +11303,16 @@
         "collection": "NZK",
         "number": 167,
         "title": "Yesu Bwana Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 167,
+        "title": "Yesu, Kar Msalabani"
+      },
+      {
+        "collection": "OKN",
+        "number": 167,
+        "title": "Yes' As' Omosalaba"
       }
     ]
   },
@@ -10019,6 +11359,16 @@
         "collection": "NZK",
         "number": 130,
         "title": "Yesu Kwetu ni Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 130,
+        "title": "Wachokore Gi Mor Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 130,
+        "title": "Ker'Emambia"
       },
       {
         "collection": "SDAH",
@@ -10073,6 +11423,16 @@
         "collection": "NZK",
         "number": 131,
         "title": "Namtegemea Mungu"
+      },
+      {
+        "collection": "WNY",
+        "number": 131,
+        "title": "Nyasaye, Gokiny Mond` Iwinja"
+      },
+      {
+        "collection": "OKN",
+        "number": 131,
+        "title": "Omonene Ka Bogokia"
       }
     ]
   },
@@ -10129,6 +11489,16 @@
         "collection": "NZK",
         "number": 132,
         "title": "Bwana ni Mchunga"
+      },
+      {
+        "collection": "WNY",
+        "number": 132,
+        "title": "Wago Ni Ruoth Erokamano"
+      },
+      {
+        "collection": "OKN",
+        "number": 132,
+        "title": "Rituko Riaerire"
       },
       {
         "collection": "SDAH",
@@ -10194,6 +11564,16 @@
         "title": "Tafuta Daima Utakatifu"
       },
       {
+        "collection": "WNY",
+        "number": 134,
+        "title": "Wang` Chieng Koro Podhonwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 134,
+        "title": "Ker' Erioba Riagure"
+      },
+      {
         "collection": "SDAH",
         "number": 531,
         "title": "We’ll Build on the Rock"
@@ -10242,6 +11622,16 @@
         "collection": "NZK",
         "number": 172,
         "title": "Mfalme Wetu Atuita"
+      },
+      {
+        "collection": "WNY",
+        "number": 172,
+        "title": "Nitie Ngima Kwang`iyo Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 172,
+        "title": "'Bogima Mbore Omosalaba"
       }
     ]
   },
@@ -10335,6 +11725,16 @@
         "collection": "NZK",
         "number": 133,
         "title": "Po pote na Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 133,
+        "title": "Bedi Kod An"
+      },
+      {
+        "collection": "OKN",
+        "number": 133,
+        "title": "Kabe Nainche"
       },
       {
         "collection": "SDAH",
@@ -10459,6 +11859,16 @@
         "title": "Pendo Lako Ee Mwokozi"
       },
       {
+        "collection": "WNY",
+        "number": 37,
+        "title": "Yesu In Miheroa"
+      },
+      {
+        "collection": "OKN",
+        "number": 37,
+        "title": "Yes' Omwanchi Omoy'one"
+      },
+      {
         "collection": "SDAH",
         "number": 343,
         "title": "I Will sing Of My Redeemer"
@@ -10520,7 +11930,7 @@
           "Hĩndĩ njega ya mahoya rĩu nĩtwoka harĩ we;",
           "ũtũehererie mathĩĩna,o na mĩnyamaaro yothe",
           "Rĩrĩa gwĩ kĩeha na ruo,nĩũhonagia ngoro ciitũ;",
-          "Nĩtũhootaga mathĩna ,hĩndĩ njega ya mahoya."
+          "Nĩtũhootaga mathĩnahĩndĩ njega ya mahoya."
         ]
       },
       {
@@ -10560,6 +11970,16 @@
         "collection": "NZK",
         "number": 135,
         "title": "Saa Heri ya Maombi"
+      },
+      {
+        "collection": "WNY",
+        "number": 135,
+        "title": "Yesu, In Ma Jahoch Mar Chuny"
+      },
+      {
+        "collection": "OKN",
+        "number": 135,
+        "title": "'Mobaso Bw'enkoro Yane"
       },
       {
         "collection": "SDAH",
@@ -10625,6 +12045,16 @@
         "collection": "NZK",
         "number": 137,
         "title": "Saa Heri ya Sala"
+      },
+      {
+        "collection": "WNY",
+        "number": 137,
+        "title": "Winji Weche Ma Nondiki"
+      },
+      {
+        "collection": "OKN",
+        "number": 137,
+        "title": "Igwa Ring'ana Ria Nyasae Oito"
       }
     ],
     "category": "Prayer & Christian Fellowship"
@@ -10684,6 +12114,16 @@
         "collection": "NZK",
         "number": 138,
         "title": "Nitakuandama Kote"
+      },
+      {
+        "collection": "WNY",
+        "number": 138,
+        "title": "Richona Diluok Gang`o?"
+      },
+      {
+        "collection": "OKN",
+        "number": 138,
+        "title": "Nki Keransibi' Ebibe?"
       }
     ],
     "category": "Consecration, Trust & Living"
@@ -10730,6 +12170,16 @@
         "collection": "NZK",
         "number": 139,
         "title": "Uliniimbie Tena"
+      },
+      {
+        "collection": "WNY",
+        "number": 139,
+        "title": "Ringra Namiyo In"
+      },
+      {
+        "collection": "OKN",
+        "number": 139,
+        "title": "Ngakoa 'Bogima"
       },
       {
         "collection": "SDAH",
@@ -10803,6 +12253,16 @@
         "title": "Nitwae Hivi Nilivyo"
       },
       {
+        "collection": "WNY",
+        "number": 140,
+        "title": "Adwaro Manyo Rombe"
+      },
+      {
+        "collection": "OKN",
+        "number": 140,
+        "title": "Rigi 'Abasiru"
+      },
+      {
         "collection": "SDAH",
         "number": 313,
         "title": "Just As I Am"
@@ -10858,6 +12318,16 @@
         "collection": "NZK",
         "number": 142,
         "title": "Nasikia Mwito"
+      },
+      {
+        "collection": "WNY",
+        "number": 142,
+        "title": "Nitie Wendo E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 142,
+        "title": "'Mogeni Ngesieri Are"
       }
     ],
     "category": "Praise & Thanksgiving"
@@ -10903,6 +12373,16 @@
         "collection": "NZK",
         "number": 144,
         "title": "Ni Wako Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 144,
+        "title": "Nawinjo Yesu Kowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 144,
+        "title": "Nkaigwa Yeso Ogokwana"
       },
       {
         "collection": "SDAH",
@@ -10960,6 +12440,16 @@
         "collection": "NZK",
         "number": 145,
         "title": "Ulimwengu Siutaki"
+      },
+      {
+        "collection": "WNY",
+        "number": 145,
+        "title": "Yesu Jakwath Madieri"
+      },
+      {
+        "collection": "OKN",
+        "number": 145,
+        "title": "Yes' Omorisi' Omuya"
       }
     ],
     "category": "Heaven & Life Everlasting"
@@ -11105,6 +12595,16 @@
         "title": "Univute Karibu"
       },
       {
+        "collection": "WNY",
+        "number": 148,
+        "title": "Ng`a Mowinjo Dwond Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 148,
+        "title": "Oyoraigwe"
+      },
+      {
         "collection": "SDAH",
         "number": 473,
         "title": "Nearer My God, To Thee"
@@ -11154,7 +12654,7 @@
         "type": "verse",
         "lines": [
           "Mũndũ ũkwenda gũkinya, Kwa Jesũ Igũrũ,",
-          "Njĩra ya mũtharaba , Noyo ya matu-inĩ;",
+          "Njĩra ya mũtharaba Noyo ya matu-inĩ;",
           "Jesũ nĩ Mũhonokia, Hatirĩ na ũngĩ,",
           "Gwĩ gĩkeno kĩnene ma, Kwa Mwathani."
         ]
@@ -11166,6 +12666,16 @@
         "collection": "NZK",
         "number": 141,
         "title": "Chini ya Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 141,
+        "title": "Yesu Oluongoi Mondo Ibi"
+      },
+      {
+        "collection": "OKN",
+        "number": 141,
+        "title": "Yes' As' Obworor' Okorangeirie"
       },
       {
         "collection": "SDAH",
@@ -11220,6 +12730,16 @@
         "collection": "NZK",
         "number": 190,
         "title": "Raha Yangu Yote, Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 190,
+        "title": "Ruoth, Ok Akwayoi Tinde"
+      },
+      {
+        "collection": "OKN",
+        "number": 190,
+        "title": "'Monene Tari Ebi' Ankio"
       }
     ]
   },
@@ -11315,6 +12835,16 @@
         "collection": "NZK",
         "number": 147,
         "title": "Tawala Ndani Yangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 147,
+        "title": "Wasewinjo Wach Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 147,
+        "title": "Twarigure  Ring'ana"
       }
     ],
     "category": "Consecration, Trust & Living"
@@ -11373,6 +12903,16 @@
         "collection": "NZK",
         "number": 193,
         "title": "Sauti ya Mchungaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 193,
+        "title": "Winj Weche Ma Yesu Nowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 193,
+        "title": "Igwa Amang'ana A Yeso"
       }
     ]
   },
@@ -11423,6 +12963,16 @@
         "collection": "NZK",
         "number": 115,
         "title": "Naendea Msalaba"
+      },
+      {
+        "collection": "WNY",
+        "number": 115,
+        "title": "Be An Jarit Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 115,
+        "title": "'Morendi Bw'Omosalaba?"
       }
     ],
     "category": "Salvation, Atonement & Grace"
@@ -11466,6 +13016,16 @@
         "collection": "NZK",
         "number": 143,
         "title": "Baba Sina Msaada"
+      },
+      {
+        "collection": "WNY",
+        "number": 143,
+        "title": "Yesu Oluongowa Koro"
+      },
+      {
+        "collection": "OKN",
+        "number": 143,
+        "title": "Nkorangeri' Are Ng'ora"
       }
     ],
     "category": "Prayer & Christian Fellowship"
@@ -11513,6 +13073,16 @@
         "collection": "NZK",
         "number": 150,
         "title": "Hasha Maneno Mabaya"
+      },
+      {
+        "collection": "WNY",
+        "number": 150,
+        "title": "Jathieth Maduong` Osudo Ka"
+      },
+      {
+        "collection": "OKN",
+        "number": 150,
+        "title": "Omogwenia Ore Ang'e"
       }
     ],
     "category": "Praise & Thanksgiving"
@@ -11566,6 +13136,16 @@
         "title": "Huniongoza Mwokozi"
       },
       {
+        "collection": "WNY",
+        "number": 151,
+        "title": "Richo Oketho Ji Malit"
+      },
+      {
+        "collection": "OKN",
+        "number": 151,
+        "title": "K'ebibe Bire 'Birito"
+      },
+      {
         "collection": "SDAH",
         "number": 537,
         "title": "He Leadeth Me"
@@ -11584,23 +13164,23 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Hakuhĩ nawe Ngai niguo ngwenda , hakuhĩ makĩria Ngai wakwa;",
-          "Hingo yakwa yothe njikarage nawe ,hakuhĩ makĩria Ngai wakwa."
+          "Hakuhĩ nawe Ngai niguo ngwenda hakuhĩ makĩria Ngai wakwa;",
+          "Hingo yakwa yothe njikarage nawehakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 2,
         "type": "verse",
         "lines": [
-          "Niĩ ndĩ mũgendi rũgendo-inĩ ,ndirĩ ndahurũka ngoro-inĩ",
-          "No rwĩmbo nyinaga ũguo ngĩthiaga , hakuhĩ makĩria Ngai wakwa."
+          "Niĩ ndĩ mũgendi rũgendo-inĩndirĩ ndahurũka ngoro-inĩ",
+          "No rwĩmbo nyinaga ũguo ngĩthiaga hakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 3,
         "type": "verse",
         "lines": [
-          "Maũndũ matheru mangucagia , nĩmo maku mega ma igũrũ;",
+          "Maũndũ matheru mangucagia nĩmo maku mega ma igũrũ;",
           "Hĩndĩ ĩrĩa ndĩ toro ũnjikaragie, hakuhĩ makĩria Ngai wakwa."
         ]
       },
@@ -11609,14 +13189,14 @@
         "type": "verse",
         "lines": [
           "Rĩu ngũkũgooca na hinya ma wee ndũũmba ya ihiga rĩa ũhonokio",
-          "Rĩrĩa ndĩna thĩĩna ndĩũragĩra gwaku , Hakuhĩ makĩria Ngai wakwa."
+          "Rĩrĩa ndĩna thĩĩna ndĩũragĩra gwaku Hakuhĩ makĩria Ngai wakwa."
         ]
       },
       {
         "number": 5,
         "type": "verse",
         "lines": [
-          "Rũgendo rwathira rwa gũkũ thĩ ,ũkandwara igũrũ kũu gwaku",
+          "Rũgendo rwathira rwa gũkũ thĩũkandwara igũrũ kũu gwaku",
           "Nĩkuo ngakenera tondũ ngatũũraga,hakuhĩ makĩria Ngai wakwa."
         ]
       }
@@ -11627,6 +13207,16 @@
         "collection": "NZK",
         "number": 152,
         "title": "Karibu na Wewe"
+      },
+      {
+        "collection": "WNY",
+        "number": 152,
+        "title": "Yesu Okadho"
+      },
+      {
+        "collection": "OKN",
+        "number": 152,
+        "title": "Yeso Ngoet' Are"
       },
       {
         "collection": "SDAH",
@@ -11683,6 +13273,16 @@
         "collection": "NZK",
         "number": 153,
         "title": "Fikira Moja tu"
+      },
+      {
+        "collection": "WNY",
+        "number": 153,
+        "title": "Ngima Machiek Mawango!"
+      },
+      {
+        "collection": "OKN",
+        "number": 153,
+        "title": "'Bogim' Obuya  Mbweng'e"
       }
     ],
     "category": "Worship & Adoration"
@@ -11732,6 +13332,16 @@
         "collection": "NZK",
         "number": 154,
         "title": "Yanipasa Kuwa Naye"
+      },
+      {
+        "collection": "WNY",
+        "number": 154,
+        "title": "Yie Yesu Odonj E Chunyi"
+      },
+      {
+        "collection": "OKN",
+        "number": 154,
+        "title": "Tiga Yeso Ach' Enkoro"
       }
     ],
     "category": "Consecration, Trust & Living"
@@ -11930,6 +13540,16 @@
         "title": "Po pote na Yesu"
       },
       {
+        "collection": "WNY",
+        "number": 133,
+        "title": "Bedi Kod An"
+      },
+      {
+        "collection": "OKN",
+        "number": 133,
+        "title": "Kabe Nainche"
+      },
+      {
         "collection": "SDAH",
         "number": 508,
         "title": "Anywhere With Jesus"
@@ -11983,6 +13603,16 @@
         "collection": "NZK",
         "number": 157,
         "title": "Mfalme yu Mlangoni"
+      },
+      {
+        "collection": "WNY",
+        "number": 157,
+        "title": "Winji Jawar Ni E Dhoot"
+      },
+      {
+        "collection": "OKN",
+        "number": 157,
+        "title": "'Bwanchani Boria Bwakare"
       }
     ],
     "category": "Salvation, Atonement & Grace"
@@ -12008,7 +13638,7 @@
         "type": "verse",
         "lines": [
           "Ngĩũria thĩ, ĩrĩa na riũa igĩcokia mũgambo ũmwe",
-          "Rĩu ihinda nĩ rĩthiru ,mũthenya nĩ mũũku;",
+          "Rĩu ihinda nĩ rĩthirumũthenya nĩ mũũku;",
           "Kĩgirĩko no wĩhũge, marũũri no maratwonia",
           "Thĩ yothe rĩu yetereire cooro wake wiki;"
         ]
@@ -12017,20 +13647,20 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ngĩũria njaamba ĩrĩ werũ-inĩ , rũĩmbo rũgĩkĩmĩguucia",
+          "Ngĩũria njaamba ĩrĩ werũ-inĩ rũĩmbo rũgĩkĩmĩguucia",
           "ũmĩrĩria ũhotane mbara ti ndaaya rĩu;",
-          "Kĩgirĩko ũmĩrĩria ũguucanie ũhootane ;",
-          "Kĩheo kĩrĩ ho kũna , Ombara ya thira."
+          "Kĩgirĩko ũmĩrĩria ũguucanie ũhootane",
+          "Kĩheo kĩrĩ ho kũna Ombara ya thira."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          "Rĩu mũciĩ ti kũraihu , mũgendi gĩkũngũĩre;",
+          "Rĩu mũciĩ ti kũraihu mũgendi gĩkũngũĩre;",
           "Kĩhonia rĩu nĩkĩo gĩkĩ kĩniarie maithori;",
           "Kĩgirĩko tũcemanie, kũrĩa gũtagirĩkagwo;",
-          "Tiga gĩkeno gĩtheri , mũciĩ gwa Ithe witũ"
+          "Tiga gĩkeno gĩtheri mũciĩ gwa Ithe witũ"
         ]
       }
     ],
@@ -12040,6 +13670,16 @@
         "collection": "NZK",
         "number": 158,
         "title": "U mwendo Gani Nyumbani?"
+      },
+      {
+        "collection": "WNY",
+        "number": 158,
+        "title": "Un Jo Mojony, Biuru"
+      },
+      {
+        "collection": "OKN",
+        "number": 158,
+        "title": "Yeso Menya Ime Yane"
       }
     ],
     "category": "Worship & Adoration"
@@ -12073,15 +13713,15 @@
         "type": "verse",
         "lines": [
           "Tũtikamũkana rĩngĩ tũrĩ nao,nĩtũkaina nyĩnbo njega;",
-          "Magacemanagia rũũrĩrĩ o rũũrĩrĩ , magũrũ-inĩ ma Gatũrũme."
+          "Magacemanagia rũũrĩrĩ o rũũrĩrĩ magũrũ-inĩ ma Gatũrũme."
         ]
       },
       {
         "number": 4,
         "type": "verse",
         "lines": [
-          "Haleluyah! Amen Haleluyah o rĩngĩ , wendo wake nĩ mũnene;",
-          "Tũkamũgocaga tene ona tene , tũgegeete nĩgũtũkũũra."
+          "Haleluyah! Amen Haleluyah o rĩngĩ wendo wake nĩ mũnene;",
+          "Tũkamũgocaga tene ona tene tũgegeete nĩgũtũkũũra."
         ]
       }
     ],
@@ -12092,6 +13732,16 @@
         "collection": "NZK",
         "number": 159,
         "title": "Anakuja Upesi"
+      },
+      {
+        "collection": "WNY",
+        "number": 159,
+        "title": "Chungo E Adiera Kaka Daniel"
+      },
+      {
+        "collection": "OKN",
+        "number": 159,
+        "title": "Nkoro Yan'eyasiboirwe!"
       }
     ]
   },
@@ -12150,6 +13800,16 @@
         "collection": "NZK",
         "number": 160,
         "title": "Watakatifu Kesheni"
+      },
+      {
+        "collection": "WNY",
+        "number": 160,
+        "title": "Nitie Remo Ma Nochwer"
+      },
+      {
+        "collection": "OKN",
+        "number": 160,
+        "title": "Ner Ensoko Y'amanyinga"
       }
     ],
     "category": "Christian Mission & Warfare"
@@ -12209,6 +13869,16 @@
         "collection": "NZK",
         "number": 161,
         "title": "Piga Panda"
+      },
+      {
+        "collection": "WNY",
+        "number": 161,
+        "title": "Ruoth Yesu, Agomobo Bedo Ng`ati"
+      },
+      {
+        "collection": "OKN",
+        "number": 161,
+        "title": "Yeso Nche Nindigeti' Ogosibigwa"
       }
     ],
     "category": "Second Coming & Christian Hope"
@@ -12262,6 +13932,16 @@
         "title": "Unakaribia Wakati"
       },
       {
+        "collection": "WNY",
+        "number": 164,
+        "title": "Analu Bang` Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 164,
+        "title": "Gwachir' Ase Yeso?"
+      },
+      {
         "collection": "SDAH",
         "number": 213,
         "title": "Jesus Is Coming Again"
@@ -12311,6 +13991,16 @@
         "collection": "NZK",
         "number": 165,
         "title": "Ahadi Tamu"
+      },
+      {
+        "collection": "WNY",
+        "number": 165,
+        "title": "Asebayo Mabor Kod Ruoth"
+      },
+      {
+        "collection": "OKN",
+        "number": 165,
+        "title": "Natayayire Kegima"
       },
       {
         "collection": "SDAH",
@@ -12382,6 +14072,16 @@
         "title": "Sijui Atakapokuja"
       },
       {
+        "collection": "WNY",
+        "number": 174,
+        "title": "Anayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 174,
+        "title": "Namwanchire Yeso Bweka"
+      },
+      {
         "collection": "SDAH",
         "number": 604,
         "title": "We Know Not the Hour"
@@ -12439,6 +14139,16 @@
         "collection": "NZK",
         "number": 166,
         "title": "Furaha kwa Ulimwengu"
+      },
+      {
+        "collection": "WNY",
+        "number": 166,
+        "title": "Jawar Owachona"
+      },
+      {
+        "collection": "OKN",
+        "number": 166,
+        "title": "'Motori' Agantebia"
       },
       {
         "collection": "SDAH",
@@ -12613,6 +14323,16 @@
         "title": "Pengine Ni Saa"
       },
       {
+        "collection": "WNY",
+        "number": 163,
+        "title": "Agombo Bedo Gi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 163,
+        "title": "Omonene Ndigeti' Eke"
+      },
+      {
         "collection": "SDAH",
         "number": 218,
         "title": "When He Cometh"
@@ -12750,6 +14470,16 @@
         "collection": "NZK",
         "number": 167,
         "title": "Yesu Bwana Mwokozi"
+      },
+      {
+        "collection": "WNY",
+        "number": 167,
+        "title": "Yesu, Kar Msalabani"
+      },
+      {
+        "collection": "OKN",
+        "number": 167,
+        "title": "Yes' As' Omosalaba"
       }
     ],
     "category": "Gospel Invitation & Repentance"
@@ -12848,6 +14578,16 @@
         "title": "Tarumbeta ya Mwana"
       },
       {
+        "collection": "WNY",
+        "number": 168,
+        "title": "Duto Amiyo Ruoth Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 168,
+        "title": "Bionsi Namoeire Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 216,
         "title": "When the Roll Is Called Up Yonder"
@@ -12903,6 +14643,16 @@
         "collection": "NZK",
         "number": 170,
         "title": "Siitafuti Mali"
+      },
+      {
+        "collection": "WNY",
+        "number": 170,
+        "title": "Nitie Ng`ama Noyie Tho Mondo Owara"
+      },
+      {
+        "collection": "OKN",
+        "number": 170,
+        "title": "Nareo Onyanchete"
       },
       {
         "collection": "SDAH",
@@ -12968,6 +14718,16 @@
         "collection": "NZK",
         "number": 172,
         "title": "Mfalme Wetu Atuita"
+      },
+      {
+        "collection": "WNY",
+        "number": 172,
+        "title": "Nitie Ngima Kwang`iyo Msalaba"
+      },
+      {
+        "collection": "OKN",
+        "number": 172,
+        "title": "'Bogima Mbore Omosalaba"
       }
     ],
     "category": "Worship & Adoration"
@@ -13012,6 +14772,16 @@
         "collection": "NZK",
         "number": 171,
         "title": "Imeanzishwa Hukumu"
+      },
+      {
+        "collection": "WNY",
+        "number": 171,
+        "title": "In Kiol Nikech Chandruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 171,
+        "title": "Kwarosir' Aye?"
       },
       {
         "collection": "SDAH",
@@ -13064,6 +14834,16 @@
         "collection": "NZK",
         "number": 173,
         "title": "Hatujui Saa"
+      },
+      {
+        "collection": "WNY",
+        "number": 173,
+        "title": "Ka Satan Otemi"
+      },
+      {
+        "collection": "OKN",
+        "number": 173,
+        "title": "Korabe Nyancha Ime"
       }
     ],
     "category": "Second Coming & Christian Hope"
@@ -13139,7 +14919,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Nĩtũkaigua mũgambo wa Jesũ , Twĩtwo ‘ngombo’ njathĩki",
+          "Nĩtũkaigua mũgambo wa Jesũ Twĩtwo ‘ngombo’ njathĩki",
           "Kana nĩ kũinaina tũkainaina Tũthengio gĩtĩ-inĩ gĩake."
         ]
       },
@@ -13174,6 +14954,16 @@
         "collection": "NZK",
         "number": 169,
         "title": "Hapo Yesu Atakapoita"
+      },
+      {
+        "collection": "WNY",
+        "number": 169,
+        "title": "Yesu Luongi, We Ting`ni Mar Richo"
+      },
+      {
+        "collection": "OKN",
+        "number": 169,
+        "title": "Nosiboke Korwa As' Ebibe"
       }
     ],
     "category": "Second Coming & Christian Hope"
@@ -13270,6 +15060,16 @@
         "title": "Nitaonana na Yesu"
       },
       {
+        "collection": "WNY",
+        "number": 175,
+        "title": "Geno Kristo Kelonwa Mor"
+      },
+      {
+        "collection": "OKN",
+        "number": 175,
+        "title": "'Gosemeria Kw'Omokristo"
+      },
+      {
         "collection": "SDAH",
         "number": 432,
         "title": "Shall We Gather At The River"
@@ -13336,6 +15136,16 @@
         "title": "Ati twonane Mtoni?"
       },
       {
+        "collection": "WNY",
+        "number": 176,
+        "title": "Nyasaye Noolnwa Gweth Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 176,
+        "title": "'Mbura Netwe Korwa Igoro"
+      },
+      {
         "collection": "SDAH",
         "number": 432,
         "title": "Shall We Gather At The River"
@@ -13387,6 +15197,16 @@
         "collection": "NZK",
         "number": 177,
         "title": "Kazi Yangu Ikiisha"
+      },
+      {
+        "collection": "WNY",
+        "number": 177,
+        "title": "Ka Chandruok Osudo Machiegni Kodi"
+      },
+      {
+        "collection": "OKN",
+        "number": 177,
+        "title": "Kemechando Eragoetanane"
       },
       {
         "collection": "SDAH",
@@ -13444,6 +15264,16 @@
         "collection": "NZK",
         "number": 99,
         "title": "Twende kwa Yesu"
+      },
+      {
+        "collection": "WNY",
+        "number": 99,
+        "title": "Chunya, Mond` Iritri"
+      },
+      {
+        "collection": "OKN",
+        "number": 99,
+        "title": "Enkoro Yane Renda"
       }
     ],
     "category": "Gospel Invitation & Repentance"
@@ -13458,7 +15288,7 @@
         "number": 1,
         "type": "verse",
         "lines": [
-          "Mũrĩmo ũrĩa wa Jordani , nĩkuo ndĩroreire",
+          "Mũrĩmo ũrĩa wa Jordani nĩkuo ndĩroreire",
           "Bũrũri mwega Kaanani, nĩkuo njerekeire",
           "Tũgatũraga hamwe na Jesũ",
           "Bũrũri ũcio mwega wa gĩkeno",
@@ -13486,7 +15316,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Gĩkeno gĩakwa ngoro-inĩ ,nĩgũka kũiyĩrwo",
+          "Gĩkeno gĩakwa ngoro-inĩnĩgũka kũiyĩrwo",
           "Ndingĩtigĩra makũũmbĩ, moothe ma Jordani."
         ]
       }
@@ -13497,6 +15327,16 @@
         "collection": "NZK",
         "number": 178,
         "title": "Ukingoni Mwa Yordani"
+      },
+      {
+        "collection": "WNY",
+        "number": 178,
+        "title": "Beduru Gi Yie"
+      },
+      {
+        "collection": "OKN",
+        "number": 178,
+        "title": "'Ker' Arache"
       },
       {
         "collection": "SDAH",
@@ -13546,6 +15386,16 @@
         "collection": "NZK",
         "number": 179,
         "title": "Wavunaji Watafurahi"
+      },
+      {
+        "collection": "WNY",
+        "number": 179,
+        "title": "Chunyi Dich Nikech Parruok"
+      },
+      {
+        "collection": "OKN",
+        "number": 179,
+        "title": "'Nkoro Yao Yamigirwe"
       }
     ],
     "category": "Heaven & Life Everlasting"
@@ -13589,6 +15439,16 @@
         "collection": "NZK",
         "number": 180,
         "title": "Pana Mahali Pazuri Mno"
+      },
+      {
+        "collection": "WNY",
+        "number": 180,
+        "title": "Un Muhero Ruodh Polo"
+      },
+      {
+        "collection": "OKN",
+        "number": 180,
+        "title": "Engaki Engiya Mono"
       },
       {
         "collection": "SDAH",
@@ -13638,6 +15498,16 @@
         "collection": "NZK",
         "number": 181,
         "title": "Mahali pa Maji"
+      },
+      {
+        "collection": "WNY",
+        "number": 181,
+        "title": "Nyasaye Ni Lerna"
+      },
+      {
+        "collection": "OKN",
+        "number": 181,
+        "title": "'Monen'Omobas' One"
       }
     ],
     "category": "Heaven & Life Everlasting"
@@ -13691,6 +15561,16 @@
         "title": "Mchana Hauishi"
       },
       {
+        "collection": "WNY",
+        "number": 182,
+        "title": "Koro Wagenoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 182,
+        "title": "Yeso Nkwegenete"
+      },
+      {
         "collection": "SDAH",
         "number": 427,
         "title": "No Night There"
@@ -13739,6 +15619,16 @@
         "collection": "NZK",
         "number": 183,
         "title": "Furaha na Raha"
+      },
+      {
+        "collection": "WNY",
+        "number": 183,
+        "title": "Ang`eyo Wuonwa Ong`eyo"
+      },
+      {
+        "collection": "OKN",
+        "number": 183,
+        "title": "Tat'O Igoro Namanyete"
       }
     ]
   },
@@ -13786,6 +15676,16 @@
         "collection": "NZK",
         "number": 184,
         "title": "Vitu Vyote ni Sawa"
+      },
+      {
+        "collection": "WNY",
+        "number": 184,
+        "title": "Kat` Abed Jaketh Maduong`"
+      },
+      {
+        "collection": "OKN",
+        "number": 184,
+        "title": "Nimba Omobe Mono"
       }
     ]
   },
@@ -13891,6 +15791,16 @@
         "title": "Vitu Vyote ni Sawa"
       },
       {
+        "collection": "WNY",
+        "number": 184,
+        "title": "Kat` Abed Jaketh Maduong`"
+      },
+      {
+        "collection": "OKN",
+        "number": 184,
+        "title": "Nimba Omobe Mono"
+      },
+      {
         "collection": "SDAH",
         "number": 652,
         "title": "Love at Home"
@@ -13952,6 +15862,16 @@
         "collection": "NZK",
         "number": 185,
         "title": "Mungu U Mapenzi"
+      },
+      {
+        "collection": "WNY",
+        "number": 185,
+        "title": "Adwari Saa Duto"
+      },
+      {
+        "collection": "OKN",
+        "number": 185,
+        "title": "Nche Ninkoganetie"
       }
     ],
     "category": "Worship & Adoration"
@@ -13995,6 +15915,16 @@
         "collection": "NZK",
         "number": 186,
         "title": "Tuonanapo na Rafiki"
+      },
+      {
+        "collection": "WNY",
+        "number": 186,
+        "title": "Kata Ka Abedo Gi Ngima Maber"
+      },
+      {
+        "collection": "OKN",
+        "number": 186,
+        "title": "Ekero Nkoba n'Omorembe Nchera"
       },
       {
         "collection": "SDAH",
@@ -14052,6 +15982,16 @@
         "title": "Kufariki Naye Yesu"
       },
       {
+        "collection": "WNY",
+        "number": 187,
+        "title": "Kwawuotho Gi Ruodhwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 187,
+        "title": "Gotara Na Yeso"
+      },
+      {
         "collection": "SDAH",
         "number": 305,
         "title": "Give Me Jesus"
@@ -14107,6 +16047,16 @@
         "collection": "NZK",
         "number": 188,
         "title": "Wimbi la Damu"
+      },
+      {
+        "collection": "WNY",
+        "number": 188,
+        "title": "An Ayie Ruoth Yesu Kende"
+      },
+      {
+        "collection": "OKN",
+        "number": 188,
+        "title": "Mbuya Komwegena Yeso"
       }
     ],
     "category": "Salvation, Atonement & Grace"
@@ -14193,6 +16143,16 @@
         "collection": "NZK",
         "number": 189,
         "title": "Mimina Upya"
+      },
+      {
+        "collection": "WNY",
+        "number": 189,
+        "title": "Yesu Kristo En Osiepwa"
+      },
+      {
+        "collection": "OKN",
+        "number": 189,
+        "title": "Naki Yes' Ar'omosani"
       }
     ],
     "category": "Salvation, Atonement & Grace"
@@ -14240,6 +16200,16 @@
         "collection": "NZK",
         "number": 191,
         "title": "Mkate wa Mbingu"
+      },
+      {
+        "collection": "WNY",
+        "number": 191,
+        "title": "Ruoth En E Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 191,
+        "title": "Monen' Omorisia"
       },
       {
         "collection": "SDAH",
@@ -14319,9 +16289,9 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Ndirĩ na ihaki niĩ ,ngwĩhoka o mũtharaba",
+          "Ndirĩ na ihaki niĩngwĩhoka o mũtharaba",
           "Ndĩ njaga humba nguo,ndĩ mũhũthũ ndeithagia",
-          "Ndĩ o mwĩhia no ngũka ,ũthambie itanakua."
+          "Ndĩ o mwĩhia no ngũkaũthambie itanakua."
         ]
       },
       {
@@ -14340,6 +16310,16 @@
         "collection": "NZK",
         "number": 192,
         "title": "Mwamba Wenye Imara"
+      },
+      {
+        "collection": "WNY",
+        "number": 192,
+        "title": "Tim Kinda Mar Lemo"
+      },
+      {
+        "collection": "OKN",
+        "number": 192,
+        "title": "Rigi' Ob' Omochenu"
       },
       {
         "collection": "SDAH",
@@ -14389,6 +16369,16 @@
         "collection": "NZK",
         "number": 193,
         "title": "Sauti ya Mchungaji"
+      },
+      {
+        "collection": "WNY",
+        "number": 193,
+        "title": "Winj Weche Ma Yesu Nowacho"
+      },
+      {
+        "collection": "OKN",
+        "number": 193,
+        "title": "Igwa Amang'ana A Yeso"
       },
       {
         "collection": "SDAH",
@@ -14452,6 +16442,16 @@
         "collection": "NZK",
         "number": 194,
         "title": "Twaomba Bwana"
+      },
+      {
+        "collection": "WNY",
+        "number": 194,
+        "title": "Wuothi E Ler Mar Ruoth Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 194,
+        "title": "Tar' Enchera Y'Omonene"
       }
     ],
     "category": "Prayer & Christian Fellowship"
@@ -14648,6 +16648,16 @@
         "collection": "NZK",
         "number": 198,
         "title": "Nilinawa Mikono"
+      },
+      {
+        "collection": "WNY",
+        "number": 198,
+        "title": "Yesu Ni Jakwadha"
+      },
+      {
+        "collection": "OKN",
+        "number": 198,
+        "title": "Yes' Omorisi' Oito"
       }
     ],
     "category": "Praise & Thanksgiving"
@@ -14692,6 +16702,16 @@
         "collection": "NZK",
         "number": 202,
         "title": "Sikia Mlio"
+      },
+      {
+        "collection": "WNY",
+        "number": 202,
+        "title": "Weruru Weche Mag Nyasaye"
+      },
+      {
+        "collection": "OKN",
+        "number": 202,
+        "title": "Ntererie Roik' Abaminto"
       }
     ]
   },
@@ -14736,6 +16756,16 @@
         "collection": "NZK",
         "number": 199,
         "title": "Upendo ni Furaha"
+      },
+      {
+        "collection": "WNY",
+        "number": 199,
+        "title": "Ruoth Yesu, Saa Mar Lamoi"
+      },
+      {
+        "collection": "OKN",
+        "number": 199,
+        "title": "Ens' Engiya Y'ogosaba"
       }
     ],
     "category": "Praise & Thanksgiving"
@@ -14752,7 +16782,7 @@
         "lines": [
           "Jesũ nĩwe mũnyendi,na nĩnjũĩ nĩguo ki!",
           "Mbuku ya Ngai yugaga,nĩwe mwendi wa twana.",
-          "ĩĩ nĩanyendete ,Jesũ we mwene;",
+          "ĩĩ nĩanyendeteJesũ we mwene;",
           "ĩĩ nĩanyendete,nĩnjuĩ nĩguo ma."
         ]
       },
@@ -14760,7 +16790,7 @@
         "number": 2,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,nĩanguĩrĩire mũtĩ-inĩ",
+          "Jesũ nĩwe mũnyeendinĩanguĩrĩire mũtĩ-inĩ",
           "Wĩhia wakwa anine,Mwana wake ndakore."
         ]
       },
@@ -14768,7 +16798,7 @@
         "number": 3,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,rĩrĩa ndĩhatĩka-inĩ",
+          "Jesũ nĩwe mũnyeendirĩrĩa ndĩhatĩka-inĩ",
           "Ekũu matu-inĩ no anjũthagĩrĩria."
         ]
       },
@@ -14776,7 +16806,7 @@
         "number": 4,
         "type": "verse",
         "lines": [
-          "Jesũ nĩwe mũnyeendi ,tũtigatigana ni;",
+          "Jesũ nĩwe mũnyeenditũtigatigana ni;",
           "Tũrĩthiaga nake,O kinya mũciĩ gwake."
         ]
       }
@@ -14787,6 +16817,16 @@
         "collection": "NZK",
         "number": 197,
         "title": "Anipenda ni Kweli"
+      },
+      {
+        "collection": "WNY",
+        "number": 197,
+        "title": "Owadwa Kik Iluor"
+      },
+      {
+        "collection": "OKN",
+        "number": 197,
+        "title": "Kae' Mbeo' Bwoba"
       }
     ],
     "category": "Worship & Adoration"
@@ -14830,6 +16870,16 @@
         "collection": "NZK",
         "number": 196,
         "title": "Kitambo Bwana Yuaja"
+      },
+      {
+        "collection": "WNY",
+        "number": 196,
+        "title": "Yesu En Osiep Maber Chutho"
+      },
+      {
+        "collection": "OKN",
+        "number": 196,
+        "title": "Yeso N'Omosani Omuya"
       },
       {
         "collection": "SDAH",
@@ -14904,6 +16954,16 @@
         "collection": "NZK",
         "number": 204,
         "title": "Kuwa na Yesu Nyumbani"
+      },
+      {
+        "collection": "WNY",
+        "number": 204,
+        "title": "Awinjo Dwondi Maler"
+      },
+      {
+        "collection": "OKN",
+        "number": 204,
+        "title": "Naigw'eriogi Riao"
       }
     ]
   },
@@ -14946,6 +17006,16 @@
         "collection": "NZK",
         "number": 201,
         "title": "Mungu Huona Vindege"
+      },
+      {
+        "collection": "WNY",
+        "number": 201,
+        "title": "Analu Bang`i Jakonya"
+      },
+      {
+        "collection": "OKN",
+        "number": 201,
+        "title": "Ningotunye Omotoria"
       },
       {
         "collection": "SDAH",
@@ -15003,6 +17073,16 @@
         "collection": "NZK",
         "number": 200,
         "title": "Baba Yetu Aliye Mbinguni"
+      },
+      {
+        "collection": "WNY",
+        "number": 200,
+        "title": "Saa Mar Lemo Mogwedhi"
+      },
+      {
+        "collection": "OKN",
+        "number": 200,
+        "title": "'Nsa Ngiya Y'ogosaba"
       }
     ],
     "category": "Praise & Thanksgiving"
@@ -15499,6 +17579,16 @@
         "collection": "NZK",
         "number": 203,
         "title": "Siku Sita Fanya Kazi"
+      },
+      {
+        "collection": "WNY",
+        "number": 203,
+        "title": "To Kak Abet Yesu Kawa"
+      },
+      {
+        "collection": "OKN",
+        "number": 203,
+        "title": "Buna Nde"
       }
     ]
   },
@@ -15569,6 +17659,16 @@
         "collection": "NZK",
         "number": 214,
         "title": "Nataka Niwe Tayari"
+      },
+      {
+        "collection": "WNY",
+        "number": 214,
+        "title": "Asebayo Mabor Kodi Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 214,
+        "title": "Bono Ngocha Nde"
       }
     ]
   },
@@ -15595,6 +17695,16 @@
         "collection": "NZK",
         "number": 218,
         "title": "Yesu Mwokozi Mpendwa"
+      },
+      {
+        "collection": "WNY",
+        "number": 218,
+        "title": "O Yesu, An Adwaro"
+      },
+      {
+        "collection": "OKN",
+        "number": 218,
+        "title": "O Yeso Narire Eira"
       }
     ],
     "category": "Gospel Invitation & Repentance"
@@ -15842,6 +17952,16 @@
         "collection": "NZK",
         "number": 208,
         "title": "Mungu Afanya Upinde"
+      },
+      {
+        "collection": "WNY",
+        "number": 208,
+        "title": "Bedi Mangima Kuoma"
+      },
+      {
+        "collection": "OKN",
+        "number": 208,
+        "title": "Ens'enyia Y'Omwando"
       }
     ]
   },
@@ -15899,6 +18019,16 @@
         "collection": "NZK",
         "number": 207,
         "title": "Nani Ayafanya Maua"
+      },
+      {
+        "collection": "WNY",
+        "number": 207,
+        "title": "Kaw Ngimana"
+      },
+      {
+        "collection": "OKN",
+        "number": 207,
+        "title": "Ir'obogima Bwane"
       }
     ]
   },
@@ -15964,6 +18094,16 @@
         "collection": "NZK",
         "number": 215,
         "title": "Ulimwengu Wataka"
+      },
+      {
+        "collection": "WNY",
+        "number": 215,
+        "title": "Isedwaro Yuweyo Kod Yie Momedore"
+      },
+      {
+        "collection": "OKN",
+        "number": 215,
+        "title": "Kwarure Ebinto Bionsi Ekeng'wanso?"
       }
     ],
     "category": "The Sabbath"
@@ -16051,6 +18191,16 @@
         "collection": "NZK",
         "number": 210,
         "title": "Roho Wa Mungu Wangu"
+      },
+      {
+        "collection": "WNY",
+        "number": 210,
+        "title": "Diyie Dak Kod Yesu"
+      },
+      {
+        "collection": "OKN",
+        "number": 210,
+        "title": "Aye Nobe Buna Yeso"
       }
     ]
   },
@@ -16246,6 +18396,16 @@
         "collection": "NZK",
         "number": 209,
         "title": "Napenda Sana Kufika"
+      },
+      {
+        "collection": "WNY",
+        "number": 209,
+        "title": "Ywaya Machiegni Buti, Ruodha"
+      },
+      {
+        "collection": "OKN",
+        "number": 209,
+        "title": "Ong'use Ang'e N'aye Tata"
       }
     ]
   },
@@ -16273,6 +18433,16 @@
         "collection": "NZK",
         "number": 220,
         "title": "Kwa Heri"
+      },
+      {
+        "collection": "WNY",
+        "number": 220,
+        "title": "Otelona!"
+      },
+      {
+        "collection": "OKN",
+        "number": 220,
+        "title": "Ondaire, Ondaire"
       }
     ]
   },
