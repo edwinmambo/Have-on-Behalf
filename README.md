@@ -18,6 +18,20 @@
   <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License MIT" />
 </p>
 
+<p align="center">
+  <a href="https://github.com/edwinmambo/Have-on-Behalf/releases/download/v1.2.0/HaveOnBehalf-Companion-v1.2.0.apk">
+    <img src="https://img.shields.io/badge/📲%20Download%20APK-v1.2.0%20Production%20Release-059669?style=for-the-badge&logo=android&logoColor=white" alt="Download APK v1.2.0" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/edwinmambo/Have-on-Behalf/releases/download/v1.2.0/HaveOnBehalf-Companion-Latest.apk">
+    <img src="https://img.shields.io/badge/📲%20Download%20Latest%20APK-Universal%20Android-2563EB?style=for-the-badge&logo=android&logoColor=white" alt="Download Latest APK" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/edwinmambo/Have-on-Behalf/releases">
+    <img src="https://img.shields.io/badge/📦%20GitHub%20Releases-All%20Artifacts-475569?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" />
+  </a>
+</p>
+
 ---
 
 ## 📜 Table of Contents
@@ -145,15 +159,31 @@ The Flutter companion app (`mobile/`) brings 100% feature parity to Android phon
 
 ## 📦 Asset Downloads & Version Management
 
-All binary releases, manifests, and checksums are cataloged in the `assets/releases/` folder and accessible directly within the web app's **Settings > Downloads & Version Manager**:
+Download compiled release binaries, manifests, and datasets directly from the table below, or via **Settings > Downloads & Version Manager** in the web app:
 
-| Asset Package | Target Platform | Size | Description |
+| Asset Package | Target Platform | Direct Download Link | Description |
 | :--- | :--- | :--- | :--- |
-| `HaveOnBehalf-Companion-v1.2.0.apk` | Android API 21+ | 17.6 MB | Current production Android APK |
-| `HaveOnBehalf-Companion-Latest.apk` | Android Universal | 17.6 MB | Pointer to latest stable release |
-| `have-on-behalf-clean-datasets-v1.2.0.json` | Universal JSON | 4.1 MB | Clean offline hymnal datasets |
-| `manifest.json` | JSON Spec | 2.4 KB | Official release specification |
-| `versions.json` | JSON Catalog | 3.1 KB | Multi-version history & checksums |
+| **`HaveOnBehalf-Companion-v1.2.0.apk`** | Android 5.0+ (API 21–35) | [⬇️ **Download v1.2.0 APK**](https://github.com/edwinmambo/Have-on-Behalf/releases/download/v1.2.0/HaveOnBehalf-Companion-v1.2.0.apk) · [Raw File](assets/releases/HaveOnBehalf-Companion-v1.2.0.apk?raw=true) | Standalone release APK with all 13 hymnals, Bibles & Beam Remote |
+| **`HaveOnBehalf-Companion-Latest.apk`** | Android Universal | [⬇️ **Download Latest APK**](https://github.com/edwinmambo/Have-on-Behalf/releases/download/v1.2.0/HaveOnBehalf-Companion-Latest.apk) · [Raw File](assets/releases/HaveOnBehalf-Companion-Latest.apk?raw=true) | Universal build pointing to latest production release |
+| **`have-on-behalf-clean-datasets-v1.2.0.json`** | Universal JSON | [⬇️ **Download Datasets JSON**](public/data/sync_manifest.json) | Complete normalized hymnal and scripture datasets |
+| **`manifest.json`** | JSON Spec | [⬇️ **View Release Manifest**](assets/releases/manifest.json) | Build hash, SHA-256 signatures, and version specifications |
+| **`versions.json`** | JSON Catalog | [⬇️ **View Version Catalog**](assets/releases/versions.json) | Comprehensive version release history & changelogs |
+
+---
+
+### 📱 Installing on Your Android Mobile Phone
+
+If you download the APK directly to your phone:
+
+1. Tap **[⬇️ Download v1.2.0 APK](https://github.com/edwinmambo/Have-on-Behalf/releases/download/v1.2.0/HaveOnBehalf-Companion-v1.2.0.apk)** on your device browser.
+2. If your browser displays *"File might be harmful"* or *"Do you want to download HaveOnBehalf-Companion-v1.2.0.apk anyway?"*, tap **Download anyway** (standard warning for direct APK downloads outside Google Play Store).
+3. Once the download finishes, tap the notification or open your device's **Downloads** folder.
+4. Tap **HaveOnBehalf-Companion-v1.2.0.apk** to begin installation.
+5. If Android displays *"For your security, your phone is not allowed to install unknown apps from this source"*, tap **Settings** and toggle **Allow from this source** (or *Install unknown apps* for your browser).
+6. Tap **Install** and launch **Have On Behalf**!
+7. The app is **100% offline-ready** with zero account, login, or internet requirements.
+
+> 💡 **Troubleshooting "Problem Parsing the Package":** If your Android phone ever displays *"There was a problem parsing the package"*, it indicates an incomplete or interrupted download. Always verify the file has finished downloading completely before tapping Install, or download directly from [GitHub Releases](https://github.com/edwinmambo/Have-on-Behalf/releases).
 
 ---
 

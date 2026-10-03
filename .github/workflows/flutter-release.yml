@@ -77,31 +77,39 @@ jobs:
       - name: Build Universal Android APK
         working-directory: mobile
         run: |
-          flutter build apk --release --no-tree-shake-icons || {
-            echo "::warning::Release compilation encountered runner constraint; falling back to verified pre-built release package..."
-            true
+          echo "Compiling Universal Production Release APK..."
+          flutter build apk --release --no-tree-shake-icons --verbose || {
+            echo "Direct flutter build failed; checking gradle assembleRelease..."
+            (cd android && ./gradlew assembleRelease --stacktrace --no-daemon) || flutter build apk --release --no-tree-shake-icons
           }
+          find . -name "*.apk" -ls || true
 
       - name: Build Split-per-ABI Android APKs
         working-directory: mobile
-        run: |
-          flutter build apk --release --split-per-abi --no-tree-shake-icons || true
+        run: flutter build apk --release --split-per-abi --no-tree-shake-icons || true
 
       - name: Bundle Release Binaries into /assets/releases/
         run: |
           mkdir -p assets/releases public/assets/releases
           
-          if [ -f mobile/build/app/outputs/flutter-apk/app-release.apk ]; then
-            echo "Packaging newly compiled Flutter APK..."
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-Latest.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
-          else
-            echo "Using in-tree verified production release APKs..."
-            ls -lh assets/releases/*.apk
+          COMPILED_APK=""
+          for p in "mobile/build/app/outputs/flutter-apk/app-release.apk" \
+                   "mobile/android/app/build/outputs/apk/release/app-release.apk" \
+                   "mobile/build/app/outputs/apk/release/app-release.apk"; do
+            if [ -f "$p" ]; then
+              COMPILED_APK="$p"
+              break
+            fi
+          done
+          
+          if [ -n "$COMPILED_APK" ]; then
+            echo "Bundling compiled APK from $COMPILED_APK ($(stat -c%s "$COMPILED_APK") bytes)"
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
           fi
           
           [ -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk || true
@@ -121,19 +129,18 @@ jobs:
             assets/releases/manifest.json
           retention-days: 30
 
-      - name: Publish to GitHub Releases
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Publish or Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: "v1.2.0"
+          name: "Have On Behalf Companion v1.2.0 (Production Release)"
           body_path: assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
           files: |
             assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
             assets/releases/HaveOnBehalf-Companion-Latest.apk
             assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-            assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk
-            assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk
             assets/releases/manifest.json
+            assets/releases/versions.json
             assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
-          name: Have On Behalf Companion Release ${{ github.ref_name }}
           draft: false
           prerelease: false

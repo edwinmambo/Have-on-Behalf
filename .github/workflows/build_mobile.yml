@@ -78,10 +78,13 @@ jobs:
       - name: Compile Universal Production Android APK
         working-directory: mobile
         run: |
-          flutter build apk --release --no-tree-shake-icons || {
-            echo "::warning::Release compilation encountered runner constraint; falling back to verified pre-built release package..."
-            true
+          echo "Compiling Universal Production Release APK..."
+          flutter build apk --release --no-tree-shake-icons --verbose || {
+            echo "Direct flutter build failed; checking gradle assembleRelease..."
+            (cd android && ./gradlew assembleRelease --stacktrace --no-daemon) || flutter build apk --release --no-tree-shake-icons
           }
+          echo "Checking generated APK files:"
+          find . -name "*.apk" -ls || true
 
       - name: Compile Split-per-ABI Android APKs
         working-directory: mobile
@@ -92,24 +95,35 @@ jobs:
         run: |
           mkdir -p assets/releases public/assets/releases
           
-          # If a new APK was compiled during this CI run, update release catalogs
-          if [ -f mobile/build/app/outputs/flutter-apk/app-release.apk ]; then
-            echo "Packaging newly compiled Flutter APK..."
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-Latest.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
-            cp -f mobile/build/app/outputs/flutter-apk/app-release.apk public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
+          # Detect the freshly compiled release APK
+          COMPILED_APK=""
+          for p in "mobile/build/app/outputs/flutter-apk/app-release.apk" \
+                   "mobile/android/app/build/outputs/apk/release/app-release.apk" \
+                   "mobile/build/app/outputs/apk/release/app-release.apk"; do
+            if [ -f "$p" ]; then
+              COMPILED_APK="$p"
+              break
+            fi
+          done
+          
+          if [ -n "$COMPILED_APK" ]; then
+            echo "Bundling compiled APK from $COMPILED_APK ($(stat -c%s "$COMPILED_APK") bytes)"
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
           else
-            echo "Using in-tree verified production release APKs..."
-            ls -lh assets/releases/*.apk
+            echo "Warning: Newly compiled APK not located at standard path; preserving existing assets"
           fi
           
           # Copy architecture-specific APKs if present
           [ -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk || true
           [ -f mobile/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk || true
           [ -f mobile/build/app/outputs/flutter-apk/app-x86_64-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-x86_64-release.apk assets/releases/HaveOnBehalf-Companion-x86_64.apk || true
+          
+          ls -lh assets/releases/*.apk
 
       - name: Generate Automated Git Changelog & Tester Release Notes
         run: npm run changelog:auto || true
@@ -130,24 +144,23 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [Release Builder]"
-          git add assets/releases/ public/assets/releases/ CHANGELOG.md package-lock.json
-          git diff --staged --quiet || git commit -m "chore(release): bundle mobile release binaries and update changelog [skip ci]"
+          git add -f assets/releases/*.apk public/assets/releases/*.apk assets/releases/ public/assets/releases/ CHANGELOG.md package-lock.json
+          git diff --staged --quiet || git commit -m "chore(release): bundle verified mobile release APKs [skip ci]"
           git pull --rebase origin ${{ github.ref_name }} || true
           git push origin HEAD:${{ github.ref_name }} || true
 
-      - name: Publish GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Publish or Update GitHub Release
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: "v1.2.0"
+          name: "Have On Behalf Companion v1.2.0 (Production Release)"
           body_path: assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
           files: |
             assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
             assets/releases/HaveOnBehalf-Companion-Latest.apk
-            assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk
-            assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk
             assets/releases/manifest.json
             assets/releases/versions.json
             assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
-          name: Have On Behalf Companion Release ${{ github.ref_name }}
           draft: false
           prerelease: false
