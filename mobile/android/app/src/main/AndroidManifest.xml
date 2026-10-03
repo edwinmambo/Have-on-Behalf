@@ -6,7 +6,7 @@
     <application
         android:label="Have On Behalf"
         android:name="${applicationName}"
-        android:icon="@drawable/ic_launcher">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
