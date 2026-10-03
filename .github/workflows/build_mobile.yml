@@ -78,53 +78,66 @@ jobs:
       - name: Compile Universal Production Android APK
         working-directory: mobile
         run: |
-          echo "Starting Flutter release APK compilation..."
+          echo "Starting Universal Production Release APK compilation..."
           flutter build apk --release --no-tree-shake-icons --verbose 2>&1 | tee /tmp/flutter_build.log || {
             echo "::error::Flutter release APK build failed. Showing last 150 lines of build log:"
             tail -n 150 /tmp/flutter_build.log
             exit 1
           }
-          echo "Generated APK files in mobile:"
-          find . -name "*.apk" -ls || true
+          
+          echo "Locating and preserving Universal APK immediately..."
+          find . -name "*.apk" -ls
+          
+          mkdir -p ../assets/releases ../public/assets/releases
+          UNIVERSAL_APK=$(find build/ android/ -name "*release.apk" ! -name "*split*" ! -name "*arm*" ! -name "*x86*" | head -n 1)
+          if [ -z "$UNIVERSAL_APK" ]; then
+            UNIVERSAL_APK=$(find build/ android/ -name "*.apk" | head -n 1)
+          fi
+          
+          if [ -n "$UNIVERSAL_APK" ]; then
+            echo "Preserving compiled Universal APK from $UNIVERSAL_APK ($(stat -c%s "$UNIVERSAL_APK") bytes)..."
+            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-Latest.apk
+            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
+            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
+            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
+            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
+          else
+            echo "::error::No Universal APK found after build step!"
+            exit 1
+          fi
 
       - name: Compile Split-per-ABI Android APKs
         working-directory: mobile
         run: |
+          echo "Building architecture-specific split APKs..."
           flutter build apk --release --split-per-abi --no-tree-shake-icons || echo "Split ABI build completed with fallback"
+          find . -name "*arm*.apk" -o -name "*x86*.apk" || true
 
       - name: Create /assets/releases Directory & Bundle Binaries
         run: |
           mkdir -p assets/releases public/assets/releases
           
-          # Detect the freshly compiled release APK
-          COMPILED_APK=""
-          for p in "mobile/build/app/outputs/flutter-apk/app-release.apk" \
-                   "mobile/android/app/build/outputs/apk/release/app-release.apk" \
-                   "mobile/build/app/outputs/apk/release/app-release.apk"; do
-            if [ -f "$p" ]; then
-              COMPILED_APK="$p"
-              break
-            fi
-          done
+          # Detect and copy architecture-specific APKs
+          find mobile/ -name "*arm64-v8a*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk \; 2>/dev/null || true
+          find mobile/ -name "*armeabi-v7a*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk \; 2>/dev/null || true
+          find mobile/ -name "*x86_64*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-x86_64.apk \; 2>/dev/null || true
           
-          if [ -n "$COMPILED_APK" ]; then
-            echo "Bundling compiled APK from $COMPILED_APK ($(stat -c%s "$COMPILED_APK") bytes)"
-            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
-            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
-            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
-            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
-            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
-          else
-            echo "::error::No compiled APK found at standard outputs!"
-            exit 1
+          # Confirm universal APK presence and validity
+          if [ ! -f assets/releases/HaveOnBehalf-Companion-v1.2.0.apk ] || [ $(stat -c%s assets/releases/HaveOnBehalf-Companion-v1.2.0.apk) -lt 5000000 ]; then
+            ANY_APK=$(find mobile/ -name "*.apk" | head -n 1)
+            if [ -n "$ANY_APK" ]; then
+              echo "Using compiled APK: $ANY_APK"
+              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
+              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
+              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
+              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
+              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
+            fi
           fi
           
-          # Copy architecture-specific APKs if present
-          [ -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk || true
-          [ -f mobile/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk || true
-          [ -f mobile/build/app/outputs/flutter-apk/app-x86_64-release.apk ] && cp -f mobile/build/app/outputs/flutter-apk/app-x86_64-release.apk assets/releases/HaveOnBehalf-Companion-x86_64.apk || true
-          
+          echo "Final release APKs in assets/releases/:"
           ls -lh assets/releases/*.apk
 
       - name: Generate Automated Git Changelog & Tester Release Notes
