@@ -21,13 +21,10 @@
 ## 🌟 Changes in Version 1.2.0
 
 ### Added
-- **Sanctuary Beam Projector Synchronization**: Pop-out second screen broadcast engine using modern `BroadcastChannel` with continuous flow layout and scrollbar suppression.
-- **Holy Bible Reader with Red Letter Words of Christ**: Multi-translation reader supporting KJV Authorized, SUV Swahili, Gĩkũyũ, and WEB with verse projection.
-- **Ellen G. White Spirit of Prophecy Library**: Integrated study center with Steps to Christ, Desire of Ages, Great Controversy, and Ministry of Healing.
-- **Flutter Mobile Companion App Parity**: SharedDataProvider ingesting exact PWA JSON datasets for hymns, Bibles, EGW study, and handheld Beam remote.
-- **Distraction-Free Reading Mode**: Immersive reading experience with dynamic typography scaling and floating toolbar.
-- **Hymn Frequency Analytics (Recharts)**: Interactive bar and area charts tracking hymn usage.
-- **Pinned Sabbath Selections**: 1-tap quick access bar for Sabbath song services.
+- `7ab3358` **release**: version v1.2.0, mobile web parity, shared data bridge, and CI/CD automation *(Edwin Mambo)*
+- `5e9a90f` implement Beam projector synchronization *(Edwin Mambo)*
+- `d0a4cf3` add customizable accent themes *(Edwin Mambo)*
+- `b6e879d` initialize project structure and base app *(Edwin Mambo)*
 
 ### Changed
 - **Automated CI/CD Workflows**: Added `.github/workflows/build_mobile.yml` to automatically build APKs and bundle binaries into `/assets/releases/`.
