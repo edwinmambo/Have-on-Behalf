@@ -52,7 +52,7 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Ensure Android Environment & Keystore
+      - name: Accept Android Licenses & Verify Environment
         run: |
           mkdir -p mobile/android/gradle/wrapper mobile/android/app ~/.android
           chmod +x mobile/android/gradlew || true
@@ -78,51 +78,26 @@ jobs:
         working-directory: mobile
         run: |
           echo "Starting Universal Production Release APK compilation..."
-          flutter build apk --release --no-tree-shake-icons --verbose 2>&1 | tee /tmp/flutter_build.log || {
-            echo "::error::Flutter release APK build failed. Showing last 150 lines of build log:"
-            tail -n 150 /tmp/flutter_build.log
-            exit 1
-          }
-          
-          mkdir -p ../assets/releases ../public/assets/releases
-          UNIVERSAL_APK=$(find build/ android/ -name "*release.apk" ! -name "*split*" ! -name "*arm*" ! -name "*x86*" | head -n 1)
-          if [ -z "$UNIVERSAL_APK" ]; then
-            UNIVERSAL_APK=$(find build/ android/ -name "*.apk" | head -n 1)
-          fi
-          
-          if [ -n "$UNIVERSAL_APK" ]; then
-            echo "Preserving compiled Universal APK from $UNIVERSAL_APK ($(stat -c%s "$UNIVERSAL_APK") bytes)..."
-            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
-            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-Latest.apk
-            cp -f "$UNIVERSAL_APK" ../assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
-            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
-            cp -f "$UNIVERSAL_APK" ../public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
-          fi
-
-      - name: Build Split-per-ABI Android APKs
-        working-directory: mobile
-        run: |
-          flutter build apk --release --split-per-abi --no-tree-shake-icons || true
+          flutter build apk --release --no-tree-shake-icons
+          find . -name "*.apk" -ls
 
       - name: Bundle Release Binaries into /assets/releases/
         run: |
           mkdir -p assets/releases public/assets/releases
           
-          find mobile/ -name "*arm64-v8a*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-arm64-v8a.apk \; 2>/dev/null || true
-          find mobile/ -name "*armeabi-v7a*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-armeabi-v7a.apk \; 2>/dev/null || true
-          find mobile/ -name "*x86_64*.apk" -exec cp -f {} assets/releases/HaveOnBehalf-Companion-x86_64.apk \; 2>/dev/null || true
+          COMPILED_APK=$(find mobile/ -name "*release*.apk" -type f | head -n 1)
+          if [ -z "$COMPILED_APK" ]; then
+            COMPILED_APK=$(find mobile/ -name "*.apk" -type f | head -n 1)
+          fi
           
-          if [ ! -f assets/releases/HaveOnBehalf-Companion-v1.2.0.apk ] || [ $(stat -c%s assets/releases/HaveOnBehalf-Companion-v1.2.0.apk) -lt 5000000 ]; then
-            ANY_APK=$(find mobile/ -name "*.apk" | head -n 1)
-            if [ -n "$ANY_APK" ]; then
-              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
-              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
-              cp -f "$ANY_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
-              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk || true
-              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
-              cp -f "$ANY_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
-            fi
+          if [ -n "$COMPILED_APK" ]; then
+            echo "Packaging real compiled APK from $COMPILED_APK ($(stat -c%s "$COMPILED_APK") bytes)"
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-Latest.apk
+            cp -f "$COMPILED_APK" assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk
+            cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
           fi
           
           ls -lh assets/releases/*.apk
