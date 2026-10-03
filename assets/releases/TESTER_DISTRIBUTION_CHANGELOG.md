@@ -11,8 +11,8 @@
 
 | Package Name | Architecture | File Size | SHA-256 Digest |
 | :--- | :--- | :--- | :--- |
-| **`HaveOnBehalf-Companion-v1.2.0.apk`** | Universal (ARM64 / ARMv7 / x86_64) | 55 B | `653af870ea6f773ea701b3a101b577f22113025175a17ade7e2d01abe041e509` |
-| **`HaveOnBehalf-Companion-Latest.apk`** | Latest Production Pointer | 55 B | `653af870ea6f773ea701b3a101b577f22113025175a17ade7e2d01abe041e509` |
+| **`HaveOnBehalf-Companion-v1.2.0.apk`** | Universal (ARM64 / ARMv7 / x86_64) | 13.1 MB (13,698,834 bytes) | `a5161764c3d940c27f3fd0353a3ed5e3579396f15325780b37381a233e3bf1de` |
+| **`HaveOnBehalf-Companion-Latest.apk`** | Latest Production Pointer | 13.1 MB (13,698,834 bytes) | `a5161764c3d940c27f3fd0353a3ed5e3579396f15325780b37381a233e3bf1de` |
 | **`have-on-behalf-clean-datasets-v1.2.0.json`** | Offline Unified Datasets | 4.1 MB | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` |
 | **`manifest.json`** | Machine-Readable Specification | 2.4 KB | Verified Release Manifest |
 

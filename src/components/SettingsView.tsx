@@ -1587,16 +1587,17 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
           {/* Primary Quick Downloads */}
           <div className="flex flex-wrap items-center gap-2 shrink-0">
-            <button
+            <a
               id="download-apk-v120-btn"
-              type="button"
-              onClick={() => handleDownloadApk('v1.2.0')}
-              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white text-xs font-bold shadow-xs flex items-center gap-2 transition cursor-pointer"
+              href="/assets/releases/HaveOnBehalf-Companion-v1.2.0.apk"
+              download="HaveOnBehalf-Companion-v1.2.0.apk"
+              onClick={() => showToast({ title: 'Downloading Have On Behalf Companion APK (v1.2.0)', type: 'success' })}
+              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white text-xs font-bold shadow-xs flex items-center gap-2 transition cursor-pointer no-underline"
               title="Download Android APK package"
             >
               <Download className="w-4 h-4" />
               <span>Download APK (v1.2.0)</span>
-            </button>
+            </a>
 
             <button
               id="download-datasets-bundle-btn"
@@ -1609,16 +1610,55 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               <span>Datasets JSON</span>
             </button>
 
-            <button
+            <a
               id="download-release-manifest-btn"
-              type="button"
-              onClick={handleDownloadManifest}
-              className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-98 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+              href="/assets/releases/manifest.json"
+              download="have-on-behalf-release-manifest-v1.2.0.json"
+              onClick={() => showToast({ title: 'Release manifest downloaded', type: 'success' })}
+              className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-98 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition cursor-pointer no-underline"
               title="Download build manifest specification"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
               <span>Manifest</span>
-            </button>
+            </a>
+          </div>
+        </div>
+
+        {/* Mobile Phone User Direct Install Banner */}
+        <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span className="p-1.5 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                <Smartphone className="w-4 h-4" />
+              </span>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                Installing on Android Mobile Phones & Tablets
+              </h3>
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
+                Direct APK
+              </span>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Using a mobile device? Tap below to download the native standalone APK package. Once downloaded, tap <strong>Open</strong> in your browser notifications and allow <em>Install unknown apps</em> to enjoy all 13 hymnals, Bibles, and Beam Remote completely offline.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+              <span>✓ Android 5.0 to 15 (ARM64 & x86)</span>
+              <span>✓ Zero Data Usage after install</span>
+              <span>✓ Full Touch & Large Typography</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0">
+            <a
+              id="mobile-phone-direct-download-btn"
+              href="/assets/releases/HaveOnBehalf-Companion-Latest.apk"
+              download="HaveOnBehalf-Companion-Latest.apk"
+              onClick={() => showToast({ title: 'Starting APK download for Android phone...', type: 'success' })}
+              className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white text-xs font-bold shadow-md flex items-center justify-center gap-2.5 transition cursor-pointer no-underline text-center"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download APK for Mobile Phone</span>
+            </a>
           </div>
         </div>
 
