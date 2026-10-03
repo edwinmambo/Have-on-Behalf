@@ -78,12 +78,13 @@ jobs:
       - name: Compile Universal Production Android APK
         working-directory: mobile
         run: |
-          echo "Compiling Universal Production Release APK..."
-          flutter build apk --release --no-tree-shake-icons --verbose || {
-            echo "Direct flutter build failed; checking gradle assembleRelease..."
-            (cd android && ./gradlew assembleRelease --stacktrace --no-daemon) || flutter build apk --release --no-tree-shake-icons
+          echo "Starting Flutter release APK compilation..."
+          flutter build apk --release --no-tree-shake-icons --verbose 2>&1 | tee /tmp/flutter_build.log || {
+            echo "::error::Flutter release APK build failed. Showing last 150 lines of build log:"
+            tail -n 150 /tmp/flutter_build.log
+            exit 1
           }
-          echo "Checking generated APK files:"
+          echo "Generated APK files in mobile:"
           find . -name "*.apk" -ls || true
 
       - name: Compile Split-per-ABI Android APKs
@@ -115,7 +116,8 @@ jobs:
             cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-Latest.apk || true
             cp -f "$COMPILED_APK" public/assets/releases/HaveOnBehalf-Companion-EarlyTester.apk || true
           else
-            echo "Warning: Newly compiled APK not located at standard path; preserving existing assets"
+            echo "::error::No compiled APK found at standard outputs!"
+            exit 1
           fi
           
           # Copy architecture-specific APKs if present
@@ -159,6 +161,7 @@ jobs:
           files: |
             assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
             assets/releases/HaveOnBehalf-Companion-Latest.apk
+            assets/releases/HaveOnBehalf-Companion-EarlyTester.apk
             assets/releases/manifest.json
             assets/releases/versions.json
             assets/releases/TESTER_DISTRIBUTION_CHANGELOG.md
