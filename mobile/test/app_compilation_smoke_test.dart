@@ -9,7 +9,6 @@ import 'package:have_on_behalf_companion/screens/bible_reader_screen.dart';
 import 'package:have_on_behalf_companion/screens/egw_reader_screen.dart';
 import 'package:have_on_behalf_companion/screens/favorites_notes_screen.dart';
 import 'package:have_on_behalf_companion/screens/feedback_screen.dart';
-import 'package:have_on_behalf_companion/screens/hymn_detail_screen.dart';
 import 'package:have_on_behalf_companion/screens/hymn_list_screen.dart';
 import 'package:have_on_behalf_companion/screens/main_navigation_shell.dart';
 import 'package:have_on_behalf_companion/screens/plan_screen.dart';
@@ -47,7 +46,7 @@ void main() {
       expect(style.fontSize, 16.0);
     });
 
-    testWidgets('App root widget and screens instantiate cleanly', (tester) async {
+    test('App root widget and screens instantiate cleanly without error', () {
       expect(const HaveOnBehalfCompanionApp(), isNotNull);
       expect(const MainNavigationShell(), isNotNull);
       expect(const HymnListScreen(), isNotNull);
