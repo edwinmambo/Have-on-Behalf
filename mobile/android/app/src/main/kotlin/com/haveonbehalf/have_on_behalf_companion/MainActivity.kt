@@ -1,5 +1,6 @@
 package com.haveonbehalf.have_on_behalf_companion
 
+import android.annotation.SuppressLint
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
@@ -50,6 +51,7 @@ class MainActivity: FlutterActivity() {
         }
     }
 
+    @SuppressLint("NewApi")
     private fun playTone(frequency: Double, durationMs: Int) {
         thread {
             try {

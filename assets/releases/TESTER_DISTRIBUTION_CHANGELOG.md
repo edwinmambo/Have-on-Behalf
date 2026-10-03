@@ -1,7 +1,7 @@
 # 📱 Have On Behalf Companion — Tester Distribution & Changelog
 
 **Release Version:** `v1.2.0`  
-**Automated Build Date:** 2026-10-02  
+**Automated Build Date:** 2026-10-03  
 **Target Environment:** Android API 21+ (Android 5.0 through 15+)  
 **Distribution Channel:** Continuous Integration & Tester Downloads  
 

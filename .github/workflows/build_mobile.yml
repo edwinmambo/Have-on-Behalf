@@ -55,8 +55,9 @@ jobs:
 
       - name: Ensure Gradle Wrapper Executable & Verify Environment
         run: |
-          mkdir -p mobile/android/gradle/wrapper
+          mkdir -p mobile/android/gradle/wrapper ~/.android
           chmod +x mobile/android/gradlew || true
+          keytool -genkey -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US" || true
           yes | flutter doctor --android-licenses || true
           flutter --version
           dart --version
@@ -71,7 +72,11 @@ jobs:
 
       - name: Compile Universal Production Android APK
         working-directory: mobile
-        run: flutter build apk --release --no-tree-shake-icons
+        run: |
+          flutter build apk --release --no-tree-shake-icons || {
+            echo "Initial release build exited with status; attempting assembly with Gradle flags..."
+            (cd android && ./gradlew assembleRelease --stacktrace --no-daemon) || flutter build apk --release --no-tree-shake-icons
+          }
 
       - name: Compile Split-per-ABI Android APKs
         working-directory: mobile
@@ -81,7 +86,7 @@ jobs:
         run: |
           mkdir -p assets/releases public/assets/releases
           
-          # Copy universal production APK
+          # Copy universal production APK if compiled in this run
           if [ -f mobile/build/app/outputs/flutter-apk/app-release.apk ]; then
             cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-v1.2.0.apk
             cp -f mobile/build/app/outputs/flutter-apk/app-release.apk assets/releases/HaveOnBehalf-Companion-Latest.apk
