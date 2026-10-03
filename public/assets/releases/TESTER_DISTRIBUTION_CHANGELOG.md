@@ -11,8 +11,8 @@
 
 | Package Name | Architecture | File Size | SHA-256 Digest |
 | :--- | :--- | :--- | :--- |
-| **`HaveOnBehalf-Companion-v1.2.0.apk`** | Universal (ARM64 / ARMv7 / x86_64) | 13.1 MB (13,698,834 bytes) | `a5161764c3d940c27f3fd0353a3ed5e3579396f15325780b37381a233e3bf1de` |
-| **`HaveOnBehalf-Companion-Latest.apk`** | Latest Production Pointer | 13.1 MB (13,698,834 bytes) | `a5161764c3d940c27f3fd0353a3ed5e3579396f15325780b37381a233e3bf1de` |
+| **`HaveOnBehalf-Companion-v1.2.0.apk`** | Universal (ARM64 / ARMv7 / x86_64) | 31.7 MB (33,229,358 bytes) | `ed65a8e5b2cf6cd93a409b7f6eb14fe81492f2ed28ca8999e474f7352d62c7f9` |
+| **`HaveOnBehalf-Companion-Latest.apk`** | Latest Production Pointer | 31.7 MB (33,229,358 bytes) | `ed65a8e5b2cf6cd93a409b7f6eb14fe81492f2ed28ca8999e474f7352d62c7f9` |
 | **`have-on-behalf-clean-datasets-v1.2.0.json`** | Offline Unified Datasets | 4.1 MB | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` |
 | **`manifest.json`** | Machine-Readable Specification | 2.4 KB | Verified Release Manifest |
 
@@ -21,13 +21,10 @@
 ## 🌟 Changes in Version 1.2.0
 
 ### Added
-- **Sanctuary Beam Projector Synchronization**: Pop-out second screen broadcast engine using modern `BroadcastChannel` with continuous flow layout and scrollbar suppression.
-- **Holy Bible Reader with Red Letter Words of Christ**: Multi-translation reader supporting KJV Authorized, SUV Swahili, Gĩkũyũ, and WEB with verse projection.
-- **Ellen G. White Spirit of Prophecy Library**: Integrated study center with Steps to Christ, Desire of Ages, Great Controversy, and Ministry of Healing.
-- **Flutter Mobile Companion App Parity**: SharedDataProvider ingesting exact PWA JSON datasets for hymns, Bibles, EGW study, and handheld Beam remote.
-- **Distraction-Free Reading Mode**: Immersive reading experience with dynamic typography scaling and floating toolbar.
-- **Hymn Frequency Analytics (Recharts)**: Interactive bar and area charts tracking hymn usage.
-- **Pinned Sabbath Selections**: 1-tap quick access bar for Sabbath song services.
+- `7ab3358` **release**: version v1.2.0, mobile web parity, shared data bridge, and CI/CD automation *(Edwin Mambo)*
+- `5e9a90f` implement Beam projector synchronization *(Edwin Mambo)*
+- `d0a4cf3` add customizable accent themes *(Edwin Mambo)*
+- `b6e879d` initialize project structure and base app *(Edwin Mambo)*
 
 ### Changed
 - **Automated CI/CD Workflows**: Added `.github/workflows/build_mobile.yml` to automatically build APKs and bundle binaries into `/assets/releases/`.
