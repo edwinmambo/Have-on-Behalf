@@ -47,6 +47,9 @@ class BibleService extends ChangeNotifier {
     BibleBook(id: 'REV', name: 'Revelation', testament: 'NT', totalChapters: 22),
   ];
 
+  static List<BibleVersion> get versions => defaultVersions;
+  static List<BibleBook> get books => defaultBooks;
+
   final Map<String, List<BibleVerse>> _syncedTexts = {};
   List<BibleVersion> _syncedVersions = [];
   List<BibleBook> _syncedBooks = [];

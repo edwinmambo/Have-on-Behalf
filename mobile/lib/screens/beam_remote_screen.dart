@@ -23,6 +23,12 @@ class _BeamRemoteScreenState extends State<BeamRemoteScreen> {
 
     final num = int.tryParse(query);
     if (num != null) {
+      if (repo.allHymns.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Hymnals are loading, please try again.')),
+        );
+        return;
+      }
       final hymn = repo.allHymns.firstWhere(
         (h) => h.number == num,
         orElse: () => repo.allHymns.first,

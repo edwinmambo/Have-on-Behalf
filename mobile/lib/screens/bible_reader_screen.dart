@@ -34,7 +34,7 @@ class BibleReaderScreen extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              ...BibleService.versions.map((ver) {
+              ...bibleService.versions.map((ver) {
                 final isSelected = ver.id == bibleService.activeVersionId;
                 return ListTile(
                   title: Text(ver.name, style: const TextStyle(fontWeight: FontWeight.w600)),
@@ -80,9 +80,9 @@ class BibleReaderScreen extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 controller: scrollController,
-                itemCount: BibleService.books.length,
+                itemCount: bibleService.books.length,
                 itemBuilder: (context, idx) {
-                  final book = BibleService.books[idx];
+                  final book = bibleService.books[idx];
                   final isSelectedBook = book.id == bibleService.activeBookId;
                   return ExpansionTile(
                     initiallyExpanded: isSelectedBook,

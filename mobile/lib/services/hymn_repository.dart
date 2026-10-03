@@ -21,6 +21,7 @@ class HymnRepository extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
   int get totalCount => _hymnsById.length;
+  List<Hymn> get allHymns => _hymnsById.values.toList();
 
   List<Hymn> getHymns(HymnalCollection collection) => _hymnsByCollection[collection] ?? [];
 

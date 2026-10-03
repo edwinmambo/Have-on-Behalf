@@ -285,4 +285,19 @@ class LiturgicalThemes {
       );
     }
   }
+
+  static TextStyle getStanzaBodyStyle({
+    required bool useSerif,
+    required bool isDark,
+    required double scale,
+  }) {
+    final base = useSerif
+        ? GoogleFonts.merriweather()
+        : GoogleFonts.plusJakartaSans();
+    return base.copyWith(
+      fontSize: 16.0 * scale,
+      height: 1.5,
+      color: isDark ? const Color(0xFFE2E8F0) : const Color(0xFF1E293B),
+    );
+  }
 }
